@@ -4,15 +4,16 @@ import AllPhilosophers from './pages/AllPhilosophers';
 import Chat from './pages/Chat';
 import JoinChat from './pages/JoinChat';
 import Suggestions from './pages/Suggestions';
+import FrontPage from './pages/FrontPage';
 import { GlobalProvider } from './util/GlobalState';
 import NavBar from './components/NavBar';
 const App = () => {
     return (
         <GlobalProvider>
-            <NavBar />
             <Router>
+                <NavBar />
                 <Switch>
-                    <Route exact path="/" component={AllPhilosophers} />
+                    <Route exact path="/" component={FrontPage} />
                     <Route
                         exact
                         path="/philosophers"
