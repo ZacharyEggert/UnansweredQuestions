@@ -5,6 +5,7 @@ const { Provider } = GlobalContext;
 
 const initialState = {
     philosophers: [{ name: 'Adam Yauch', period: 'Modern', id: 0 }],
+    carouselQuotes: [{quote:'Test Quote', author:'Test Author', id:151 }],
 };
 
 const reducer = (state, action) => {
