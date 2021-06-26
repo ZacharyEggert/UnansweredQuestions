@@ -1,7 +1,22 @@
-import React, { SuggFormComponent } from 'react';
+import React, { SuggFormComponent, useState } from 'react';
 
-class SuggestionForm extends SuggFormComponent {
-    state = {};
+const SuggestionForm = () => {
+
+    const initialState = {
+        ["suggestion-type"]: "",
+        ["phil-name"]: "",
+        ["q-phil-name"]: "",
+        ["quote"]: "",
+        ["quest"]: "",
+    };
+
+    const [state, setState] = useState(initialState);
+
+    handleOnChange = event => {
+        setState({
+            ...state, [event.target.name]: event.target.value
+        });
+    }
 
     render() {
         return (
@@ -15,6 +30,7 @@ class SuggestionForm extends SuggFormComponent {
                         What would you like to make a suggestion for?
                     </label>
                     <select
+                        value={state["suggestion-type"]}
                         name="suggestion-type"
                         id="suggestion-type"
                         className="w-full sm:w-5/12 inline-block form-select mt-1 text-black p-1"
@@ -47,6 +63,7 @@ class SuggestionForm extends SuggFormComponent {
                         Philosopher Name:
                     </label>
                     <input
+                        value={state["phil-name"]}
                         className="text-black p-1"
                         type="text"
                         name="phil-name"
@@ -64,6 +81,8 @@ class SuggestionForm extends SuggFormComponent {
                             Philosopher Name:
                         </label>
                         <input
+                            value={state["q-phil-name"]}
+                            name="q-phil-name"
                             type="text"
                             className="form-control text-black p-1"
                             id="q-phil-name"
@@ -76,6 +95,8 @@ class SuggestionForm extends SuggFormComponent {
                             Quote
                         </label>
                         <input
+                            value={state["quote"]}
+                            name="quote"
                             type="text"
                             className="form-control text-black p-1"
                             id="quote"
@@ -95,6 +116,7 @@ class SuggestionForm extends SuggFormComponent {
                         className="text-black p-1"
                         type="text"
                         name="quest"
+                        value={state["quest"]}
                         id="quest"
                         placeholder="Enter question..."
                         required
