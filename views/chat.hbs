@@ -1,0 +1,31 @@
+<main class="join-chat min-w-full opacity-80 min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8"
+style="background-image: url(/img/background-blue-flowers.jpg);">
+    <div class="py-8"></div>
+    <div class="w-full sm:w-10/12 bg-black bg-opacity-70 flex flex-col flex-wrap">
+        <header class="chat-header p-4 flex items-center justify-between flex-col sm:flex-row bg-black" style="border-bottom: #fff solid;">
+            <h1 class="text-3xl sm:text-4xl pb-0 pr-4">Philosophy Chat</h1>
+            <a href="/" id="leave-btn" class="text-white rounded-md px-3  border-white border-2 border-solid whitespace-nowrap w-auto sm:mr-8" style="background-color:#4d83a3;">Leave Room</a>
+        </header>
+        <section class="chat-main bg-opacity-90" style="border-bottom: #fff solid;">
+            <div class="chat-sidebar">
+                <h3><i class="fas fa-comments"></i> Room Name:</h3>
+                <h2 id="room-name" class="pl-0">Philosophy Chat/h2>
+                    <h3><i class="fas fa-users hidden sm:visible"></i> Users:</h3>
+                    <ul id="users"></ul>
+            </div>
+            <div class="chat-messages"></div>
+        </section>
+        <div class="chat-form-container bg-black">
+            <form id="chat-form">
+                <input id="msg" type="text" placeholder="Enter Message" required autocomplete="off" />
+                <button class="btn mt-0 sm:ml-4 text-sm"><i class="fas fa-paper-plane"></i> Send</button>
+            </form>
+        </div>
+    </div>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.10.1/qs.min.js"
+    integrity="sha512-aTKlYRb1QfU1jlF3k+aS4AqTpnTXci4R79mkdie/bp6Xm51O5O3ESAYhvg6zoicj/PD6VYY0XrYwsWLcvGiKZQ=="
+    crossorigin="anonymous"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/chat.js"></script>

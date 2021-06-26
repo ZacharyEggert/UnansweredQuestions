@@ -1,0 +1,110 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    height: 100%;
+    width: 100%;
+    font: normal 16px Arial, Helvetica, sans-serif;
+    line-height: 1.6em;
+    color: #fff;
+    margin: 0;
+}
+.banner {
+    background-image: url(https://c.pxhere.com/images/22/68/ac0384321b4e349f26591495a78f-1440815.jpg!d);
+    background-size: cover;
+    background-color: #fff;
+    height: 200px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: black;
+}
+.dark {
+    color: black;
+    font-weight: bolder;
+}
+.banner-container {
+    width: 50%;
+}
+/* style profile cards and page */
+.profile-cards {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+.philosophy-times {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    font-family: sans-serif;
+    padding-bottom: 3rem;
+}
+.philosophy-times:first-child {
+    padding-top: 3rem;
+}
+.box {
+    width: 80%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-gap: 15px;
+    grid-row-gap: 25px;
+    margin: 0 auto;
+    background-color: rgba(0, 0, 0, 0.8);
+    margin-bottom: 1rem;
+    padding: 2rem 0;
+}
+
+.philosophercard {
+    position: relative;
+    width: 200px;
+    height: 250px;
+    background: #fff;
+    margin: 0 auto;
+    border-radius: 4px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.philosophercard .imgBx {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    bottom: 60px;
+    right: 10px;
+    background: #222;
+    transition: 0.5s;
+    z-index: 1;
+}
+
+.philosophercard .imgBx img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.philosophercard .details {
+    position: absolute;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    height: 31px;
+    text-align: center;
+}
+
+.philosophercard .details h2 {
+    margin: 0;
+    padding: 0;
+    font-weight: 600;
+    font-size: 1rem;
+    color: #777;
+    text-transform: uppercase;
+}
+.philosophercard .details .long-name {
+    margin: -4px;
+}

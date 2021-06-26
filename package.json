@@ -1,0 +1,49 @@
+{
+    "name": "unanswered-questions",
+    "version": "2.0.0",
+    "description": "A project for UW Full Stack Flex Course",
+    "main": "server.js",
+    "scripts": {
+        "test": "",
+        "start": "node server.js",
+        "yarn-css": "yarn build:css",
+        "build:css": "postcss public/css/tailwind.css -o public/css/style.css"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/ZacharyEggert/Unanswered-Questions.git"
+    },
+    "author": "",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/ZacharyEggert/Unanswered-Questions/issues"
+    },
+    "homepage": "https://github.com/ZacharyEggert/Unanswered-Questions#readme",
+    "dependencies": {
+        "autoprefixer": "^10.2.5",
+        "bcrypt": "^5.0.1",
+        "connect-session-sequelize": "^7.1.1",
+        "cssnano": "^5.0.2",
+        "dotenv": "^9.0.2",
+        "eslint-config-prettier": "^8.3.0",
+        "express": "^4.17.1",
+        "express-handlebars": "^5.3.2",
+        "express-session": "^1.17.1",
+        "moment": "^2.29.1",
+        "mysql2": "^2.2.5",
+        "node-fetch": "^2.6.1",
+        "postcss": "^8.2.15",
+        "postcss-cli": "^8.3.1",
+        "sequelize": "^6.6.2",
+        "socket.io": "^4.0.2",
+        "tailwindcss": "^2.1.2",
+        "yarn": "^1.22.10",
+        "youtube-search": "^1.1.6"
+    },
+    "devDependencies": {
+        "eslint": "^7.26.0",
+        "nodemon": "^2.0.7",
+        "prettier": "^2.3.0",
+        "yarn": "^1.22.10"
+    }
+}

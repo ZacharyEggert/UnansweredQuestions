@@ -1,0 +1,47 @@
+<main class="min-w-full opacity-80 min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8"
+    style="background-image: url(/img/background-whiteflower.jpg);">
+    <div class="py-8"></div>
+    <div class="w-full sm:w-auto m-14 p-7 bg-black bg-opacity-80 flex flex-row flex-wrap">
+        <div class="w-6/12 pr-1 sm:min-w-max flex-1 flex-shrink-0">
+
+            <header class="">
+                <h1 class="sm:text-4xl p-0 sm:text-center">Suggestion Submissions</h1>
+            </header>
+            <section class="form bg-white bg-opacity-20 p-8 py-8 w-auto">
+                <form>
+                    <div class="mb-4 form-group sm:flex sm:justify-between">
+                        <label for="suggestion" class="w-full sm:w-6/12 inline-block" id="listbox-label">What would you like to make a suggestion for?</label>
+                        <select name="suggestion-type" id="suggestion-type" class="w-full sm:w-5/12 inline-block form-select mt-1 text-black p-1" placeholder="Choose subject...">
+                            <option class="text-black pl-1" value="" disabled selected>Choose subject...</option>
+                            <option value="philosopher" class="text-black pl-1" >Philosopher</option>
+                            <option value="quote" class="text-black pl-1">Quote</option>
+                            <option value="question" class="text-black pl-1">Daily Question</option>
+                        </select>
+                    </div>
+                    <div class="philosopher box2 mb-4 sm:flex sm:justify-between" id="otherFieldDiv">
+                        <label for="phil-name" class="sm:w-4/12 inline-block" >Philosopher Name:</label>
+                        <input class="text-black p-1" type="text" name="phil-name" id="phil-name" placeholder="Enter philosopher name..." required/>
+                    </div>
+                    <div class="quote box2 mb-4" id="otherFieldGroupDiv">
+                        <div class="col-6 mb-4 sm:flex sm:justify-between">
+                            <label for="q-phil-name" class="sm:w-4/12 inline-block">Philosopher Name:</label>
+                            <input type="text" class="form-control text-black p-1" id="q-phil-name" placeholder="Enter philosopher name..." required>
+                        </div>
+                        <div class="col-6 sm:flex sm:justify-between">
+                            <label for="quote" class="sm:w-4/12 inline-block">Quote</label>
+                            <input type="text" class="form-control text-black p-1" id="quote" placeholder="Enter quote..." required>
+                        </div>
+                    </div>
+                    <div class="question box2 mb-4 sm:flex sm:justify-between" id="otherFieldDiv3">
+                        <label for="quest" class="sm:w-4/12 inline-block" >Question:</label>
+                        <input class="text-black p-1" type="text" name="quest" id="quest" placeholder="Enter question..." required/>
+                    </div>
+                    <span class="w-8/12 inline-block text-right " style="display: contents;"><button id="suggestion" type="submit" class="text-white rounded-md px-3  border-white border-2 border-solid whitespace-nowrap w-auto md:w-3/12 min-w-min" style="background-color:#4d83a3; width: 100%; align-items: center;">Submit</button></span>
+                </form>
+            </section>
+        </div>
+    </div>
+</main>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="/js/suggestions.js"></script>

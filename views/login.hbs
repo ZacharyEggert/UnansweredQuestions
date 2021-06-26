@@ -1,0 +1,106 @@
+<main
+    class='min-w-full opacity-80 min-h-screen'
+    style='background-image: url(/img/background-butterfly-3.jpg);'
+>
+    <div class='py-8'></div>
+
+    <div class='m-14 p-7 bg-black bg-opacity-80 flex flex-row flex-wrap'>
+        <div class='w-6/12 pr-1 min-w-max flex-1 flex-shrink-0'>
+            <div class=''>
+                <h1 class='text-4xl underline'>Log in</h1>
+            </div>
+            <div class='form bg-white bg-opacity-20 p-8 py-8 w-auto h-72 max-w-full'>
+                <form>
+                    <label
+                        for='email'
+                        class='w-2/12 inline-block my-3'
+                        hidden
+                    ></label>
+                    <input
+                        name='email'
+                        id=''
+                        type='text'
+                        class='text-black pl-1 my-3 max-w-full'
+                        hidden
+                    />
+                    <br>
+                    <label
+                        for='username'
+                        class='w-4/12 inline-block my-3'
+                    >Username</label>
+                    <input
+                        name='username'
+                        id='username'
+                        type='text'
+                        class='text-black pl-1 my-3 max-w-full'
+                    />
+                    <br>
+                    <label
+                        for='password'
+                        class='w-4/12 inline-block my-3'
+                    >Password</label>
+                    <input
+                        name='password'
+                        id='password'
+                        type='text'
+                        class='text-black pl-1 my-3 max-w-full'
+                    />
+                    <br>
+                    <span class='w-8/12 inline-block text-right'><button
+                            id='login'
+                            type='submit'
+                            style='background-color:#4d83a3;'
+                            class='text-white rounded-md px-3 border-white border-2 border-solid whitespace-nowrap w-auto md:w-3/12 min-w-min'
+                        >Log in</button></span>
+                </form>
+            </div>
+        </div>
+        <div class='w-6/12 pl-1 flex-1 min-w-max flex-shrink-0'>
+            <div class='signup-label'>
+                <h1 class='text-4xl underline'>Sign up</h1>
+            </div>
+            <div class='form bg-white bg-opacity-20 p-8 py-8 w-auto h-72 max-w-full'>
+                <form>
+                    <label for='email' class='w-4/12 inline-block my-3'>Email</label>
+                    <input
+                        name='email'
+                        id='signupemail'
+                        type='text'
+                        class='text-black pl-1 my-3 max-w-full'
+                    />
+                    <br>
+                    <label
+                        for='username'
+                        class='w-4/12 inline-block my-3'
+                    >Username</label>
+                    <input
+                        name='username'
+                        id='signupusername'
+                        type='text'
+                        class='text-black pl-1 my-3 max-w-full'
+                    />
+                    <br>
+                    <label
+                        for='password'
+                        class='w-4/12 inline-block my-3'
+                    >Password</label>
+                    <input
+                        name='password'
+                        id='signuppassword'
+                        type='text'
+                        class='text-black pl-1 my-3 max-w-full'
+                    />
+                    <br>
+                    <span class='w-8/12 inline-block text-right'><button
+                            id='signup'
+                            type='submit'
+                            style='background-color:#4d83a3;'
+                            class='text-white rounded-md px-3 border-white border-2 border-solid whitespace-nowrap w-auto md:w-3/12 min-w-min'
+                        >Sign up</button></span>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+
+<script src='/js/login.js'></script>

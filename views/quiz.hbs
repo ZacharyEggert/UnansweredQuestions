@@ -1,0 +1,46 @@
+<section
+    class='flex flex-col items-center justify-around w-screen min-h-screen quiz-main'
+>
+
+    <!-- welcome to quiz -->
+    <div class='flex flex-col items-center px-6 py-4 bg-black rounded-md welcome bg-opacity-60 sm:mt-24'>
+        <h3 class='mb-2 text-3xl text-center'>Philosophy Quiz</h3>
+        <p class='w-8/12 my-2 text-lg text-justify'>
+            How much of philosophy do you know? Are you able to recognize which famous Philosopher said what? Give it a try!
+        </p>
+        <div>
+            <button class='px-4 min-w-max' id="start-quiz">START QUIZ</button>
+        </div>
+    </div>
+    <div class='flex flex-col items-center px-6 py-4 bg-black rounded-md welcome quiz-container bg-opacity-60 sm:mt-24' style='display: none;'>
+        <!-- <div id="quizHead">Select an answer </div> -->
+        <div class="p-4 mb-6 max-w-none md:max-w-prose">
+            <q class='text-xl question'>Question</q>
+        </div>
+        <div class='flex flex-row justify-between w-full m-2 answers flex-nowrap min-w-min'>
+            <button class='answer'>A</button>
+            <button class='answer'>B</button>
+            <button class='answer'>C</button>
+        </div>
+
+    </div>
+    <!-- was question right or wrong -->
+    <div class='flex flex-col items-center px-6 py-4 bg-black rounded-md welcome results results-container bg-opacity-60 sm:mt-24 sm:mx-12' style='display: none;'>
+        <div class="p-4 mb-6 max-w-none md:max-w-prose">
+            <h2>
+                <span class='block mb-4 text-xl text-center true-false'>Correct!</span><br>
+                <q class='text-xl results-quote'>Lorem ipsum dolor sit amet consectetur
+                adipisicing elit. Accusamus odit saepe cum</q>
+            </h2>
+        </div>
+        <h2 class='pb-4 text-2xl results-author'></h2>
+        <button class='rerun'>Try Another...</button>
+    </div>
+
+    <div class="py-8 my-2 bg-black rounded-md welcome suggestions bg-opacity-60">
+        {{> suggestionCard }}
+    </div>
+
+</section>
+
+<script src='/js/Quiz.js'></script>

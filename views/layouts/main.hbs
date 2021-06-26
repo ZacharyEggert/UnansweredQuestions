@@ -1,0 +1,133 @@
+<html lang='en' style='overflow: visible;'>
+
+    <head>
+        <meta charset='UTF-8' />
+        <meta http-equiv='X-UA-Compatible' content='IE=edge' />
+        <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+        <title>{{title}}</title>
+        <link
+            rel='stylesheet'
+            href='https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css'
+            integrity='sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g=='
+            crossorigin='anonymous'
+        />
+        <link
+            rel='stylesheet'
+            href='https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css'
+            integrity='sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw=='
+            crossorigin='anonymous'
+        />
+        <link rel='preconnect' href='https://fonts.gstatic.com' />
+        <link
+            rel='stylesheet'
+            href='https://fonts.googleapis.com/css2?family=Courgette&display=swap'
+        />
+        <link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+			integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk="
+			crossorigin="anonymous"
+		/>
+        <link rel='stylesheet' href='/css/style.css' />
+        <link rel='stylesheet' href='/css/normalize.css' />
+        <link rel='stylesheet' href='/css/style.css' />
+        <link rel='stylesheet' href='/css/stars.css' />
+        <link rel='stylesheet' href='/css/owl.css' />
+        <link rel='stylesheet' href='/css/philosopherlist.css' />
+        <link rel='stylesheet' href='/css/philosopher-profile.css' />
+        <link rel="stylesheet" href="/css/chatstyle.css">
+        <link
+            rel='stylesheet'
+            media='only screen and (max-width: 768px)'
+            href='/css/mobilehp.css'
+        />
+    </head>
+
+    <body style='overflow: visible;'>
+        <header class='nav-header navigation z-50 bg-black bg-opacity-60'>
+            <nav class='main-nav'>
+                <p class='header active'>UnansweredQuestions</p>
+                <ul class='menu' id='myLinks'>
+                    <li class='text-sm md:text-base lg:text-xl'><a
+                            href='/'
+                        >Home</a></li>
+                    <li class='text-sm md:text-base lg:text-xl'><a
+                            href='/philosophers'
+                        >Famous<br />Philosophers</a></li>
+                    <li class='text-sm md:text-base lg:text-xl'><a
+                            href='/quiz'
+                        >Quiz</a></li>
+                    <li class='text-sm md:text-base lg:text-xl'><a
+                            href='/qotd'
+                        >Daily<br />Question</a></li>
+                    <li class='text-sm md:text-base lg:text-xl'><a
+                            href='/polls'
+                        >Polls</a></li>
+                    <a href='/chatroom'>
+                        <li
+                            class='text-sm md:text-base lg:text-xl'
+                        >LiveChat</li>
+                    </a>
+                    {{#if loggedIn}}
+                        <a href='/api/user/logout'>
+                            <li
+                                class='text-sm md:text-base lg:text-xl'
+                            >Logout</li>
+                        </a>
+                    {{else}}
+                        <a href='/login'>
+                            <li
+                                class='text-sm md:text-base lg:text-xl'
+                            >Login</li>
+                        </a>
+                    {{/if}}
+                </ul>
+            </nav>
+            <!-- for hamburger menu  -->
+            <nav id='menuToggle'>
+                <div id='menuToggle'>
+                    <input type='checkbox' />
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <ul id='menu' class='rounded-br-full'>
+                        <a href='/'>
+                            <li>Home</li>
+                        </a>
+                        <a href='/philosophers'>
+                            <li>Famous Philosophers</li>
+                        </a>
+                        <a href='/quiz'>
+                            <li>Quiz</li>
+                        </a>
+                        <a href='/qotd'>
+                            <li>Daily<br />Question</li>
+                        </a>
+                        <a href='/polls'>
+                            <li>Polls</li>
+                        </a>
+                        <a href='/chatroom'>
+                            <li>LiveChat<br />&nbsp;<br /></li>
+                        </a>
+                        {{#if loggedIn}}
+                            <a href='/api/user/logout'>
+                                <li>Logout</li>
+                            </a>
+                        {{else}}
+                            <a href='/login'>
+                                <li>Login<br />&nbsp;<br /></li>
+                            </a>
+                        {{/if}}
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <script
+            src='https://code.jquery.com/jquery-3.6.0.min.js'
+            integrity='sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4='
+            crossorigin='anonymous'
+        ></script>
+        {{{body}}}
+    </body>
+
+</html>
