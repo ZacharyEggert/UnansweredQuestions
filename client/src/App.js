@@ -1,6 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import AllPhilosophers from './pages/AllPhilosophers';
+import Chat from './pages/Chat';
+import JoinChat from './pages/JoinChat';
+import Suggestions from './pages/Suggestions';
 import FrontPage from './pages/FrontPage';
 import { GlobalProvider } from './util/GlobalState';
 import NavBar from './components/NavBar';
@@ -23,8 +26,8 @@ const App = () => {
                     />
                     <Route exact path="/qotd/:id" component={AllPhilosophers} />
                     <Route exact path="/qotd" component={AllPhilosophers} />
-                    <Route exact path="/chat" component={AllPhilosophers} />
-                    <Route exact path="/chatroom" component={AllPhilosophers} />
+                    <Route exact path="/chat" component={Chat} />
+                    <Route exact path="/chatroom" component={JoinChat} />
                     <Route exact path="/polls" component={AllPhilosophers} />
                     <Route
                         exact
@@ -32,11 +35,7 @@ const App = () => {
                         component={AllPhilosophers}
                     />
                     <Route exact path="/login" component={AllPhilosophers} />
-                    <Route
-                        exact
-                        path="/suggestion"
-                        component={AllPhilosophers}
-                    />
+                    <Route exact path="/suggestion" component={Suggestions} />
                     <Route exact path="/quiz" component={AllPhilosophers} />
                 </Switch>
             </Router>
