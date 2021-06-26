@@ -1,15 +1,46 @@
-import React from "react";
-
-
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import AllPhilosophers from './pages/AllPhilosophers';
+import { GlobalProvider } from './util/GlobalState';
+import NavBar from './components/NavBar';
 const App = () => {
-    
-    
-    
-    return(
-        <div className=''>
-
-        </div>
+    return (
+        <GlobalProvider>
+            <NavBar />
+            <Router>
+                <Switch>
+                    <Route exact path="/" component={AllPhilosophers} />
+                    <Route
+                        exact
+                        path="/philosophers"
+                        component={AllPhilosophers}
+                    />
+                    <Route
+                        exact
+                        path="/philosopher/:id"
+                        component={AllPhilosophers}
+                    />
+                    <Route exact path="/qotd/:id" component={AllPhilosophers} />
+                    <Route exact path="/qotd" component={AllPhilosophers} />
+                    <Route exact path="/chat" component={AllPhilosophers} />
+                    <Route exact path="/chatroom" component={AllPhilosophers} />
+                    <Route exact path="/polls" component={AllPhilosophers} />
+                    <Route
+                        exact
+                        path="/polls/:id"
+                        component={AllPhilosophers}
+                    />
+                    <Route exact path="/login" component={AllPhilosophers} />
+                    <Route
+                        exact
+                        path="/suggestion"
+                        component={AllPhilosophers}
+                    />
+                    <Route exact path="/quiz" component={AllPhilosophers} />
+                </Switch>
+            </Router>
+        </GlobalProvider>
     );
-}
+};
 
 export default App;
