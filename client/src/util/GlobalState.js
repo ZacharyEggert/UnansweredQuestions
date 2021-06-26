@@ -4,7 +4,7 @@ const GlobalContext = createContext();
 const { Provider } = GlobalContext;
 
 const initialState = {
-    philosophers: [{ name: 'Adam Yauch', period: 'Modern' }],
+    philosophers: [{ name: 'Adam Yauch', period: 'Modern', id: 0 }],
 };
 
 const reducer = (state, action) => {

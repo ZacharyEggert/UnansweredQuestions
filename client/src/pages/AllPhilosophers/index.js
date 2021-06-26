@@ -21,7 +21,7 @@ const AllPhilosophers = () => {
             <div className="py-14"></div>
             {PHILOSOPHER_PERIODS.map((period) => {
                 return (
-                    <div className="philosophy-times">
+                    <div className="philosophy-times" key={period}>
                         <h1 className="profile-h1">{period} Philosophers</h1>
 
                         <div className="box">
