@@ -40,6 +40,7 @@ chatForm.addEventListener('submit', (e) => {
     e.target.elements.msg.focus();
 });
 
+//BELOW NEEDS TO BE HOISTED TO TOP
 //output message to DOM
 function outputMessage(message) {
     const div = document.createElement('div');
