@@ -11,7 +11,7 @@ const App = () => {
     return (
         <GlobalProvider>
             <Router>
-            <NavBar />
+                <NavBar />
                 <Switch>
                     <Route exact path="/" component={FrontPage} />
                     <Route
