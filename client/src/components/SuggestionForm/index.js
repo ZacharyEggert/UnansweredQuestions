@@ -1,24 +1,23 @@
 import React, { SuggFormComponent, useState } from 'react';
 
 const SuggestionForm = () => {
-
     const initialState = {
-        ["suggestion-type"]: "",
-        ["phil-name"]: "",
-        ["q-phil-name"]: "",
-        ["quote"]: "",
-        ["quest"]: "",
+        ['suggestion-type']: '',
+        ['phil-name']: '',
+        ['q-phil-name']: '',
+        ['quote']: '',
+        ['quest']: '',
     };
 
     const [state, setState] = useState(initialState);
 
-    handleOnChange = event => {
+    const handleOnChange = (event) => {
         setState({
-            ...state, [event.target.name]: event.target.value
+            ...state,
+            [event.target.name]: event.target.value,
         });
-    }
+    };
 
-    
     return (
         <form>
             <div className="mb-4 form-group sm:flex sm:justify-between">
@@ -30,7 +29,7 @@ const SuggestionForm = () => {
                     What would you like to make a suggestion for?
                 </label>
                 <select
-                    value={state["suggestion-type"]}
+                    value={state['suggestion-type']}
                     name="suggestion-type"
                     id="suggestion-type"
                     className="inline-block w-full p-1 mt-1 text-black sm:w-5/12 form-select"
@@ -63,7 +62,7 @@ const SuggestionForm = () => {
                     Philosopher Name:
                 </label>
                 <input
-                    value={state["phil-name"]}
+                    value={state['phil-name']}
                     className="p-1 text-black"
                     type="text"
                     name="phil-name"
@@ -74,14 +73,11 @@ const SuggestionForm = () => {
             </div>
             <div className="mb-4 quote box2" id="otherFieldGroupDiv">
                 <div className="mb-4 col-6 sm:flex sm:justify-between">
-                    <label
-                        for="q-phil-name"
-                        className="inline-block sm:w-4/12"
-                    >
+                    <label for="q-phil-name" className="inline-block sm:w-4/12">
                         Philosopher Name:
                     </label>
                     <input
-                        value={state["q-phil-name"]}
+                        value={state['q-phil-name']}
                         name="q-phil-name"
                         type="text"
                         className="p-1 text-black form-control"
@@ -95,7 +91,7 @@ const SuggestionForm = () => {
                         Quote
                     </label>
                     <input
-                        value={state["quote"]}
+                        value={state['quote']}
                         name="quote"
                         type="text"
                         className="p-1 text-black form-control"
@@ -116,7 +112,7 @@ const SuggestionForm = () => {
                     className="p-1 text-black"
                     type="text"
                     name="quest"
-                    value={state["quest"]}
+                    value={state['quest']}
                     id="quest"
                     placeholder="Enter question..."
                     required
@@ -133,6 +129,6 @@ const SuggestionForm = () => {
             </span>
         </form>
     );
-}
+};
 
 export default SuggestionForm;
