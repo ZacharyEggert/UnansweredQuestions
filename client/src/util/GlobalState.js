@@ -5,7 +5,9 @@ const { Provider } = GlobalContext;
 
 const initialState = {
     philosophers: [{ name: 'Adam Yauch', period: 'Modern', id: 0 }],
-    carouselQuotes: [{quote:'Test Quote', author:'Test Author', id:151 }],
+    carouselQuotes: [{ quote: 'Test Quote', author: 'Test Author', id: 151 }],
+    currentUser: { id: null, username: 'test', isAdmin: false },
+    chatRoom: { room: 'Philosophy Chat', username: 'test' },
 };
 
 const reducer = (state, action) => {
