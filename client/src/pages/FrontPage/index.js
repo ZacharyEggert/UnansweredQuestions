@@ -1,7 +1,8 @@
 import React from 'react';
 
-import OwlCarousel from '../../components/OwlCarousel'
-
+import OwlCarousel from '../../components/OwlCarousel';
+import './stars.css';
+import './owl.css';
 import { useGlobalContext } from '../../util/GlobalState';
 
 
@@ -19,7 +20,7 @@ const FrontPage = () => {
             <div id='stars2'></div>
             <div id='stars3'></div>
             {/* <!-- hero content - what is philosophy  --> */}
-            <section class="hero ">
+            <section class="hero" style={{background:'radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%)'}}>
                 <header class="hero-container">
                 <h1>What is Philosophy?</h1>
                 <div class="rw-wrapper">
