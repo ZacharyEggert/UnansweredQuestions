@@ -15,7 +15,7 @@ const JoinChatForm = () => {
     };
 
     return (
-        <form action="chat">
+        <form>
             <div className="form-control mb-4">
                 <label for="username" className="w-4/12 inline-block">
                     Username:
@@ -52,32 +52,43 @@ const JoinChatForm = () => {
                 </label>
                 <select
                     name="room"
-                    value={chatRoom}
+                    value={chatRoom.room}
                     onChange={handleOnChange}
                     id="room"
                     className="width-auto inline-block form-select block mt-1 text-black p-1"
                     placeholder="Choose room..."
                 >
-                    <option
-                        className="text-black pl-1"
-                        value=""
-                        disabled
-                        selected
-                    >
+                    <option className="text-black pl-1" value="" selected>
                         Choose room...
                     </option>
                     <option value="Philosophy Chat" className="text-black pl-1">
                         Philosophy Chat
                     </option>
+                    <option value="General Chat" className="text-black pl-1">
+                        General Chat
+                    </option>
                 </select>
             </div>
-            <Link to="/chat">
+            {chatRoom.room !== '' ? (
+                <Link to="/chat">
+                    <span className="w-8/12 inline-block text-right contents">
+                        <button className="text-white rounded-md px-3  border-white border-2 border-solid whitespace-nowrap md:w-3/12 min-w-min bg-[#4d83a3] w-full items-center">
+                            Join Chat
+                        </button>
+                    </span>
+                </Link>
+            ) : (
                 <span className="w-8/12 inline-block text-right contents">
-                    <button className="text-white rounded-md px-3  border-white border-2 border-solid whitespace-nowrap md:w-3/12 min-w-min bg-[#4d83a3] w-full items-center">
+                    <button
+                        onClick={(e) => {
+                            e.preventDefault();
+                        }}
+                        className="text-white rounded-md px-3  border-white border-2 border-solid whitespace-nowrap md:w-3/12 min-w-min bg-[#4d83a3] w-full items-center"
+                    >
                         Join Chat
                     </button>
                 </span>
-            </Link>
+            )}
         </form>
     );
 };

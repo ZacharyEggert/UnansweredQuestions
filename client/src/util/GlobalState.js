@@ -7,7 +7,7 @@ const initialState = {
     philosophers: [{ name: 'Adam Yauch', period: 'Modern', id: 0 }],
     carouselQuotes: [{ quote: 'Test Quote', author: 'Test Author', id: 151 }],
     currentUser: { id: null, username: 'test', isAdmin: false },
-    chatRoom: { room: 'Philosophy Chat', username: 'test' },
+    chatRoom: { room: '', username: 'test' },
 };
 
 const reducer = (state, action) => {
@@ -17,6 +17,12 @@ const reducer = (state, action) => {
             return {
                 ...state,
                 philosophers: [...state.philosophers, ...action.data],
+            };
+
+        case 'setChatRoom':
+            return {
+                ...state,
+                chatRoom: { ...state.chatRoom, ...action.data },
             };
 
         default:
