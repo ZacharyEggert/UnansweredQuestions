@@ -1,3 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components{
+
+    .desktop-nav{
+        @apply hidden sm:block text-sm md:text-base lg:text-xl
+    }
+
+    .mobile-nav{
+        @apply text-sm sm:hidden
+    }
+
+    .button{
+        @apply rounded px-4 py-2 border-solid border-2 border-white
+    }
+}

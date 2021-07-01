@@ -19,32 +19,32 @@ const NavMobile = () => {
                 <span></span>
                 <span></span>
                 <ul id='menu' class='rounded-br-full'>
-                    <li>
+                    <li className='mobile-nav'>
                         <Link to='/'>Home</Link>
                     </li>
-                    <li>
+                    <li className='mobile-nav'>
                         <Link to='/philosophers'>Famous Philosophers</Link>
                     </li>
-                    <li>
+                    <li className='mobile-nav'>
                         <Link to='/quiz'>Quiz</Link>
                     </li>
-                    <li>
+                    <li className='mobile-nav'>
                         <Link to='/qotd'>Daily<br />Question</Link>
                     </li>
-                    <li>
+                    <li className='mobile-nav'>
                         <Link to='/polls'>Polls</Link>
                     </li>
-                    <li>
+                    <li className='mobile-nav'>
                         <Link to='/chatroom'>LiveChat<br />&nbsp;<br /></Link>
                     </li>
                     {isLoggedIn?
                         (
-                            <li>
+                            <li className='mobile-nav'>
                                 <Link to='/api/user/logout'>Logout</Link>
                             </li>                        
                         ) :
                         (
-                            <li>
+                            <li className='mobile-nav'>
                                 <Link to='/login'>Login<br />&nbsp;<br /></Link>
                             </li>
                         )
