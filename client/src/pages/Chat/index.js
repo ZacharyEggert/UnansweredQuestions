@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import ChatForm from '../../components/ChatForm';
 import { io } from 'socket.io-client';
+import { useState } from 'react';
+import { useGlobalContext } from '../../util/GlobalState';
 
 const Chat = () => {
     const initialState = {
@@ -19,6 +21,13 @@ const Chat = () => {
 
     let socket = io();
 
+    const outputMessage = (event) => {
+        setState({
+            ...state,
+            [event.target.name]: event.target.value,
+        });
+    };
+
     useEffect(() => {
         socket.emit('joinRoom', { username, room });
     }, []);
@@ -26,16 +35,16 @@ const Chat = () => {
     const outputRoomName = (roomData) => {
         dispatch({
             type: 'setRoomName',
-            data: roomData
-        }) 
-    }
+            data: roomData,
+        });
+    };
 
     const outputUsers = (userData) => {
         dispatch({
             type: 'setRoomUsers',
-            data: userData
-        })
-    }
+            data: userData,
+        });
+    };
 
     socket.on('roomUsers', ({ room, users }) => {
         outputRoomName(room);
@@ -76,9 +85,9 @@ const Chat = () => {
                                 Users:
                             </h3>
                             <ul id="users">
-                                {state['users'].map(())
-
-                                }
+                                {state['users'].map((user) => (
+                                    <li>${user.username}</li>
+                                ))}
                             </ul>
                         </div>
                         <div className="chat-messages">
