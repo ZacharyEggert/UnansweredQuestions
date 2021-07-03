@@ -56,7 +56,7 @@ io.on('connection', (socket) => {
             formatMessage(botName, 'Welcome to Philosophy Chat!')
         );
 
-        //broadcast when user connets
+        //broadcast when user connects
         socket.broadcast
             .to(user.room)
             .emit(
