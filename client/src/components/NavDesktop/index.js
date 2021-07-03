@@ -11,33 +11,33 @@ const NavDesktop = () => {
     const {isLoggedIn} = globalState;
 
     return (
-        <nav class='main-nav'>
-            <p class='header active'>UnansweredQuestions</p>
-            <ul class='menu' id='myLinks'>
-                <li class='text-sm md:text-base lg:text-xl'>
+        <nav className='hidden sm:flex justify-between pb-0 h-[70px] items-center text-white'>
+            <p className='header active'>UnansweredQuestions</p>
+            <ul className='flex flex-row items-center justify-end mr-8 text-white menu' id='myLinks'>
+                <li className='desktop-nav'>
                     <Link to='/'>Home</Link>
                 </li>
-                <li class='text-sm md:text-base lg:text-xl'>
+                <li className='desktop-nav'>
                     <Link to='/philosophers'>Famous<br />Philosophers</Link>
                 </li>
-                <li class='text-sm md:text-base lg:text-xl'>
+                <li className='desktop-nav'>
                     <Link to='/quiz'>Quiz</Link>
                 </li>
-                <li class='text-sm md:text-base lg:text-xl'>
+                <li className='desktop-nav'>
                     <Link to='/qotd'>Daily<br />Question</Link>
                 </li>
-                <li class='text-sm md:text-base lg:text-xl'>
+                <li className='desktop-nav'>
                     <Link to='/polls'>Polls</Link>
                 </li>
-                <li class='text-sm md:text-base lg:text-xl'>
+                <li className='desktop-nav'>
                     <Link to='/chatroom'>LiveChat</Link>
                 </li>
                 {isLoggedIn ?
                     (
-                        <li class='text-sm md:text-base lg:text-xl'><Link to='/api/user/logout'>Logout</Link></li>
+                        <li className='desktop-nav'><Link to='/api/user/logout'>Logout</Link></li>
                     ) :
                     (
-                        <li class='text-sm md:text-base lg:text-xl'><Link to='/login'>Login</Link></li>
+                        <li className='desktop-nav'><Link to='/login'>Login</Link></li>
                     )
                 }
             </ul>
