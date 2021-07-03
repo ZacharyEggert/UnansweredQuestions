@@ -4,15 +4,52 @@
 
 @layer components{
 
-    .desktop-nav{
-        @apply hidden sm:block text-sm md:text-base lg:text-xl
+    a{
+        text-decoration: inherit;
+        color: inherit;
     }
 
-    .mobile-nav{
-        @apply text-sm sm:hidden
+    a:hover{
+        text-decoration: inherit;
+        color: inherit;
     }
 
-    .button{
+    .desktop-nav {
+        @apply text-sm md:text-base lg:text-xl text-center align-middle content-center ml-10 text-white relative block no-underline py-1.5 hover:text-[#e5eef1b2];
+
+        transition: 0.5s;
+    }
+
+    .desktop-nav::after {
+        @apply absolute block w-full h-[3px] top-[100%] left-0 bg-[#e5eef1b2];
+
+        transition: transform 0.5s;
+        transform: scaleX(0);
+        transform-origin: right;
+    }
+
+    .desktop-nav:hover::after {
+        transform: scaleX(1);
+        transform-origin: left;
+    }
+
+    .mobile-nav {
+        @apply text-sm
+    }
+
+    .button {
         @apply rounded px-4 py-2 border-solid border-2 border-white
     }
+
+
+    #menuToggle span {
+        @apply block sm:hidden w-[33px] !h-1 mb-[5px] relative bg-[#cdcdcd] rounded-[3px] z-[1];
+        
+        transform-origin: 4px 0px;
+        transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1),
+            background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), opacity 0.55s ease;
+
+        
+    }
+
 }
