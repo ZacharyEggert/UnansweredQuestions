@@ -5,14 +5,26 @@
 @layer components{
 
     .desktop-nav{
-        @apply hidden sm:block text-sm md:text-base lg:text-xl
+        @apply text-sm md:text-base lg:text-xl
     }
 
     .mobile-nav{
-        @apply text-sm sm:hidden
+        @apply text-sm
     }
 
     .button{
         @apply rounded px-4 py-2 border-solid border-2 border-white
     }
+
+
+    #menuToggle span {
+        @apply w-[33px] h-1 mb-[5px] relative bg-[#cdcdcd] rounded-[3px] z-[1];
+        
+        transform-origin: 4px 0px;
+        transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1),
+            background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), opacity 0.55s ease;
+
+        
+    }
+
 }

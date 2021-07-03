@@ -12,13 +12,13 @@ const NavMobile = () => {
     const {isLoggedIn} = globalState;
 
     return (
-        <nav id='menuToggle'>
+        <nav id='menuToggle' className='relative z-10 block mr-4 select-none sm:hidden top-4 left-4'>
             <div id='menuToggle'>
-                <input type='checkbox' />
+                <input type='checkbox' className='w-10 h-8 absolute top-[-7px] left-[-5px] cursor-pointer opacity-0 z-10'/>
                 <span></span>
                 <span></span>
                 <span></span>
-                <ul id='menu' class='rounded-br-full'>
+                <ul id='menu' className='rounded-br-full'>
                     <li className='mobile-nav'>
                         <Link to='/'>Home</Link>
                     </li>

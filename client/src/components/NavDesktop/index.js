@@ -11,7 +11,7 @@ const NavDesktop = () => {
     const {isLoggedIn} = globalState;
 
     return (
-        <nav className='main-nav'>
+        <nav className='hidden sm:block'>
             <p className='header active'>UnansweredQuestions</p>
             <ul className='menu' id='myLinks'>
                 <li className='desktop-nav'>
