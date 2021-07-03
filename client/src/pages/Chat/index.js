@@ -30,6 +30,7 @@ const Chat = () => {
 
     useEffect(() => {
         socket.emit('joinRoom', { username, room });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const outputRoomName = (roomData) => {
@@ -65,14 +66,14 @@ const Chat = () => {
     return (
         <div>
             <main
-                className="join-chat min-w-full opacity-80 min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8"
+                className="flex items-center justify-center min-w-full min-h-screen px-4 py-12 join-chat opacity-80 sm:px-6 lg:px-8"
                 // eslint-disable-next-line react/style-prop-object
                 /** style="background-image: url(/img/background-blue-flowers.jpg);"*/
             >
                 <div className="py-8"></div>
-                <div className="w-full sm:w-10/12 bg-black bg-opacity-70 flex flex-col flex-wrap">
-                    <header className="chat-header p-4 flex items-center justify-between flex-col sm:flex-row bg-black border-b-white border-b-solid">
-                        <h1 className="text-3xl sm:text-4xl pb-0 pr-4">
+                <div className="flex flex-col flex-wrap w-full bg-black sm:w-10/12 bg-opacity-70">
+                    <header className="flex flex-col items-center justify-between p-4 bg-black chat-header sm:flex-row border-b-white border-b-solid">
+                        <h1 className="pb-0 pr-4 text-3xl sm:text-4xl">
                             {room}
                         </h1>
                         <Link
@@ -92,7 +93,7 @@ const Chat = () => {
                                 {room}
                             </h2>
                             <h3>
-                                <i className="fas fa-users hidden sm:visible"></i>{' '}
+                                <i className="hidden fas fa-users sm:visible"></i>{' '}
                                 Users:
                             </h3>
                             <ul id="users">
@@ -118,7 +119,7 @@ const Chat = () => {
                             ))}
                         </div>
                     </section>
-                    <div className="chat-form-container bg-black">
+                    <div className="bg-black chat-form-container">
                         <ChatForm socket={socket} />
                     </div>
                 </div>
