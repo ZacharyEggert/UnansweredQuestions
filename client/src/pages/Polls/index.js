@@ -1,6 +1,7 @@
 import React from "react"
 import { useGlobalContext } from "../../util/GlobalState"
-import PollCard from "./PollCard"
+import PollCard from "../../components/PollCard"
+import SuggestionCard from '../../components/SuggestionCard'
 
 const Polls = () => {
     const [globalState, dispatch] = useGlobalContext()
