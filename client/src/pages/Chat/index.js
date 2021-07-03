@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import ChatForm from '../../components/ChatForm';
 import { io } from 'socket.io-client';
@@ -51,6 +51,17 @@ const Chat = () => {
         outputUsers(users);
     });
 
+    socket.on('message', (message) => {
+        console.log(message);
+        outputMessage(message);
+    });
+
+    //scroll down
+    const divRef = useRef(null);
+    useEffect(() => {
+        divRef.current.scrollIntoView({ behavior: 'smooth' });
+    });
+
     return (
         <div>
             <main
@@ -90,7 +101,12 @@ const Chat = () => {
                                 ))}
                             </ul>
                         </div>
-                        <div className="chat-messages">
+                        <div
+                            className="chat-messages"
+                            name="chat-messages"
+                            value={state['chat-messages']}
+                            ref={divRef}
+                        >
                             {state['chat-messages'].map((message) => (
                                 <div className="message">
                                     <p className="meta">

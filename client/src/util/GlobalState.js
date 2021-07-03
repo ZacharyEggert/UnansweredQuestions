@@ -25,7 +25,15 @@ const reducer = (state, action) => {
                 chatRoom: { ...state.chatRoom, ...action.data },
             };
         case 'setRoomName':
-            return {};
+            return {
+                ...state,
+                chatRoom: { ...state.chatRoom, room:action.data}
+            };
+        case 'setRoomUsers':
+            return {
+                ...state,
+                chatRoom: {...state.chatRoom, users:action.data}
+            }
 
         default:
             return state;
