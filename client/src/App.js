@@ -5,6 +5,7 @@ import Chat from './pages/Chat';
 import JoinChat from './pages/JoinChat';
 import Suggestions from './pages/Suggestions';
 import FrontPage from './pages/FrontPage';
+import Login from './pages/Login';
 import { GlobalProvider } from './util/GlobalState';
 import NavBar from './components/NavBar';
 const App = () => {
@@ -34,7 +35,7 @@ const App = () => {
                         path="/polls/:id"
                         component={AllPhilosophers}
                     />
-                    <Route exact path="/login" component={AllPhilosophers} />
+                    <Route exact path="/login" component={Login} />
                     <Route exact path="/suggestion" component={Suggestions} />
                     <Route exact path="/quiz" component={AllPhilosophers} />
                 </Switch>
