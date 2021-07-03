@@ -18,7 +18,7 @@ const NavMobile = () => {
                 <span></span>
                 <span></span>
                 <span></span>
-                <ul id='menu' className='rounded-br-full'>
+                <ul id='menu' className='rounded-br-full absolute w-[300px] mt-[-100px] ml-[-60px] p-[50]'>
                     <li className='mobile-nav'>
                         <Link to='/'>Home</Link>
                     </li>
