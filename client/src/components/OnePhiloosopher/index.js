@@ -8,7 +8,7 @@ const OnePhilosopher = (props) => {
             <div className="py-14"></div>
             <section className="profile-container">
                     <div className="profile-body">
-                        <h1 id="philosopher-name" className="philosopher-name capitalize"><b>{{philosopher.name}}</b></h1>
+                        <h1 id="philosopher-name" className="capitalize philosopher-name"><b>{{philosopher.name}}</b></h1>
                         <div className="video">
                             <iframe width="560" height="315" src="https://www.youtube.com/embed/{{philosopher.videoUrl}}" frameborder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -16,7 +16,7 @@ const OnePhilosopher = (props) => {
                         </div>
                         <h2 className="about-philosopher">About</h2>
                         <div>
-                            <img className="w-48 m-0 p-0" id="philosopher-img" src="/img/philosopher-profile-images/{{philosopher.img}}"
+                            <img className="w-48 p-0 m-0" id="philosopher-img" src="/img/philosopher-profile-images/{{philosopher.img}}"
                         alt="Picture of {{philosopher.name}}"></img>
                         <div className="profile-content">
                             <p id="philosopher-about">
@@ -27,8 +27,8 @@ const OnePhilosopher = (props) => {
                                 {{/if}}
                             </p>
                             <div className="philosopher-more">
-                                <Link to="{{philosopher.wikiLink}}">
-                                    <button className="whitespace-nowrap w-auto px-4" id= "wiki-link"> Learn More</button>
+                                <Link to={philosopher.wikiLink}>
+                                    <button className="w-auto px-4 whitespace-nowrap" id= "wiki-link"> Learn More</button>
                                 </Link>
                             </div>
                         </div>
