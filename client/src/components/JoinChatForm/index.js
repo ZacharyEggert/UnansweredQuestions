@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useGlobalContext } from '../../util/GlobalState';
 import { Link } from 'react-router-dom';
 

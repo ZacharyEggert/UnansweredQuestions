@@ -24,6 +24,8 @@ const reducer = (state, action) => {
                 ...state,
                 chatRoom: { ...state.chatRoom, ...action.data },
             };
+        case 'setRoomName':
+            return {};
 
         default:
             return state;
