@@ -27,9 +27,9 @@ const OnePhilosopher = (props) => {
                                 {{/if}}
                             </p>
                             <div className="philosopher-more">
-                                <link to="{{philosopher.wikiLink}}">
-                                    <button className="whitespace-nowrap w-auto px-4" " id= "wiki-link"> Learn More></button>
-                                </link>
+                                <Link to="{{philosopher.wikiLink}}">
+                                    <button className="whitespace-nowrap w-auto px-4" id= "wiki-link"> Learn More</button>
+                                </Link>
                             </div>
                         </div>
                         </div>
