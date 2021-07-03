@@ -4,7 +4,7 @@ const GlobalContext = createContext();
 const { Provider } = GlobalContext;
 
 const initialState = {
-    philosophers: [{ name: 'Adam Yauch', period: 'Modern', id: 0 }],
+    philosophers: { 0: { name: 'Adam Yauch', period: 'Modern', id: 0 } },
     carouselQuotes: [{ quote: 'Test Quote', author: 'Test Author', id: 151 }],
     currentUser: { id: null, username: 'test', isAdmin: false },
     chatRoom: { room: '', username: 'test' },
@@ -27,12 +27,12 @@ const reducer = (state, action) => {
         case 'setRoomName':
             return {
                 ...state,
-                chatRoom: { ...state.chatRoom, room:action.data}
+                chatRoom: { ...state.chatRoom, room: action.data }
             };
         case 'setRoomUsers':
             return {
                 ...state,
-                chatRoom: {...state.chatRoom, users:action.data}
+                chatRoom: { ...state.chatRoom, users: action.data }
             }
 
         default:
