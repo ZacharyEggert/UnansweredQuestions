@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import ChatForm from '../../components/ChatForm';
 
 const Chat = () => {
     return (
@@ -40,18 +41,7 @@ const Chat = () => {
                         <div className="chat-messages"></div>
                     </section>
                     <div className="chat-form-container bg-black">
-                        <form id="chat-form">
-                            <input
-                                id="msg"
-                                type="text"
-                                placeholder="Enter Message"
-                                required
-                                autocomplete="off"
-                            />
-                            <button className="btn mt-0 sm:ml-4 text-sm">
-                                <i className="fas fa-paper-plane"></i> Send
-                            </button>
-                        </form>
+                        <ChatForm />
                     </div>
                 </div>
             </main>
