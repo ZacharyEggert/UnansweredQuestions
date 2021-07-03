@@ -1,8 +1,67 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import ChatForm from '../../components/ChatForm';
+import { io } from 'socket.io-client';
+import { useState } from 'react';
+import { useGlobalContext } from '../../util/GlobalState';
 
 const Chat = () => {
+    const initialState = {
+        'chat-form': '',
+        'chat-messages': [],
+        'room-name': '',
+        users: [],
+    };
+
+    const [state, setState] = useState(initialState);
+
+    const [globalState, dispatch] = useGlobalContext();
+    const { chatRoom } = globalState;
+    const { username, room } = chatRoom;
+
+    let socket = io();
+
+    const outputMessage = (event) => {
+        setState({
+            ...state,
+            [event.target.name]: event.target.value,
+        });
+    };
+
+    useEffect(() => {
+        socket.emit('joinRoom', { username, room });
+    }, []);
+
+    const outputRoomName = (roomData) => {
+        dispatch({
+            type: 'setRoomName',
+            data: roomData,
+        });
+    };
+
+    const outputUsers = (userData) => {
+        dispatch({
+            type: 'setRoomUsers',
+            data: userData,
+        });
+    };
+
+    socket.on('roomUsers', ({ room, users }) => {
+        outputRoomName(room);
+        outputUsers(users);
+    });
+
+    socket.on('message', (message) => {
+        console.log(message);
+        outputMessage(message);
+    });
+
+    //scroll down
+    const divRef = useRef(null);
+    useEffect(() => {
+        divRef.current.scrollIntoView({ behavior: 'smooth' });
+    });
+
     return (
         <div>
             <main
@@ -14,7 +73,7 @@ const Chat = () => {
                 <div className="w-full sm:w-10/12 bg-black bg-opacity-70 flex flex-col flex-wrap">
                     <header className="chat-header p-4 flex items-center justify-between flex-col sm:flex-row bg-black border-b-white border-b-solid">
                         <h1 className="text-3xl sm:text-4xl pb-0 pr-4">
-                            Philosophy Chat
+                            {room}
                         </h1>
                         <Link
                             to="/"
@@ -30,18 +89,37 @@ const Chat = () => {
                                 <i className="fas fa-comments"></i> Room Name:
                             </h3>
                             <h2 id="room-name" className="pl-0">
-                                Philosophy Chat
+                                {room}
                             </h2>
                             <h3>
                                 <i className="fas fa-users hidden sm:visible"></i>{' '}
                                 Users:
                             </h3>
-                            <ul id="users"></ul>
+                            <ul id="users">
+                                {state['users'].map((user) => (
+                                    <li>${user.username}</li>
+                                ))}
+                            </ul>
                         </div>
-                        <div className="chat-messages"></div>
+                        <div
+                            className="chat-messages"
+                            name="chat-messages"
+                            value={state['chat-messages']}
+                            ref={divRef}
+                        >
+                            {state['chat-messages'].map((message) => (
+                                <div className="message">
+                                    <p className="meta">
+                                        ${message.username}{' '}
+                                        <span>${message.time} </span>
+                                    </p>
+                                    <p className="text">${message.text}</p>
+                                </div>
+                            ))}
+                        </div>
                     </section>
                     <div className="chat-form-container bg-black">
-                        <ChatForm />
+                        <ChatForm socket={socket} />
                     </div>
                 </div>
             </main>
