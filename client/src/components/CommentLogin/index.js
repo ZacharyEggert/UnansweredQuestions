@@ -1,15 +1,16 @@
 import React from "react";
+import { Link } from 'react-router-dom'
 
 const CommentLogin = () => {
     return (
         <>
             <div
-                class="flex flex-1 flex-col justify-center items-center my-7 bg-black bg-opacity-50 w-64 self-center py-3 rounded-md">
-                <h4 class='flex-1'>Log in to join the discussion.</h4>
+                className="flex flex-col items-center self-center justify-center flex-1 w-64 py-3 bg-black bg-opacity-50 rounded-md my-7">
+                <h4 className='flex-1'>Log in to join the discussion.</h4>
 
-                <link class='flex-1' to="/login">
-                    <button class=' my-5 min-w-max' type="submit">Log in</button>
-                </link>
+                <Link className='flex-1' to="/login">
+                    <button className='my-5  min-w-max' type="submit">Log in</button>
+                </Link>
 
             </div>
 

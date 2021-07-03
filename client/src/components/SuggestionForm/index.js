@@ -1,4 +1,4 @@
-import React, { SuggFormComponent, useState } from 'react';
+import React, { useState } from 'react';
 
 const SuggestionForm = () => {
     const initialState = {

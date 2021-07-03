@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useGlobalContext } from "../../util/GlobalState";
 const CommentInput = () => {
+    // eslint-disable-next-line no-unused-vars
     const [globalStore, dispatch] = useGlobalContext()
 
     const [commentState, setCommentState] = useState({ comment: '' });
@@ -11,18 +12,20 @@ const CommentInput = () => {
 
     const handleFormSubmit = (event) => {
         //handle submit of comment
+        // eslint-disable-next-line no-unused-vars
         const { currentUser } = globalStore;
+        // eslint-disable-next-line no-unused-vars
         const { comment } = commentState;
         setCommentState({ ...commentState, comment: '' })
 
     }
 
-    return (<div class='flex flex-1 flex-col justify-center items-center my-5 bg-black bg-opacity-40 rounded '>
-        <h4 class='my-5'>Join the discussion</h4>
+    return (<div className='flex flex-col items-center justify-center flex-1 my-5 bg-black rounded bg-opacity-40 '>
+        <h4 className='my-5'>Join the discussion</h4>
 
-        <textarea value={commentState.comment} name="comment" class='text-black px-2 resize-y w-80 p-1 ' type="text" onChange={handleFormChange}></textarea>
+        <textarea value={commentState.comment} name="comment" className='p-1 px-2 text-black resize-y w-80 ' type="text" onChange={handleFormChange}></textarea>
         <button
-            class=' my-5 min-w-max ' data-userid={globalStore.currentUser.id}
+            className='my-5  min-w-max' data-userid={globalStore.currentUser.id}
             data-dq={globalStore.dailyQuestion.id} onClick={handleFormSubmit}>Submit</button>
 
     </div>
