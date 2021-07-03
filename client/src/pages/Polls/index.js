@@ -6,6 +6,7 @@ import SuggestionCard from '../../components/SuggestionCard'
 const Polls = () => {
     const [globalState, dispatch] = useGlobalContext()
 
+
     return (
         <>
             <main class="poll-main" style="z-index:1; background-size: cover; background-repeat: no-repeat;">
