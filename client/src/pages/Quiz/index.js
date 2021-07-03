@@ -1,6 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import SuggestionCard from '../../components/SuggestionCard';
 
 const Quiz = () => {
     return (
@@ -40,7 +38,7 @@ const Quiz = () => {
                 </div>
 
                 <div className="py-8 my-2 bg-black rounded-md welcome suggestions bg-opacity-60">
-                    {{> suggestionCard }}
+                    { suggestionCard }
                 </div>
             </section>
         </div>
