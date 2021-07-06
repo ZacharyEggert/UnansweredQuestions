@@ -3,9 +3,9 @@ import SuggestionCard from '../../components/SuggestionCard';
 
 const Quiz = () => {
     return (
-        <div>
+        <div className='min-h-full bg-fixed bg-cover bg-orangeleaves bg-fade'>
             <section
-                className='flex flex-col items-center justify-around w-screen min-h-screen quiz-main'>
+                className='flex flex-col items-center justify-around w-full min-h-screen quiz-main'>
                 
                 <div className='flex flex-col items-center px-6 py-4 bg-black rounded-md welcome bg-opacity-60 sm:mt-24'>
                     <h3 className='mb-2 text-3xl text-center'>Philosophy Quiz</h3>

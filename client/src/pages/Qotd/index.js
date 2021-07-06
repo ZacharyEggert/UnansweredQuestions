@@ -14,10 +14,8 @@ const Qotd = () => {
     const {isLoggedin} = globalState;
 
     return (
-        <div>
-            <main className="flex flex-col justify-center w-screen min-h-screen pt-20 bg-black p-7 bg-opacity-80 "
-                // style={{backgroundImage: url(/img/background-branches3.jpg)}}
-                >
+        <div className='min-h-full bg-fixed bg-cover bg-branches-3 bg-fade'>
+            <main className="flex flex-col justify-center w-screen min-h-screen pt-20 p-7 bg-opacity-80">
 
                 <div className='flex flex-col self-center max-w-5xl my-12 bg-black rounded-md p-7 bg-opacity-60 md:w-9/12'>
                     <div

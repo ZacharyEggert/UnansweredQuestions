@@ -1,18 +1,14 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-const generateRandomImageUrl = () => {
-
-}
 
 const OwlCarouselSlide = (props) => {
 
-    const {quote} = props;
+    const {quote, index} = props;
 
     return (
      
-        <div className="flex items-center justify-center owl-slide cover"
-            style={{backgroundImage: `/img/${generateRandomImageUrl()}`, opacity: 0.8}}>   
+        <div className={`flex items-center justify-center owl-slide cover opacity-80 bg-carousel-${(index%3)+1} bg-fade`}>   
             {/* <!--owl-slide--> */}
             <div className="container my-width">
             <div className="flex-row items-center">

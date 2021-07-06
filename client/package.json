@@ -1,6 +1,7 @@
 {
   "name": "react-app-playground",
   "version": "0.1.0",
+  "proxy": "http://localhost:5000",
   "private": true,
   "dependencies": {
     "@craco/craco": "^6.1.2",

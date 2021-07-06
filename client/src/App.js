@@ -44,7 +44,7 @@ const App = () => {
                         component={AllPhilosophers}
                     />
                     <Route exact path="/login" component={Login} />
-                    <Route exact path="/suggestion" component={Suggestions} />
+                    <Route exact path="/suggestions" component={Suggestions} />
                     <Route exact path="/quiz" component={Quiz} />
                 </Switch>
             </Router>
