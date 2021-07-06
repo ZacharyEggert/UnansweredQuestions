@@ -15,17 +15,17 @@ const FrontPage = () => {
     return (
 
     <div>
-        <main className="homepage">
-            <div id='stars'></div>
-            <div id='stars2'></div>
-            <div id='stars3'></div>
+        <main className="flex flex-col homepage">
+            <div id='stars' className='absolute overflow-hidden'></div>
+            <div id='stars2' className='absolute overflow-hidden'></div>
+            <div id='stars3' className='absolute overflow-hidden'></div>
             {/* <!-- hero content - what is philosophy  --> */}
-            <section className="hero" style={{background:'radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%)'}}>
+            <section className="static top-0 hero" style={{background:'radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%)'}}>
                 <header className="hero-container">
-                <h1>What is Philosophy?</h1>
+                <h1 >What is Philosophy?</h1>
                 <div className="rw-wrapper">
                     <h2 className="text-center whitespace-normal rw-sentence lg:whitespace-nowrap">
-                    <span>Philosophy is a way of thinking about certain subjects such as<div className="rw-words rw-words-1">
+                    <div className='-ml-16'><span className='ml-16 sm:ml-0'>Philosophy is a way of thinking <br className='sm:hidden'/>about certain subjects such as<div className="rw-words rw-words-1">
                         <span>ethics</span>
                         <span>thought</span>
                         <span>existence</span>
@@ -33,6 +33,7 @@ const FrontPage = () => {
                         <span>meaning</span>
                         <span>value</span>
                     </div></span>
+                    </div>
                     
                     </h2>
                 </div>

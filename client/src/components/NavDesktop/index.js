@@ -12,7 +12,7 @@ const NavDesktop = () => {
 
     return (
         <nav className='hidden sm:flex justify-between pb-0 h-[70px] items-center text-white'>
-            <p className='header active'>UnansweredQuestions</p>
+            <p className='ml-8'>UnansweredQuestions</p>
             <ul className='flex flex-row items-center justify-end mr-8 text-white menu' id='myLinks'>
                 <li className='desktop-nav'>
                     <Link to='/'>Home</Link>
