@@ -1,19 +1,80 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import ChatForm from '../../components/ChatForm';
+import { io } from 'socket.io-client';
+import { useState } from 'react';
+import { useGlobalContext } from '../../util/GlobalState';
 
 const Chat = () => {
+    const initialState = {
+        'chat-form': '',
+        'chat-messages': [],
+        'room-name': '',
+        users: [],
+    };
+
+    const [state, setState] = useState(initialState);
+
+    const [globalState, dispatch] = useGlobalContext();
+    const { chatRoom } = globalState;
+    const { username, room } = chatRoom;
+
+    let socket = io();
+
+    const outputMessage = (event) => {
+        setState({
+            ...state,
+            [event.target.name]: event.target.value,
+        });
+    };
+
+    useEffect(() => {
+        socket.emit('joinRoom', { username, room });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
+    const outputRoomName = (roomData) => {
+        dispatch({
+            type: 'setRoomName',
+            data: roomData,
+        });
+    };
+
+    const outputUsers = (userData) => {
+        dispatch({
+            type: 'setRoomUsers',
+            data: userData,
+        });
+    };
+
+    socket.on('roomUsers', ({ room, users }) => {
+        outputRoomName(room);
+        outputUsers(users);
+    });
+
+    socket.on('message', (message) => {
+        console.log(message);
+        outputMessage(message);
+    });
+
+    //scroll down
+    const divRef = useRef(null);
+    useEffect(() => {
+        divRef.current.scrollIntoView({ behavior: 'smooth' });
+    });
+
     return (
         <div>
             <main
-                className="join-chat min-w-full opacity-80 min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8"
+                className="flex items-center justify-center min-w-full min-h-screen px-4 py-12 join-chat opacity-80 sm:px-6 lg:px-8"
                 // eslint-disable-next-line react/style-prop-object
                 /** style="background-image: url(/img/background-blue-flowers.jpg);"*/
             >
                 <div className="py-8"></div>
-                <div className="w-full sm:w-10/12 bg-black bg-opacity-70 flex flex-col flex-wrap">
-                    <header className="chat-header p-4 flex items-center justify-between flex-col sm:flex-row bg-black border-b-white border-b-solid">
-                        <h1 className="text-3xl sm:text-4xl pb-0 pr-4">
-                            Philosophy Chat
+                <div className="flex flex-col flex-wrap w-full bg-black sm:w-10/12 bg-opacity-70">
+                    <header className="flex flex-col items-center justify-between p-4 bg-black chat-header sm:flex-row border-b-white border-b-solid">
+                        <h1 className="pb-0 pr-4 text-3xl sm:text-4xl">
+                            {room}
                         </h1>
                         <Link
                             to="/"
@@ -29,29 +90,37 @@ const Chat = () => {
                                 <i className="fas fa-comments"></i> Room Name:
                             </h3>
                             <h2 id="room-name" className="pl-0">
-                                Philosophy Chat
+                                {room}
                             </h2>
                             <h3>
-                                <i className="fas fa-users hidden sm:visible"></i>{' '}
+                                <i className="hidden fas fa-users sm:visible"></i>{' '}
                                 Users:
                             </h3>
-                            <ul id="users"></ul>
+                            <ul id="users">
+                                {state['users'].map((user) => (
+                                    <li>${user.username}</li>
+                                ))}
+                            </ul>
                         </div>
-                        <div className="chat-messages"></div>
+                        <div
+                            className="chat-messages"
+                            name="chat-messages"
+                            value={state['chat-messages']}
+                            ref={divRef}
+                        >
+                            {state['chat-messages'].map((message) => (
+                                <div className="message">
+                                    <p className="meta">
+                                        ${message.username}{' '}
+                                        <span>${message.time} </span>
+                                    </p>
+                                    <p className="text">${message.text}</p>
+                                </div>
+                            ))}
+                        </div>
                     </section>
-                    <div className="chat-form-container bg-black">
-                        <form id="chat-form">
-                            <input
-                                id="msg"
-                                type="text"
-                                placeholder="Enter Message"
-                                required
-                                autocomplete="off"
-                            />
-                            <button className="btn mt-0 sm:ml-4 text-sm">
-                                <i className="fas fa-paper-plane"></i> Send
-                            </button>
-                        </form>
+                    <div className="bg-black chat-form-container">
+                        <ChatForm socket={socket} />
                     </div>
                 </div>
             </main>

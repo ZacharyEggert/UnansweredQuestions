@@ -5,7 +5,10 @@ const { Provider } = GlobalContext;
 
 const initialState = {
     philosophers: [{ name: 'Adam Yauch', period: 'Modern', id: 0 }],
-    carouselQuotes: [{quote:'Test Quote', author:'Test Author', id:151 }],
+    carouselQuotes: [{ quote: 'Test Quote', author: 'Test Author', id: 151 }],
+    currentUser: { id: null, username: 'test', isAdmin: false },
+    chatRoom: { room: '', username: 'test' },
+    dailyQuestion:{name: 'Title', content: 'This is a question of the day', comments: [{user: 'Test Author', content:'This is a comment', id:505}]}
 };
 
 const reducer = (state, action) => {
@@ -16,6 +19,22 @@ const reducer = (state, action) => {
                 ...state,
                 philosophers: [...state.philosophers, ...action.data],
             };
+
+        case 'setChatRoom':
+            return {
+                ...state,
+                chatRoom: { ...state.chatRoom, ...action.data },
+            };
+        case 'setRoomName':
+            return {
+                ...state,
+                chatRoom: { ...state.chatRoom, room:action.data}
+            };
+        case 'setRoomUsers':
+            return {
+                ...state,
+                chatRoom: {...state.chatRoom, users:action.data}
+            }
 
         default:
             return state;

@@ -1,12 +1,12 @@
-import React, { SuggFormComponent, useState } from 'react';
+import React, { useState } from 'react';
 
 const SuggestionForm = () => {
     const initialState = {
-        ['suggestion-type']: '',
-        ['phil-name']: '',
-        ['q-phil-name']: '',
-        ['quote']: '',
-        ['quest']: '',
+        'suggestion-type': '',
+        'phil-name': '',
+        'q-phil-name': '',
+        quote: '',
+        quest: '',
     };
 
     const [state, setState] = useState(initialState);
@@ -16,6 +16,38 @@ const SuggestionForm = () => {
             ...state,
             [event.target.name]: event.target.value,
         });
+    };
+
+    const handleFormSubmit = (event) => {
+        event.preventDefault();
+
+        if (
+            state['suggestion-type'] === 'philosopher' &&
+            state['phil-name'].trim() === ''
+        ) {
+            alert('Please enter a valid entry');
+        } else if (
+            state['suggestion-type'] === 'quote' &&
+            state['quote'].trim() === ''
+        ) {
+            alert('Please enter a valid entry');
+        } else if (
+            state['suggestion-type'] === 'quest' &&
+            state['quest'].trim() === ''
+        ) {
+            alert('Please enter a valid entry');
+        } else {
+            alert('Your suggestion has been submitted! Thanks for your input!');
+            setState({
+                'suggestion-type': '',
+                'phil-name': '',
+                'q-phil-name': '',
+                quote: '',
+                quest: '',
+            });
+
+            console.log(state);
+        }
     };
 
     return (
@@ -31,6 +63,7 @@ const SuggestionForm = () => {
                 <select
                     value={state['suggestion-type']}
                     name="suggestion-type"
+                    onChange={handleOnChange}
                     id="suggestion-type"
                     className="inline-block w-full p-1 mt-1 text-black sm:w-5/12 form-select"
                     placeholder="Choose subject..."
@@ -43,85 +76,102 @@ const SuggestionForm = () => {
                     >
                         Choose subject...
                     </option>
+
                     <option value="philosopher" className="pl-1 text-black">
                         Philosopher
                     </option>
+
                     <option value="quote" className="pl-1 text-black">
                         Quote
                     </option>
+
                     <option value="question" className="pl-1 text-black">
                         Daily Question
                     </option>
                 </select>
             </div>
-            <div
-                className="mb-4 philosopher box2 sm:flex sm:justify-between"
-                id="otherFieldDiv"
-            >
-                <label for="phil-name" className="inline-block sm:w-4/12">
-                    Philosopher Name:
-                </label>
-                <input
-                    value={state['phil-name']}
-                    className="p-1 text-black"
-                    type="text"
-                    name="phil-name"
-                    id="phil-name"
-                    placeholder="Enter philosopher name..."
-                    required
-                />
-            </div>
-            <div className="mb-4 quote box2" id="otherFieldGroupDiv">
-                <div className="mb-4 col-6 sm:flex sm:justify-between">
-                    <label for="q-phil-name" className="inline-block sm:w-4/12">
+            {state['suggestion-type'] === 'philosopher' ? (
+                <div
+                    className="mb-4 philosopher box2 sm:flex sm:justify-between"
+                    id="otherFieldDiv"
+                >
+                    <label for="phil-name" className="inline-block sm:w-4/12">
                         Philosopher Name:
                     </label>
                     <input
-                        value={state['q-phil-name']}
-                        name="q-phil-name"
+                        value={state['phil-name']}
+                        className="p-1 text-black"
                         type="text"
-                        className="p-1 text-black form-control"
-                        id="q-phil-name"
+                        name="phil-name"
+                        id="phil-name"
+                        onChange={handleOnChange}
                         placeholder="Enter philosopher name..."
                         required
                     />
                 </div>
-                <div className="col-6 sm:flex sm:justify-between">
-                    <label for="quote" className="inline-block sm:w-4/12">
-                        Quote
+            ) : null}
+            {state['suggestion-type'] === 'quote' ? (
+                <div className="mb-4 quote box2" id="otherFieldGroupDiv">
+                    <div className="mb-4 col-6 sm:flex sm:justify-between">
+                        <label
+                            for="q-phil-name"
+                            className="inline-block sm:w-4/12"
+                        >
+                            Philosopher Name:
+                        </label>
+                        <input
+                            value={state['q-phil-name']}
+                            name="q-phil-name"
+                            type="text"
+                            className="p-1 text-black form-control"
+                            id="q-phil-name"
+                            onChange={handleOnChange}
+                            placeholder="Enter philosopher name..."
+                            required
+                        />
+                    </div>
+                    <div className="col-6 sm:flex sm:justify-between">
+                        <label for="quote" className="inline-block sm:w-4/12">
+                            Quote
+                        </label>
+                        <input
+                            value={state['quote']}
+                            name="quote"
+                            type="text"
+                            className="p-1 text-black form-control"
+                            id="quote"
+                            onChange={handleOnChange}
+                            placeholder="Enter quote..."
+                            required
+                        />
+                    </div>
+                </div>
+            ) : null}
+            {state['suggestion-type'] === 'question' ? (
+                <div
+                    className="mb-4 question box2 sm:flex sm:justify-between"
+                    id="otherFieldDiv3"
+                >
+                    <label for="quest" className="inline-block sm:w-4/12">
+                        Question:
                     </label>
                     <input
-                        value={state['quote']}
-                        name="quote"
+                        className="p-1 text-black"
                         type="text"
-                        className="p-1 text-black form-control"
-                        id="quote"
-                        placeholder="Enter quote..."
+                        name="quest"
+                        value={state['quest']}
+                        id="quest"
+                        onChange={handleOnChange}
+                        placeholder="Enter question..."
                         required
                     />
                 </div>
-            </div>
-            <div
-                className="mb-4 question box2 sm:flex sm:justify-between"
-                id="otherFieldDiv3"
-            >
-                <label for="quest" className="inline-block sm:w-4/12">
-                    Question:
-                </label>
-                <input
-                    className="p-1 text-black"
-                    type="text"
-                    name="quest"
-                    value={state['quest']}
-                    id="quest"
-                    placeholder="Enter question..."
-                    required
-                />
-            </div>
+            ) : null}
             <span className="inline-block w-8/12 text-right contents">
                 <button
                     id="suggestion"
                     type="submit"
+                    onClick={handleFormSubmit}
                     className="text-white rounded-md px-3  border-white border-2 border-solid whitespace-nowrap md:w-3/12 min-w-min bg-[#4d83a3] w-full items-center"
                 >
                     Submit

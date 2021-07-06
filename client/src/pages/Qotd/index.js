@@ -1,22 +1,32 @@
 import React from "react";
 import { useGlobalContext } from "../../util/GlobalState";
-import CommentCard from "./components/CommentCard"
+import CommentCard from "../../components/CommentCard"
+import CommentInput from "../../components/CommentInput"
+import CommentLogin from "../../components/CommentLogin"
+import SuggestionCard from "../../components/SuggestionCard";
 
-const [globalState, dispatch] = useGlobalContext
+
 const Qotd = () => {
+
+    // eslint-disable-next-line no-unused-vars
+    const [globalState, dispatch] = useGlobalContext();
+
+    const {isLoggedin} = globalState;
+
     return (
         <div>
-            <main class="p-7 pt-20 bg-black bg-opacity-80 flex flex-col justify-center w-screen min-h-screen "
-                style='background-image: url(/img/background-branches3.jpg);'>
+            <main className="flex flex-col justify-center w-screen min-h-screen pt-20 bg-black p-7 bg-opacity-80 "
+                // style={{backgroundImage: url(/img/background-branches3.jpg)}}
+                >
 
-                <div class='my-12 p-7 bg-black bg-opacity-60 flex flex-col rounded-md max-w-5xl md:w-9/12 self-center'>
+                <div className='flex flex-col self-center max-w-5xl my-12 bg-black rounded-md p-7 bg-opacity-60 md:w-9/12'>
                     <div
-                        class="flex flex-col items-center self-center  mb-24 bg-black bg-opacity-40 pb-8 rounded-md max-w-lg md:w-12/12 ">
-                        <h1 class='text-center'>Daily Question</h1>
-                        <h2 class='italic text-center'>{globalState.dailyQuestion.name}</h2>
+                        className="flex flex-col items-center self-center max-w-lg pb-8 mb-24 bg-black rounded-md bg-opacity-40 md:w-12/12 ">
+                        <h1 className='text-center'>Daily Question</h1>
+                        <h2 className='italic text-center'>{globalState.dailyQuestion.name}</h2>
                     </div>
 
-                    <h2 class='flex-1 items-center mb-10 text-center'>Comments</h2>
+                    <h2 className='items-center flex-1 mb-10 text-center'>Comments</h2>
 
 
                     {globalState.dailyQuestion.comments.map((comment) => {
@@ -29,11 +39,10 @@ const Qotd = () => {
 
                 </div>
 
-                <div class="bg-black bg-opacity-80 sm:m-14 py-8">
+                <div className="py-8 bg-black bg-opacity-80 sm:m-14">
                     <SuggestionCard />
                 </div>
             </main>
-            <script src="/js/qotd.js"></script>
         </div>
     )
 }

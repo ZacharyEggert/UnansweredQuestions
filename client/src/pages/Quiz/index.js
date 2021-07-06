@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import SuggestionCard from '../../components/SuggestionCard';
 
 const Quiz = () => {
@@ -17,7 +16,7 @@ const Quiz = () => {
                         <button className='px-4 min-w-max' id="start-quiz">START QUIZ</button>
                     </div>
                 </div>
-                <div className='flex flex-col items-center px-6 py-4 bg-black rounded-md welcome quiz-container bg-opacity-60 sm:mt-24' style='display: none;'>
+                <div className='flex flex-col items-center px-6 py-4 bg-black rounded-md welcome quiz-container bg-opacity-60 sm:mt-24' >
                     <div className="p-4 mb-6 max-w-none md:max-w-prose">
                         <q className='text-xl question'>Question</q>
                     </div>
@@ -28,19 +27,19 @@ const Quiz = () => {
                     </div>
                 </div>
 
-                <div className='flex flex-col items-center px-6 py-4 bg-black rounded-md welcome results results-container bg-opacity-60 sm:mt-24 sm:mx-12' style='display: none;'>
+                <div className='flex flex-col items-center px-6 py-4 bg-black rounded-md welcome results results-container bg-opacity-60 sm:mt-24 sm:mx-12'>
                     <div className="p-4 mb-6 max-w-none md:max-w-prose">
                         <h2>
                             <span className='block mb-4 text-xl text-center true-false'>Correct!</span>
                             <q className='text-xl results-quote'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus odit saepe cum</q>
                         </h2>
                     </div>
-                    <h2 className='pb-4 text-2xl results-author'></h2>
+                    <h2 className='pb-4 text-2xl results-author'>{null}</h2>
                     <button className='rerun'>Try Another...</button>
                 </div>
 
                 <div className="py-8 my-2 bg-black rounded-md welcome suggestions bg-opacity-60">
-                    {{> suggestionCard }}
+                    <SuggestionCard />
                 </div>
             </section>
         </div>
