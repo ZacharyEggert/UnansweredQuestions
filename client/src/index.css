@@ -14,6 +14,27 @@
         color: inherit;
     }
 
+    .bg-fade::before{
+        z-index:2;
+        content: '';
+        position: absolute;
+        height: 100%;
+        top: 0;
+        left: 0;
+        width: 100%;
+        pointer-events: none;
+        background: rgba(255, 255, 255, 0.2);
+    }
+
+    .bg-fade{
+        position: relative;
+    }
+
+    .bg-fade *{
+        z-index: 3;
+        position: relative
+    }
+
 
     .desktop-nav {
         @apply text-sm md:text-base lg:text-xl text-center align-middle content-center ml-10 text-white relative block no-underline py-1.5 hover:text-[#e5eef1b2];

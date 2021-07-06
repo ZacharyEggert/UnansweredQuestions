@@ -17,7 +17,7 @@ const AllPhilosophers = () => {
     ];
 
     return (
-        <div className='h-full bg-cover bg-branches'>
+        <div className='min-h-full bg-fixed bg-cover bg-driedflowers bg-fade'>
             <div className="py-14"></div>
             {PHILOSOPHER_PERIODS.map((period) => {
                 return (

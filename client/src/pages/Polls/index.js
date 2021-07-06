@@ -9,7 +9,7 @@ const Polls = () => {
 
     return (
         <>
-            <main class="poll-main" style="z-index:1; background-size: cover; background-repeat: no-repeat;">
+            <main class="min-h-full bg-cover bg-blue-petals bg-opacity-80 bg-fixed">
 
                 <div class="py-14"></div>
                 <div class="flex flex-row flex-wrap px-6">

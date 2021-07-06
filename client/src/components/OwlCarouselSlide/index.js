@@ -8,7 +8,7 @@ const OwlCarouselSlide = (props) => {
 
     return (
      
-        <div className={`flex items-center justify-center owl-slide cover opacity-80 bg-carousel-${(index%3)+1}`}>   
+        <div className={`flex items-center justify-center owl-slide cover opacity-80 bg-carousel-${(index%3)+1} bg-fade`}>   
             {/* <!--owl-slide--> */}
             <div className="container my-width">
             <div className="flex-row items-center">
