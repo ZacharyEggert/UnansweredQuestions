@@ -14,6 +14,7 @@
         color: inherit;
     }
 
+
     .desktop-nav {
         @apply text-sm md:text-base lg:text-xl text-center align-middle content-center ml-10 text-white relative block no-underline py-1.5 hover:text-[#e5eef1b2];
 
