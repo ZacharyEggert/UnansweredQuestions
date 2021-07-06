@@ -4,6 +4,11 @@ import { useGlobalContext } from "../../utils/GlobalState"
 const PollCard = (props) => {
     const { poll } = props
 
+    const percent = (num1, num2) => {
+        const res = Math.round((1000 * num1) / (num1 + num2)) / 10;
+        return res ? res : 0;
+    };
+
     return (
         <>
             <div class="flex-auto flex-shrink-0 w-full md:w-5/12 flex flex-row flex-wrap justify-center content-between my-3 md:mx-3 p-4 items-center bg-black bg-opacity-60 max-w-full">
@@ -15,27 +20,27 @@ const PollCard = (props) => {
                         {poll.pollText}
                     </p>
                 </div>
-                <div class="w-11/12 flex-initial flex-row h-12 my-4 flex" id="poll-response" data-poll-id="{{id}}">
-                    <div class="flex-1 bg-blue-600 flex align-middle content-center items-center text-center yes-btn" data-yes='{{vote_yes}}' data-poll-id="{{id}}">
+                <div class="w-11/12 flex-initial flex-row h-12 my-4 flex" id="poll-response" >
+                    <div class="flex-1 bg-blue-600 flex align-middle content-center items-center text-center yes-btn" >
                         <p class="flex-1">YES</p>
                     </div>
-                    <div class="flex-1 bg-red-600 flex align-middle content-center items-center text-center no-btn" data-no='{{vote_no}}' data-poll-id="{{id}}">
+                    <div class="flex-1 bg-red-600 flex align-middle content-center items-center text-center no-btn">
                         <p class="flex-1">NO</p>
                     </div>
                 </div>
                 <div class="w-11/12 flex-initial flex-col h-12 my-4 hidden" id="poll-results">
                     <div class="flex-1 flex content-start py-1 px-2 w-full">
-                        <div class="bg-blue-600 overflow-hidden" style="width:{{percent vote_yes vote_no}}%;" data-yes='{{vote_yes}}' data-poll-id="{{id}}">
+                        <div class="bg-blue-600 overflow-hidden" style={{ width: percent(poll.vote_yes, poll.vote_no) + `%` }} >
                             YES
                         </div>
                     </div>
                     <div class="flex-1 flex content-start py-1 px-2 w-full">
-                        <div class="bg-red-600 overflow-hidden" style="width:{{percent vote_no vote_yes}}%;" data-no='{{vote_no}}' data-poll-id='{{id}}'>
+                        <div class="bg-red-600 overflow-hidden" style={{ width: percent(poll.vote_no, poll.vote_yes) + `%` }} >
                             NO
                         </div>
                     </div>
                 </div>
-            </div>
+            </div >
 
         </>
     )
