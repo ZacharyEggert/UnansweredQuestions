@@ -17,13 +17,12 @@ const AllPhilosophers = () => {
     ];
 
     return (
-        <div className='min-h-full bg-fixed bg-cover bg-driedflowers bg-fade'>
+        <div className='min-h-full min-w-full bg-fixed bg-cover bg-driedflowers bg-fade flex flex-col items-center text-white'>
             <div className="py-14"></div>
             {PHILOSOPHER_PERIODS ? PHILOSOPHER_PERIODS.map((period) => {
                 return (
-                    <div className="philosophy-times" key={period}>
-                        <h1 className="profile-h1">{period} Philosophers</h1>
-
+                    <div className="philosophy-times w-11/12 justify-self-center" key={period}>
+                        <h1 className="profile-h1  opacity-80">{period} Philosophers</h1>
                         <div className="box">
                             {/**<!-- cards for each philosopher  -->*/}
 
@@ -44,9 +43,7 @@ const AllPhilosophers = () => {
                 );
             }) : null}
             <div className="philosophy-times">
-                <div className="box">
-                    {/* <!-- card for suggestions  --> */}
-
+                <div className="py-8 bg-black bg-opacity-80 sm:m-14">
                     <SuggestionCard />
                 </div>
             </div>

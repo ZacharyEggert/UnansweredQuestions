@@ -11,10 +11,10 @@ const Qotd = () => {
     // eslint-disable-next-line no-unused-vars
     const [globalState, dispatch] = useGlobalContext();
 
-    const {isLoggedin} = globalState;
+    const { isLoggedin } = globalState;
 
     return (
-        <div className='min-h-full bg-fixed bg-cover bg-branches-3 bg-fade'>
+        <div className='min-h-full bg-fixed bg-cover bg-branches-3 bg-fade text-white'>
             <main className="flex flex-col justify-center w-screen min-h-screen pt-20 p-7 bg-opacity-80">
 
                 <div className='flex flex-col self-center max-w-5xl my-12 bg-black rounded-md p-7 bg-opacity-60 md:w-9/12'>
