@@ -2,7 +2,7 @@ import React from 'react';
 
 const Login = () => {
     return (
-        <div>
+        <div className='min-h-full bg-fixed bg-cover bg-butterfly-3 bg-fade'>
             <main
                 className='min-w-full min-h-screen opacity-80'
                 // style='background-image: url(/img/background-butterfly-3.jpg);'
