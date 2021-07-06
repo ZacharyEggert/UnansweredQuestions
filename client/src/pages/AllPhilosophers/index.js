@@ -19,7 +19,7 @@ const AllPhilosophers = () => {
     return (
         <div>
             <div className="py-14"></div>
-            {PHILOSOPHER_PERIODS.map((period) => {
+            {PHILOSOPHER_PERIODS ? PHILOSOPHER_PERIODS.map((period) => {
                 return (
                     <div className="philosophy-times" key={period}>
                         <h1 className="profile-h1">{period} Philosophers</h1>
@@ -27,7 +27,7 @@ const AllPhilosophers = () => {
                         <div className="box">
                             {/**<!-- cards for each philosopher  -->*/}
 
-                            {globalState.philosophers.map((philosopher) => {
+                            {globalState.philosophers?.length ? globalState.philosophers.map((philosopher) => {
                                 if (philosopher.period === period) {
                                     return (
                                         <PhilosopherCard
@@ -38,11 +38,11 @@ const AllPhilosophers = () => {
                                 } else {
                                     return null;
                                 }
-                            })}
+                            }) : null}
                         </div>
                     </div>
                 );
-            })}
+            }) : null}
             <div className="philosophy-times">
                 <div className="box">
                     {/* <!-- card for suggestions  --> */}

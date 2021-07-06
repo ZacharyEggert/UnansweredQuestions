@@ -1,6 +1,6 @@
 import React from 'react';
 import { useGlobalContext } from "../../util/GlobalState"
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 const OnePhilosopher = () => {
 
