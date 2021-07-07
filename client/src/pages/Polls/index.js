@@ -4,6 +4,7 @@ import PollCard from "../../components/PollCard"
 import SuggestionCard from '../../components/SuggestionCard'
 
 const Polls = () => {
+    // eslint-disable-next-line no-unused-vars
     const [globalState, dispatch] = useGlobalContext()
 
 

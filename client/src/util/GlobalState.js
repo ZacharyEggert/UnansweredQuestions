@@ -4,11 +4,32 @@ const GlobalContext = createContext();
 const { Provider } = GlobalContext;
 
 const initialState = {
-    philosophers: { 0: { name: 'Adam Yauch', period: 'Modern', id: 0 } },
-    carouselQuotes: [{ quote: 'Test Quote', author: 'Test Author', id: 151 }],
-    currentUser: { id: null, username: 'test', isAdmin: false },
-    chatRoom: { room: '', username: 'test' },
-    dailyQuestion:{name: 'Title', content: 'This is a question of the day', comments: [{user: 'Test Author', content:'This is a comment', id:505}]}
+    philosophers: { 
+        0: { name: 'Adam Yauch', period: 'Modern', id: 0 } 
+    },
+    carouselQuotes: [
+        { quote: 'Test Quote', author: 'Test Author', id: 151 }
+    ],
+    currentUser: { 
+        id: null, 
+        username: 'test', 
+        isAdmin: false 
+    },
+    chatRoom: { 
+        room: '', 
+        username: 'test' 
+    },
+    dailyQuestion:{
+        name: 'Title', 
+        content: 'This is a question of the day', 
+        comments: [
+            {
+                user: 'Test Author', 
+                content:'This is a comment', 
+                id:505
+            },
+        ]
+    }
 };
 
 const reducer = (state, action) => {
