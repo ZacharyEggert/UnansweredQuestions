@@ -11,8 +11,12 @@ import Login from './pages/Login'
 
 
 
+
 import { GlobalProvider } from './util/GlobalState';
 import NavBar from './components/NavBar';
+
+import OnePhilosopher from './components/OnePhilosopher'
+
 const App = () => {
     return (
         <GlobalProvider>
@@ -28,7 +32,7 @@ const App = () => {
                     <Route
                         exact
                         path="/philosopher/:id"
-                        component={AllPhilosophers}
+                        component={OnePhilosopher}
                     />
                     <Route exact path="/qotd/:id" component={AllPhilosophers} />
                     <Route exact path="/qotd" component={Qotd} />
