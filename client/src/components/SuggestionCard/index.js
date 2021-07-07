@@ -14,7 +14,7 @@ const SuggestionCard = () => {
                 <div className="flex flex-col items-center justify-center flex-1">
                     <Link
                         to="/suggestions"
-                        className="text-white rounded-md p-3 sm:text-xl border-white border-2 border-solid whitespace-nowrap w-auto bg-[#4d83a3] items-center"
+                        className="button"
                     >
                         Make a suggestion
                     </Link>

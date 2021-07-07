@@ -20,14 +20,15 @@ const CommentInput = () => {
 
     }
 
-    return (<div className='flex flex-col items-center justify-center flex-1 my-5 bg-black rounded bg-opacity-40 '>
-        <h4 className='my-5'>Join the discussion</h4>
+    return (<div className='flex flex-col items-center justify-center flex-1 w-11/12 mx-auto my-5 bg-black bg-opacity-50 rounded sm:w-10/12 '>
+        <h4 className='my-4 text-2xl italic text-[#CCC]'>Join the discussion</h4>
 
-        <textarea value={commentState.comment} name="comment" className='p-1 px-2 text-black resize-y w-80 ' type="text" onChange={handleFormChange}></textarea>
-        <button
-            className='my-5  min-w-max' data-userid={globalStore.currentUser.id}
-            data-dq={globalStore.dailyQuestion.id} onClick={handleFormSubmit}>Submit</button>
-
+        <textarea value={commentState.comment} name="comment" className='w-11/12 p-1 px-2 text-black resize-y sm:w-8/12 ' type="text" onChange={handleFormChange}></textarea>
+        <div className='flex flex-row-reverse w-11/12 mx-auto sm:w-8/12'>
+            <button className='px-4 my-4 button' onClick={handleFormSubmit}>
+                Submit
+            </button>
+        </div>
     </div>
     )
 }
