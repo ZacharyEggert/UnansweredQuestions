@@ -15,7 +15,7 @@ const Login = () => {
                         <div className=''>
                             <h1 className='text-4xl underline text-white'>Log in</h1>
                         </div>
-                        <div className='w-auto max-w-full p-8 py-8 bg-white  bg-opacity-10 h-72 '>
+                        <div className='w-auto max-w-full p-8 py-8 bg-white  bg-opacity-10 h-72'>
                             <form>
                                 <label
                                     htmlFor='email'
@@ -26,7 +26,7 @@ const Login = () => {
                                     name='email'
                                     id=''
                                     type='text'
-                                    className='max-w-full pl-1 my-3 text-black bg-white opacity-100 '
+                                    className='max-w-full pl-1 my-3 text-black bg-white opacity-100'
                                     hidden
                                 />
                                 <br />
@@ -49,7 +49,7 @@ const Login = () => {
                                     name='password'
                                     id='password'
                                     type='text'
-                                    className='max-w-full pl-1 my-3 text-black bg-white opacity-100'
+                                    className='max-w-full pl-1 my-3 text-black bg-white opacity-100 '
                                 />
                                 <br />
                                 <span className='inline-block w-8/12 text-right'><button
