@@ -19,9 +19,9 @@ const Qotd = () => {
 
                 <div className='flex flex-col self-center my-12 bg-black rounded-md p-7 bg-opacity-60 sm:w-9/12'>
                     <div
-                        className="flex flex-col self-center w-10/12 pb-8 mb-24 bg-black bg-opacity-50 rounded-md sm:w-8/12 ">
-                        <h1 className='text-center'>Daily Question</h1>
-                        <h2 className='italic text-center'>{globalState.dailyQuestion.name}</h2>
+                        className="flex flex-col self-center w-10/12 pb-8 mb-24 bg-black bg-opacity-50 rounded-md sm:w-8/12">
+                        <h1 className='my-4 text-3xl text-center lg:my-6 sm:text-5xl lg:text-6xl'>Daily Question</h1>
+                        <h2 className='mx-4 text-xl italic text-center sm:text-2xl'>{globalState.dailyQuestion.content}</h2>
                     </div>
 
                     <h2 className='flex-1 mb-10 text-center'>Comments</h2>

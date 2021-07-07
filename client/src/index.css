@@ -56,7 +56,11 @@
     }
 
     .mobile-nav {
-        @apply text-sm
+        @apply text-sm w-36 ml-16
+    }
+
+    .mobile-nav:first-of-type{
+        @apply mt-16
     }
 
     .button {
@@ -66,6 +70,8 @@
 
     #menuToggle span {
         @apply block sm:hidden w-[33px] !h-1 mb-[5px] relative bg-[#cdcdcd] rounded-[3px] z-[1];
+
+        click-events:none;
         
         transform-origin: 4px 0px;
         transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1),

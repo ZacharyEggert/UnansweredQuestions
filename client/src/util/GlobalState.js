@@ -10,6 +10,7 @@ const initialState = {
     carouselQuotes: [
         { quote: 'Test Quote', author: 'Test Author', id: 151 }
     ],
+    isLoggedin: true,
     currentUser: { 
         id: null, 
         username: 'test', 
@@ -20,8 +21,8 @@ const initialState = {
         username: 'test' 
     },
     dailyQuestion:{
-        name: 'Title', 
-        content: 'This is a question of the day', 
+        name: 'Test Question Name', 
+        content: 'This is a question of the day. Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat?', 
         comments: [
             {
                 user: 'Test Author', 
