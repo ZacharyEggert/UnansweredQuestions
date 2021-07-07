@@ -9,7 +9,7 @@ const CommentLogin = () => {
                 <h4 className='flex-1'>Log in to join the discussion.</h4>
 
                 <Link className='flex-1' to="/login">
-                    <button className='my-5 py-2 px-3 rounded bg-blue-500  min-w-max ' type="submit">Log in</button>
+                    <button className='my-5 py-2 px-3 rounded bg-blue-500 border-2  min-w-max ' type="submit">Log in</button>
                 </Link>
 
             </div>
