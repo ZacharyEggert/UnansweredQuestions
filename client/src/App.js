@@ -8,6 +8,7 @@ import FrontPage from './pages/FrontPage';
 import Quiz from './pages/Quiz'
 import Qotd from './pages/Qotd'
 import Login from './pages/Login'
+import Polls from './pages/Polls'
 
 
 
@@ -38,7 +39,7 @@ const App = () => {
                     <Route exact path="/qotd" component={Qotd} />
                     <Route exact path="/chat" component={Chat} />
                     <Route exact path="/chatroom" component={JoinChat} />
-                    <Route exact path="/polls" component={AllPhilosophers} />
+                    <Route exact path="/polls" component={Polls} />
                     <Route
                         exact
                         path="/polls/:id"
