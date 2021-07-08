@@ -42,7 +42,21 @@ module.exports = {
         'greenleaf-2':'url("assets/images/background-greenleaf2.jpg")',     
         'wheat':'url("assets/images/background-wheat.jpg")',          
         'carousel-2':'url("assets/images/carousel-image2_b.jpg")',
-      })
+      }),
+      keyframes: {
+        'grow-in':{
+          '0%':{transform:'scale(0);translate(-100px, -100px);'},
+          '100%':{transform:'scale(1);translate(0,0);'}
+        },
+        'shrink-out':{
+          '0%':{transform:'scale(1);translate(0,0);'},
+          '100%':{transform:'scale(0);translate(-100px,-100px);'}
+        }
+      },
+      animation: {
+        'grow-in': 'grow-in .3s ease-out',
+        'shrink-out': 'shrink-out .3s ease-out'
+      }
     },
   },
   variants: {

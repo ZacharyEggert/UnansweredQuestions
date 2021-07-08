@@ -8,7 +8,7 @@
     text-align: center;
     color: white;
   }
-  h1 {
+  .hero h1 {
     margin-top: 0;
     margin-bottom: 2rem;
     padding: 2rem;
@@ -23,7 +23,7 @@
     font-weight: normal;
   }
   /* style word swipe  */
-  h2 {
+  .hero h2 {
     display: block;
     font-size: 2rem;
     margin-top: 1rem;
@@ -273,24 +273,7 @@
   .owl-carousel .owl-nav [class*="owl-"]:hover {
     background: transparent;
   }
-  .button {
-    border: none;
-    border: 3px solid white;
-    border-radius: 5px;
-    transition: all 0.3s;
-    outline: 0;
-    display: block;
-    padding: 8px;
-    color: #fff;
-    background-color: #4d83a3;
-    text-align: center;
-    cursor: pointer;
-    width: 60%;
-    font-weight: bold;
-  }
-  .button:hover {
-    opacity: 0.7;
-  }
+ 
   
   @media screen and (max-width: 575px) {
     .owl-carousel .owl-nav {
@@ -302,12 +285,3 @@
       height: 24px;
     }
   }
-  .profile-h1 {
-    font-size: 3rem;
-    background-color: rgba(0, 0, 0, 0.8);
-    margin-bottom: 0;
-    margin-top: 1rem;
-    width: 80%;
-    text-align: center;
-  }
-  

@@ -15,14 +15,15 @@ const AllPhilosophers = () => {
         'Modern',
         'Contemporary',
     ];
+  
 
     return (
-        <div className='min-h-full min-w-full bg-fixed bg-cover bg-driedflowers bg-fade flex flex-col justify-center items-center text-white'>
+        <div className='flex flex-col items-center justify-center min-w-full min-h-full text-white bg-fixed bg-cover bg-driedflowers bg-fade'>
             <div className="py-14"></div>
             {PHILOSOPHER_PERIODS ? PHILOSOPHER_PERIODS.map((period) => {
                 return (
-                    <div className="w-full flex-initial " key={period}>
-                        <h1 className="profile-h1  mx-auto  opacity-80 ">{period} Philosophers</h1>
+                    <div className="flex-initial w-full " key={period}>
+                        <h1 className="mx-auto sm: w-9/12 text-5xl mt-4 mb-0 text-center bg-[rgba(0,0,0,0.6)] ">{period} Philosophers</h1>
                         <div className="box">
                             {/**<!-- cards for each philosopher  -->*/}
 
@@ -42,8 +43,8 @@ const AllPhilosophers = () => {
                     </div>
                 );
             }) : null}
-            <div className="philosophy-times">
-                <div className="py-8 bg-black bg-opacity-60 sm:m-14">
+            <div className="flex-initial w-full">
+                <div className="py-8 mx-auto bg-black bg-opacity-60 sm:m-14 sm:w-9/12">
                     <SuggestionCard />
                 </div>
             </div>
