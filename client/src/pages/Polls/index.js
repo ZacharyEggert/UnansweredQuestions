@@ -10,7 +10,7 @@ const Polls = () => {
 
     return (
         <>
-            <main class="min-h-full bg-cover bg-blue-petals bg-opacity-80 bg-fixed">
+            <main class="min-h-full bg-cover bg-blue-petals bg-opacity-80 bg-fixed text-white">
 
                 <div class="py-14"></div>
                 <div class="flex flex-row flex-wrap px-6">
