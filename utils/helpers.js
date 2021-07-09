@@ -35,7 +35,7 @@ const randomBgimg = () => {
         'carousel-image3_b.jpg',
         'background-branches.jpg',
         'background-whiteflower2.jpg',
-        'background-daisy.jpg'
+        'background-daisy.jpg',
         // 'carousel-image5_b.jpg',
         // 'carousel-image6_b.jpg',
         // 'carousel-image7_b.jpg',

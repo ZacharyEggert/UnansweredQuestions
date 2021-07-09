@@ -5,18 +5,15 @@ import Chat from './pages/Chat';
 import JoinChat from './pages/JoinChat';
 import Suggestions from './pages/Suggestions';
 import FrontPage from './pages/FrontPage';
-import Quiz from './pages/Quiz'
-import Qotd from './pages/Qotd'
-import Login from './pages/Login'
-import Polls from './pages/Polls'
-
-
-
+import Quiz from './pages/Quiz';
+import Qotd from './pages/Qotd';
+import Login from './pages/Login';
+import Polls from './pages/Polls';
 
 import { GlobalProvider } from './util/GlobalState';
 import NavBar from './components/NavBar';
 
-import OnePhilosopher from './components/OnePhilosopher'
+import OnePhilosopher from './components/OnePhilosopher';
 
 const App = () => {
     return (

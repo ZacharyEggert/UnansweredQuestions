@@ -1,5 +1,9 @@
 const makePercent = (num1, num2) => {
-    return Math.round(100 * ((num1*1) / ((num1*1) + (num2*1))) ? 100* ((num1*1) / ((num1*1) + (num2*1))) : 0);
+    return Math.round(
+        100 * ((num1 * 1) / (num1 * 1 + num2 * 1))
+            ? 100 * ((num1 * 1) / (num1 * 1 + num2 * 1))
+            : 0
+    );
 };
 
 document.querySelectorAll('.yes-btn').forEach((n) => {
@@ -16,7 +20,7 @@ document.querySelectorAll('.yes-btn').forEach((n) => {
                             ? target.getAttribute('data-yes') * 1 + 1
                             : 1,
                 }),
-                headers: {'Content-Type': 'application/json'},
+                headers: { 'Content-Type': 'application/json' },
             }
         );
 
@@ -59,7 +63,7 @@ document.querySelectorAll('.no-btn').forEach((n) => {
                             ? target.getAttribute('data-no') * 1 + 1
                             : 1,
                 }),
-                headers: {'Content-Type': 'application/json'},
+                headers: { 'Content-Type': 'application/json' },
             }
         );
 

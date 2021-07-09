@@ -3,7 +3,7 @@ import SuggestionForm from '../../components/SuggestionForm';
 
 const Suggestions = () => {
     return (
-        <div className='min-h-full bg-fixed bg-cover bg-whiteflower bg-fade'>
+        <div className="min-h-full bg-fixed bg-cover bg-whiteflower bg-fade">
             <main
                 className="flex items-center justify-center min-w-full min-h-screen px-4 py-12 opacity-80 sm:px-6 lg:px-8"
                 /* style="background-image: url(/img/background-whiteflower.jpg);"*/

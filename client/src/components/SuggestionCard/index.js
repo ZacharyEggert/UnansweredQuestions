@@ -12,10 +12,7 @@ const SuggestionCard = () => {
                     </h3>
                 </div>
                 <div className="flex flex-col items-center justify-center flex-1">
-                    <Link
-                        to="/suggestions"
-                        className="button"
-                    >
+                    <Link to="/suggestions" className="button">
                         Make a suggestion
                     </Link>
                 </div>

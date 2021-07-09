@@ -1,11 +1,11 @@
-const subBtn = document.querySelector('#submit')
+const subBtn = document.querySelector('#submit');
 
 const commentFormHandler = async (event) => {
     event.preventDefault();
 
-    const user_id = event.target.getAttribute('data-userid')
-    const daily_id = event.target.getAttribute('data-dq')
-    const comment = document.querySelector('#comment').value
+    const user_id = event.target.getAttribute('data-userid');
+    const daily_id = event.target.getAttribute('data-dq');
+    const comment = document.querySelector('#comment').value;
 
     console.log(user_id, daily_id, comment);
 
@@ -23,8 +23,6 @@ const commentFormHandler = async (event) => {
         }
     }
 };
-subBtn.addEventListener('click', (e) => { commentFormHandler(e) })
-
-
-
-
+subBtn.addEventListener('click', (e) => {
+    commentFormHandler(e);
+});

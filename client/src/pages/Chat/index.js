@@ -30,7 +30,7 @@ const Chat = () => {
 
     useEffect(() => {
         socket.emit('joinRoom', { username, room });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const outputRoomName = (roomData) => {
@@ -64,7 +64,7 @@ const Chat = () => {
     });
 
     return (
-        <div className='min-h-full bg-fixed bg-cover bg-blue-flowers bg-fade'>
+        <div className="min-h-full bg-fixed bg-cover bg-blue-flowers bg-fade">
             <main
                 className="flex items-center justify-center min-w-full min-h-screen px-4 py-12 join-chat opacity-80 sm:px-6 lg:px-8"
                 // eslint-disable-next-line react/style-prop-object
