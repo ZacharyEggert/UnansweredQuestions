@@ -23,7 +23,7 @@ const AllPhilosophers = () => {
                 ? PHILOSOPHER_PERIODS.map((period) => {
                       return (
                           <div className="flex-initial w-full " key={period}>
-                              <h1 className="mx-auto sm: w-9/12 text-5xl mt-4 mb-0 text-center bg-[rgba(0,0,0,0.6)] ">
+                              <h1 className="mx-auto sm:w-9/12 text-5xl mt-4 py-2 mb-0 text-center bg-[rgba(0,0,0,0.6)] ">
                                   {period} Philosophers
                               </h1>
                               <div className="box">
@@ -55,11 +55,7 @@ const AllPhilosophers = () => {
                       );
                   })
                 : null}
-            <div className="flex-initial w-full">
-                <div className="py-8 mx-auto bg-black bg-opacity-60 sm:m-14 sm:w-9/12">
-                    <SuggestionCard />
-                </div>
-            </div>
+            <SuggestionCard />
         </div>
     );
 };

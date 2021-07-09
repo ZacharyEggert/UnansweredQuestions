@@ -17,19 +17,19 @@ const PollCard = (props) => {
 
     return (
         <>
-            <div class="flex-auto flex-shrink-0 w-full md:w-5/12 flex flex-row flex-wrap justify-center content-between my-3 md:mx-3 p-4 items-center bg-black bg-opacity-60 max-w-full">
-                <div class="w-11/12 flex-initial" id="poll-question">
-                    <h2 class="text-center text-3xl">{poll.pollName}</h2>
-                    <p class="pt-4 text-justify">{poll.pollText}</p>
+            <div className="flex flex-row flex-wrap items-center content-between justify-center flex-auto flex-shrink-0 w-full max-w-full p-4 my-3 bg-black md:w-5/12 md:mx-3 bg-opacity-60">
+                <div className="flex-initial w-11/12" id="poll-question">
+                    <h2 className="text-3xl text-center">{poll.pollName}</h2>
+                    <p className="pt-4 text-justify">{poll.pollText}</p>
                 </div>
                 {!state.clicked ? (
                     <div
-                        class="w-11/12 flex-initial flex-row h-12 my-4 flex"
+                        className="flex flex-row flex-initial w-11/12 h-12 my-4"
                         id="poll-response"
                     >
-                        <div class="flex-1 bg-blue-600 flex align-middle content-center items-center text-center yes-btn">
+                        <div className="flex items-center content-center flex-1 text-center align-middle bg-blue-600 yes-btn">
                             <p
-                                class="flex-1"
+                                className="flex-1"
                                 onClick={() => {
                                     clickHandler(true);
                                 }}
@@ -37,9 +37,9 @@ const PollCard = (props) => {
                                 YES
                             </p>
                         </div>
-                        <div class="flex-1 bg-red-600 flex align-middle content-center items-center text-center no-btn">
+                        <div className="flex items-center content-center flex-1 text-center align-middle bg-red-600 no-btn">
                             <p
-                                class="flex-1"
+                                className="flex-1"
                                 onClick={() => {
                                     clickHandler(false);
                                 }}
@@ -50,12 +50,12 @@ const PollCard = (props) => {
                     </div>
                 ) : (
                     <div
-                        class="w-11/12 flex-initial flex-col h-12 my-4"
+                        className="flex-col flex-initial w-11/12 h-12 my-4"
                         id="poll-results"
                     >
-                        <div class="flex-1 flex content-start py-1 px-2 w-full">
+                        <div className="flex content-start flex-1 w-full px-2 py-1">
                             <div
-                                class="bg-blue-600 overflow-hidden whitespace-nowrap"
+                                className="overflow-hidden bg-blue-600 whitespace-nowrap"
                                 style={{
                                     width:
                                         percent(poll.vote_yes, poll.vote_no) +
@@ -65,9 +65,9 @@ const PollCard = (props) => {
                                 {percent(poll.vote_yes, poll.vote_no) + `%`} YES
                             </div>
                         </div>
-                        <div class="flex-1 flex content-start py-1 px-2 w-full">
+                        <div className="flex content-start flex-1 w-full px-2 py-1">
                             <div
-                                class="bg-red-600 overflow-hidden whitespace-nowrap"
+                                className="overflow-hidden bg-red-600 whitespace-nowrap"
                                 style={{
                                     width:
                                         percent(poll.vote_no, poll.vote_yes) +

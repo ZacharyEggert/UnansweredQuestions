@@ -163,9 +163,7 @@ const Quiz = () => {
                     </div>
                 ) : null}
 
-                <div className="py-8 mx-auto my-2 bg-black sm:w-9/12 bg-opacity-60">
                     <SuggestionCard />
-                </div>
             </section>
         </div>
     );

@@ -9,16 +9,14 @@ const Polls = () => {
 
     return (
         <>
-            <main class="min-h-full bg-cover bg-blue-petals bg-opacity-80 bg-fixed text-white">
-                <div class="py-14"></div>
-                <div class="flex flex-row flex-wrap px-6">
+            <main className="min-h-full text-white bg-fixed bg-cover bg-blue-petals bg-opacity-80">
+                <div className="py-14"></div>
+                <div className="flex flex-row flex-wrap px-6">
                     {globalState.polls.map((poll) => {
                         return <PollCard poll={poll} key={poll.id} />;
                     })}
                 </div>
-                <div class="bg-black bg-opacity-60 w-12/12 m-8 py-8">
                     <SuggestionCard />
-                </div>
             </main>
 
             <script src="/js/poll.js"></script>

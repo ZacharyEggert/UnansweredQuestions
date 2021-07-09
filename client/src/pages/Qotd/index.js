@@ -35,9 +35,7 @@ const Qotd = () => {
                     {isLoggedin ? <CommentInput /> : <CommentLogin />}
                 </div>
 
-                <div className="py-8 mx-auto bg-black bg-opacity-60 sm:m-14 sm:w-9/12">
                     <SuggestionCard />
-                </div>
             </main>
         </div>
     );
