@@ -35,7 +35,7 @@ const Qotd = () => {
                     {isLoggedin ? <CommentInput /> : <CommentLogin />}
                 </div>
 
-                    <SuggestionCard />
+                <SuggestionCard />
             </main>
         </div>
     );

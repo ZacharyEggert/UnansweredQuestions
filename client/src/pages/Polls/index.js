@@ -16,7 +16,7 @@ const Polls = () => {
                         return <PollCard poll={poll} key={poll.id} />;
                     })}
                 </div>
-                    <SuggestionCard />
+                <SuggestionCard />
             </main>
 
             <script src="/js/poll.js"></script>

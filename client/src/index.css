@@ -13,11 +13,10 @@
         color: inherit;
     }
 
-
     #menuToggle input:checked ~ ul {
-        transform:none;
+        transform: none;
     }
-    
+
     #menu {
         position: absolute;
         width: 300px;
@@ -33,32 +32,32 @@
         transition: transform 0.8s cubic-bezier(0.77, 0.2, 0.05, 1);
     }
 
-    #menuToggle input:checked ~ div>span {
+    #menuToggle input:checked ~ div > span {
         opacity: 1;
         transform: rotate(45deg) translate(0px, -1px);
         background: #232323;
     }
 
-    #menuToggle input:checked ~ div>span:nth-child(2) {
+    #menuToggle input:checked ~ div > span:nth-child(2) {
         opacity: 0;
         transform: rotate(0deg) scale(0.2, 0.2);
     }
 
-    #menuToggle input:checked ~ div>span:nth-child(3) {
+    #menuToggle input:checked ~ div > span:nth-child(3) {
         transform: rotate(-45deg) translate(0, -2px);
     }
 
-    .decoration-binding{
+    .decoration-binding {
         display: flex;
         flex-direction: row;
     }
 
-    .decoration-binding::before, .decoration-binding::after{
+    .decoration-binding::before,
+    .decoration-binding::after {
         content: '';
         flex: 1 1;
         border-bottom: 2px solid white;
         margin: auto 1rem;
-
     }
 
     .bg-fade::before {
@@ -106,11 +105,11 @@
     }
 
     .mobile-nav:first-of-type {
-        @apply pt-8
+        @apply pt-8;
     }
 
     .mobile-nav:last-of-type {
-        @apply pb-12
+        @apply pb-12;
     }
 
     .button {
@@ -127,7 +126,7 @@
             background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), opacity 0.55s ease;
     }
 
-    .click-none{
+    .click-none {
         click-events: none;
     }
 }

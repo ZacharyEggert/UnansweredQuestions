@@ -30,26 +30,24 @@ const AllPhilosophers = () => {
                                   {/**<!-- cards for each philosopher  -->*/}
 
                                   {globalState.philosophers
-                                      ? Object.keys(globalState.philosophers).map(
-                                            (key) => {
-                                                const philosopher = globalState.philosophers[key];
-                                                if (
-                                                    philosopher.period ===
-                                                    period
-                                                ) {
-                                                    return (
-                                                        <PhilosopherCard
-                                                            philosopher={
-                                                                philosopher
-                                                            }
-                                                            key={philosopher.id}
-                                                        />
-                                                    );
-                                                } else {
-                                                    return null;
-                                                }
+                                      ? Object.keys(
+                                            globalState.philosophers
+                                        ).map((key) => {
+                                            const philosopher =
+                                                globalState.philosophers[key];
+                                            if (philosopher.period === period) {
+                                                return (
+                                                    <PhilosopherCard
+                                                        philosopher={
+                                                            philosopher
+                                                        }
+                                                        key={philosopher.id}
+                                                    />
+                                                );
+                                            } else {
+                                                return null;
                                             }
-                                        )
+                                        })
                                       : null}
                               </div>
                           </div>

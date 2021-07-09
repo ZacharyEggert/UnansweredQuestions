@@ -11,7 +11,6 @@ const OnePhilosopher = () => {
     const { philosophers } = globalState;
     const philosopher = philosophers[id];
 
-
     return (
         <div className="min-h-full text-white bg-fixed bg-no-repeat bg-cover bg-redflowers bg-fade">
             <div className="py-14"></div>
@@ -32,11 +31,15 @@ const OnePhilosopher = () => {
                             allowFullScreen
                         />
                     </div>
-                    <h2 className="mt-4 text-2xl text-center sm:text-4xl decoration-binding">About</h2>
+                    <h2 className="mt-4 text-2xl text-center sm:text-4xl decoration-binding">
+                        About
+                    </h2>
                     <div>
                         <img
                             className="w-48 mx-auto mt-4 sm:w-72"
-                            src={`/philosopher-profile-images/${philosopher.imgUrl || 'plato.jpg'}`}
+                            src={`/philosopher-profile-images/${
+                                philosopher.imgUrl || 'plato.jpg'
+                            }`}
                             alt={`${philosopher.name} - broken link`}
                         />
                         <div className="px-4 mx-auto mt-4 max-w-prose">
@@ -61,7 +64,12 @@ const OnePhilosopher = () => {
                                 )}
                             </p>
                             <div className="flex flex-row-reverse pb-4">
-                                <Link to={philosopher.wikiLink || 'https://wikipedia.com/'}>
+                                <Link
+                                    to={
+                                        philosopher.wikiLink ||
+                                        'https://wikipedia.com/'
+                                    }
+                                >
                                     <button className="py-1 button">
                                         {' '}
                                         Learn More
