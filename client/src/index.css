@@ -13,6 +13,54 @@
         color: inherit;
     }
 
+
+    #menuToggle input:checked ~ ul {
+        transform:none;
+    }
+    
+    #menu {
+        position: absolute;
+        width: 300px;
+        margin: -100px 0 0 -50px;
+        padding: 50px;
+        padding-top: 115px;
+        padding-bottom: 1.5rem;
+        background: #f8f8fa;
+        list-style-type: none;
+        -webkit-font-smoothing: antialiased;
+        transform-origin: 0% 0%;
+        transform: translate(-15%, -100%);
+        transition: transform 0.8s cubic-bezier(0.77, 0.2, 0.05, 1);
+    }
+
+    #menuToggle input:checked ~ div>span {
+        opacity: 1;
+        transform: rotate(45deg) translate(0px, -1px);
+        background: #232323;
+    }
+
+    #menuToggle input:checked ~ div>span:nth-child(2) {
+        opacity: 0;
+        transform: rotate(0deg) scale(0.2, 0.2);
+    }
+
+    #menuToggle input:checked ~ div>span:nth-child(3) {
+        transform: rotate(-45deg) translate(0, -2px);
+    }
+
+    .decoration-binding{
+        display: flex;
+        flex-direction: row;
+    }
+
+    .decoration-binding::before, .decoration-binding::after{
+        content: '';
+        flex: 1 1;
+        border-bottom: 2px solid white;
+        margin: auto 1rem;
+
+    }
+
     .bg-fade::before {
         z-index: 2;
         content: '';
@@ -54,11 +102,15 @@
     }
 
     .mobile-nav {
-        @apply text-sm w-36 ml-16;
+        @apply text-sm w-36 text-[#222] text-xl pt-2 pl-2;
     }
 
     .mobile-nav:first-of-type {
-        @apply mt-16;
+        @apply pt-8
+    }
+
+    .mobile-nav:last-of-type {
+        @apply pb-12
     }
 
     .button {
@@ -66,12 +118,16 @@
     }
 
     #menuToggle span {
-        @apply block sm:hidden w-[33px] !h-1 mb-[5px] relative bg-[#cdcdcd] rounded-[3px] z-[1];
+        @apply block sm:hidden w-[33px] !h-1 mb-[5px] relative bg-[#cdcdcd] rounded-[3px] z-[10];
 
         click-events: none;
 
         transform-origin: 4px 0px;
         transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1),
             background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), opacity 0.55s ease;
+    }
+
+    .click-none{
+        click-events: none;
     }
 }
