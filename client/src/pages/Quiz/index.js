@@ -163,7 +163,7 @@ const Quiz = () => {
                     </div>
                 ) : null}
 
-                    <SuggestionCard />
+                <SuggestionCard />
             </section>
         </div>
     );

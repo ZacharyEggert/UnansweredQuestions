@@ -81,10 +81,10 @@ const NavMobile = () => {
                         </li>
                     )}
                 </ul>
-                <div className='inline-block p-3 pt-4 bg-black rounded-full bg-opacity-60 click-none'>
-                <span></span>
-                <span></span>
-                <span></span>
+                <div className="inline-block p-3 pt-4 bg-black rounded-full bg-opacity-60 click-none">
+                    <span></span>
+                    <span></span>
+                    <span></span>
                 </div>
             </div>
         </nav>
