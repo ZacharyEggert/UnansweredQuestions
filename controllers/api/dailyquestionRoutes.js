@@ -10,6 +10,15 @@ router.get('/', async (req, res) => {
     }
 });
 
+router.get('/today', async (req, res) => {
+    try {
+        const questData = await DailyQuestion.findAll();
+        res.status(200).json(questData);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
 router.get('/:id', async (req, res) => {
     try {
         const questData = await DailyQuestion.findByPk(req.params.id, {

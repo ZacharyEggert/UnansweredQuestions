@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const {
     fillPhilosopherData,
-    getDaysSinceMayTenth,
+    getDaysSinceJulySeventh,
     randomPicks,
 } = require('../utils/handlers');
 const {
@@ -116,7 +116,7 @@ router.get('/quiz/', async (req, res) => {
 router.get('/qotd/', async (req, res) => {
     try {
         const quotesData = await DailyQuestion.findByPk(
-            getDaysSinceMayTenth(),
+            getDaysSinceJulySeventh(),
             {
                 include: [
                     {

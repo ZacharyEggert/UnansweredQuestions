@@ -23,12 +23,12 @@ const randomPicks = (max, count) => {
     return outputArray;
 };
 
-const getDaysSinceMayTenth = () => {
-    const mayTenth = new Date(2021, 5 - 1, 10);
-    console.log(mayTenth);
+const getDaysSinceJulySeventh = () => {
+    const julySeventh = new Date(2021, 7 - 1, 7);
+    console.log(julySeventh);
     const today = new Date();
     console.log(today);
-    const diff = Math.round((today - mayTenth) / (1000 * 60 * 60 * 24));
+    const diff = Math.round((today - julySeventh) / (1000 * 60 * 60 * 24));
     console.log(diff);
     return diff;
 };
@@ -94,4 +94,4 @@ const fillPhilosopherData = async (id, philosopherData) => {
     return newPhilosopherData;
 };
 
-module.exports = { getDaysSinceMayTenth, fillPhilosopherData, randomPicks };
+module.exports = { getDaysSinceMayTenth: getDaysSinceJulySeventh, fillPhilosopherData, randomPicks };
