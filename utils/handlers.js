@@ -94,4 +94,8 @@ const fillPhilosopherData = async (id, philosopherData) => {
     return newPhilosopherData;
 };
 
-module.exports = { getDaysSinceMayTenth: getDaysSinceJulySeventh, fillPhilosopherData, randomPicks };
+module.exports = {
+    getDaysSinceMayTenth: getDaysSinceJulySeventh,
+    fillPhilosopherData,
+    randomPicks,
+};
