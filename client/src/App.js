@@ -13,7 +13,7 @@ import Polls from './pages/Polls';
 import { GlobalProvider } from './util/GlobalState';
 import NavBar from './components/NavBar';
 
-import OnePhilosopher from './components/OnePhilosopher';
+import OnePhilosopher from './pages/OnePhilosopher';
 
 const App = () => {
     return (

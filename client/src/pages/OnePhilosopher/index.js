@@ -11,41 +11,36 @@ const OnePhilosopher = () => {
     const { philosophers } = globalState;
     const philosopher = philosophers[id];
 
+
     return (
-        <div
-            className="mobile-main opacity-80"
-            // style="background-image: url(/img/background-redflowers.jpg);"
-        >
+        <div className="min-h-full text-white bg-fixed bg-no-repeat bg-cover bg-redflowers bg-fade">
             <div className="py-14"></div>
-            <section className="profile-container">
-                <div className="profile-body">
-                    <h1
-                        id="philosopher-name"
-                        className="capitalize philosopher-name"
-                    >
-                        <b>{philosopher.name}</b>
+            <section className="h-full max-w-[100vw] overflow-x-hidden">
+                <div className="box-border mx-auto mb-12 bg-black sm:w-9/12 bg-opacity-60">
+                    <h1 className="pt-8 mb-8 text-5xl font-bold text-center capitalize sm:text-6xl">
+                        {philosopher.name}
                     </h1>
-                    <div className="video">
+                    <div className="w-full">
                         <iframe
                             title="Youtube Video"
                             width="560"
                             height="315"
                             src={`https://www.youtube.com/embed/${philosopher.videoUrl}`}
-                            frameborder="0"
+                            frameBorder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen
-                        ></iframe>
+                            className="max-w-full mx-auto"
+                            allowFullScreen
+                        />
                     </div>
-                    <h2 className="about-philosopher">About</h2>
+                    <h2 className="mt-4 text-2xl text-center sm:text-4xl decoration-binding">About</h2>
                     <div>
                         <img
-                            className="w-48 p-0 m-0"
-                            id="philosopher-img"
-                            src={`/img/philosopher-profile-images/${philosopher.img}`}
-                            alt={`${philosopher.name}`}
-                        ></img>
-                        <div className="profile-content">
-                            <p id="philosopher-about">
+                            className="w-48 mx-auto mt-4 sm:w-72"
+                            src={`/philosopher-profile-images/${philosopher.imgUrl || 'plato.jpg'}`}
+                            alt={`${philosopher.name} - broken link`}
+                        />
+                        <div className="px-4 mx-auto mt-4 max-w-prose">
+                            <p>
                                 {philosopher.about ? (
                                     <p>{philosopher.about}</p>
                                 ) : (
@@ -65,12 +60,9 @@ const OnePhilosopher = () => {
                                     </span>
                                 )}
                             </p>
-                            <div className="philosopher-more">
-                                <Link to={philosopher.wikiLink}>
-                                    <button
-                                        className="w-auto px-4 whitespace-nowrap"
-                                        id="wiki-link"
-                                    >
+                            <div className="flex flex-row-reverse pb-4">
+                                <Link to={philosopher.wikiLink || 'https://wikipedia.com/'}>
+                                    <button className="py-1 button">
                                         {' '}
                                         Learn More
                                     </button>

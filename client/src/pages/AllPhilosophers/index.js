@@ -29,9 +29,10 @@ const AllPhilosophers = () => {
                               <div className="box">
                                   {/**<!-- cards for each philosopher  -->*/}
 
-                                  {globalState.philosophers?.length
-                                      ? globalState.philosophers.map(
-                                            (philosopher) => {
+                                  {globalState.philosophers
+                                      ? Object.keys(globalState.philosophers).map(
+                                            (key) => {
+                                                const philosopher = globalState.philosophers[key];
                                                 if (
                                                     philosopher.period ===
                                                     period

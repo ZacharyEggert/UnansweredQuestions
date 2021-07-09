@@ -29,7 +29,7 @@ const NavMobile = () => {
                     type="checkbox"
                     checked={navState.expanded}
                     onChange={handleMenuOpen}
-                    className="w-10 h-8 absolute top-[-4px] left-[-3.75px] cursor-pointer opacity-0 z-10"
+                    className="absolute z-30 w-12 h-12 cursor-pointer top-0.5 left-1 opacity-0"
                 />
                 {navState.expanded && (
                     <div
@@ -39,16 +39,9 @@ const NavMobile = () => {
                         className="z-[5] w-screen h-screen fixed top-0 left-0 overflow-hidden"
                     ></div>
                 )}
-
                 <ul
                     id="menu"
-                    className={`absolute flex flex-col justify-center items-center h-96 w-96 bg-white rounded-full -top-36 -left-36 z-[6] transform ${
-                        navState.expanded
-                            ? 'scale-1 animate-grow-in'
-                            : navState.hasNotExpanded
-                            ? 'scale-0'
-                            : 'animate-shrink-out scale-0'
-                    }`}
+                    className={`flex flex-col justify-center bg-white rounded-br-full z-[10]`}
                 >
                     <li className=" mobile-nav">
                         <Link to="/">Home</Link>
@@ -88,9 +81,11 @@ const NavMobile = () => {
                         </li>
                     )}
                 </ul>
+                <div className='inline-block p-3 pt-4 bg-black rounded-full bg-opacity-60 click-none'>
                 <span></span>
                 <span></span>
                 <span></span>
+                </div>
             </div>
         </nav>
     );
