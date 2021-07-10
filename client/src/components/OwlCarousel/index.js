@@ -11,9 +11,9 @@ const OwlCarousel = () => {
     const { carouselQuotes } = globalState;
 
     return (
-        <div className="owl-carousel owl-theme full-screen">
-            {carouselQuotes.map((quote) => (
-                <OwlCarouselSlide quote={quote} key={quote.id} />
+        <div className="owl-carousel owl-theme full-screen bg-carousel-1 bg-carousel-2 bg-carousel-3 bg-none">
+            {carouselQuotes.map((quote, index) => (
+                <OwlCarouselSlide quote={quote} key={quote.id} index={index} />
             ))}
         </div>
     );

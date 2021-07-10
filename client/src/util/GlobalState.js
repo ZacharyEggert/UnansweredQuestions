@@ -4,11 +4,48 @@ const GlobalContext = createContext();
 const { Provider } = GlobalContext;
 
 const initialState = {
-    philosophers: [{ name: 'Adam Yauch', period: 'Modern', id: 0 }],
+    philosophers: {
+        0: { name: 'Adam Yauch', period: 'Modern', id: 0 },
+    },
     carouselQuotes: [{ quote: 'Test Quote', author: 'Test Author', id: 151 }],
-    currentUser: { id: null, username: 'test', isAdmin: false },
-    chatRoom: { room: '', username: 'test' },
-    dailyQuestion:{name: 'Title', content: 'This is a question of the day', comments: [{user: 'Test Author', content:'This is a comment', id:505}]}
+    isLoggedin: true,
+    currentUser: {
+        id: null,
+        username: 'test',
+        isAdmin: false,
+    },
+    chatRoom: {
+        room: '',
+        username: 'test',
+    },
+    dailyQuestion: {
+        name: 'Test Question Name',
+        content:
+            'This is a question of the day. Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat?',
+        comments: [
+            {
+                user: 'Test Author',
+                content: 'This is a comment',
+                id: 505,
+            },
+        ],
+    },
+    polls: [
+        {
+            pollName: 'test Poll',
+            pollText:
+                'Lorem ipsum dolor sit amet, officia excepteur ex fugiat reprehenderit enim labore culpa sint ad nisi Lorem pariatur mollit ex esse exercitation amet. Nisi anim cupidatat excepteur officia. Reprehenderit nostrud nostrud ipsum Lorem est aliquip amet voluptate voluptate dolor minim nulla est proident. Nostrud officia pariatur ut officia. Sit irure elit esse ea nulla sunt ex occaecat reprehenderit commodo officia dolor Lorem duis laboris cupidatat officia voluptate. Culpa proident adipisicing id nulla nisi laboris ex in Lorem sunt duis officia eiusmod. Aliqua reprehenderit commodo ex non excepteur duis sunt velit enim. Voluptate laboris sint cupidatat ullamco ut ea consectetur et est culpa et culpa duis.',
+            vote_yes: 20,
+            vote_no: 1,
+        },
+        {
+            pollName: 'test Poll',
+            pollText:
+                'Lorem ipsum dolor sit amet, officia excepteur ex fugiat reprehenderit enim labore culpa sint ad nisi Lorem pariatur mollit ex esse exercitation amet. Nisi anim cupidatat excepteur officia. Reprehenderit nostrud nostrud ipsum Lorem est aliquip amet voluptate voluptate dolor minim nulla est proident. Nostrud officia pariatur ut officia. Sit irure elit esse ea nulla sunt ex occaecat reprehenderit commodo officia dolor Lorem duis laboris cupidatat officia voluptate. Culpa proident adipisicing id nulla nisi laboris ex in Lorem sunt duis officia eiusmod. Aliqua reprehenderit commodo ex non excepteur duis sunt velit enim. Voluptate laboris sint cupidatat ullamco ut ea consectetur et est culpa et culpa duis.',
+            vote_yes: 20,
+            vote_no: 10,
+        },
+    ],
 };
 
 const reducer = (state, action) => {
@@ -28,13 +65,13 @@ const reducer = (state, action) => {
         case 'setRoomName':
             return {
                 ...state,
-                chatRoom: { ...state.chatRoom, room:action.data}
+                chatRoom: { ...state.chatRoom, room: action.data },
             };
         case 'setRoomUsers':
             return {
                 ...state,
-                chatRoom: {...state.chatRoom, users:action.data}
-            }
+                chatRoom: { ...state.chatRoom, users: action.data },
+            };
 
         default:
             return state;

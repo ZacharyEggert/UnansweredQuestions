@@ -8,12 +8,4 @@ const getPhilosophers = () => {
     });
 };
 
-const getUser = () => {
-    return axios.post('/api/login').then((req, res) => {
-        if (res.status < 300) {
-            return res;
-        }
-    });
-};
-
 export { getPhilosophers };

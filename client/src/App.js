@@ -8,9 +8,13 @@ import FrontPage from './pages/FrontPage';
 import Quiz from './pages/Quiz';
 import Qotd from './pages/Qotd';
 import Login from './pages/Login';
+import Polls from './pages/Polls';
 
 import { GlobalProvider } from './util/GlobalState';
 import NavBar from './components/NavBar';
+
+import OnePhilosopher from './pages/OnePhilosopher';
+
 const App = () => {
     return (
         <GlobalProvider>
@@ -26,20 +30,20 @@ const App = () => {
                     <Route
                         exact
                         path="/philosopher/:id"
-                        component={AllPhilosophers}
+                        component={OnePhilosopher}
                     />
                     <Route exact path="/qotd/:id" component={AllPhilosophers} />
                     <Route exact path="/qotd" component={Qotd} />
                     <Route exact path="/chat" component={Chat} />
                     <Route exact path="/chatroom" component={JoinChat} />
-                    <Route exact path="/polls" component={AllPhilosophers} />
+                    <Route exact path="/polls" component={Polls} />
                     <Route
                         exact
                         path="/polls/:id"
                         component={AllPhilosophers}
                     />
                     <Route exact path="/login" component={Login} />
-                    <Route exact path="/suggestion" component={Suggestions} />
+                    <Route exact path="/suggestions" component={Suggestions} />
                     <Route exact path="/quiz" component={Quiz} />
                 </Switch>
             </Router>
