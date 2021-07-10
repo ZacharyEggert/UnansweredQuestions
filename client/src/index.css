@@ -2,20 +2,66 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer components{
-
-    a{
+@layer components {
+    a {
         text-decoration: inherit;
         color: inherit;
     }
 
-    a:hover{
+    a:hover {
         text-decoration: inherit;
         color: inherit;
     }
 
-    .bg-fade::before{
-        z-index:2;
+    #menuToggle input:checked ~ ul {
+        transform: none;
+    }
+
+    #menu {
+        position: absolute;
+        width: 300px;
+        margin: -100px 0 0 -50px;
+        padding: 50px;
+        padding-top: 115px;
+        padding-bottom: 1.5rem;
+        background: #f8f8fa;
+        list-style-type: none;
+        -webkit-font-smoothing: antialiased;
+        transform-origin: 0% 0%;
+        transform: translate(-15%, -100%);
+        transition: transform 0.8s cubic-bezier(0.77, 0.2, 0.05, 1);
+    }
+
+    #menuToggle input:checked ~ div > span {
+        opacity: 1;
+        transform: rotate(45deg) translate(0px, -1px);
+        background: #232323;
+    }
+
+    #menuToggle input:checked ~ div > span:nth-child(2) {
+        opacity: 0;
+        transform: rotate(0deg) scale(0.2, 0.2);
+    }
+
+    #menuToggle input:checked ~ div > span:nth-child(3) {
+        transform: rotate(-45deg) translate(0, -2px);
+    }
+
+    .decoration-binding {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .decoration-binding::before,
+    .decoration-binding::after {
+        content: '';
+        flex: 1 1;
+        border-bottom: 2px solid white;
+        margin: auto 1rem;
+    }
+
+    .bg-fade::before {
+        z-index: 2;
         content: '';
         position: absolute;
         height: 100%;
@@ -26,15 +72,14 @@
         background: rgba(255, 255, 255, 0.2);
     }
 
-    .bg-fade{
+    .bg-fade {
         position: relative;
     }
 
-    .bg-fade *{
+    .bg-fade * {
         z-index: 3;
-        position: relative
+        position: relative;
     }
-
 
     .desktop-nav {
         @apply text-sm md:text-base lg:text-xl text-center align-middle content-center ml-10 text-white relative block no-underline py-1.5 hover:text-[#e5eef1b2];
@@ -56,28 +101,32 @@
     }
 
     .mobile-nav {
-        @apply text-sm w-36 ml-16
+        @apply text-sm w-36 text-[#222] text-xl pt-2 pl-2;
     }
 
-    .mobile-nav:first-of-type{
-        @apply mt-16
+    .mobile-nav:first-of-type {
+        @apply pt-8;
+    }
+
+    .mobile-nav:last-of-type {
+        @apply pb-12;
     }
 
     .button {
-        @apply items-center w-auto p-3 text-white bg-[#FFFFFF10] hover:bg-[#FFFFFF20] border-2 border-white border-solid sm:text-xl whitespace-nowrap
+        @apply items-center w-auto p-3 text-white bg-[#FFFFFF10] hover:bg-[#FFFFFF20] border-2 border-white border-solid sm:text-xl whitespace-nowrap;
     }
 
-
     #menuToggle span {
-        @apply block sm:hidden w-[33px] !h-1 mb-[5px] relative bg-[#cdcdcd] rounded-[3px] z-[1];
+        @apply block sm:hidden w-[33px] !h-1 mb-[5px] relative bg-[#cdcdcd] rounded-[3px] z-[10];
 
-        click-events:none;
-        
+        click-events: none;
+
         transform-origin: 4px 0px;
         transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1),
             background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), opacity 0.55s ease;
-
-        
     }
 
+    .click-none {
+        click-events: none;
+    }
 }

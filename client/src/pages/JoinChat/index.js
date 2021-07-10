@@ -3,10 +3,10 @@ import JoinChatForm from '../../components/JoinChatForm';
 
 const JoinChat = () => {
     return (
-        <div className='min-h-full bg-fixed bg-cover bg-blue-petals bg-fade text-white'>
+        <div className="min-h-full bg-fixed bg-cover bg-blue-petals bg-fade text-white">
             <main
                 className="flex items-center justify-center min-w-full min-h-screen px-4 py-12 join-chat opacity-80 sm:px-6 lg:px-8"
-            /** style="background-image: url(/img/background-blue-petals.jpg);"*/
+                /** style="background-image: url(/img/background-blue-petals.jpg);"*/
             >
                 <div className="py-8"></div>
                 <div className="flex flex-row flex-wrap w-full bg-black sm:w-auto m-14 p-7 bg-opacity-80">

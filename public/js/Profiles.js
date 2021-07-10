@@ -26,7 +26,6 @@ async function loadProfile(name) {
     //philoIMG.attr("src", function-to-get-img);
     philoBlurb.text(trimString(content));
     readMoreButts.attr('href', readMoreURL);
-
 }
 
 readMoreButts.on('click', function (e) {
