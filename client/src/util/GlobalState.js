@@ -19,7 +19,7 @@ const initialState = {
         username: 'test',
     },
     dailyQuestion: {
-        name: 'Test Question Name',
+        name: 'QOTD',
         content:
             'This is a question of the day. Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat?',
         comments: [
@@ -71,6 +71,11 @@ const reducer = (state, action) => {
             return {
                 ...state,
                 chatRoom: { ...state.chatRoom, users: action.data },
+            };
+        case 'setDailyQuestion':
+            return {
+                ...state,
+                dailyQuestion: {content:action.data.question, comments:action.data.comments},
             };
 
         default:

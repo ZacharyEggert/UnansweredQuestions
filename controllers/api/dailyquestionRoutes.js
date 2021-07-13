@@ -1,10 +1,23 @@
 const router = require('express').Router();
 const { DailyQuestion } = require('../../models');
 const { getDaysSinceJulySeventh } = require('../../utils/handlers');
+const {Comments, User} = require('../../models');
 
 router.get('/', async (req, res) => {
     try {
-        const questData = await DailyQuestion.findByPk(getDaysSinceJulySeventh()-5);
+        const questData = await DailyQuestion.findByPk(getDaysSinceJulySeventh()-5, {
+            include: [
+                {
+                    model: Comments,
+                    required: false,
+                    include: [
+                        {
+                            model: User,
+                        },
+                    ],
+                },
+            ],
+        });
         res.status(200).json(questData);
     } catch (err) {
         console.error(err);

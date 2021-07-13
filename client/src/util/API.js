@@ -29,8 +29,6 @@ const getQuotes = () => {
         })
 }
 //get current qotd info eg. question,comments
-//need to update the logic for the route (homeroutes line 116) to start at a later date and reset when it runs out of daily questions
-//need to update the route to put info into state
 const getQotd = () => {
     return axios.get('/api/dailyquestion/')
         .then(response => {
