@@ -1,11 +1,13 @@
 const router = require('express').Router();
 const { DailyQuestion } = require('../../models');
+const { getDaysSinceJulySeventh } = require('../../utils/handlers');
 
 router.get('/', async (req, res) => {
     try {
-        const questData = await DailyQuestion.findAll();
+        const questData = await DailyQuestion.findByPk(getDaysSinceJulySeventh()-5);
         res.status(200).json(questData);
     } catch (err) {
+        console.error(err);
         res.status(500).json(err);
     }
 });
