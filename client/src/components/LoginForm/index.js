@@ -19,7 +19,7 @@ const LoginForm = () => {
         });
     };
 
-    const setCurrentUser = () => {
+    const setCurrentUser = (event) => {
         //send api fetch request (axios) and response will be used and inserted into global state as current user
         dispatch({
             type: 'setCurrentUser',
