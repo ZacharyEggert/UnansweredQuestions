@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { useGlobalContext } from '../../util/GlobalState';
+import { getLogin } from '../../util/API';
 
 const LoginForm = () => {
     const [globalState, dispatch] = useGlobalContext();
     const { currentUser } = globalState;
 
     const initialState = {
-        email: '',
+        username: '',
         password: '',
     };
 
@@ -19,41 +20,25 @@ const LoginForm = () => {
         });
     };
 
-    const setCurrentUser = (event) => {
+    const setCurrentUser = () => {
         //send api fetch request (axios) and response will be used and inserted into global state as current user
-        dispatch({
-            type: 'setCurrentUser',
-            data: { [event.target.name]: event.target.value },
-        });
+        // dispatch({
+        //     type: 'setCurrentUser',
+        //     data: { [event.target.name]: event.target.value },
+        // });
+        console.log({ username: state.username, password: state.password });
+        getLogin(state.username, state.password);
     };
 
     const handleFormSubmit = (event) => {
         event.preventDefault();
-        if (state['email'] === 'email' && state['email'].trim() === '') {
-            alert('Please enter a valid entry');
-        } else if (
-            state['username'] === 'username' &&
-            state['quote'].trim() === ''
-        ) {
-            alert('Please enter a valid entry');
-        } else if (
-            state['password'] === 'password' &&
-            state['password'].trim() === ''
-        ) {
-            alert('Please enter a valid entry');
-        } else {
-            alert('You are now logged in!');
-            setState({
-                email: '',
-                password: '',
-            });
 
-            console.log(state);
-        }
+        setCurrentUser();
+        console.log(state);
     };
 
     return (
-        <form>
+        <form onSubmit={handleFormSubmit}>
             <label
                 for="email"
                 className="inline-block w-2/12 my-3"
@@ -75,6 +60,8 @@ const LoginForm = () => {
             <input
                 name="username"
                 id="username"
+                value={state['username']}
+                onChange={handleOnChange}
                 type="text"
                 className="max-w-full pl-1 my-3 text-black"
             />
@@ -96,7 +83,6 @@ const LoginForm = () => {
                     id="login"
                     type="submit"
                     className="text-white rounded-md px-3 border-white border-2 border-solid whitespace-nowrap w-auto md:w-3/12 min-w-min bg-[#4d83a3]"
-                    onClick={handleFormSubmit}
                 >
                     Log in
                 </button>
