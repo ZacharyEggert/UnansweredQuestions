@@ -31,11 +31,9 @@ ProfilePage.init({
         type: DataTypes.TEXT,
         setdefault: '',
     },
-
-
-
-
 })
+
+module.exports = ProfilePage;
 
 
 
