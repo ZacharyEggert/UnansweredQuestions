@@ -1,41 +1,16 @@
 import React from 'react';
-import { useState } from 'react';
 
-const ChatForm = (props) => {
-    const { socket } = props;
-    const initialState = {
-        msg: '',
-    };
-
-    const [state, setState] = useState(initialState);
-
-    const handleOnChange = (event) => {
-        setState({
-            ...state,
-            [event.target.name]: event.target.value,
-        });
-    };
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        const { msg } = state;
-        socket.emit('chatMessage', msg);
-        setState({ msg: '' });
-    };
-
+const ChatForm = () => {
     return (
         <form id="chat-form">
             <input
-                name="msg"
-                value={state.msg}
                 id="msg"
                 type="text"
                 placeholder="Enter Message"
                 required
-                autoComplete="off"
-                onChange={handleOnChange}
+                autocomplete="off"
             />
-            <button className="mt-0 text-sm btn sm:ml-4" onClick={handleSubmit}>
+            <button className="btn mt-0 sm:ml-4 text-sm">
                 <i className="fas fa-paper-plane"></i> Send
             </button>
         </form>
