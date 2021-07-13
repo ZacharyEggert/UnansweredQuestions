@@ -5,7 +5,7 @@ const Login = () => {
         <div className="min-h-full bg-fixed bg-cover bg-butterfly-3 bg-fade">
             <main
                 className="min-w-full min-h-screen"
-                // style='background-image: url(/img/background-butterfly-3.jpg);'
+            // style='background-image: url(/img/background-butterfly-3.jpg);'
             >
                 <div className="py-8"></div>
 
