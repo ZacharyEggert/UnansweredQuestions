@@ -95,7 +95,7 @@ const fillPhilosopherData = async (id, philosopherData) => {
 };
 
 module.exports = {
-    getDaysSinceMayTenth: getDaysSinceJulySeventh,
+    getDaysSinceJulySeventh,
     fillPhilosopherData,
     randomPicks,
 };
