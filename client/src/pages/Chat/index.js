@@ -21,10 +21,11 @@ const Chat = () => {
 
     let socket = io();
 
-    const outputMessage = (event) => {
+    const outputMessage = (message) => {
         setState({
             ...state,
-            [event.target.name]: event.target.value,
+            'chat-messages': [state['chat-messages'], {...message, id: Date.now()}],
+            
         });
     };
 
