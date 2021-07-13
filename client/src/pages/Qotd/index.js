@@ -1,15 +1,25 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useGlobalContext } from '../../util/GlobalState';
 import CommentCard from '../../components/CommentCard';
 import CommentInput from '../../components/CommentInput';
 import CommentLogin from '../../components/CommentLogin';
 import SuggestionCard from '../../components/SuggestionCard';
+import { getQotd } from '../../util/API';
+
 
 const Qotd = () => {
     // eslint-disable-next-line no-unused-vars
     const [globalState, dispatch] = useGlobalContext();
 
     const { isLoggedin } = globalState;
+
+    useEffect(() => {
+        getQotd().then(response => {
+        console.log(response.data);
+        dispatch({ type: 'setDailyQuestion', data: response.data });
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     return (
         <div className="min-h-full text-white bg-fixed bg-cover bg-branches-3 bg-fade">
@@ -26,13 +36,13 @@ const Qotd = () => {
 
                     <h2 className="flex-1 mb-10 text-center">Comments</h2>
 
-                    {globalState.dailyQuestion.comments.map((comment) => {
+                    {globalState.dailyQuestion?.comments?.map((comment) => {
                         return (
                             <CommentCard comment={comment} key={comment.id} />
                         );
                     })}
 
-                    {isLoggedin ? <CommentInput /> : <CommentLogin />}
+                    {isLoggedin ? <CommentInput dailyQuestion={globalState.dailyQuestion}/> : <CommentLogin />}
                 </div>
 
                 <SuggestionCard />
