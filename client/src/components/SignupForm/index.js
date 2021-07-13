@@ -1,6 +1,49 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useGlobalContext } from '../../util/GlobalState';
 
 const SignupForm = () => {
+    const [globalState, dispatch] = useGlobalContext();
+    const { currentUser } = globalState;
+
+    const initialState = {
+        email: '',
+        password: '',
+    };
+
+    const [state, setState] = useState(initialState);
+
+    const handleOnChange = (event) => {
+        setState({
+            ...state,
+            [event.target.name]: event.target.value,
+        });
+    };
+
+    const handleFormSubmit = (event) => {
+        event.preventDefault();
+        if (state['email'] === 'email' && state['email'].trim() === '') {
+            alert('Please enter a valid entry');
+        } else if (
+            state['username'] === 'username' &&
+            state['quote'].trim() === ''
+        ) {
+            alert('Please enter a valid entry');
+        } else if (
+            state['password'] === 'password' &&
+            state['password'].trim() === ''
+        ) {
+            alert('Please enter a valid entry');
+        } else {
+            alert('You are now logged in!');
+            setState({
+                email: '',
+                password: '',
+            });
+
+            console.log(state);
+        }
+    };
+
     return (
         <form>
             <label for="email" className="w-4/12 inline-block my-3">
