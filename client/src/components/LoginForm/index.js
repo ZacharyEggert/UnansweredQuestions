@@ -19,7 +19,7 @@ const LoginForm = () => {
         });
     };
 
-    const setCurrentUser = () => {
+    const setCurrentUser = (event) => {
         //send api fetch request (axios) and response will be used and inserted into global state as current user
         dispatch({
             type: 'setCurrentUser',
@@ -56,7 +56,7 @@ const LoginForm = () => {
         <form>
             <label
                 for="email"
-                className="w-2/12 inline-block my-3"
+                className="inline-block w-2/12 my-3"
                 hidden
             ></label>
             <input
@@ -65,21 +65,21 @@ const LoginForm = () => {
                 id=""
                 type="text"
                 onChange={handleOnChange}
-                className="text-black pl-1 my-3 max-w-full"
+                className="max-w-full pl-1 my-3 text-black"
                 hidden
             />
             <br />
-            <label for="username" className="w-4/12 inline-block my-3">
+            <label for="username" className="inline-block w-4/12 my-3">
                 Username
             </label>
             <input
                 name="username"
                 id="username"
                 type="text"
-                className="text-black pl-1 my-3 max-w-full"
+                className="max-w-full pl-1 my-3 text-black"
             />
             <br />
-            <label for="password" className="w-4/12 inline-block my-3">
+            <label for="password" className="inline-block w-4/12 my-3">
                 Password
             </label>
             <input
@@ -88,10 +88,10 @@ const LoginForm = () => {
                 id="password"
                 type="text"
                 onChange={handleOnChange}
-                className="text-black pl-1 my-3 max-w-full"
+                className="max-w-full pl-1 my-3 text-black"
             />
             <br />
-            <span className="w-8/12 inline-block text-right">
+            <span className="inline-block w-8/12 text-right">
                 <button
                     id="login"
                     type="submit"
