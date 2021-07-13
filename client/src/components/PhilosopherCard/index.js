@@ -10,7 +10,7 @@ const PhilosopherCard = (props) => {
                 <div className="philosophercard card">
                     <div className="imgBx">
                         <img
-                            src={`/img/philosopher-profile-images/${philosopher.img}`}
+                            src={`/philosopher-profile-images/${philosopher.img || 'plato.jpg'}`}
                             alt={`${philosopher.name}'s best look`}
                         />
                     </div>

@@ -42,7 +42,7 @@ const Qotd = () => {
                         );
                     })}
 
-                    {isLoggedin ? <CommentInput /> : <CommentLogin />}
+                    {isLoggedin ? <CommentInput dailyQuestion={globalState.dailyQuestion}/> : <CommentLogin />}
                 </div>
 
                 <SuggestionCard />

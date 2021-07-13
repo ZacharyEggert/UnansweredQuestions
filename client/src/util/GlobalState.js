@@ -18,7 +18,7 @@ const initialState = {
         room: '',
         username: 'test',
     },
-    dailyQuestion: {
+    dailyQuestion: { /** API LOADED */
         name: 'QOTD',
         content:
             'This is a question of the day. Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat?',
@@ -75,7 +75,7 @@ const reducer = (state, action) => {
         case 'setDailyQuestion':
             return {
                 ...state,
-                dailyQuestion: {content:action.data.question, comments:action.data.comments},
+                dailyQuestion: {id:action.data.id ,content:action.data.question, comments:action.data.comments},
             };
 
         default:
