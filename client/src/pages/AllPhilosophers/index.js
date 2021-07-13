@@ -22,8 +22,8 @@ const AllPhilosophers = () => {
             {PHILOSOPHER_PERIODS
                 ? PHILOSOPHER_PERIODS.map((period) => {
                       return (
-                          <div className="flex-initial w-full " key={period}>
-                              <h1 className="mx-auto sm:w-9/12 text-5xl mt-4 py-2 mb-0 text-center bg-[rgba(0,0,0,0.6)] ">
+                          <div className="flex-initial w-full bg-[rgba(0,0,0,0.6)]" key={period}>
+                              <h1 className="py-2 mx-auto mt-4 mb-0 text-5xl text-center sm:w-9/12 ">
                                   {period} Philosophers
                               </h1>
                               <div className="box">
