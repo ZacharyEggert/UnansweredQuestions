@@ -2,7 +2,7 @@ const { Model, DataTypes } = require('sequelize');
 
 const sequelize = require('../config/connection');
 
-class Comments extends Model {}
+class Comments extends Model { }
 
 Comments.init(
     {
@@ -23,6 +23,14 @@ Comments.init(
         daily_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
+        },
+        likes: {
+            type: DataTypes.INTEGER,
+            defaultValue: 0
+        },
+        dislikes: {
+            type: DataTypes.INTEGER,
+            defaultValue: 0
         },
     },
     {
