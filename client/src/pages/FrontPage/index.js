@@ -2,7 +2,7 @@ import React from 'react';
 
 import OwlCarousel from '../../components/OwlCarousel';
 import './stars.css';
-import './owl.css';
+import './hero.css';
 import { useGlobalContext } from '../../util/GlobalState';
 
 const FrontPage = () => {
@@ -50,7 +50,12 @@ const FrontPage = () => {
 
             {/* <!-- We are going to put these qoutes in courousel  --> */}
 
-            <OwlCarousel />
+            {globalState.carouselQuotes?
+            (
+                <OwlCarousel />
+            ):(
+                null
+            )}
         </div>
     );
 };
