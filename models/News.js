@@ -40,7 +40,7 @@ News.init(
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'News',
+        modelName: 'news',
     }
 
 )
