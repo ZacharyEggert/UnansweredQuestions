@@ -3,6 +3,7 @@ import { useGlobalContext } from '../../util/GlobalState';
 import { getLogin } from '../../util/API';
 
 const LoginForm = () => {
+    // eslint-disable-next-line no-unused-vars
     const [globalState, dispatch] = useGlobalContext();
     const { currentUser } = globalState;
 

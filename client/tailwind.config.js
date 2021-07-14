@@ -3,6 +3,9 @@ module.exports = {
     purge: ['./src/**/*.{js,jsx,css,html}', './public/**/*.{js,jsx,css,html}'],
     darkMode: false, // or 'media' or 'class'
     theme: {
+        fontFamily: {
+            cursive: ['Courgette', 'Sans']
+        },
         extend: {
             backgroundImage: (theme) => ({
                 'blue-flowers':
