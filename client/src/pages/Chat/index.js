@@ -83,7 +83,7 @@ const Chat = () => {
                         <Link
                             to="/"
                             id="leave-btn"
-                            className="text-white rounded-md px-3  border-white border-2 border-solid whitespace-nowrap w-auto sm:mr-8 bg-[#4d83a3]"
+                            className="text-white rounded-md p-2 border-white border-2 border-solid whitespace-nowrap w-3/12 sm:mr-4 bg-[#4d83a3] text-center"
                         >
                             Leave Room
                         </Link>
