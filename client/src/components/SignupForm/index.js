@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useGlobalContext } from '../../util/GlobalState';
 
 const SignupForm = () => {
+    // eslint-disable-next-line no-unused-vars
     const [globalState, dispatch] = useGlobalContext();
     const { currentUser } = globalState;
 
@@ -46,37 +47,37 @@ const SignupForm = () => {
 
     return (
         <form>
-            <label for="email" className="w-4/12 inline-block my-3">
+            <label for="email" className="inline-block w-4/12 my-3">
                 Email
             </label>
             <input
                 name="email"
                 id="signupemail"
                 type="text"
-                className="text-black pl-1 my-3 max-w-full"
+                className="max-w-full pl-1 my-3 text-black"
             />
             <br />
-            <label for="username" className="w-4/12 inline-block my-3">
+            <label for="username" className="inline-block w-4/12 my-3">
                 Username
             </label>
             <input
                 name="username"
                 id="signupusername"
                 type="text"
-                className="text-black pl-1 my-3 max-w-full"
+                className="max-w-full pl-1 my-3 text-black"
             />
             <br />
-            <label for="password" className="w-4/12 inline-block my-3">
+            <label for="password" className="inline-block w-4/12 my-3">
                 Password
             </label>
             <input
                 name="password"
                 id="signuppassword"
                 type="text"
-                className="text-black pl-1 my-3 max-w-full"
+                className="max-w-full pl-1 my-3 text-black"
             />
             <br />
-            <span className="w-8/12 inline-block text-right">
+            <span className="inline-block w-8/12 text-right">
                 <button
                     id="signup"
                     type="submit"
