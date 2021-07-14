@@ -5,7 +5,6 @@ router.get('/', async (req, res) => {
     // find all quotes
     try {
         const quoteData = await Quote.findAll({
-            include: [{ model: Philosopher }],
         });
         res.status(200).json(quoteData);
     } catch (err) {
