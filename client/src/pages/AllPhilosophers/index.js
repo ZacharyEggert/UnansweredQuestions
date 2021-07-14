@@ -21,38 +21,38 @@ const AllPhilosophers = () => {
             <div className="py-14"></div>
             {PHILOSOPHER_PERIODS
                 ? PHILOSOPHER_PERIODS.map((period) => {
-                      return (
-                          <div className="flex-initial w-full bg-[rgba(0,0,0,0.6)]" key={period}>
-                              <h1 className="py-2 mx-auto mt-4 mb-0 text-5xl text-center sm:w-9/12 ">
-                                  {period} Philosophers
-                              </h1>
-                              <div className="box">
-                                  {/**<!-- cards for each philosopher  -->*/}
+                    return (
+                        <div className="flex-initial w-full bg-[rgba(0,0,0,0.6)]" key={period}>
+                            <h1 className="py-2 mx-auto mt-4 mb-0 text-5xl text-center sm:w-9/12 ">
+                                {period} Philosophers
+                            </h1>
+                            <div className="box">
+                                {/**<!-- cards for each philosopher  -->*/}
 
-                                  {globalState.philosophers
-                                      ? Object.keys(
-                                            globalState.philosophers
-                                        ).map((key) => {
-                                            const philosopher =
-                                                globalState.philosophers[key];
-                                            if (philosopher.period.toLowerCase() === period.toLowerCase()) {
-                                                return (
-                                                    <PhilosopherCard
-                                                        philosopher={
-                                                            philosopher
-                                                        }
-                                                        key={philosopher.id}
-                                                    />
-                                                );
-                                            } else {
-                                                return null;
-                                            }
-                                        })
-                                      : null}
-                              </div>
-                          </div>
-                      );
-                  })
+                                {globalState.philosophers
+                                    ? Object.keys(
+                                        globalState.philosophers
+                                    ).map((key) => {
+                                        const philosopher =
+                                            globalState.philosophers[key];
+                                        if (philosopher.period.toLowerCase() === period.toLowerCase()) {
+                                            return (
+                                                <PhilosopherCard
+                                                    philosopher={
+                                                        philosopher
+                                                    }
+                                                    key={philosopher.id}
+                                                />
+                                            );
+                                        } else {
+                                            return null;
+                                        }
+                                    })
+                                    : null}
+                            </div>
+                        </div>
+                    );
+                })
                 : null}
             <SuggestionCard />
         </div>
