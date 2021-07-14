@@ -35,7 +35,7 @@ const AllPhilosophers = () => {
                                         ).map((key) => {
                                             const philosopher =
                                                 globalState.philosophers[key];
-                                            if (philosopher.period === period) {
+                                            if (philosopher.period.toLowerCase() === period.toLowerCase()) {
                                                 return (
                                                     <PhilosopherCard
                                                         philosopher={
