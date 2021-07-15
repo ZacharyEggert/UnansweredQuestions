@@ -1,12 +1,26 @@
 const router = require('express').Router();
 const { Quote, Philosopher } = require('../../models');
+const { fillPhilosopherData } = require('../../utils/handlers');
 
 router.get('/', async (req, res) => {
     try {
         const philData = await Philosopher.findAll({
             include: [{ model: Quote }],
         });
-        res.status(200).json(philData);
+
+        let filledPhilData = philData.map(async phil => {
+            let philosopherData = phil;
+            if (!philosopherData.about || !philosopherData.youtube) {
+                philosopherData = await fillPhilosopherData(
+                    req.params.id,
+                    philosopherData
+                );
+            }
+
+            return philosopherData;
+        });
+
+        res.status(200).json(filledPhilData);
     } catch (err) {
         res.status(500).json(err);
     }
