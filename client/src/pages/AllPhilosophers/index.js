@@ -22,11 +22,11 @@ const AllPhilosophers = () => {
             {PHILOSOPHER_PERIODS
                 ? PHILOSOPHER_PERIODS.map((period) => {
                     return (
-                        <div className="flex-initial w-full bg-[rgba(0,0,0,0.6)]" key={period}>
-                            <h1 className="py-2 mx-auto mt-4 mb-0 text-5xl text-center sm:w-9/12 ">
+                        <div className="flex-initial pb-10 mb-10 w-9/12 bg-[rgba(0,0,0,0.6)]" key={period}>
+                            <h1 className="py-2 mx-auto my-5 text-5xl text-center sm:w-9/12 ">
                                 {period} Philosophers
                             </h1>
-                            <div className="box">
+                            <div className="box flex justify-center flex-wrap">
                                 {/**<!-- cards for each philosopher  -->*/}
 
                                 {globalState.philosophers

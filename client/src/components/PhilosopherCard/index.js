@@ -7,7 +7,7 @@ const PhilosopherCard = (props) => {
     return (
         <div>
             <Link to={`/philosopher/${philosopher.id}`}>
-                <div className="relative w-[200px] h-[250px] bg-[#FFF] my-0 mx-auto shadow-sm">
+                <div className="relative w-[200px] h-[250px] bg-[#FFF] my-2 mx-6  shadow-sm ">
                     <div className="absolute top-[10px] left-[10px] bottom-[60px] right-[10px] bg-[#222]">
                         <img
                             className="absolute top-0 left-0 object-cover w-full h-full"
