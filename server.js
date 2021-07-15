@@ -26,7 +26,7 @@ const hbs = exphbs.create({ helpers, extname: '.hbs' });
 const sess = {
     secret: process.env.SECRET || 'secret_string',
     cookie: {},
-    resave: false,
+    resave: true,
     saveUninitialized: true,
     store: new SequelizeStore({
         db: sequelize,
@@ -49,6 +49,7 @@ const botName = 'PhilosophyChat Bot';
 io.on('connection', (socket) => {
     socket.on('joinRoom', ({ username, room }) => {
         const user = userJoin(socket.id, username, room);
+        console.log({user});
         socket.join(user.room);
         //welcome current user
         socket.emit(
@@ -74,8 +75,15 @@ io.on('connection', (socket) => {
     //listen for chatMessage
     socket.on('chatMessage', (msg) => {
         const user = getCurrentUser(socket.id);
-
-        io.to(user.room).emit('message', formatMessage(user.username, msg));
+        if(!user) {
+            console.error({ERROR: 'user not found'}, {msg});
+            return;
+        }
+        try {
+            io.to(user.room).emit('message', formatMessage(user.username, msg));
+        } catch (error) {
+            console.error(error);
+        }
     });
 
     //runs when client disconnects
