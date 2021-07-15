@@ -31,7 +31,20 @@ ProfilePage.init({
         type: DataTypes.TEXT,
         setdefault: '',
     },
-})
+    favPhilosopher: {
+        type: DataTypes.STRING,
+        setdefault: '',
+    },
+},
+    {
+        sequelize,
+        timestamps: false,
+        freezeTableName: true,
+        underscored: true,
+        modelName: 'profilepage',
+
+    })
+
 
 module.exports = ProfilePage;
 
