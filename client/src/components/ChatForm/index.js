@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
+import './chatstyle.css';
 
 const ChatForm = (props) => {
     const { socket } = props;
@@ -35,7 +36,10 @@ const ChatForm = (props) => {
                 autocomplete="off"
                 onChange={handleOnChange}
             />
-            <button className="btn mt-0 sm:ml-4 text-sm" onClick={handleSubmit}>
+            <button
+                className="btn button-1 mt-0 sm:ml-4 text-sm w-3/12 tracking-wider"
+                onClick={handleSubmit}
+            >
                 <i className="fas fa-paper-plane"></i> Send
             </button>
         </form>

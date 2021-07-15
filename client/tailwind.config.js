@@ -70,6 +70,9 @@ module.exports = {
                 'shrink-out': 'shrink-out .3s ease-out',
             },
         },
+        gridTemplateColumns: {
+            3: '1fr 3fr',
+        },
     },
     variants: {
         extend: {},

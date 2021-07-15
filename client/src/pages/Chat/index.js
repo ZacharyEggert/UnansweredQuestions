@@ -4,6 +4,7 @@ import ChatForm from '../../components/ChatForm';
 import { io } from 'socket.io-client';
 import { useState } from 'react';
 import { useGlobalContext } from '../../util/GlobalState';
+import './chatstyle.css';
 
 const Chat = () => {
     const initialState = {
@@ -24,8 +25,10 @@ const Chat = () => {
     const outputMessage = (message) => {
         setState({
             ...state,
-            'chat-messages': [state['chat-messages'], {...message, id: Date.now()}],
-            
+            'chat-messages': [
+                state['chat-messages'],
+                { ...message, id: Date.now() },
+            ],
         });
     };
 
@@ -72,15 +75,15 @@ const Chat = () => {
                 /** style="background-image: url(/img/background-blue-flowers.jpg);"*/
             >
                 <div className="py-8"></div>
-                <div className="flex flex-col flex-wrap w-full bg-black sm:w-10/12 bg-opacity-70">
-                    <header className="flex flex-col items-center justify-between p-4 bg-black chat-header sm:flex-row border-b-white border-b-solid">
-                        <h1 className="pb-0 pr-4 text-3xl sm:text-4xl">
+                <div className="flex flex-col flex-wrap w-full bg-black sm:w-10/12 bg-opacity-40">
+                    <header className="flex flex-col items-center justify-between p-4 chat-header sm:flex-row border-b-white border-b-solid">
+                        <h1 className="text-3xl sm:text-4xl pb-0 pr-4 mb-8 pt-8 pl-8">
                             {room}
                         </h1>
                         <Link
                             to="/"
                             id="leave-btn"
-                            className="text-white rounded-md px-3  border-white border-2 border-solid whitespace-nowrap w-auto sm:mr-8 bg-[#4d83a3]"
+                            className="text-white rounded-md p-2 border-white border-2 border-solid whitespace-nowrap w-3/12 sm:mr-4 bg-[#4d83a3] text-center"
                         >
                             Leave Room
                         </Link>
@@ -120,7 +123,7 @@ const Chat = () => {
                             ))}
                         </div>
                     </section>
-                    <div className="bg-black chat-form-container">
+                    <div className="chat-form-container">
                         <ChatForm socket={socket} />
                     </div>
                 </div>

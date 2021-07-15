@@ -1,6 +1,7 @@
 import React from 'react';
 import { useGlobalContext } from '../../util/GlobalState';
 import { Link } from 'react-router-dom';
+import './chatstyle.css';
 
 const JoinChatForm = () => {
     const [globalState, dispatch] = useGlobalContext();
@@ -17,12 +18,15 @@ const JoinChatForm = () => {
     return (
         <form>
             <div className="mb-4 form-control">
-                <label htmlFor="username" className="inline-block w-4/12">
+                <label
+                    htmlFor="username"
+                    className="inline-block w-4/12 text-lg"
+                >
                     Username:
                 </label>
                 {currentUser.username ? (
                     <input
-                        className="p-1 text-black"
+                        className="p-1 text-black bg-white text-base"
                         type="text"
                         name="username"
                         value={currentUser.username}
@@ -33,7 +37,7 @@ const JoinChatForm = () => {
                     />
                 ) : (
                     <input
-                        className="p-1 text-black"
+                        className="p-1 text-black bg-white text-base"
                         type="text"
                         name="username"
                         id="username"
@@ -45,7 +49,7 @@ const JoinChatForm = () => {
             <div className="mb-4 form-control">
                 <label
                     htmlFor="room"
-                    className="inline-block w-4/12"
+                    className="inline-block w-4/12 text-lg"
                     id="listbox-label"
                 >
                     Room:
@@ -55,7 +59,7 @@ const JoinChatForm = () => {
                     value={chatRoom.room}
                     onChange={handleOnChange}
                     id="room"
-                    className="block p-1 mt-1 text-black width-auto form-select"
+                    className="inline-block p-1 mt-1 mr-0 text-black width-auto form-select"
                     placeholder="Choose room..."
                 >
                     <option className="pl-1 text-black" value="">
@@ -71,19 +75,19 @@ const JoinChatForm = () => {
             </div>
             {chatRoom.room !== '' ? (
                 <Link to="/chat">
-                    <span className="inline-block w-8/12 text-right contents">
-                        <button className="text-white rounded-md px-3  border-white border-2 border-solid whitespace-nowrap md:w-3/12 min-w-min bg-[#4d83a3] w-full items-center">
+                    <span className="inline-block w-8/12 text-right">
+                        <button className="button text-white rounded-md px-3 border-white border-2 border-solid whitespace-nowrap min-w-min bg-[#4d83a3] w-full items-center">
                             Join Chat
                         </button>
                     </span>
                 </Link>
             ) : (
-                <span className="inline-block w-8/12 text-right contents">
+                <span className="inline-block w-full text-right">
                     <button
                         onClick={(e) => {
                             e.preventDefault();
                         }}
-                        className="text-white rounded-md px-3  border-white border-2 border-solid whitespace-nowrap md:w-3/12 min-w-min bg-[#4d83a3] w-full items-center"
+                        className="button text-white rounded-md px-3 border-white border-2 border-solid whitespace-nowrap min-w-min bg-[#4d83a3] w-full items-center"
                     >
                         Join Chat
                     </button>
