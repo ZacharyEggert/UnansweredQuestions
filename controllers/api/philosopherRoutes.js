@@ -7,20 +7,7 @@ router.get('/', async (req, res) => {
         const philData = await Philosopher.findAll({
             include: [{ model: Quote }],
         });
-
-        let filledPhilData = philData.map(async phil => {
-            let philosopherData = phil;
-            if (!philosopherData.about || !philosopherData.youtube) {
-                philosopherData = await fillPhilosopherData(
-                    req.params.id,
-                    philosopherData
-                );
-            }
-
-            return philosopherData;
-        });
-
-        res.status(200).json(filledPhilData);
+        res.status(200).json(philData);
     } catch (err) {
         res.status(500).json(err);
     }
@@ -28,18 +15,33 @@ router.get('/', async (req, res) => {
 
 router.get('/:id', async (req, res) => {
     try {
-        const philData = await Philosopher.findByPk(req.params.id, {
+        let philData = await Philosopher.findByPk(req.params.id, {
             include: [{ model: Quote }],
         });
+
         if (!philData) {
             res.status(404).json({
                 message: 'No philosopher found with that id!',
             });
             return;
         }
+
+        if (!philData.about || !philData.youtube) {
+
+            // console.log({ about: philData.about, youtube: philData.youtube });
+
+            philData = await fillPhilosopherData(
+                req.params.id,
+                philData
+            );
+        }
+
+        // console.log(philData);
+
         res.status(200).json(philData);
     } catch (err) {
         res.status(500).json(err);
+        console.error(err);
     }
 });
 

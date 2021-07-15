@@ -8,6 +8,14 @@ const getPhilosophers = () => {
         }
     });
 };
+//get one philosopher
+const getPhilosopher = (id) => {
+    return axios.get('/api/philosophers/' + id ).then((response) => {
+        if (response.status < 300) {
+            return response;
+        }
+    });
+};
 // get all polls
 const getPolls = () => {
     return axios.get('/api/polls').then((response) => {
@@ -41,4 +49,4 @@ const getLogin = (user_name, password) => {
         });
 };
 
-export { getPhilosophers, getPolls, getQuotes, getQotd, getLogin };
+export { getPhilosophers, getPhilosopher, getPolls, getQuotes, getQotd, getLogin };
