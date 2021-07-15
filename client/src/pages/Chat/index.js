@@ -33,6 +33,7 @@ const Chat = () => {
     };
 
     useEffect(() => {
+        console.log({username, room});
         socket.emit('joinRoom', { username, room });
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
@@ -77,7 +78,7 @@ const Chat = () => {
                 <div className="py-8"></div>
                 <div className="flex flex-col flex-wrap w-full bg-black sm:w-10/12 bg-opacity-40">
                     <header className="flex flex-col items-center justify-between p-4 chat-header sm:flex-row border-b-white border-b-solid">
-                        <h1 className="text-3xl sm:text-4xl pb-0 pr-4 mb-8 pt-8 pl-8">
+                        <h1 className="pt-8 pb-0 pl-8 pr-4 mb-8 text-3xl sm:text-4xl">
                             {room}
                         </h1>
                         <Link
