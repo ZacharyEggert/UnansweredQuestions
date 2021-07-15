@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { response } from 'express';
 
 //get all philosophers
 const getPhilosophers = () => {
@@ -41,4 +42,12 @@ const getLogin = (user_name, password) => {
         });
 };
 
-export { getPhilosophers, getPolls, getQuotes, getQotd, getLogin };
+const getNews = () => {
+    return axios.get('./api/news/').then((response) => {
+        if (response.status < 300) {
+            return response;
+        }
+    });
+};
+
+export { getPhilosophers, getPolls, getQuotes, getQotd, getLogin, getNews };

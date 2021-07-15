@@ -63,6 +63,9 @@ const NavMobile = () => {
                         <Link to="/polls">Polls</Link>
                     </li>
                     <li className="mobile-nav">
+                        <Link to="/news">News</Link>
+                    </li>
+                    <li className="mobile-nav">
                         <Link to="/chatroom">
                             LiveChat
                             <br />

@@ -9,6 +9,7 @@ import Quiz from './pages/Quiz';
 import Qotd from './pages/Qotd';
 import Login from './pages/Login';
 import Polls from './pages/Polls';
+import News from './pages/News';
 import NavBar from './components/NavBar';
 import OnePhilosopher from './pages/OnePhilosopher';
 import { useGlobalContext } from './util/GlobalState';
