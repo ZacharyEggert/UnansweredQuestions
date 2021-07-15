@@ -9,6 +9,14 @@ const getPhilosophers = () => {
         }
     });
 };
+//get one philosopher
+const getPhilosopher = (id) => {
+    return axios.get('/api/philosophers/' + id ).then((response) => {
+        if (response.status < 300) {
+            return response;
+        }
+    });
+};
 // get all polls
 const getPolls = () => {
     return axios.get('/api/polls').then((response) => {
@@ -42,6 +50,7 @@ const getLogin = (user_name, password) => {
         });
 };
 
+<<<<<<< HEAD
 const getNews = () => {
     return axios.get('./api/news/').then((response) => {
         if (response.status < 300) {
@@ -51,3 +60,6 @@ const getNews = () => {
 };
 
 export { getPhilosophers, getPolls, getQuotes, getQotd, getLogin, getNews };
+=======
+export { getPhilosophers, getPhilosopher, getPolls, getQuotes, getQotd, getLogin };
+>>>>>>> 35fff7b139376a596cf0e3799f6df22762295a6c

@@ -71,7 +71,7 @@ const App = () => {
                         path="/philosopher/:id"
                         component={OnePhilosopher}
                     />
-                    <Route exact path="/qotd/:id" component={AllPhilosophers} />
+                    <Route exact path="/qotd/:id" component={Qotd} />
                     <Route exact path="/qotd" component={Qotd} />
                     <Route exact path="/chat" component={Chat} />
                     <Route exact path="/chatroom" component={JoinChat} />
@@ -79,7 +79,7 @@ const App = () => {
                     <Route
                         exact
                         path="/polls/:id"
-                        component={AllPhilosophers}
+                        component={Polls}
                     />
                     <Route exact path="/login" component={Login} />
                     <Route exact path="/suggestions" component={Suggestions} />

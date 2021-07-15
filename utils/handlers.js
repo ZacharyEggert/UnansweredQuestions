@@ -83,8 +83,9 @@ const getWikiData = async (philosopherData) => {
 const fillPhilosopherData = async (id, philosopherData) => {
     let newPhilosopherData = philosopherData;
     const yt = await getYoutubeUrl(newPhilosopherData);
+    // console.log(yt);
     const wiki = await getWikiData(newPhilosopherData);
-    console.log(wiki.readMoreURL.replace(/ /g, '%20'));
+    // console.log(wiki.readMoreURL.replace(/ /g, '%20'));
 
     newPhilosopherData.videoUrl = yt.id;
     newPhilosopherData.about = wiki.content;
