@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const SuggestionCard = () => {
     return (
-        <div className="flex flex-row items-center flex-initial w-full">
+        <div className="flex flex-row items-center flex-initial w-full mb-10">
             <div className="py-4 mx-auto mt-6 bg-black bg-opacity-60 sm:mt-12 sm:w-9/12">
                 <section>
                     <div className="flex flex-col items-center px-8 sm:flex-row">
