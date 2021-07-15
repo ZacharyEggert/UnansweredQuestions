@@ -1,12 +1,28 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useGlobalContext } from '../../util/GlobalState';
 import { Link, useParams } from 'react-router-dom';
+import {getPhilosopher} from '../../util/API';
 
 const OnePhilosopher = () => {
     // eslint-disable-next-line no-unused-vars
     const [globalState, dispatch] = useGlobalContext();
 
     const { id } = useParams();
+
+    useEffect(() => {
+
+        getPhilosopher(id)
+        .then(({ data }) => {
+
+            console.log({data});
+
+            dispatch({
+                type: 'ONE_PHILOSOPHER_RECEIVE',
+                data,
+            });
+        });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [id]);
 
     const { philosophers } = globalState;
     const philosopher = philosophers[id];
@@ -38,14 +54,14 @@ const OnePhilosopher = () => {
                         <img
                             className="w-48 mx-auto mt-4 sm:w-72"
                             src={`/philosopher-profile-images/${
-                                philosopher.imgUrl || 'plato.jpg'
+                                philosopher.img || 'plato.jpg'
                             }`}
                             alt={`${philosopher.name} - broken link`}
                         />
                         <div className="px-4 mx-auto mt-4 max-w-prose">
                             <p>
                                 {philosopher.about ? (
-                                    <p>{philosopher.about}</p>
+                                    <span>{philosopher.about}</span>
                                 ) : (
                                     <span>
                                         Lorem ipsum, dolor sit amet consectetur
