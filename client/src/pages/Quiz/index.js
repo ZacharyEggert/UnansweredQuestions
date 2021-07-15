@@ -109,7 +109,7 @@ const Quiz = () => {
                         <h3 className="mb-2 text-3xl text-center">
                             Philosophy Quiz
                         </h3>
-                        <p className="w-8/12 my-2 text-lg text-justify">
+                        <p className="w-8/12 my-2 text-lg text-center">
                             How much of philosophy do you know? Are you able to
                             recognize which famous Philosopher said what? Give
                             it a try!

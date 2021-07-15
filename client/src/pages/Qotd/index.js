@@ -15,10 +15,10 @@ const Qotd = () => {
 
     useEffect(() => {
         getQotd().then(response => {
-        console.log(response.data);
-        dispatch({ type: 'setDailyQuestion', data: response.data });
-    });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+            console.log(response.data);
+            dispatch({ type: 'setDailyQuestion', data: response.data });
+        });
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (
@@ -34,7 +34,7 @@ const Qotd = () => {
                         </h2>
                     </div>
 
-                    <h2 className="flex-1 mb-10 text-center">Comments</h2>
+                    <h2 className="flex-1 text-2xl mb-10 text-center">Comments</h2>
 
                     {globalState.dailyQuestion?.comments?.map((comment) => {
                         return (
@@ -42,7 +42,7 @@ const Qotd = () => {
                         );
                     })}
 
-                    {isLoggedin ? <CommentInput dailyQuestion={globalState.dailyQuestion}/> : <CommentLogin />}
+                    {isLoggedin ? <CommentInput dailyQuestion={globalState.dailyQuestion} /> : <CommentLogin />}
                 </div>
 
                 <SuggestionCard />
