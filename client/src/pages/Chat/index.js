@@ -20,13 +20,13 @@ const Chat = () => {
     const { chatRoom } = globalState;
     const { username, room } = chatRoom;
 
-    let socket = io();
+    const [socket, setSocket] = useState(io());
 
     const outputMessage = (message) => {
         setState({
             ...state,
             'chat-messages': [
-                state['chat-messages'],
+                ...state['chat-messages'],
                 { ...message, id: Date.now() },
             ],
         });
@@ -77,7 +77,7 @@ const Chat = () => {
                 <div className="py-8"></div>
                 <div className="flex flex-col flex-wrap w-full bg-black sm:w-10/12 bg-opacity-40">
                     <header className="flex flex-col items-center justify-between p-4 chat-header sm:flex-row border-b-white border-b-solid">
-                        <h1 className="text-3xl sm:text-4xl pb-0 pr-4 mb-8 pt-8 pl-8">
+                        <h1 className="pt-8 pb-0 pl-8 pr-4 mb-8 text-3xl sm:text-4xl">
                             {room}
                         </h1>
                         <Link
@@ -102,7 +102,7 @@ const Chat = () => {
                             </h3>
                             <ul id="users">
                                 {state['users'].map((user) => (
-                                    <li>${user.username}</li>
+                                    <li>{user.username}</li>
                                 ))}
                             </ul>
                         </div>
@@ -115,10 +115,10 @@ const Chat = () => {
                             {state['chat-messages'].map((message) => (
                                 <div className="message">
                                     <p className="meta">
-                                        ${message.username}{' '}
-                                        <span>${message.time} </span>
+                                        {message.username }{' '}
+                                        <span>{message.time} </span>
                                     </p>
-                                    <p className="text">${message.text}</p>
+                                    <p className="text">{message.text}</p>
                                 </div>
                             ))}
                         </div>
