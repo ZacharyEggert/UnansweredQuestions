@@ -12,10 +12,10 @@ router.post('/signup', async (req, res) => {
             req.session.logged_in = true;
             //when username saved upon signup, saved as logged_name
             req.session.logged_name = userData.user_name;
-            res.status(200).json(userData);
+            res.status(200).json(userData.get({ plain: true }));
         });
     } catch (err) {
-        res.status(400).json(err);
+        res.status(500).json(err);
         console.error(err);
     }
 });
@@ -28,7 +28,7 @@ router.post('/login', async (req, res) => {
             where: { user_name: req.body.user_name },
         });
         if (!userData) {
-            res.status(400).json({
+            res.status(404).json({
                 message: 'Incorrect username or password, please try again',
             });
             return;
@@ -36,7 +36,7 @@ router.post('/login', async (req, res) => {
 
         const validPassword = await userData.checkPassword(req.body.password);
         if (!validPassword) {
-            res.status(400).json({
+            res.status(404).json({
                 message: 'Incorrect username or password, please try again',
             });
             return;
@@ -50,7 +50,7 @@ router.post('/login', async (req, res) => {
             res.json({ user: userData, message: 'You are now logged in' });
         });
     } catch (err) {
-        res.status(400).json(err);
+        res.status(500).json(err);
         console.error(err);
     }
 });
