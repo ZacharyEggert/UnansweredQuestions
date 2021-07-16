@@ -78,6 +78,21 @@ const reducer = (state, action) => {
                 }
             };
 
+        case 'LOG_IN':
+            return {
+                ...state,
+                isLoggedIn: true,
+                currentUser: action.data,
+            };
+
+        case 'LOG_OUT':
+            return {
+                ...state,
+                isLoggedIn: false,
+                currentUser: null,
+            };
+        
+
 
         default:
             return state;
