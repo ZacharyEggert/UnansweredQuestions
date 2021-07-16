@@ -45,15 +45,17 @@ const logIn = ({ user_name, password }) => {
     return axios
         .post('/api/user/login', { user_name, password })
         .then((response) => {
-            console.log(response);
+            // console.log(response);
+            return response;
         });
 };
 
 const signUp = ({ email, password, user_name }) => {
     return axios
-        .post('/api/user/signup', { user_name, password })
+        .post('/api/user/signup', { email, user_name, password })
         .then((response) => {
-            console.log(response);
+            // console.log(response);
+            return response;
         });
 };
 
