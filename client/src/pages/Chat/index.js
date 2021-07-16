@@ -20,6 +20,7 @@ const Chat = () => {
     const { chatRoom } = globalState;
     const { username, room } = chatRoom;
 
+    // eslint-disable-next-line no-unused-vars
     const [socket, setSocket] = useState(io());
 
     const outputMessage = (message) => {

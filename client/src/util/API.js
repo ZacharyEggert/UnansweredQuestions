@@ -10,7 +10,7 @@ const getPhilosophers = () => {
 };
 //get one philosopher
 const getPhilosopher = (id) => {
-    return axios.get('/api/philosophers/' + id ).then((response) => {
+    return axios.get('/api/philosophers/' + id).then((response) => {
         if (response.status < 300) {
             return response;
         }
@@ -41,12 +41,40 @@ const getQotd = () => {
     });
 };
 
-const getLogin = (user_name, password) => {
+const logIn = ({ user_name, password }) => {
     return axios
         .post('/api/user/login', { user_name, password })
         .then((response) => {
-            console.log(response);
+            // console.log(response);
+            return response;
         });
 };
 
-export { getPhilosophers, getPhilosopher, getPolls, getQuotes, getQotd, getLogin };
+const signUp = ({ email, password, user_name }) => {
+    return axios
+        .post('/api/user/signup', { email, user_name, password })
+        .then((response) => {
+            // console.log(response);
+            return response;
+        });
+};
+
+const logOut = () => {
+    return axios
+        .get('/api/user/logout')
+        .then((response) => {
+            // console.log(response);
+            return response;
+        });
+};
+
+export {
+    getPhilosophers,
+    getPhilosopher,
+    getPolls,
+    getQuotes,
+    getQotd,
+    logIn,
+    logOut,
+    signUp,
+};
