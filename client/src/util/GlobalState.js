@@ -5,15 +5,11 @@ const { Provider } = GlobalContext;
 
 const initialState = {
     philosophers: {
-        1: { name: 'Adam Yauch', period: 'Modern', id: 0 },
+        1: { name: 'Adam Yauch', period: 'Modern', id: 1, img:'plato.jpg' },
     },
     carouselQuotes: null,
-    isLoggedin: true,
-    currentUser: {
-        id: null,
-        username: 'test',
-        isAdmin: false,
-    },
+    isLoggedIn: false,
+    currentUser: null,
     chatRoom: {
         room: '',
         username: 'test',
@@ -73,6 +69,30 @@ const reducer = (state, action) => {
                 ...state,
                 carouselQuotes: action.data,
             };
+        case 'ONE_PHILOSOPHER_RECEIVE':
+            return {
+                ...state,
+                philosophers: { 
+                    ...state.philosophers,
+                    [action.data.id]: action.data,
+                }
+            };
+
+        case 'LOG_IN':
+            return {
+                ...state,
+                isLoggedIn: true,
+                currentUser: action.data,
+            };
+
+        case 'LOG_OUT':
+            return {
+                ...state,
+                isLoggedIn: false,
+                currentUser: null,
+            };
+        
+
 
         default:
             return state;

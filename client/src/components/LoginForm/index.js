@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { useGlobalContext } from '../../util/GlobalState';
-import { getLogin } from '../../util/API';
+import { logIn } from '../../util/API';
 
 const LoginForm = () => {
     // eslint-disable-next-line no-unused-vars
     const [globalState, dispatch] = useGlobalContext();
-    const { currentUser } = globalState;
+    // const { currentUser } = globalState;
 
     const initialState = {
+        email: '',
         username: '',
         password: '',
     };
@@ -22,26 +23,43 @@ const LoginForm = () => {
     };
 
     const setCurrentUser = () => {
-        //send api fetch request (axios) and response will be used and inserted into global state as current user
-        // dispatch({
-        //     type: 'setCurrentUser',
-        //     data: { [event.target.name]: event.target.value },
-        // });
-        console.log({ username: state.username, password: state.password });
-        getLogin(state.username, state.password);
-    };
+        logIn({user_name:state.username, password:state.password})
+        .then((response) => {
+            dispatch({ type: 'LOG_IN', data: response.data });
+            // console.debug(response);
+        })
+        .catch((error) => {
+            console.error(error);
+        });
+ };
 
     const handleFormSubmit = (event) => {
         event.preventDefault();
+        if (
+            state['username'] === 'username' ||
+            state['username'].trim() === ''
+        ) {
+            alert('Please enter a valid username');
+            return;
+        } 
+        else if (
+            state['password'] === 'password' ||
+            state['password'].trim() === ''
+        ) {
+            alert('Please enter a valid password');
+            return;
+        }
+
+        // console.log({message: 'this should sign you up'});
 
         setCurrentUser();
-        console.log(state);
+        // console.log(state);
     };
 
     return (
         <form onSubmit={handleFormSubmit}>
             <label
-                for="email"
+                htmlFor="email"
                 className="inline-block w-2/12 my-3"
                 hidden
             ></label>
@@ -53,9 +71,10 @@ const LoginForm = () => {
                 onChange={handleOnChange}
                 className="max-w-full pl-1 my-3 text-black"
                 hidden
+                disabled
             />
             <br />
-            <label for="username" className="inline-block w-4/12 my-3">
+            <label htmlFor="username" className="inline-block w-4/12 my-3">
                 Username
             </label>
             <input
@@ -67,7 +86,7 @@ const LoginForm = () => {
                 className="max-w-full pl-1 my-3 text-black"
             />
             <br />
-            <label for="password" className="inline-block w-4/12 my-3">
+            <label htmlFor="password" className="inline-block w-4/12 my-3">
                 Password
             </label>
             <input

@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom';
 import AllPhilosophers from './pages/AllPhilosophers';
 import Chat from './pages/Chat';
 import JoinChat from './pages/JoinChat';
@@ -35,7 +35,7 @@ const App = () => {
 
         getQuotes()
         .then(quotes => {
-            console.log(quotes);
+            // console.log(quotes);
             let quoteSet = quotes.data;
             let pickedQuotes = [];
             Helpers.randomPicks(quoteSet.length,6).forEach(quote => {
@@ -48,7 +48,7 @@ const App = () => {
             }, 20);
         });
 
-        console.log(globalState);
+        // console.log(globalState);
 
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -70,7 +70,7 @@ const App = () => {
                         path="/philosopher/:id"
                         component={OnePhilosopher}
                     />
-                    <Route exact path="/qotd/:id" component={AllPhilosophers} />
+                    <Route exact path="/qotd/:id" component={Qotd} />
                     <Route exact path="/qotd" component={Qotd} />
                     <Route exact path="/chat" component={Chat} />
                     <Route exact path="/chatroom" component={JoinChat} />
@@ -78,9 +78,15 @@ const App = () => {
                     <Route
                         exact
                         path="/polls/:id"
-                        component={AllPhilosophers}
+                        component={Polls}
                     />
-                    <Route exact path="/login" component={Login} />
+                    <Route exact path="/login">
+                        { globalState.isLoggedIn === true ? 
+                        (
+                            <Redirect to="/" />
+                        ) : null }
+                        <Login/>    
+                    </Route>
                     <Route exact path="/suggestions" component={Suggestions} />
                     <Route exact path="/quiz" component={Quiz} />
                 </Switch>
