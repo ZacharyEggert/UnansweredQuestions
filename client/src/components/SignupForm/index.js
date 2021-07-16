@@ -1,17 +1,34 @@
 import React, { useState } from 'react';
+import { signUp } from '../../util/API';
 import { useGlobalContext } from '../../util/GlobalState';
 
 const SignupForm = () => {
     // eslint-disable-next-line no-unused-vars
     const [globalState, dispatch] = useGlobalContext();
-    const { currentUser } = globalState;
 
     const initialState = {
         email: '',
         password: '',
+        username: '',
     };
 
     const [state, setState] = useState(initialState);
+
+    const sendSignUpRequest = () => {
+        signUp({
+            email:state.email, 
+            password:state.password, 
+            user_name:state.username})
+        .then((response) => {
+            dispatch({ type: 'SIGN_IN', data: response.data });
+            console.debug(response);
+        })
+        .catch((error) => {
+            console.error(error);
+        });
+    };
+
+
 
     const handleOnChange = (event) => {
         setState({
@@ -22,63 +39,74 @@ const SignupForm = () => {
 
     const handleFormSubmit = (event) => {
         event.preventDefault();
-        if (state['email'] === 'email' && state['email'].trim() === '') {
-            alert('Please enter a valid entry');
-        } else if (
-            state['username'] === 'username' &&
-            state['quote'].trim() === ''
+        if (
+            state['email'] === 'email' || state['email'].trim() === ''
         ) {
-            alert('Please enter a valid entry');
-        } else if (
-            state['password'] === 'password' &&
+            alert('Please enter a valid email');
+            return;
+        } 
+        else if (
+            state['username'] === 'username' ||
+            state['username'].trim() === ''
+        ) {
+            alert('Please enter a valid username');
+            return;
+        } 
+        else if (
+            state['password'] === 'password' ||
             state['password'].trim() === ''
         ) {
-            alert('Please enter a valid entry');
-        } else {
-            alert('You are now logged in!');
-            setState({
-                email: '',
-                password: '',
-            });
-
-            console.log(state);
+            alert('Please enter a valid password');
+            return;
         }
+
+        sendSignUpRequest();
+
+        console.log({message: 'this should sign you up'});
+
     };
 
     return (
         <form>
-            <label for="email" className="inline-block w-4/12 my-3">
+            <label htmlFor="email" className="inline-block w-4/12 my-3">
                 Email
             </label>
             <input
                 name="email"
                 id="signupemail"
                 type="text"
+                value={state['email']}
                 className="max-w-full pl-1 my-3 text-black"
+                onChange={handleOnChange}
             />
             <br />
-            <label for="username" className="inline-block w-4/12 my-3">
+            <label htmlFor="username" className="inline-block w-4/12 my-3">
                 Username
             </label>
             <input
                 name="username"
                 id="signupusername"
                 type="text"
+                value={state['username']}
                 className="max-w-full pl-1 my-3 text-black"
+                onChange={handleOnChange}
             />
             <br />
-            <label for="password" className="inline-block w-4/12 my-3">
+            <label htmlFor="password" className="inline-block w-4/12 my-3">
                 Password
             </label>
             <input
                 name="password"
                 id="signuppassword"
                 type="text"
+                value={state['password']}
                 className="max-w-full pl-1 my-3 text-black"
+                onChange={handleOnChange}
             />
             <br />
             <span className="inline-block w-8/12 text-right">
                 <button
+                    onClick={handleFormSubmit}
                     id="signup"
                     type="submit"
                     className="text-white rounded-md px-3 border-white border-2 border-solid whitespace-nowrap w-auto md:w-3/12 min-w-min bg-[#4d83a3]"

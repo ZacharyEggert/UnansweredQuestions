@@ -8,12 +8,8 @@ const initialState = {
         1: { name: 'Adam Yauch', period: 'Modern', id: 1, img:'plato.jpg' },
     },
     carouselQuotes: null,
-    isLoggedIn: true,
-    currentUser: {
-        id: null,
-        username: 'test',
-        isAdmin: false,
-    },
+    isLoggedIn: false,
+    currentUser: null,
     chatRoom: {
         room: '',
         username: 'test',

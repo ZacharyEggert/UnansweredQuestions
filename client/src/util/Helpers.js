@@ -1,5 +1,5 @@
 const randomPicks = (max, count) => {
-    console.log(max, count);
+    // console.log(max, count);
     let outputArray = [];
 
     if (max < count) {
