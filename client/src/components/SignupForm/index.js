@@ -21,7 +21,7 @@ const SignupForm = () => {
             user_name:state.username})
         .then((response) => {
             dispatch({ type: 'LOG_IN', data: response.data });
-            console.debug(response);
+            // console.debug(response);
         })
         .catch((error) => {
             console.error(error);
@@ -62,7 +62,7 @@ const SignupForm = () => {
 
         sendSignUpRequest();
 
-        console.log({message: 'this should sign you up'});
+        // console.log({message: 'this should sign you up'});
 
     };
 

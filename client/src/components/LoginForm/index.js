@@ -26,7 +26,7 @@ const LoginForm = () => {
         logIn({user_name:state.username, password:state.password})
         .then((response) => {
             dispatch({ type: 'LOG_IN', data: response.data });
-            console.debug(response);
+            // console.debug(response);
         })
         .catch((error) => {
             console.error(error);
@@ -50,10 +50,10 @@ const LoginForm = () => {
             return;
         }
 
-        console.log({message: 'this should sign you up'});
+        // console.log({message: 'this should sign you up'});
 
         setCurrentUser();
-        console.log(state);
+        // console.log(state);
     };
 
     return (
