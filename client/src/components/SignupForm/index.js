@@ -20,7 +20,7 @@ const SignupForm = () => {
             password:state.password, 
             user_name:state.username})
         .then((response) => {
-            dispatch({ type: 'SIGN_IN', data: response.data });
+            dispatch({ type: 'LOG_IN', data: response.data });
             console.debug(response);
         })
         .catch((error) => {
