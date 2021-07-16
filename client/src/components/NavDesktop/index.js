@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { logOut } from '../../util/API';
 
 import { useGlobalContext } from '../../util/GlobalState';
 
@@ -8,6 +9,19 @@ const NavDesktop = () => {
     const [globalState, dispatch] = useGlobalContext();
 
     const { isLoggedIn } = globalState;
+
+    const runLogOut = () => {
+        logOut()
+            .then((response) => {
+                if (response.status === 200) {
+                    dispatch({ type: 'LOG_OUT' });
+                }
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+
+    };
 
     return (
         <nav className="hidden sm:flex justify-between pb-0 h-[70px] items-center text-white">
@@ -47,7 +61,7 @@ const NavDesktop = () => {
                 </li>
                 {isLoggedIn ? (
                     <li className="desktop-nav">
-                        <Link to="/api/user/logout">Logout</Link>
+                        <Link to="/" onClick={runLogOut}>Logout</Link>
                     </li>
                 ) : (
                     <li className="desktop-nav">

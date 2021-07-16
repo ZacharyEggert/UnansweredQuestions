@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { logOut } from '../../util/API';
 
 import { useGlobalContext } from '../../util/GlobalState';
 
@@ -11,10 +12,27 @@ const NavMobile = () => {
         hasNotExpanded: true,
     });
 
+    const runLogOut = () => {
+        logOut()
+            .then((response) => {
+                if (response.status === 200) {
+                    dispatch({ type: 'LOG_OUT' });
+                }
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+
+        closeNav();
+    };
+
+    const closeNav = () => {
+        setNavState({ expanded: false, hasNotExpanded: true });
+    };
+
+
     const handleMenuOpen = (event) => {
-        event.target.checked === true
-            ? setNavState({ expanded: event.target.checked })
-            : setNavState({ expanded: event.target.checked });
+        setNavState({ expanded: event.target.checked });
     };
 
     const { isLoggedIn } = globalState;
@@ -44,40 +62,44 @@ const NavMobile = () => {
                     className={`flex flex-col justify-center bg-white rounded-br-full z-[10]`}
                 >
                     <li className=" mobile-nav">
-                        <Link to="/">Home</Link>
+                        <Link onClick={closeNav} to="/">Home</Link>
                     </li>
                     <li className=" mobile-nav">
-                        <Link to="/philosophers">Famous Philosophers</Link>
+                        <Link onClick={closeNav} to="/philosophers">Famous Philosophers</Link>
                     </li>
                     <li className="mobile-nav">
-                        <Link to="/quiz">Quiz</Link>
+                        <Link onClick={closeNav} to="/quiz">Quiz</Link>
                     </li>
                     <li className="mobile-nav">
-                        <Link to="/qotd">
+                        <Link onClick={closeNav} to="/qotd">
                             Daily
                             <br />
                             Question
                         </Link>
                     </li>
                     <li className="mobile-nav">
-                        <Link to="/polls">Polls</Link>
+                        <Link onClick={closeNav} to="/polls">Polls</Link>
                     </li>
                     <li className="mobile-nav">
+<<<<<<< HEAD
                         <Link to="/news">News</Link>
                     </li>
                     <li className="mobile-nav">
                         <Link to="/chatroom">
+=======
+                        <Link onClick={closeNav} to="/chatroom">
+>>>>>>> e785ca6e3ab7c1dbf153d88f46a22eae8297767c
                             LiveChat
                             <br />
                         </Link>
                     </li>
                     {isLoggedIn ? (
                         <li className="mobile-nav">
-                            <Link to="/api/user/logout">Logout</Link>
+                            <Link to="/" onClick={runLogOut}>Logout</Link>
                         </li>
                     ) : (
                         <li className="mobile-nav">
-                            <Link to="/login">
+                            <Link onClick={closeNav} to="/login">
                                 Login
                                 <br />
                             </Link>
