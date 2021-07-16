@@ -59,8 +59,10 @@ router.get('/logout', (req, res) => {
     if (req.session.logged_in) {
         req.session.destroy(() => {
             res.status(200).redirect('/');
+            console.log('User is now logged out');
         });
     } else {
+        console.warn('User not logged in: attempted to log out.');
         res.status(404).end();
     }
 });

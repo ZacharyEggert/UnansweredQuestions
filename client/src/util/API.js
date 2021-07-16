@@ -59,6 +59,15 @@ const signUp = ({ email, password, user_name }) => {
         });
 };
 
+const logOut = () => {
+    return axios
+        .get('/api/user/logout')
+        .then((response) => {
+            // console.log(response);
+            return response;
+        });
+};
+
 export {
     getPhilosophers,
     getPhilosopher,
@@ -66,5 +75,6 @@ export {
     getQuotes,
     getQotd,
     logIn,
+    logOut,
     signUp,
 };
