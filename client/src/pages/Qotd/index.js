@@ -15,8 +15,8 @@ const Qotd = () => {
 
     useEffect(() => {
         getQotd().then(response => {
-            console.log(response.data);
-            dispatch({ type: 'setDailyQuestion', data: response.data });
+            console.log(response);
+            dispatch({ type: 'setDailyQuestion', data: response?.data || response });
         });
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
