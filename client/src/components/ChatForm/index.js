@@ -37,7 +37,7 @@ const ChatForm = (props) => {
                 onChange={handleOnChange}
             />
             <button
-                className="btn button-1 mt-0 sm:ml-4 text-sm w-3/12 tracking-wider"
+                className="btn button mt-0 ml-4 text-sm w-3/12 tracking-wider leading-3"
                 onClick={handleSubmit}
             >
                 <i className="fas fa-paper-plane"></i> Send

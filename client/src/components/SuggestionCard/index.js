@@ -13,10 +13,10 @@ const SuggestionCard = () => {
                                 question? Let us know who or what we should add!
                             </h3>
                         </div>
-                        <div className="flex flex-col items-center justify-center flex-1 w-full sm:pl-4">
+                        <div className="flex flex-col items-center justify-center flex-1 w-11/12 md:w-8/12">
                             <Link
                                 to="/suggestions"
-                                className="w-8/12 mx-auto text-center sm:w-full button"
+                                className="mx-auto text-center button"
                             >
                                 Make a suggestion
                             </Link>
