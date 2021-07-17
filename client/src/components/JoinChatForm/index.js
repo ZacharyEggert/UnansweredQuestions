@@ -32,7 +32,7 @@ const JoinChatForm = () => {
                         value={currentUser.username}
                         disabled={true}
                         id="username"
-                        placeholder="Enter username..."
+                        placeholder={currentUser.username}
                         required={true}
                     />
                 ) : (

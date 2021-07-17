@@ -101,10 +101,8 @@ const Chat = () => {
                                 <i className="hidden fas fa-users sm:visible"></i>{' '}
                                 Users:
                             </h3>
-                            <ul id="users">
-                                {state['users'].map((user) => (
-                                    <li>{user.username}</li>
-                                ))}
+                            <ul id="users" name="users">
+                                <li>{state['users'].username}</li>
                             </ul>
                         </div>
                         <div
@@ -116,7 +114,7 @@ const Chat = () => {
                             {state['chat-messages'].map((message) => (
                                 <div className="message">
                                     <p className="meta">
-                                        {message.username }{' '}
+                                        {message.username}{' '}
                                         <span>{message.time} </span>
                                     </p>
                                     <p className="text">{message.text}</p>
