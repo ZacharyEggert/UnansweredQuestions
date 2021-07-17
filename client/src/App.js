@@ -89,7 +89,9 @@ const App = () => {
                         <Login/>    
                     </Route>
                     <Route exact path="/suggestions" component={Suggestions} />
-                    <Route exact path="/quiz" component={Quiz} />
+                    <Route exact path="/quiz">
+                            <Quiz philosophers={globalState.philosophers}/>
+                    </Route>
                 </Switch>
             </Router>
     );

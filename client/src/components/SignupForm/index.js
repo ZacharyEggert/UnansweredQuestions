@@ -7,6 +7,7 @@ const SignupForm = () => {
     const [globalState, dispatch] = useGlobalContext();
 
     const initialState = {
+        error: null,
         email: '',
         password: '',
         username: '',
@@ -19,13 +20,21 @@ const SignupForm = () => {
             email:state.email, 
             password:state.password, 
             user_name:state.username})
-        .then((response) => {
-            dispatch({ type: 'LOG_IN', data: response.data });
-            // console.debug(response);
-        })
-        .catch((error) => {
-            console.error(error);
-        });
+            .then((response) => {
+                if (response.status < 300) {
+                    dispatch({ type: 'LOG_IN', data: response.data });
+                    console.debug(response);
+                    return;
+                }
+                
+            })
+            .catch((error) => {
+                console.error(error);
+                setState({
+                    ...state,
+                    error: 'An error occurred',
+                });
+            });
     };
 
 
@@ -33,6 +42,7 @@ const SignupForm = () => {
     const handleOnChange = (event) => {
         setState({
             ...state,
+            error: null,
             [event.target.name]: event.target.value,
         });
     };
@@ -40,20 +50,18 @@ const SignupForm = () => {
     const handleFormSubmit = (event) => {
         event.preventDefault();
         if (
-            state['email'] === 'email' || state['email'].trim() === ''
+            state['email'].trim() === ''
         ) {
             alert('Please enter a valid email');
             return;
         } 
         else if (
-            state['username'] === 'username' ||
             state['username'].trim() === ''
         ) {
             alert('Please enter a valid username');
             return;
         } 
         else if (
-            state['password'] === 'password' ||
             state['password'].trim() === ''
         ) {
             alert('Please enter a valid password');
