@@ -24,9 +24,9 @@ const JoinChatForm = () => {
                 >
                     Username:
                 </label>
-                {currentUser.username ? (
+                {currentUser?.username ? (
                     <input
-                        className="p-1 text-black bg-white text-base"
+                        className="p-1 text-base text-black bg-white"
                         type="text"
                         name="username"
                         value={currentUser.username}
@@ -37,7 +37,7 @@ const JoinChatForm = () => {
                     />
                 ) : (
                     <input
-                        className="p-1 text-black bg-white text-base"
+                        className="p-1 text-base text-black bg-white"
                         type="text"
                         name="username"
                         id="username"

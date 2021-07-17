@@ -11,6 +11,7 @@ const LoginForm = () => {
         email: '',
         username: '',
         password: '',
+        error: null,
     };
 
     const [state, setState] = useState(initialState);
@@ -18,6 +19,7 @@ const LoginForm = () => {
     const handleOnChange = (event) => {
         setState({
             ...state,
+            error: null,
             [event.target.name]: event.target.value,
         });
     };
@@ -25,32 +27,45 @@ const LoginForm = () => {
     const setCurrentUser = () => {
         logIn({user_name:state.username, password:state.password})
         .then((response) => {
-            dispatch({ type: 'LOG_IN', data: response.data });
-            console.debug(response);
+            if (response.status < 300) {
+                dispatch({ type: 'LOG_IN', data: response.data });
+                console.debug(response);
+                return;
+            }
+            
         })
         .catch((error) => {
+            if(error.message.match(/404/g) || error.message.match(/403/g)) {
+                setState({
+                    ...state,
+                    error: 'Invalid username or password',
+                });
+                return
+            }
             console.error(error);
+            setState({
+                ...state,
+                error: 'An error occurred',
+            });
         });
  };
 
     const handleFormSubmit = (event) => {
         event.preventDefault();
         if (
-            state['username'] === 'username' ||
             state['username'].trim() === ''
         ) {
             alert('Please enter a valid username');
             return;
         } 
         else if (
-            state['password'] === 'password' ||
             state['password'].trim() === ''
         ) {
             alert('Please enter a valid password');
             return;
         }
 
-        console.log({message: 'this should sign you up'});
+        console.debug({message: 'this should log you in'});
 
         setCurrentUser();
         console.log(state);
@@ -106,6 +121,9 @@ const LoginForm = () => {
                 >
                     Log in
                 </button>
+            </span>
+            <span className="block w-11/12 mx-auto text-center md:w-8/12 px-auto">
+                {state.error}
             </span>
         </form>
     );
