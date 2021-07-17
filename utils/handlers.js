@@ -91,7 +91,15 @@ const fillPhilosopherData = async (id, philosopherData) => {
     newPhilosopherData.about = wiki.content;
     newPhilosopherData.wikiLink = wiki.readMoreURL;
 
-    await Philosopher.update(newPhilosopherData, { where: { id: id } });
+    const {name, img, period, about, videoUrl, wikiLink, quotes} = newPhilosopherData;
+
+    await Philosopher.update({name, img, period, about, videoUrl, wikiLink, quotes}, { where: { id: id } }).then(
+        (result) => {
+            console.log({result, newPhilosopherData});
+        }
+    ).catch((err) => {
+        console.log({err});
+    });
     return newPhilosopherData;
 };
 

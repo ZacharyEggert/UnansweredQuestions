@@ -13,7 +13,7 @@ const Polls = () => {
                 <div className="py-14"></div>
                 <div className="flex flex-row flex-wrap px-6">
                     {globalState.polls.map((poll) => {
-                        return <PollCard poll={poll} key={poll.id} />;
+                        return <PollCard poll={poll} key={poll.id} dispatch={dispatch} />;
                     })}
                 </div>
                 <SuggestionCard />

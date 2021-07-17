@@ -40,7 +40,7 @@ const NavMobile = () => {
     return (
         <nav
             id="menuToggle"
-            className="relative z-10 block mr-4 select-none sm:hidden top-4 left-4"
+            className="relative z-10 block mr-4 select-none md:hidden top-4 left-4"
         >
             <div id="menuToggle">
                 <input

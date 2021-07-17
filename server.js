@@ -74,8 +74,8 @@ io.on('connection', (socket) => {
     //listen for chatMessage
     socket.on('chatMessage', (msg) => {
         const user = getCurrentUser(socket.id);
-        console.log(socket.id);
-        // io.to(user.room).emit('message', formatMessage(user.username, msg));
+        // console.log(socket.id);
+        io.to(user.room).emit('message', formatMessage(user.username, msg));
     });
 
     //runs when client disconnects
@@ -95,8 +95,6 @@ io.on('connection', (socket) => {
     });
 });
 
-
-
-sequelize.sync({ force: false }).then(() => {
+sequelize.sync({ force: false, alter: true }).then(() => {
     server.listen(PORT, () => console.log('Now listening on port ' + PORT));
 });

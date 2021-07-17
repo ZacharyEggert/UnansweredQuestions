@@ -1,7 +1,9 @@
 import React, { createContext, useReducer, useContext } from 'react';
+import { updateVoteCount } from './API'
 
 const GlobalContext = createContext();
 const { Provider } = GlobalContext;
+
 
 const initialState = {
     philosophers: {
@@ -105,6 +107,34 @@ const reducer = (state, action) => {
                 ...state,
                 isLoggedIn: false,
                 currentUser: null,
+            };
+        case 'POLL_VOTE':
+            // console.debug(action.data);
+            updateVoteCount(action.data.poll.id,
+                {
+                    vote_yes: (action.data.yes ? action.data.poll.vote_yes + 1 : action.data.poll.vote_yes),
+                    vote_no: (!action.data.yes ? action.data.poll.vote_no + 1 : action.data.poll.vote_no)
+                }
+            )
+                .then((response) => {
+                    console.log({ response });
+                    console.debug('VOTE SUCCESS')
+                })
+                .catch(() => {
+                    console.debug('VOTE FAILED')
+                });
+            return {
+                ...state,
+                polls: state.polls.map(poll => {
+                    if (poll.id === action.data.poll.id) {
+                        return {
+                            ...poll,
+                            vote_yes: action.data.yes ? poll.vote_yes + 1 : poll.vote_yes,
+                            vote_no: !action.data.yes ? poll.vote_no + 1 : poll.vote_no,
+                        };
+                    }
+                    return poll;
+                }),
             };
 
 
