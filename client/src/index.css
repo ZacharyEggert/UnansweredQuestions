@@ -101,7 +101,7 @@
     }
 
     .mobile-nav {
-        @apply text-sm w-36 text-[#222] text-xl pt-2 pl-2;
+        @apply w-36 text-[#222] text-xl pt-2 pl-2;
     }
 
     .mobile-nav:first-of-type {
