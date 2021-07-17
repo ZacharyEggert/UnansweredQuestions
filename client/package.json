@@ -10,7 +10,6 @@
         "@testing-library/user-event": "^12.1.10",
         "autoprefixer": "^9.8.6",
         "axios": "^0.21.1",
-        "bootstrap": "^5.0.1",
         "isexe": "^2.0.0",
         "postcss": "^7.0.35",
         "react": "^17.0.2",
