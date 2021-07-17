@@ -56,6 +56,9 @@ const NavDesktop = () => {
                 <li className="desktop-nav">
                     <Link to="/polls">Polls</Link>
                 </li>
+                 <li className="desktop-nav">
+                    <Link to="/news">News</Link>
+                </li>
                 <li className="desktop-nav">
                     <Link to="/chatroom">LiveChat</Link>
                 </li>
