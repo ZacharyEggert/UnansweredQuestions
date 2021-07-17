@@ -82,7 +82,7 @@
     }
 
     .desktop-nav {
-        @apply text-sm md:text-base lg:text-xl text-center align-middle content-center ml-10 text-white relative block no-underline py-1.5 hover:text-[#e5eef1b2];
+        @apply text-sm lg:text-base xl:text-lg 2xl:text-xl text-center align-middle content-center ml-10 text-white relative block no-underline py-1.5 hover:text-[#e5eef1b2];
 
         transition: 0.5s;
     }
@@ -117,7 +117,7 @@
     }
 
     #menuToggle span {
-        @apply block sm:hidden w-[33px] !h-1 mb-[5px] relative bg-[#cdcdcd] rounded-[3px] z-[10];
+        @apply block md:hidden w-[33px] !h-1 mb-[5px] relative bg-[#cdcdcd] rounded-[3px] z-[10];
 
         click-events: none;
 

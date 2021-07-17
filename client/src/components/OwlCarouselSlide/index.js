@@ -6,10 +6,6 @@ const OwlCarouselSlide = (props) => {
     const { quote, index } = props;
 
 
-    // if (quoteText.length > 500) {
-    //     setQuoteText(quoteText.substring(0, 495) + '...');
-    // }
-
     return (
         <div
             className={`h-screen flex items-center justify-center owl-slide bg-cover opacity-80 bg-carousel-${
@@ -21,8 +17,8 @@ const OwlCarouselSlide = (props) => {
                 <div className="h-[66%] my-auto">
                     <div className="flex flex-col mr-auto sm:w-9/12">
                         <div className="overflow-ellipsis overflow-hidden bg-[#222] bg-opacity-90 text-white w-9/12 mb-8 mx-auto p-8 capitalize">
-                            <h2 className="text-2xl text-white font-cursive">
-                                “{quote.quote.length>500?quote.quote.substring(0,495) + '...' : quote.quote}”
+                            <h2 className="text-lg text-white sm:text-xl md:text-2xl font-cursive">
+                                “{quote.quote.length>350?quote.quote.substring(0,346) + '...' : quote.quote}”
                             </h2>
                             <div className="mt-4">
                                 &mdash; {quote.author}

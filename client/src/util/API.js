@@ -25,6 +25,17 @@ const getPolls = () => {
         }
     });
 };
+
+//put a vote on a poll
+const updateVoteCount = (id, data ) => {
+    return axios.put('/api/polls/' + id, data)
+    .then((response) => {
+        if (response.status < 300) {
+            return response;
+        }
+    });
+};
+
 //get all quotes
 const getQuotes = () => {
     return axios.get('/api/quotes').then((response) => {
@@ -108,4 +119,5 @@ export {
     logOut,
     signUp,
     postComment,
+    updateVoteCount,
 };
