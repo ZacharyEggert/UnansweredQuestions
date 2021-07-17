@@ -43,7 +43,7 @@ News.init(
         modelName: 'news',
     }
 
-)
+);
 
 module.exports = News;
 
