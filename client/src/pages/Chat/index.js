@@ -81,11 +81,7 @@ const Chat = () => {
                         <h1 className="pt-8 pb-0 pl-8 pr-4 mb-8 text-3xl sm:text-4xl">
                             {room}
                         </h1>
-                        <Link
-                            to="/"
-                            id="leave-btn"
-                            className="text-white rounded-md p-2 border-white border-2 border-solid whitespace-nowrap w-3/12 sm:mr-4 bg-[#4d83a3] text-center"
-                        >
+                        <Link to="/" id="leave-btn" className="button">
                             Leave Room
                         </Link>
                     </header>
@@ -102,7 +98,9 @@ const Chat = () => {
                                 Users:
                             </h3>
                             <ul id="users" name="users">
-                                <li>{state['users'].username}</li>
+                                {state['users'].map((user) => (
+                                    <li>{user.username}</li>
+                                ))}
                             </ul>
                         </div>
                         <div

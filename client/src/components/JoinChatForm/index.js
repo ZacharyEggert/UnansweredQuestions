@@ -15,6 +15,13 @@ const JoinChatForm = () => {
         });
     };
 
+    const handleUser = (event) => {
+        dispatch({
+            type: 'setRoomUsers',
+            data: { [event.target.name]: event.target.value },
+        });
+    };
+
     return (
         <form>
             <div className="mb-4 form-control">
@@ -34,6 +41,7 @@ const JoinChatForm = () => {
                         id="username"
                         placeholder={currentUser.username}
                         required={true}
+                        onChange={handleUser}
                     />
                 ) : (
                     <input
@@ -43,6 +51,7 @@ const JoinChatForm = () => {
                         id="username"
                         placeholder="Enter username..."
                         required
+                        onChange={handleUser}
                     />
                 )}
             </div>
@@ -82,12 +91,12 @@ const JoinChatForm = () => {
                     </span>
                 </Link>
             ) : (
-                <span className="inline-block w-full text-right">
+                <span className="w-full text-right flex justify-center">
                     <button
                         onClick={(e) => {
                             e.preventDefault();
                         }}
-                        className="button text-white rounded-md px-3 border-white border-2 border-solid whitespace-nowrap min-w-min bg-[#4d83a3] w-full items-center"
+                        className="button w-8/12"
                     >
                         Join Chat
                     </button>
