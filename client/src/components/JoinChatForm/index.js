@@ -13,14 +13,20 @@ const JoinChatForm = () => {
             type: 'setChatRoom',
             data: { [event.target.name]: event.target.value },
         });
+        if (currentUser?.user.user_name) {
+            dispatch({
+                type: 'setChatRoom',
+                data: { username: currentUser.user.user_name },
+            });
+        }
     };
 
-    const handleUser = (event) => {
-        dispatch({
-            type: 'setRoomUsers',
-            data: { [event.target.name]: event.target.value },
-        });
-    };
+    // const handleUser = (event) => {
+    //     dispatch({
+    //         type: 'setRoomUsers',
+    //         data: { [event.target.name]: event.target.value },
+    //     });
+    // };
 
     return (
         <form>
@@ -31,17 +37,17 @@ const JoinChatForm = () => {
                 >
                     Username:
                 </label>
-                {currentUser?.username ? (
+                {currentUser?.user.user_name ? (
                     <input
                         className="p-1 text-base text-black bg-white"
                         type="text"
                         name="username"
-                        value={currentUser.username}
+                        value={currentUser.user.user_name}
                         disabled={true}
                         id="username"
-                        placeholder={currentUser.username}
+                        placeholder={currentUser.user.user_name}
                         required={true}
-                        onChange={handleUser}
+                        onChange={handleOnChange}
                     />
                 ) : (
                     <input
@@ -51,7 +57,7 @@ const JoinChatForm = () => {
                         id="username"
                         placeholder="Enter username..."
                         required
-                        onChange={handleUser}
+                        onChange={handleOnChange}
                     />
                 )}
             </div>
@@ -84,14 +90,12 @@ const JoinChatForm = () => {
             </div>
             {chatRoom.room !== '' ? (
                 <Link to="/chat">
-                    <span className="inline-block w-8/12 text-right">
-                        <button className="button text-white rounded-md px-3 border-white border-2 border-solid whitespace-nowrap min-w-min bg-[#4d83a3] w-full items-center">
-                            Join Chat
-                        </button>
+                    <span className="md:inline-block md:w-8/12 md:text-right">
+                        <button className="button w-10/12">Join Chat</button>
                     </span>
                 </Link>
             ) : (
-                <span className="w-full text-right flex justify-center">
+                <span className="md:inline-block md:w-10/12 md:text-right">
                     <button
                         onClick={(e) => {
                             e.preventDefault();

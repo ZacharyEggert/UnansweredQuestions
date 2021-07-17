@@ -58,7 +58,7 @@ const Chat = () => {
     });
 
     socket.on('message', (message) => {
-        console.log(message);
+        // console.log(message);
         outputMessage(message);
     });
 
@@ -98,9 +98,11 @@ const Chat = () => {
                                 Users:
                             </h3>
                             <ul id="users" name="users">
-                                {state['users'].map((user) => (
-                                    <li>{user.username}</li>
-                                ))}
+                                {globalState.chatRoom?.users
+                                    ? Object.values(
+                                          globalState.chatRoom.users
+                                      ).map((user) => <li>{user.username}</li>)
+                                    : null}
                             </ul>
                         </div>
                         <div
