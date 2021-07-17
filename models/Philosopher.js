@@ -24,7 +24,7 @@ Philosopher.init(
             type: DataTypes.STRING,
         },
         about: {
-            type: DataTypes.STRING,
+            type: DataTypes.TEXT,
         },
         videoUrl: {
             type: DataTypes.STRING,
