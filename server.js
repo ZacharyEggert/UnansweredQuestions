@@ -97,6 +97,6 @@ io.on('connection', (socket) => {
 
 
 
-sequelize.sync({ alter: true }).then(() => {
+sequelize.sync({ force: false }).then(() => {
     server.listen(PORT, () => console.log('Now listening on port ' + PORT));
 });

@@ -1,7 +1,7 @@
 const fetch = require('node-fetch');
 const YTsearch = require('youtube-search');
 
-const { Philosopher } = require('../models');
+const { Philosopher, Philosophies } = require('../models');
 
 const randomPicks = (max, count) => {
     console.log(max, count);
@@ -95,8 +95,25 @@ const fillPhilosopherData = async (id, philosopherData) => {
     return newPhilosopherData;
 };
 
+const fillPhilosophyData = async (ID, philosophyData) => {
+    let newPhilosophyData = philosophyData;
+    const yt = await getYoutubeUrl(newPhilosophyData);
+    // console.log(yt);
+    const wiki = await getWikiData(newPhilosophyData);
+    // console.log(wiki.readMoreURL.replace(/ /g, '%20'));
+
+    newPhilosophyData.videoUrl = yt.id;
+    newPhilosophyData.about = wiki.content;
+    newPhilosophyData.wikiLink = wiki.readMoreURL;
+
+    await Philosophies.update(newPhilosophyData, { where: { id: ID } });
+
+    return newPhilosophyData;
+};
+
 module.exports = {
     getDaysSinceJulySeventh,
     fillPhilosopherData,
     randomPicks,
+    fillPhilosophyData,
 };

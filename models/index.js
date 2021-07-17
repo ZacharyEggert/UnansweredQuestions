@@ -1,7 +1,9 @@
 const Philosopher = require('./Philosopher');
 const Philosophies = require('./Philosophies');
+const ProfilePage = require('./ProfilePage');
 const DailyQuestion = require('./DailyQuestion');
 const Quote = require('./Quote');
+const Blogs = require('./Blogs');
 // eslint-disable-next-line no-unused-vars
 const Test = require('./Test');
 const User = require('./User');
@@ -36,7 +38,9 @@ Comments.belongsTo(User, {
 
 module.exports = {
     Philosopher,
+    Blogs,
     Philosophies,
+    ProfilePage,
     DailyQuestion,
     Quote,
     User,

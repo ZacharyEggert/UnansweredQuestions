@@ -12,10 +12,11 @@ import Polls from './pages/Polls';
 import NavBar from './components/NavBar';
 import OnePhilosopher from './pages/OnePhilosopher';
 import AllPhilosophies from './pages/AllPhilosophies';
+import OnePhilosophy from './pages/OnePhilosophy';
 import ProfilePage from './pages/ProfilePage';
 
 import { useGlobalContext } from './util/GlobalState';
-import { getPhilosophers, getPolls, getQuotes } from './util/API';
+import { getPhilosophers, getPhilosophies, getPolls, getQuotes } from './util/API';
 import Helpers from './util/Helpers';
 
 
@@ -31,6 +32,10 @@ const App = () => {
                 dispatch({ type: 'addPhilosophersBulk', data: philosophers.data });
             });
 
+        getPhilosophies()
+            .then(philosophies => {
+                dispatch({ type: 'addPhilosophiesBulk', data: philosophies.data });
+            });
         getPolls()
             .then(polls => {
                 dispatch({ type: 'setPolls', data: polls.data });
@@ -80,6 +85,7 @@ const App = () => {
                 <Route exact path="/chat" component={Chat} />
                 <Route exact path="/chatroom" component={JoinChat} />
                 <Route exact path="/polls" component={Polls} />
+                <Route exact path="/philosophy/:id" component={OnePhilosophy} />
                 <Route
                     exact
                     path="/polls/:id"

@@ -16,6 +16,22 @@ const getPhilosopher = (id) => {
         }
     });
 };
+const getPhilosophies = () => {
+    return axios.get('/api/philosophies').then((response) => {
+        if (response.status < 300) {
+            return response;
+        }
+    });
+};
+
+const getPhilosophy = (id) => {
+    return axios.get('/api/philosophies/' + id).then((response) => {
+        if (response.status < 300) {
+            return response;
+        }
+    });
+};
+
 // get all polls
 const getPolls = () => {
     return axios.get('/api/polls').then((response) => {
@@ -71,6 +87,8 @@ const logOut = () => {
 export {
     getPhilosophers,
     getPhilosopher,
+    getPhilosophies,
+    getPhilosophy,
     getPolls,
     getQuotes,
     getQotd,

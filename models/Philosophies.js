@@ -2,7 +2,7 @@ const { Model, DataTypes } = require('sequelize');
 
 const sequelize = require('../config/connection');
 
-class Philosophies extends Model {}
+class Philosophies extends Model { }
 
 Philosophies.init(
     {
@@ -22,12 +22,15 @@ Philosophies.init(
         },
         about: {
             type: DataTypes.STRING,
+            allowNull: true,
         },
         videoUrl: {
             type: DataTypes.STRING,
+            allowNull: true,
         },
         wikiLink: {
             type: DataTypes.STRING,
+            allowNull: true,
         },
     },
     {

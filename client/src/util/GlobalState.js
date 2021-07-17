@@ -5,8 +5,9 @@ const { Provider } = GlobalContext;
 
 const initialState = {
     philosophers: {
-        1: { name: 'Adam Yauch', period: 'Modern', id: 1, img:'plato.jpg' },
+        1: { name: 'Adam Yauch', period: 'Modern', id: 1, img: 'plato.jpg' },
     },
+    philosophies: {},
     carouselQuotes: null,
     isLoggedIn: false,
     currentUser: null,
@@ -38,6 +39,12 @@ const reducer = (state, action) => {
                 newState.philosophers[philosopher.id] = philosopher;
             });
             return newState;
+        case 'addPhilosophiesBulk':
+            let newPhilState = { ...state };
+            action.data.forEach(philosophy => {
+                newPhilState.philosophies[philosophy.id] = philosophy;
+            });
+            return newPhilState;
 
         case 'setChatRoom':
             return {
@@ -57,7 +64,7 @@ const reducer = (state, action) => {
         case 'setDailyQuestion':
             return {
                 ...state,
-                dailyQuestion: {id:action.data.id ,content:action.data.question, comments:action.data.comments},
+                dailyQuestion: { id: action.data.id, content: action.data.question, comments: action.data.comments },
             };
         case 'setPolls':
             return {
@@ -72,8 +79,16 @@ const reducer = (state, action) => {
         case 'ONE_PHILOSOPHER_RECEIVE':
             return {
                 ...state,
-                philosophers: { 
+                philosophers: {
                     ...state.philosophers,
+                    [action.data.id]: action.data,
+                }
+            };
+        case 'ONE_PHILOSOPHY_RECEIVE':
+            return {
+                ...state,
+                philosophies: {
+                    ...state.philosophies,
                     [action.data.id]: action.data,
                 }
             };
@@ -91,7 +106,7 @@ const reducer = (state, action) => {
                 isLoggedIn: false,
                 currentUser: null,
             };
-        
+
 
 
         default:
