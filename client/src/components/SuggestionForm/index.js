@@ -21,7 +21,9 @@ const SuggestionForm = () => {
     const handleFormSubmit = (event) => {
         event.preventDefault();
 
-        if (
+        if (state['suggestion-type'] === '') {
+            alert('Please choose a subject');
+        } else if (
             state['suggestion-type'] === 'philosopher' &&
             state['phil-name'].trim() === ''
         ) {
@@ -55,7 +57,7 @@ const SuggestionForm = () => {
             <div className="mb-4 form-group sm:flex sm:justify-between">
                 <label
                     for="suggestion"
-                    className="inline-block w-full sm:w-6/12"
+                    className="inline-block w-full sm:w-5/12"
                     id="listbox-label"
                 >
                     What would you like to make a suggestion for?
@@ -65,7 +67,7 @@ const SuggestionForm = () => {
                     name="suggestion-type"
                     onChange={handleOnChange}
                     id="suggestion-type"
-                    className="inline-block w-full p-1 mt-1 text-black sm:w-5/12 form-select"
+                    className="inline-block p-1 mt-2 text-black form-select sm:w-[38%]"
                     placeholder="Choose subject..."
                 >
                     <option
@@ -95,7 +97,10 @@ const SuggestionForm = () => {
                     className="mb-4 philosopher box2 sm:flex sm:justify-between"
                     id="otherFieldDiv"
                 >
-                    <label for="phil-name" className="inline-block sm:w-4/12">
+                    <label
+                        for="phil-name"
+                        className="inline-block sm:w-5/12 mb-2"
+                    >
                         Philosopher Name:
                     </label>
                     <input
@@ -115,7 +120,7 @@ const SuggestionForm = () => {
                     <div className="mb-4 col-6 sm:flex sm:justify-between">
                         <label
                             for="q-phil-name"
-                            className="inline-block sm:w-4/12"
+                            className="inline-block sm:w-5/12 mb-2"
                         >
                             Philosopher Name:
                         </label>
@@ -131,8 +136,11 @@ const SuggestionForm = () => {
                         />
                     </div>
                     <div className="col-6 sm:flex sm:justify-between">
-                        <label for="quote" className="inline-block sm:w-4/12">
-                            Quote
+                        <label
+                            for="quote"
+                            className="inline-block sm:w-5/12 mb-2"
+                        >
+                            Quote:
                         </label>
                         <input
                             value={state['quote']}
@@ -152,7 +160,7 @@ const SuggestionForm = () => {
                     className="mb-4 question box2 sm:flex sm:justify-between"
                     id="otherFieldDiv3"
                 >
-                    <label for="quest" className="inline-block sm:w-4/12">
+                    <label for="quest" className="inline-block sm:w-5/12 mb-2">
                         Question:
                     </label>
                     <input
@@ -167,12 +175,12 @@ const SuggestionForm = () => {
                     />
                 </div>
             ) : null}
-            <span className="inline-block w-8/12 text-right contents">
+            <span className="text-right flex justify-center">
                 <button
                     id="suggestion"
                     type="submit"
                     onClick={handleFormSubmit}
-                    className="text-white rounded-md px-3  border-white border-2 border-solid whitespace-nowrap md:w-3/12 min-w-min bg-[#4d83a3] items-center"
+                    className="button mt-4 w-full sm:w-6/12"
                 >
                     Submit
                 </button>
