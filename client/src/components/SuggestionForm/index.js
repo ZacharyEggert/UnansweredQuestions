@@ -172,7 +172,7 @@ const SuggestionForm = () => {
                     id="suggestion"
                     type="submit"
                     onClick={handleFormSubmit}
-                    className="text-white rounded-md px-3  border-white border-2 border-solid whitespace-nowrap md:w-3/12 min-w-min bg-[#4d83a3] w-full items-center"
+                    className="text-white rounded-md px-3  border-white border-2 border-solid whitespace-nowrap md:w-3/12 min-w-min bg-[#4d83a3] items-center"
                 >
                     Submit
                 </button>
