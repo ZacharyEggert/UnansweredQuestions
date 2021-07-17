@@ -34,10 +34,28 @@ const getQuotes = () => {
 };
 //get current qotd info eg. question,comments
 const getQotd = () => {
-    return axios.get('/api/dailyquestion/').then((response) => {
+    return axios.get('/api/dailyquestion/')
+    .then((response) => {
         if (response.status < 300) {
             return response;
         }
+    })
+    .catch((error) => {
+        console.log(error);
+    });
+};
+
+//post a comment on a qotd with an attatched user_id
+const postComment = ({comment, user_id, daily_id}) => {
+    return axios.post('/api/comments', {comment, user_id, daily_id})
+    .then((response) => {
+        if (response.status < 300) {
+            // console.log(response);
+            return response;
+        }
+    })
+    .catch((error) => {
+        console.error(error);
     });
 };
 
@@ -77,4 +95,5 @@ export {
     logIn,
     logOut,
     signUp,
+    postComment,
 };

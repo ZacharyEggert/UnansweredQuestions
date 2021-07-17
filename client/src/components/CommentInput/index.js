@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { useGlobalContext } from '../../util/GlobalState';
-const CommentInput = () => {
+import { postComment } from '../../util/API';
+
+
+const CommentInput = ({ dailyQuestion }) => {
     // eslint-disable-next-line no-unused-vars
     const [globalStore, dispatch] = useGlobalContext();
 
@@ -15,11 +18,29 @@ const CommentInput = () => {
 
     const handleFormSubmit = (event) => {
         //handle submit of comment
-        // eslint-disable-next-line no-unused-vars
-        const { currentUser } = globalStore;
-        // eslint-disable-next-line no-unused-vars
+        event.preventDefault();
         const { comment } = commentState;
-        setCommentState({ ...commentState, comment: '' });
+        const { currentUser } = globalStore;
+
+        if (comment.length > 0) {
+            postComment({
+                comment,
+                daily_id: dailyQuestion.id,
+                user_id: currentUser.id,
+            })
+            .then((response) => {
+                console.debug(response);
+                setCommentState({ comment: '' });
+                dispatch({ type: 'COMMENT_SUCCESS', data: response.data });
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+
+
+            setCommentState({ ...commentState, comment: '' });
+        }
+        // eslint-disable-next-line no-unused-vars
     };
 
     return (
