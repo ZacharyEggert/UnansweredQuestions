@@ -81,14 +81,10 @@ const NavMobile = () => {
                         <Link onClick={closeNav} to="/polls">Polls</Link>
                     </li>
                     <li className="mobile-nav">
-<<<<<<< HEAD
                         <Link to="/news">News</Link>
                     </li>
                     <li className="mobile-nav">
                         <Link to="/chatroom">
-=======
-                        <Link onClick={closeNav} to="/chatroom">
->>>>>>> e785ca6e3ab7c1dbf153d88f46a22eae8297767c
                             LiveChat
                             <br />
                         </Link>

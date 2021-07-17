@@ -60,8 +60,7 @@ const signUp = ({ email, password, user_name }) => {
         });
 };
 
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 const getNews = () => {
     return axios.get('./api/news/').then((response) => {
         if (response.status < 300) {
@@ -70,11 +69,7 @@ const getNews = () => {
     });
 };
 
-export { getPhilosophers, getPolls, getQuotes, getQotd, getLogin, getNews };
-=======
-export { getPhilosophers, getPhilosopher, getPolls, getQuotes, getQotd, getLogin };
->>>>>>> 35fff7b139376a596cf0e3799f6df22762295a6c
-=======
+
 const logOut = () => {
     return axios
         .get('/api/user/logout')
@@ -90,8 +85,8 @@ export {
     getPolls,
     getQuotes,
     getQotd,
+    getNews,
     logIn,
     logOut,
     signUp,
 };
->>>>>>> e785ca6e3ab7c1dbf153d88f46a22eae8297767c

@@ -15,6 +15,13 @@ const News = () => {
                     <h3 className="mb-2 text-3xl text-center">
                         News
                     </h3>
+                    <form className= "searchNews" action="">
+                        <input className="inputNews" type="text"></input>
+                        <input className="submit"></input>
+                    </form>``
+                    <div>
+                        <ul className="news-list"></ul>
+                    </div>
                 </div>
             </main>
     );
