@@ -70,7 +70,7 @@ const SignupForm = () => {
 
         sendSignUpRequest();
 
-        console.debug({message: 'this should sign you up'});
+        // console.log({message: 'this should sign you up'});
 
     };
 

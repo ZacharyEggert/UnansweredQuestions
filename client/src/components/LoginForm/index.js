@@ -65,10 +65,10 @@ const LoginForm = () => {
             return;
         }
 
-        console.debug({message: 'this should log you in'});
+        // console.log({message: 'this should sign you up'});
 
         setCurrentUser();
-        console.log(state);
+        // console.log(state);
     };
 
     return (
