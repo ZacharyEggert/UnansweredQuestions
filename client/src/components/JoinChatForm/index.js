@@ -90,8 +90,8 @@ const JoinChatForm = () => {
             </div>
             {chatRoom.room !== '' ? (
                 <Link to="/chat">
-                    <span className="md:inline-block md:w-8/12 md:text-right">
-                        <button className="button w-10/12">Join Chat</button>
+                    <span className="md:inline-block md:w-10/12 md:text-right">
+                        <button className="button w-8/12">Join Chat</button>
                     </span>
                 </Link>
             ) : (
