@@ -21,7 +21,7 @@ Philosophies.init(
             allowNull: false,
         },
         about: {
-            type: DataTypes.STRING,
+            type: DataTypes.TEXT,
             allowNull: true,
         },
         videoUrl: {
