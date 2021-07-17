@@ -10,9 +10,9 @@ const Suggestions = () => {
             >
                 <div className="py-8"></div>
                 <div className="flex flex-row flex-wrap w-full bg-black sm:w-auto m-14 p-7 bg-opacity-80">
-                    <div className="flex-1 flex-shrink-0 w-6/12 pr-1 sm:min-w-max">
+                    <div className="flex-1 flex-shrink-0 w-6/12 pr-1 sm:min-w-max text-white">
                         <header className="">
-                            <h1 className="p-0 sm:text-4xl sm:text-center">
+                            <h1 className="p-0 text-3xl sm:text-4xl text-center pb-4 sm:pb-8">
                                 Suggestion Submissions
                             </h1>
                         </header>
