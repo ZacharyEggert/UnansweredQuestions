@@ -41,6 +41,9 @@ const NavDesktop = () => {
                     </Link>
                 </li>
                 <li className="desktop-nav">
+                    <Link to="/philosophies">Philosophies</Link>
+                </li>
+                <li className="desktop-nav">
                     <Link to="/quiz">Quiz</Link>
                 </li>
                 <li className="desktop-nav">
@@ -56,10 +59,19 @@ const NavDesktop = () => {
                 <li className="desktop-nav">
                     <Link to="/chatroom">LiveChat</Link>
                 </li>
+                <li className="desktop-nav">
+                    <Link to="/profile">Profile</Link>
+                </li>
+
+
                 {isLoggedIn ? (
-                    <li className="desktop-nav">
-                        <Link to="/" onClick={runLogOut}>Logout</Link>
-                    </li>
+                    <>
+
+
+                        <li className="desktop-nav">
+                            <Link to="/" onClick={runLogOut}>Logout</Link>
+                        </li>
+                    </>
                 ) : (
                     <li className="desktop-nav">
                         <Link to="/login">Login</Link>

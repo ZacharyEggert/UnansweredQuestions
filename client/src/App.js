@@ -11,8 +11,11 @@ import Login from './pages/Login';
 import Polls from './pages/Polls';
 import NavBar from './components/NavBar';
 import OnePhilosopher from './pages/OnePhilosopher';
+import AllPhilosophies from './pages/AllPhilosophies';
+import ProfilePage from './pages/ProfilePage';
+
 import { useGlobalContext } from './util/GlobalState';
-import {getPhilosophers, getPolls, getQuotes} from './util/API';
+import { getPhilosophers, getPolls, getQuotes } from './util/API';
 import Helpers from './util/Helpers';
 
 
@@ -24,73 +27,75 @@ const App = () => {
     useEffect(() => {
         // Set the global state
         getPhilosophers()
-        .then(philosophers => {
-            dispatch({type: 'addPhilosophersBulk', data: philosophers.data});
-        });
+            .then(philosophers => {
+                dispatch({ type: 'addPhilosophersBulk', data: philosophers.data });
+            });
 
         getPolls()
-        .then(polls => {
-            dispatch({type: 'setPolls', data: polls.data});
-        });
+            .then(polls => {
+                dispatch({ type: 'setPolls', data: polls.data });
+            });
 
         getQuotes()
-        .then(quotes => {
-            // console.log(quotes);
-            let quoteSet = quotes.data;
-            let pickedQuotes = [];
-            Helpers.randomPicks(quoteSet.length,6).forEach(quote => {
-                pickedQuotes.push(quoteSet[quote]);
-            })
-            return pickedQuotes;
-        }).then(pickedQuotes => {
-            setTimeout(() => {
-                dispatch({type: 'setQuotes', data: pickedQuotes});
-            }, 20);
-        });
+            .then(quotes => {
+                // console.log(quotes);
+                let quoteSet = quotes.data;
+                let pickedQuotes = [];
+                Helpers.randomPicks(quoteSet.length, 6).forEach(quote => {
+                    pickedQuotes.push(quoteSet[quote]);
+                })
+                return pickedQuotes;
+            }).then(pickedQuotes => {
+                setTimeout(() => {
+                    dispatch({ type: 'setQuotes', data: pickedQuotes });
+                }, 20);
+            });
 
         // console.log(globalState);
 
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[]);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     return (
-        
-            <Router>
-                <NavBar />
-                <Switch>
-                    <Route exact path="/" component={FrontPage} />
-                    <Route
-                        exact
-                        path="/philosophers"
-                        component={AllPhilosophers}
-                    />
-                    <Route
-                        exact
-                        path="/philosopher/:id"
-                        component={OnePhilosopher}
-                    />
-                    <Route exact path="/qotd/:id" component={Qotd} />
-                    <Route exact path="/qotd" component={Qotd} />
-                    <Route exact path="/chat" component={Chat} />
-                    <Route exact path="/chatroom" component={JoinChat} />
-                    <Route exact path="/polls" component={Polls} />
-                    <Route
-                        exact
-                        path="/polls/:id"
-                        component={Polls}
-                    />
-                    <Route exact path="/login">
-                        { globalState.isLoggedIn === true ? 
+
+        <Router>
+            <NavBar />
+            <Switch>
+                <Route exact path="/" component={FrontPage} />
+                <Route
+                    exact
+                    path="/philosophers"
+                    component={AllPhilosophers}
+                />
+                <Route
+                    exact
+                    path="/philosopher/:id"
+                    component={OnePhilosopher}
+                />
+                <Route exact path="/philosophies" component={AllPhilosophies} />
+                <Route exact path="/profile" component={ProfilePage} />
+                <Route exact path="/qotd/:id" component={Qotd} />
+                <Route exact path="/qotd" component={Qotd} />
+                <Route exact path="/chat" component={Chat} />
+                <Route exact path="/chatroom" component={JoinChat} />
+                <Route exact path="/polls" component={Polls} />
+                <Route
+                    exact
+                    path="/polls/:id"
+                    component={Polls}
+                />
+                <Route exact path="/login">
+                    {globalState.isLoggedIn === true ?
                         (
                             <Redirect to="/" />
-                        ) : null }
-                        <Login/>    
-                    </Route>
-                    <Route exact path="/suggestions" component={Suggestions} />
-                    <Route exact path="/quiz" component={Quiz} />
-                </Switch>
-            </Router>
+                        ) : null}
+                    <Login />
+                </Route>
+                <Route exact path="/suggestions" component={Suggestions} />
+                <Route exact path="/quiz" component={Quiz} />
+            </Switch>
+        </Router>
     );
 };
 

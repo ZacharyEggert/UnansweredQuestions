@@ -2,7 +2,7 @@ import React from 'react';
 
 import { useGlobalContext } from '../../util/GlobalState';
 
-import PhilosophyCard from '../../components/PhilosophyCard';
+// import PhilosophyCard from '../../components/PhilosophyCard';
 import SuggestionCard from '../../components/SuggestionCard';
 
 const AllPhilosophies = () => {
@@ -17,9 +17,9 @@ const AllPhilosophies = () => {
             <div className="py-14"></div>
             <div className="box">
                 {/**<!-- cards for each philosophy  -->*/}
-                {globalState.philosophies.map((philosophy) => {
+                {/* {globalState.philosophies.map((philosophy) => {
                     return <PhilosophyCard philosophy={philosophy} key={philosophy.id} />;
-                })}
+                })} */}
             </div>
             <SuggestionCard />
         </div>
