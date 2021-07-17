@@ -33,14 +33,14 @@ const OnePhilosopher = () => {
             <section className="h-full max-w-[100vw] overflow-x-hidden">
                 <div className="box-border mx-auto mb-12 bg-black sm:w-9/12 bg-opacity-60">
                     <h1 className="pt-8 mb-8 text-5xl font-bold text-center capitalize sm:text-6xl">
-                        {philosopher.name}
+                        {philosopher?.name}
                     </h1>
                     <div className="w-full">
                         <iframe
                             title="Youtube Video"
                             width="560"
                             height="315"
-                            src={`https://www.youtube.com/embed/${philosopher.videoUrl}`}
+                            src={`https://www.youtube.com/embed/${philosopher?.videoUrl}`}
                             frameBorder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             className="max-w-full mx-auto"
@@ -54,14 +54,14 @@ const OnePhilosopher = () => {
                         <img
                             className="w-48 mx-auto mt-4 sm:w-72"
                             src={`/philosopher-profile-images/${
-                                philosopher.img || 'plato.jpg'
+                                philosopher?.img || 'plato.jpg'
                             }`}
-                            alt={`${philosopher.name} - broken link`}
+                            alt={`${philosopher?.name} - broken link`}
                         />
                         <div className="px-4 mx-auto mt-4 max-w-prose">
                             <p>
-                                {philosopher.about ? (
-                                    <span>{philosopher.about}</span>
+                                {philosopher?.about ? (
+                                    <span>{philosopher?.about}</span>
                                 ) : (
                                     <span>
                                         Lorem ipsum, dolor sit amet consectetur
@@ -82,7 +82,7 @@ const OnePhilosopher = () => {
                             <div className="flex flex-row-reverse pb-4">
                                 <Link
                                     to={
-                                        philosopher.wikiLink ||
+                                        philosopher?.wikiLink ||
                                         'https://wikipedia.com/'
                                     }
                                 >
