@@ -1,5 +1,6 @@
 import axios from 'axios';
 
+
 //get all philosophers
 const getPhilosophers = () => {
     return axios.get('/api/philosophers').then((response) => {
@@ -104,6 +105,16 @@ const signUp = ({ email, password, user_name }) => {
         });
 };
 
+
+const getNews = () => {
+    return axios.get('./api/news/').then((response) => {
+        if (response.status < 300) {
+            return response;
+        }
+    });
+};
+
+
 const logOut = () => {
     return axios
         .get('/api/user/logout')
@@ -121,6 +132,7 @@ export {
     getPolls,
     getQuotes,
     getQotd,
+    getNews,
     logIn,
     logOut,
     signUp,
