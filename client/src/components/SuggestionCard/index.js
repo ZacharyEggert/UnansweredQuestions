@@ -16,7 +16,7 @@ const SuggestionCard = () => {
                         <div className="flex flex-col items-center justify-center flex-1 w-full sm:pl-4">
                             <Link
                                 to="/suggestions"
-                                className="w-8/12 mx-auto text-center sm:w-full button"
+                                className="w-8/12 mx-auto text-center sm:w-full lg:w-8/12 button"
                             >
                                 Make a suggestion
                             </Link>
