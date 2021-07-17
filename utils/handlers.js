@@ -1,7 +1,7 @@
 const fetch = require('node-fetch');
 const YTsearch = require('youtube-search');
 
-const { Philosopher } = require('../models');
+const { Philosopher, Philosophies } = require('../models');
 
 const randomPicks = (max, count) => {
     console.log(max, count);
@@ -91,20 +91,41 @@ const fillPhilosopherData = async (id, philosopherData) => {
     newPhilosopherData.about = wiki.content;
     newPhilosopherData.wikiLink = wiki.readMoreURL;
 
-    const {name, img, period, about, videoUrl, wikiLink, quotes} = newPhilosopherData;
+    const { name, img, period, about, videoUrl, wikiLink, quotes } = newPhilosopherData;
 
-    await Philosopher.update({name, img, period, about, videoUrl, wikiLink, quotes}, { where: { id: id } }).then(
+    await Philosopher.update({ name, img, period, about, videoUrl, wikiLink, quotes }, { where: { id: id } }).then(
         (result) => {
-            console.log({result, newPhilosopherData});
+            console.log({ result, newPhilosopherData });
         }
     ).catch((err) => {
-        console.log({err});
+        console.log({ err });
     });
     return newPhilosopherData;
+};
+
+const fillPhilosophyData = async (ID, philosophyData) => {
+    let newPhilosophyData = philosophyData;
+    const yt = await getYoutubeUrl(newPhilosophyData);
+    // console.log(yt);
+    const wiki = await getWikiData(newPhilosophyData);
+    // console.log(wiki.readMoreURL.replace(/ /g, '%20'));
+
+    newPhilosophyData.videoUrl = yt.id;
+    newPhilosophyData.about = wiki.content;
+    newPhilosophyData.wikiLink = wiki.readMoreURL;
+
+    const { name, img, about, videoUrl, wikiLink, quotes } = newPhilosophyData;
+
+    await Philosophies.update({ name, img, about, videoUrl, wikiLink, quotes }, { where: { id: ID } }).then(
+        (result) => {
+            console.log({ result, newPhilosophyData });
+        })
+    return newPhilosophyData;
 };
 
 module.exports = {
     getDaysSinceJulySeventh,
     fillPhilosopherData,
     randomPicks,
+    fillPhilosophyData,
 };

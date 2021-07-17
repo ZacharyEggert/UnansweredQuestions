@@ -1,15 +1,33 @@
 import React from 'react';
 import { useGlobalContext } from '../../util/GlobalState';
 import { Link, useParams } from 'react-router-dom';
+import { getPhilosophy } from '../../util/API';
+import { useEffect } from 'react';
 
-const OnePhilosopher = () => {
+
+const OnePhilosophy = () => {
     // eslint-disable-next-line no-unused-vars
     const [globalState, dispatch] = useGlobalContext();
 
+
     const { id } = useParams();
 
-    const { philosophers } = globalState;
-    const philosopher = philosophers[id];
+    useEffect(() => {
+
+        getPhilosophy(id)
+            .then(({ data }) => {
+                console.log({ data });
+                dispatch({
+                    type: 'ONE_PHILOSOPHY_RECEIVE',
+                    data,
+                });
+            });
+    }, [id]);
+
+
+    const { philosophies } = globalState;
+    const philosophy = philosophies[id];
+    console.log(philosophies);
 
     return (
         <div className="min-h-full text-white bg-fixed bg-no-repeat bg-cover bg-redflowers bg-fade">
@@ -17,14 +35,14 @@ const OnePhilosopher = () => {
             <section className="h-full max-w-[100vw] overflow-x-hidden">
                 <div className="box-border mx-auto mb-12 bg-black sm:w-9/12 bg-opacity-60">
                     <h1 className="pt-8 mb-8 text-5xl font-bold text-center capitalize sm:text-6xl">
-                        {philosophy.name}
+                        {philosophy?.name}
                     </h1>
                     <div className="w-full">
                         <iframe
                             title="Youtube Video"
                             width="560"
                             height="315"
-                            src={`https://www.youtube.com/embed/${philosophy.videoUrl}`}
+                            src={`https://www.youtube.com/embed/${philosophy?.videoUrl}`}
                             frameBorder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             className="max-w-full mx-auto"
@@ -37,14 +55,14 @@ const OnePhilosopher = () => {
                     <div>
                         <img
                             className="w-48 mx-auto mt-4 sm:w-72"
-                            src={`/philosopher-profile-images/${philosophy.imgUrl || 'plato.jpg'
+                            src={`/philosopher-profile-images/${philosophy?.imgUrl || 'plato.jpg'
                                 }`}
-                            alt={`${philosophy.name} - broken link`}
+                            alt={`${philosophy?.name} - broken link`}
                         />
                         <div className="px-4 mx-auto mt-4 max-w-prose">
                             <p>
-                                {philosophy.about ? (
-                                    <p>{philosophy.about}</p>
+                                {philosophy?.about ? (
+                                    <p>{philosophy?.about}</p>
                                 ) : (
                                     <span>
                                         Lorem ipsum, dolor sit amet consectetur
@@ -65,7 +83,7 @@ const OnePhilosopher = () => {
                             <div className="flex flex-row-reverse pb-4">
                                 <Link
                                     to={
-                                        philosopher.wikiLink ||
+                                        philosophy?.wikiLink ||
                                         'https://wikipedia.com/'
                                     }
                                 >

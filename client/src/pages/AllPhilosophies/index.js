@@ -17,9 +17,10 @@ const AllPhilosophies = () => {
             <div className="py-14"></div>
             <div className="box">
                 {/**<!-- cards for each philosophy  -->*/}
-                {globalState.philosophies.map((philosophy) => {
+                {Object.values(globalState.philosophies).map((philosophy) => {
                     return <PhilosophyCard philosophy={philosophy} key={philosophy.id} />;
                 })}
+
             </div>
             <SuggestionCard />
         </div>

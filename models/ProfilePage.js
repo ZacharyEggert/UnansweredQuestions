@@ -21,7 +21,7 @@ ProfilePage.init({
     },
     bio: {
         type: DataTypes.TEXT,
-        allowNull: True,
+        allowNull: true,
     },
     profilePic: {
         type: DataTypes.STRING,
