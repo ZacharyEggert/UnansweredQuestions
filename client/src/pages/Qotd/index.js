@@ -11,7 +11,7 @@ const Qotd = () => {
     // eslint-disable-next-line no-unused-vars
     const [globalState, dispatch] = useGlobalContext();
 
-    const { isLoggedin } = globalState;
+    const { isLoggedIn } = globalState;
 
     useEffect(() => {
         getQotd().then(response => {
@@ -34,7 +34,7 @@ const Qotd = () => {
                         </h2>
                     </div>
 
-                    <h2 className="flex-1 text-2xl mb-10 text-center">Comments</h2>
+                    <h2 className="flex-1 mb-10 text-2xl text-center">Comments</h2>
 
                     {globalState.dailyQuestion?.comments?.map((comment) => {
                         return (
@@ -42,7 +42,7 @@ const Qotd = () => {
                         );
                     })}
 
-                    {isLoggedin ? <CommentInput dailyQuestion={globalState.dailyQuestion} /> : <CommentLogin />}
+                    {isLoggedIn ? <CommentInput dailyQuestion={globalState.dailyQuestion} /> : <CommentLogin />}
                 </div>
 
                 <SuggestionCard />
