@@ -1,6 +1,5 @@
 import axios from 'axios';
 
-
 //get all philosophers
 const getPhilosophers = () => {
     return axios.get('/api/philosophers').then((response) => {
@@ -43,9 +42,8 @@ const getPolls = () => {
 };
 
 //put a vote on a poll
-const updateVoteCount = (id, data ) => {
-    return axios.put('/api/polls/' + id, data)
-    .then((response) => {
+const updateVoteCount = (id, data) => {
+    return axios.put('/api/polls/' + id, data).then((response) => {
         if (response.status < 300) {
             return response;
         }
@@ -62,72 +60,73 @@ const getQuotes = () => {
 };
 //get current qotd info eg. question,comments
 const getQotd = () => {
-    return axios.get('/api/dailyquestion/')
-    .then((response) => {
-        if (response.status < 300) {
-            return response;
-        }
-    })
-    .catch((error) => {
-        console.log(error);
-    });
+    return axios
+        .get('/api/dailyquestion/')
+        .then((response) => {
+            if (response.status < 300) {
+                return response;
+            }
+        })
+        .catch((error) => {
+            console.log(error);
+        });
 };
 
 const getSuggestions = () => {
     return axios.get('/api/suggestions').then((response) => {
         if (response.status < 300) {
             return response;
-        }else{
+        } else {
             console.error(response);
         }
     });
 };
 
 const postSuggestion = ({ suggestion, user_id }) => {
-    return axios.post('/api/suggestions', { suggestion, user_id })
-    .then((response) => {
+    return axios.post('/api/suggestions', suggestion).then((response) => {
         if (response.status < 300) {
             return response;
-        }else{
+        } else {
             console.error(response);
         }
     });
 };
 
 const approveSugestion = ({ id }) => {
-    return axios.put('/api/suggestions/' + id, { status: 'approved' })
-    .then((response) => {
-        if (response.status < 300) {
-            return response;
-        }else{
-            console.error(response);
-        }
-    });
+    return axios
+        .put('/api/suggestions/' + id, { status: 'approved' })
+        .then((response) => {
+            if (response.status < 300) {
+                return response;
+            } else {
+                console.error(response);
+            }
+        });
 };
 
 const deleteSugestion = ({ id }) => {
-    return axios.delete('/api/suggestions/' + id)
-    .then((response) => {
+    return axios.delete('/api/suggestions/' + id).then((response) => {
         if (response.status < 300) {
             return response;
-        }else{
+        } else {
             console.error(response);
         }
     });
 };
 
 //post a comment on a qotd with an attatched user_id
-const postComment = ({comment, user_id, daily_id}) => {
-    return axios.post('/api/comments', {comment, user_id, daily_id})
-    .then((response) => {
-        if (response.status < 300) {
-            // console.log(response);
-            return response;
-        }
-    })
-    .catch((error) => {
-        console.error(error);
-    });
+const postComment = ({ comment, user_id, daily_id }) => {
+    return axios
+        .post('/api/comments', { comment, user_id, daily_id })
+        .then((response) => {
+            if (response.status < 300) {
+                // console.log(response);
+                return response;
+            }
+        })
+        .catch((error) => {
+            console.error(error);
+        });
 };
 
 const logIn = ({ user_name, password }) => {
@@ -148,7 +147,6 @@ const signUp = ({ email, password, user_name }) => {
         });
 };
 
-
 const getNews = () => {
     return axios.get('./api/news/').then((response) => {
         if (response.status < 300) {
@@ -157,14 +155,11 @@ const getNews = () => {
     });
 };
 
-
 const logOut = () => {
-    return axios
-        .get('/api/user/logout')
-        .then((response) => {
-            // console.log(response);
-            return response;
-        });
+    return axios.get('/api/user/logout').then((response) => {
+        // console.log(response);
+        return response;
+    });
 };
 
 export {
