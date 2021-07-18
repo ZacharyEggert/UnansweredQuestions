@@ -9,7 +9,10 @@ const Dashboard = () => {
         screen: 'suggestions',
         isLoading: false,
         isAuthenticated: false,
-        user: null
+        user: null,
+        quoteChecked: true,
+        questionChecked: true,
+        philosopherChecked: true,
     };
 
     const [dashboardState, setDashboardState] = React.useState(initialState);
