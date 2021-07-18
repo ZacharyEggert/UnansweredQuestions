@@ -92,9 +92,9 @@ const postSuggestion = ({ suggestion, user_id }) => {
     });
 };
 
-const approveSugestion = ({ id }) => {
+const approveSugestion = ({ id, user_id }) => {
     return axios
-        .put('/api/suggestions/' + id, { status: 'approved' })
+        .put('/api/suggestions/' + id, { status: 'approved', user_id })
         .then((response) => {
             if (response.status < 300) {
                 return response;
