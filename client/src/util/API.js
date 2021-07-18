@@ -73,6 +73,49 @@ const getQotd = () => {
     });
 };
 
+const getSuggestions = () => {
+    return axios.get('/api/suggestions').then((response) => {
+        if (response.status < 300) {
+            return response;
+        }else{
+            console.error(response);
+        }
+    });
+};
+
+const postSuggestion = ({ suggestion, user_id }) => {
+    return axios.post('/api/suggestions', { suggestion, user_id })
+    .then((response) => {
+        if (response.status < 300) {
+            return response;
+        }else{
+            console.error(response);
+        }
+    });
+};
+
+const approveSugestion = ({ id }) => {
+    return axios.put('/api/suggestions/' + id, { status: 'approved' })
+    .then((response) => {
+        if (response.status < 300) {
+            return response;
+        }else{
+            console.error(response);
+        }
+    });
+};
+
+const deleteSugestion = ({ id }) => {
+    return axios.delete('/api/suggestions/' + id)
+    .then((response) => {
+        if (response.status < 300) {
+            return response;
+        }else{
+            console.error(response);
+        }
+    });
+};
+
 //post a comment on a qotd with an attatched user_id
 const postComment = ({comment, user_id, daily_id}) => {
     return axios.post('/api/comments', {comment, user_id, daily_id})
@@ -133,6 +176,10 @@ export {
     getQuotes,
     getQotd,
     getNews,
+    getSuggestions,
+    postSuggestion,
+    approveSugestion,
+    deleteSugestion,
     logIn,
     logOut,
     signUp,
