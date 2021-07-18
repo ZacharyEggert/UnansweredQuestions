@@ -17,6 +17,7 @@ const ReviewScreen = (props) => {
 
     const goBack = () => {
         setDashboardState({
+            ...dashboardState,
             activeReviewType: null,
             activeReviewId: null,
             activeReview: false,
