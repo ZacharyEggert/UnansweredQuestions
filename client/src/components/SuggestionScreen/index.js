@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { getSuggestions } from '../../util/API';
+import SuggestionReviewCard from '../SuggestionReviewCard';
 
 const SuggestionScreen = ({ state }) => {
     // eslint-disable-next-line no-unused-vars
@@ -56,6 +57,17 @@ const SuggestionScreen = ({ state }) => {
                         onChange={handleCheckBox}
                     />
                 </label>
+            </div>
+
+            <div className="flex flex-col justify-around h-full py-2 text-sm md:my-2 md:mx-2 md:text-base">
+                {suggestions.map((suggestion, i) => (
+                    <SuggestionReviewCard
+                        key={i}
+                        suggestion={suggestion}
+                        isChecked={dashboardState[suggestion.sugg_type + 'Checked']}
+                    />
+                ))}
+                    
             </div>
         </div>
     );
