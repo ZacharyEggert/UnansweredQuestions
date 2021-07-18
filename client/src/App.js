@@ -108,7 +108,9 @@ const App = () => {
                         ) : null}
                     <Login />
                 </Route>
-                <Route exact path="/suggestions" component={Suggestions} />
+                <Route exact path="/suggestions" >
+                <Suggestions user={globalState.currentUser?.user}/>
+                </Route>
                 <Route exact path="/quiz">
                     <Quiz philosophers={globalState.philosophers} />
                 </Route>
