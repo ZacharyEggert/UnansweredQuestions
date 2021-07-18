@@ -90,8 +90,8 @@ const App = () => {
                 <Route exact path="/philosophy/:id" component={OnePhilosophy} />
                 <Route exact path="/dashboard">
                     { !globalState.isLoggedIn ? 
-                    // ( globalState.currentUser.user.admin ? 
-                    <Dashboard /> : 
+                    // ( globalState.currentUser?.user.admin ? 
+                    <Dashboard user={globalState.currentUser?.user}/> : 
                     // <Redirect to="/philosophers" />
                     // ) :
                     <Redirect to="/login" /> }

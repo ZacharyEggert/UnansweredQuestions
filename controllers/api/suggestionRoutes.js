@@ -55,7 +55,7 @@ router.put('/:id', async (req, res) => {
 
 router.delete('/:id', async (req, res) => {
     try {
-        const suggestion = await Suggestions.findById(req.params.id);
+        const suggestion = await Suggestions.findByPk(req.params.id);
         await suggestion.destroy();
         res.status(200).json(suggestion);
     } catch (err) {

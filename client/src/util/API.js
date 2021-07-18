@@ -92,7 +92,7 @@ const postSuggestion = ({ suggestion, user_id }) => {
     });
 };
 
-const approveSugestion = ({ id, user_id }) => {
+const approveSuggestion = ({ id, user_id }) => {
     return axios
         .put('/api/suggestions/' + id, { status: 'approved', user_id })
         .then((response) => {
@@ -104,7 +104,7 @@ const approveSugestion = ({ id, user_id }) => {
         });
 };
 
-const deleteSugestion = ({ id }) => {
+const deleteSuggestion = ({ id }) => {
     return axios.delete('/api/suggestions/' + id).then((response) => {
         if (response.status < 300) {
             return response;
@@ -162,6 +162,28 @@ const logOut = () => {
     });
 };
 
+const API = {
+    getPhilosophers,
+    getPhilosopher,
+    getPhilosophies,
+    getPhilosophy,
+    getPolls,
+    getQuotes,
+    getQotd,
+    getNews,
+    getSuggestions,
+    postSuggestion,
+    approveSuggestion,
+    deleteSuggestion,
+    logIn,
+    logOut,
+    signUp,
+    postComment,
+    updateVoteCount,
+};
+
+export default API;
+
 export {
     getPhilosophers,
     getPhilosopher,
@@ -173,8 +195,8 @@ export {
     getNews,
     getSuggestions,
     postSuggestion,
-    approveSugestion,
-    deleteSugestion,
+    approveSuggestion,
+    deleteSuggestion,
     logIn,
     logOut,
     signUp,
