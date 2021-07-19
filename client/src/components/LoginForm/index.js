@@ -75,9 +75,9 @@ const LoginForm = () => {
         <form onSubmit={handleFormSubmit}>
             <label
                 htmlFor="email"
-                className="inline-block w-2/12 my-3"
+                className="flex flex-row my-3 w-full/12"
                 hidden
-            ></label>
+            >&nbsp;
             <input
                 name="email"
                 value={state['email']}
@@ -88,10 +88,10 @@ const LoginForm = () => {
                 hidden
                 disabled
             />
-            <br />
-            <label htmlFor="username" className="inline-block w-4/12 my-3">
-                Username
             </label>
+            <label htmlFor="username" className="flex flex-col justify-between w-full mx-auto my-3 text-lg md:items-center md:flex-row md:w-10/12">
+                Username
+            
             <input
                 name="username"
                 id="username"
@@ -100,10 +100,10 @@ const LoginForm = () => {
                 type="text"
                 className="max-w-full pl-1 my-3 text-black"
             />
-            <br />
-            <label htmlFor="password" className="inline-block w-4/12 my-3">
-                Password
             </label>
+            <label htmlFor="password" className="flex flex-col justify-between w-full mx-auto my-3 text-lg md:items-center md:flex-row md:w-10/12">
+                Password
+            
             <input
                 name="password"
                 value={state['password']}
@@ -112,12 +112,13 @@ const LoginForm = () => {
                 onChange={handleOnChange}
                 className="max-w-full pl-1 my-3 text-black"
             />
+            </label>
             <br />
-            <span className="inline-block w-8/12 text-right">
+            <span className="block w-full mx-auto text-right md:w-10/12">
                 <button
                     id="login"
                     type="submit"
-                    className="text-white rounded-md px-3 border-white border-2 border-solid whitespace-nowrap w-auto md:w-3/12 min-w-min bg-[#4d83a3]"
+                    className="w-auto px-3 py-1 whitespace-nowrap md:w-3/12 min-w-min button"
                 >
                     Log in
                 </button>
