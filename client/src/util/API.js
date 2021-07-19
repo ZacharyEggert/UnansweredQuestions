@@ -163,14 +163,55 @@ const logOut = () => {
 };
 
 const getAllUsers = () => {
-    return axios.get('/api/user/').then((response) => {
-        if (response.status < 300) {
-            return response;
-        }
-    })
-    .catch((error) => {
-        console.log(error);
-    });
+    return axios
+        .get('/api/user/')
+        .then((response) => {
+            if (response.status < 300) {
+                return response;
+            }
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+};
+
+const deleteUser = ({ id }) => {
+    return axios
+        .delete('/api/user/' + id)
+        .then((response) => {
+            if (response.status < 300) {
+                return response;
+            }
+        })
+        .catch((error) => {
+            console.error(error);
+        });
+};
+
+const removeAdminUser = ({ id }) => {
+    return axios
+        .put('/api/user/' + id, { admin: false })
+        .then((response) => {
+            if (response.status < 300) {
+                return response;
+            }
+        })
+        .catch((error) => {
+            console.error(error);
+        });
+};
+
+const adminUser = ({ id }) => {
+    return axios
+        .put('/api/user/' + id, { admin: true })
+        .then((response) => {
+            if (response.status < 300) {
+                return response;
+            }
+        })
+        .catch((error) => {
+            console.error(error);
+        });
 };
 
 const API = {
@@ -192,6 +233,9 @@ const API = {
     postComment,
     updateVoteCount,
     getAllUsers,
+    deleteUser,
+    adminUser,
+    removeAdminUser,
 };
 
 export default API;
@@ -215,4 +259,7 @@ export {
     postComment,
     updateVoteCount,
     getAllUsers,
+    deleteUser,
+    adminUser,
+    removeAdminUser,
 };

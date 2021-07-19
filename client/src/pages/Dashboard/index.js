@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import DashboardScreen from '../../components/DashboardScreen';
 import ReviewScreen from '../../components/ReviewScreen';
 import SuggestionScreen from '../../components/SuggestionScreen';
-import { getSuggestions } from '../../util/API';
+import { getAllUsers, getSuggestions } from '../../util/API';
 import PrivilegeScreen from '../../components/PrivilegeScreen';
 
 const Dashboard = ({ user }) => {
@@ -36,6 +36,19 @@ const Dashboard = ({ user }) => {
         }
     };
 
+    const refreshUsers = () => {
+        setDashboardState({...dashboardState, isLoading: true });
+        getAllUsers().then(response => {
+            return response.data;
+        }).then(users => {
+            setUsers(users);
+            setDashboardState({...dashboardState, isLoading: false });
+        }).catch(error => {
+            console.error(error);
+        });
+    };
+
+
     useEffect(() => {
         if (dashboardState.submitError) {
             setTimeout(() => {
@@ -66,9 +79,10 @@ const Dashboard = ({ user }) => {
         }
 
         if (dashboardState.screen === 'privileges') {
-            getSuggestions()
+            getAllUsers()
                 .then((response) => {
-                    setSuggestions(response.data);
+                    // console.debug(response);
+                    setUsers(response.data);
                     setTimeout(() => {
                         setDashboardState({
                             ...dashboardState,
@@ -77,7 +91,7 @@ const Dashboard = ({ user }) => {
                     }, 20);
                 })
                 .catch((error) => {
-                    console.log(error);
+                    console.error(error);
                 });
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -132,6 +146,8 @@ const Dashboard = ({ user }) => {
                         dashboardState.screen === 'privileges' ? (
                             <PrivilegeScreen
                                 state={{ dashboardState, setDashboardState }}
+                                users={users}
+                                refreshUsers={refreshUsers}
                             />
                         ) : null}
                         {!dashboardState.isLoading &&
