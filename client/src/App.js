@@ -9,12 +9,13 @@ import Quiz from './pages/Quiz';
 import Qotd from './pages/Qotd';
 import Login from './pages/Login';
 import Polls from './pages/Polls';
-import News from './pages/News';
+// import News from './pages/News';
 import NavBar from './components/NavBar';
 import OnePhilosopher from './pages/OnePhilosopher';
 import AllPhilosophies from './pages/AllPhilosophies';
 import OnePhilosophy from './pages/OnePhilosophy';
 import ProfilePage from './pages/ProfilePage';
+import Dashboard from './pages/Dashboard';
 
 import { useGlobalContext } from './util/GlobalState';
 import { getPhilosophers, getPhilosophies, getPolls, getQuotes } from './util/API';
@@ -90,6 +91,14 @@ const App = () => {
                 <Route exact path="/chatroom" component={JoinChat} />
                 <Route exact path="/polls" component={Polls} />
                 <Route exact path="/philosophy/:id" component={OnePhilosophy} />
+                <Route exact path="/dashboard">
+                    { globalState.isLoggedIn ? 
+                    ( globalState.currentUser?.user?.admin ? 
+                    <Dashboard user={globalState.currentUser?.user}/> : 
+                    <Redirect to="/philosophers" />
+                    ) :
+                    <Redirect to="/login" /> }
+                </Route>
                 <Route
                     exact
                     path="/polls/:id"
@@ -102,7 +111,9 @@ const App = () => {
                         ) : null}
                     <Login />
                 </Route>
-                <Route exact path="/suggestions" component={Suggestions} />
+                <Route exact path="/suggestions" >
+                <Suggestions user={globalState.currentUser?.user}/>
+                </Route>
                 <Route exact path="/quiz">
                     <Quiz philosophers={globalState.philosophers} />
                 </Route>

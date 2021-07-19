@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import { postSuggestion } from '../../util/API';
 
-const SuggestionForm = () => {
+const SuggestionForm = ({ user }) => {
     const initialState = {
         'suggestion-type': '',
         'phil-name': '',
@@ -39,14 +40,36 @@ const SuggestionForm = () => {
         ) {
             alert('Please enter a valid entry');
         } else {
-            alert('Your suggestion has been submitted! Thanks for your input!');
-            setState({
-                'suggestion-type': '',
-                'phil-name': '',
-                'q-phil-name': '',
-                quote: '',
-                quest: '',
-            });
+            postSuggestion({
+                suggestion: {
+                    sugg_type: state['suggestion-type'],
+                    quotephilname: state['q-phil-name'],
+                    name: state['phil-name'],
+                    question: state.quest,
+                    quote: state.quote,
+                },
+                user_id: user?.id,
+            })
+                .then((response) => {
+                    if (response.status < 300) {
+                        alert(
+                            'Your suggestion has been submitted! Thanks for your input!'
+                        );
+                        setState({
+                            'suggestion-type': '',
+                            'phil-name': '',
+                            'q-phil-name': '',
+                            quote: '',
+                            quest: '',
+                        });
+                    } else {
+                        console.error(response);
+                        alert('Something went wrong. Please try again later.');
+                    }
+                })
+                .catch(() => {
+                    alert('Something went wrong. Please try again later.');
+                });
 
             console.log(state);
         }
@@ -56,7 +79,7 @@ const SuggestionForm = () => {
         <form>
             <div className="mb-4 form-group sm:flex sm:justify-between">
                 <label
-                    for="suggestion"
+                    for="suggestion-type"
                     className="inline-block w-full sm:w-5/12"
                     id="listbox-label"
                 >
@@ -99,7 +122,7 @@ const SuggestionForm = () => {
                 >
                     <label
                         for="phil-name"
-                        className="inline-block sm:w-5/12 mb-2"
+                        className="inline-block mb-2 sm:w-5/12"
                     >
                         Philosopher Name:
                     </label>
@@ -120,7 +143,7 @@ const SuggestionForm = () => {
                     <div className="mb-4 col-6 sm:flex sm:justify-between">
                         <label
                             for="q-phil-name"
-                            className="inline-block sm:w-5/12 mb-2"
+                            className="inline-block mb-2 sm:w-5/12"
                         >
                             Philosopher Name:
                         </label>
@@ -138,7 +161,7 @@ const SuggestionForm = () => {
                     <div className="col-6 sm:flex sm:justify-between">
                         <label
                             for="quote"
-                            className="inline-block sm:w-5/12 mb-2"
+                            className="inline-block mb-2 sm:w-5/12"
                         >
                             Quote:
                         </label>
@@ -160,7 +183,7 @@ const SuggestionForm = () => {
                     className="mb-4 question box2 sm:flex sm:justify-between"
                     id="otherFieldDiv3"
                 >
-                    <label for="quest" className="inline-block sm:w-5/12 mb-2">
+                    <label for="quest" className="inline-block mb-2 sm:w-5/12">
                         Question:
                     </label>
                     <input
@@ -175,12 +198,12 @@ const SuggestionForm = () => {
                     />
                 </div>
             ) : null}
-            <span className="text-right flex justify-center">
+            <span className="flex justify-center text-right">
                 <button
                     id="suggestion"
                     type="submit"
                     onClick={handleFormSubmit}
-                    className="button mt-4 w-full sm:w-6/12"
+                    className="w-full mt-4 button sm:w-6/12"
                 >
                     Submit
                 </button>

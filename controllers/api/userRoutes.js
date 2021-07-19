@@ -12,7 +12,7 @@ router.post('/signup', async (req, res) => {
             req.session.logged_in = true;
             //when username saved upon signup, saved as logged_name
             req.session.logged_name = userData.user_name;
-            res.status(200).json(userData.get({ plain: true }));
+            res.status(200).json({user:userData.get({ plain: true })});
         });
     } catch (err) {
         res.status(500).json(err);
@@ -66,5 +66,62 @@ router.get('/logout', (req, res) => {
         res.status(404).end();
     }
 });
+
+router.get('/', (req, res) => {
+    User.findAll({
+        attributes: ['id', 'user_name', 'email', 'admin'],
+    })
+        .then(users => {
+            res.json(users);
+        })
+        .catch(err => {
+            res.status(500).json(err);
+            console.error(err);
+        });
+});
+
+router.put('/:id', async (req, res) => {
+    try {
+        // console.log(req.params.id);
+        const userData = await User.findByPk(req.params.id);
+        if (!userData) {
+            console.log(userData);
+            res.status(404).json({
+                message: 'User not found',
+            });
+            return;
+        }
+        userData.update(req.body);
+        userData.save();
+        console.log('User updated');
+        console.log(userData);
+        res.status(200).json(userData);
+    } catch (err) {
+        res.status(500).json(err);
+        console.error(err);
+    }
+});
+
+router.delete('/:id', async (req, res) => {
+    try {
+        const userData = await User.findOne({
+            where: { id: req.params.id },
+        });
+        if (!userData) {
+            res.status(404).json({
+                message: 'User not found',
+            });
+            return;
+        }
+        userData.destroy();
+        console.log('User deleted');
+        res.status(200).json({ message: 'User deleted' });
+    } catch (err) {
+        res.status(500).json(err);
+        console.error(err);
+    }
+});
+
+
 
 module.exports = router;

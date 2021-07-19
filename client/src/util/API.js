@@ -1,6 +1,5 @@
 import axios from 'axios';
 
-
 //get all philosophers
 const getPhilosophers = () => {
     return axios.get('/api/philosophers').then((response) => {
@@ -43,9 +42,8 @@ const getPolls = () => {
 };
 
 //put a vote on a poll
-const updateVoteCount = (id, data ) => {
-    return axios.put('/api/polls/' + id, data)
-    .then((response) => {
+const updateVoteCount = (id, data) => {
+    return axios.put('/api/polls/' + id, data).then((response) => {
         if (response.status < 300) {
             return response;
         }
@@ -62,29 +60,93 @@ const getQuotes = () => {
 };
 //get current qotd info eg. question,comments
 const getQotd = () => {
-    return axios.get('/api/dailyquestion/')
-    .then((response) => {
+    return axios
+        .get('/api/dailyquestion/')
+        .then((response) => {
+            if (response.status < 300) {
+                return response;
+            }
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+};
+
+const getProfileInfo = (user_id) => {
+    return axios.get('/api/profile/' + user_id).then((response) => {
         if (response.status < 300) {
             return response;
+        } else {
+            console.error(response);
         }
-    })
-    .catch((error) => {
-        console.log(error);
+    });
+};
+
+const postProfileInfo = ({ profile, user_id }) => {
+    return axios.post('/api/profile', { profile, user_id }).then((response) => {
+        if (response.status < 300) {
+            return response;
+        } else {
+            console.error(response);
+        }
+    });
+};
+
+const getSuggestions = () => {
+    return axios.get('/api/suggestions').then((response) => {
+        if (response.status < 300) {
+            return response;
+        } else {
+            console.error(response);
+        }
+    });
+};
+
+const postSuggestion = ({ suggestion, user_id }) => {
+    return axios.post('/api/suggestions', suggestion).then((response) => {
+        if (response.status < 300) {
+            return response;
+        } else {
+            console.error(response);
+        }
+    });
+};
+
+const approveSuggestion = ({ id, user_id }) => {
+    return axios
+        .put('/api/suggestions/' + id, { status: 'approved', user_id })
+        .then((response) => {
+            if (response.status < 300) {
+                return response;
+            } else {
+                console.error(response);
+            }
+        });
+};
+
+const deleteSuggestion = ({ id }) => {
+    return axios.delete('/api/suggestions/' + id).then((response) => {
+        if (response.status < 300) {
+            return response;
+        } else {
+            console.error(response);
+        }
     });
 };
 
 //post a comment on a qotd with an attatched user_id
-const postComment = ({comment, user_id, daily_id}) => {
-    return axios.post('/api/comments', {comment, user_id, daily_id})
-    .then((response) => {
-        if (response.status < 300) {
-            // console.log(response);
-            return response;
-        }
-    })
-    .catch((error) => {
-        console.error(error);
-    });
+const postComment = ({ comment, user_id, daily_id }) => {
+    return axios
+        .post('/api/comments', { comment, user_id, daily_id })
+        .then((response) => {
+            if (response.status < 300) {
+                // console.log(response);
+                return response;
+            }
+        })
+        .catch((error) => {
+            console.error(error);
+        });
 };
 
 const logIn = ({ user_name, password }) => {
@@ -105,7 +167,6 @@ const signUp = ({ email, password, user_name }) => {
         });
 };
 
-
 const getNews = () => {
     return axios.get('./api/news/').then((response) => {
         if (response.status < 300) {
@@ -114,15 +175,94 @@ const getNews = () => {
     });
 };
 
-
 const logOut = () => {
+    return axios.get('/api/user/logout').then((response) => {
+        // console.log(response);
+        return response;
+    });
+};
+
+const getAllUsers = () => {
     return axios
-        .get('/api/user/logout')
+        .get('/api/user/')
         .then((response) => {
-            // console.log(response);
-            return response;
+            if (response.status < 300) {
+                return response;
+            }
+        })
+        .catch((error) => {
+            console.log(error);
         });
 };
+
+const deleteUser = ({ id }) => {
+    return axios
+        .delete('/api/user/' + id)
+        .then((response) => {
+            if (response.status < 300) {
+                return response;
+            }
+        })
+        .catch((error) => {
+            console.error(error);
+        });
+};
+
+const removeAdminUser = ({ id }) => {
+    return axios
+        .put('/api/user/' + id, { admin: false })
+        .then((response) => {
+            if (response.status < 300) {
+                // console.log(response);
+                return response;
+            }
+        })
+        .catch((error) => {
+            console.error(error);
+        });
+};
+
+const adminUser = ({ id }) => {
+    return axios
+        .put('/api/user/' + id, { admin: true })
+        .then((response) => {
+            if (response.status < 300) {
+                // console.log(response);
+                return response;
+            }
+        })
+        .catch((error) => {
+            console.error(error);
+        });
+};
+
+const API = {
+    getPhilosophers,
+    getPhilosopher,
+    getPhilosophies,
+    getPhilosophy,
+    getPolls,
+    getQuotes,
+    getQotd,
+    getNews,
+    getSuggestions,
+    postSuggestion,
+    approveSuggestion,
+    deleteSuggestion,
+    logIn,
+    logOut,
+    signUp,
+    postComment,
+    updateVoteCount,
+    getAllUsers,
+    deleteUser,
+    adminUser,
+    removeAdminUser,
+    postProfileInfo,
+    getProfileInfo,
+};
+
+export default API;
 
 export {
     getPhilosophers,
@@ -133,9 +273,19 @@ export {
     getQuotes,
     getQotd,
     getNews,
+    getSuggestions,
+    postSuggestion,
+    approveSuggestion,
+    deleteSuggestion,
     logIn,
     logOut,
     signUp,
     postComment,
     updateVoteCount,
+    getAllUsers,
+    deleteUser,
+    adminUser,
+    removeAdminUser,
+    postProfileInfo,
+    getProfileInfo,
 };
