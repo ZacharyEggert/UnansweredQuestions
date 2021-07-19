@@ -16,8 +16,11 @@ const AllPhilosophies = () => {
 
 
             <div className="py-14"></div>
-            <div >
-                <div className="box">
+            <div className="flex-initial pb-10 mb-10 w-9/12 bg-[rgba(0,0,0,0.6)]">
+                <h1 className="py-2 mx-auto my-8 text-5xl text-center sm:w-9/12 ">
+                    Philosophies
+                </h1>
+                <div className="box flex justify-center flex-wrap">
                     {/**<!-- cards for each philosophy  -->*/}
                     {Object.values(globalState.philosophies).map((philosophy) => {
                         return <PhilosophyCard philosophy={philosophy} key={philosophy.id} />;
