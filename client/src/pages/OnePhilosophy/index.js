@@ -55,7 +55,7 @@ const OnePhilosophy = () => {
                     <div>
                         <img
                             className="w-48 mx-auto mt-4 sm:w-72"
-                            src={`/philosopher-profile-images/${philosophy?.imgUrl || 'plato.jpg'
+                            src={`/philosophy-pics/${philosophy?.img || 'plato.jpg'
                                 }`}
                             alt={`${philosophy?.name} - broken link`}
                         />
