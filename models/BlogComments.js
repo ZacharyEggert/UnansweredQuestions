@@ -42,4 +42,4 @@ BlogComments.init(
     }
 );
 
-module.exports = Comments;
+module.exports = BlogComments;

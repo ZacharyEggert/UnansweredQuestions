@@ -4,6 +4,7 @@ const ProfilePage = require('./ProfilePage');
 const DailyQuestion = require('./DailyQuestion');
 const Quote = require('./Quote');
 const Blogs = require('./Blogs');
+const BlogComments = require('./BlogComments');
 // eslint-disable-next-line no-unused-vars
 const Test = require('./Test');
 const User = require('./User');
@@ -20,6 +21,20 @@ Philosopher.hasMany(Quote, {
 DailyQuestion.hasMany(Comments, {
     foreignKey: 'daily_id',
 });
+Blogs.hasMany(BlogComments, {
+    foreignKey: 'blog_id',
+});
+BlogComments.belongsTo(Blogs, {
+    foreignKey: 'blog_id',
+});
+BlogComments.belongsTo(User, {
+    foreignKey: 'user_id',
+});
+User.hasMany(BlogComments, {
+    foreignKey: 'user_id',
+});
+
+
 
 User.hasMany(Comments, {
     foreignKey: 'user_id',
@@ -39,6 +54,7 @@ Comments.belongsTo(User, {
 module.exports = {
     Philosopher,
     Blogs,
+    BlogComments,
     Philosophies,
     ProfilePage,
     DailyQuestion,
