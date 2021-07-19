@@ -214,6 +214,33 @@ const adminUser = ({ id }) => {
         });
 };
 
+const getAllBlogs = () => {
+    return axios
+        .get('/api/blogs/')
+        .then((response) => {
+            if (response.status < 300) {
+                return response;
+            }
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+};
+
+const getOneBlog = (id) => {
+    return axios
+        .get('/api/blogs/' + id)
+        .then((response) => {
+            if (response.status < 300) {
+                return response;
+            }
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+};
+
+
 const API = {
     getPhilosophers,
     getPhilosopher,
@@ -236,6 +263,9 @@ const API = {
     deleteUser,
     adminUser,
     removeAdminUser,
+    getAllBlogs,
+    getOneBlog,
+
 };
 
 export default API;
@@ -262,4 +292,6 @@ export {
     deleteUser,
     adminUser,
     removeAdminUser,
+    getAllBlogs,
+    getOneBlog,
 };
