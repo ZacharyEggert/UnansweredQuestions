@@ -16,6 +16,7 @@ import AllPhilosophies from './pages/AllPhilosophies';
 import OnePhilosophy from './pages/OnePhilosophy';
 import ProfilePage from './pages/ProfilePage';
 import Dashboard from './pages/Dashboard';
+import AllBlogs from './pages/AllBlogs';
 
 import { useGlobalContext } from './util/GlobalState';
 import { getPhilosophers, getPhilosophies, getPolls, getQuotes } from './util/API';
@@ -81,6 +82,7 @@ const App = () => {
                     component={OnePhilosopher}
                 />
                 <Route exact path="/philosophies" component={AllPhilosophies} />
+                <Route exact path="/blog" component={AllBlogs} />
                 <Route exact path="/profile" component={ProfilePage} />
                 <Route exact path="/qotd/:id" component={Qotd} />
                 <Route exact path="/qotd" component={Qotd} />
@@ -89,12 +91,12 @@ const App = () => {
                 <Route exact path="/polls" component={Polls} />
                 <Route exact path="/philosophy/:id" component={OnePhilosophy} />
                 <Route exact path="/dashboard">
-                    { globalState.isLoggedIn ? 
-                    ( globalState.currentUser?.user?.admin ? 
-                    <Dashboard user={globalState.currentUser?.user}/> : 
-                    <Redirect to="/philosophers" />
-                    ) :
-                    <Redirect to="/login" /> }
+                    {globalState.isLoggedIn ?
+                        (globalState.currentUser?.user?.admin ?
+                            <Dashboard user={globalState.currentUser?.user} /> :
+                            <Redirect to="/philosophers" />
+                        ) :
+                        <Redirect to="/login" />}
                 </Route>
                 <Route
                     exact
@@ -109,7 +111,7 @@ const App = () => {
                     <Login />
                 </Route>
                 <Route exact path="/suggestions" >
-                <Suggestions user={globalState.currentUser?.user}/>
+                    <Suggestions user={globalState.currentUser?.user} />
                 </Route>
                 <Route exact path="/quiz">
                     <Quiz philosophers={globalState.philosophers} />

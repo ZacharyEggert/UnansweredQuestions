@@ -67,6 +67,9 @@ const NavMobile = () => {
                     <li className=" mobile-nav">
                         <Link onClick={closeNav} to="/philosophers">Famous Philosophers</Link>
                     </li>
+                    <li className=" mobile-nav">
+                        <Link onClick={closeNav} to="/blog">Blogs</Link>
+                    </li>
                     <li className="mobile-nav">
                         <Link onClick={closeNav} to="/quiz">Quiz</Link>
                     </li>

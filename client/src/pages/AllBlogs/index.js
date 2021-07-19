@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import SuggestionCard from '../../components/SuggestionCard';
 import BlogCard from '../../components/BlogCard';
+import { getAllBlogs } from '../../util/API'
 
 
 
@@ -18,7 +19,7 @@ const AllBlogs = () => {
 
             {blogs.map((blog) => {
                 return (
-                    <BlogCard blogs={blogs} />
+                    <BlogCard blog={blog} />
                 );
             })}
             <SuggestionCard />

@@ -54,9 +54,12 @@ const NavDesktop = () => {
                     </Link>
                 </li>
                 <li className="desktop-nav">
+                    <Link to="/blog">Blogs</Link>
+                </li>
+                <li className="desktop-nav">
                     <Link to="/polls">Polls</Link>
                 </li>
-                 <li className="desktop-nav">
+                <li className="desktop-nav">
                     <Link to="/news">News</Link>
                 </li>
                 <li className="desktop-nav">

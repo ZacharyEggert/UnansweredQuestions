@@ -1,15 +1,15 @@
 import React from 'react';
 
 const BlogCard = (props) => {
-    const { blogs } = props;
+    const { blog } = props;
     return (
         <div className="">
             <div className="">
 
-                <h2 className="">{blogs.title}</h2>
+                <h2 className="">{blog.title}</h2>
                 <ul>
-                    <li>{blogs.userName}</li>
-                    <li>{blogs.createdAt}</li>
+                    <li>{blog.userName}</li>
+                    <li>{blog.createdAt}</li>
                 </ul>
             </div>
         </div>
