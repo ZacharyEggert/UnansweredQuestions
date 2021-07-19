@@ -9,10 +9,12 @@ const pollRoutes = require('./pollRoutes');
 const chatRoutes = require('./chatRoutes');
 const suggestionRoutes = require('./suggestionRoutes');
 const philosophyRoutes = require('./philosophyRoutes');
+const blogRoutes = require('./blogRoutes');
 
 router.use('/philosophers', philosopherRoutes);
 router.use('/quotes', quotesRoutes);
 // router.use('/quiz', quizRoutes);
+router.use('/blog', blogRoutes);
 router.use('/dailyquestion', dailyQuestionRoutes);
 router.use('/comments', commentsRoutes);
 router.use('/user', userRoutes);

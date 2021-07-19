@@ -66,7 +66,7 @@ const NavDesktop = () => {
                     <Link to="/profile">Profile</Link>
                 </li>
 
-                {isLoggedIn && globalState.currentUser.user.admin ?
+                {isLoggedIn && globalState.currentUser?.user?.admin ?
                     <li className="desktop-nav">
                         <Link to="/dashboard">Admin</Link>
                     </li>
