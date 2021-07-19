@@ -162,6 +162,17 @@ const logOut = () => {
     });
 };
 
+const getAllUsers = () => {
+    return axios.get('/api/user/').then((response) => {
+        if (response.status < 300) {
+            return response;
+        }
+    })
+    .catch((error) => {
+        console.log(error);
+    });
+};
+
 const API = {
     getPhilosophers,
     getPhilosopher,
@@ -180,6 +191,7 @@ const API = {
     signUp,
     postComment,
     updateVoteCount,
+    getAllUsers,
 };
 
 export default API;
@@ -202,4 +214,5 @@ export {
     signUp,
     postComment,
     updateVoteCount,
+    getAllUsers,
 };
