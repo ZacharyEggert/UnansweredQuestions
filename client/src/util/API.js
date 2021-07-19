@@ -193,6 +193,7 @@ const removeAdminUser = ({ id }) => {
         .put('/api/user/' + id, { admin: false })
         .then((response) => {
             if (response.status < 300) {
+                // console.log(response);
                 return response;
             }
         })
@@ -206,6 +207,7 @@ const adminUser = ({ id }) => {
         .put('/api/user/' + id, { admin: true })
         .then((response) => {
             if (response.status < 300) {
+                // console.log(response);
                 return response;
             }
         })
