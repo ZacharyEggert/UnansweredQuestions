@@ -2,6 +2,7 @@ import React from 'react';
 import UserReviewCard from '../userReviewCard';
 
 const PrivilegeScreen = (props) => {
+    // eslint-disable-next-line no-unused-vars
     const { dashboardState, setDashboardState, users, refreshUsers } = props;
 
     return (

@@ -1,14 +1,27 @@
 import React from 'react';
+import { adminUser, deleteUser } from '../../util/API';
 
 const UserReviewCard = (props) => {
     const { user, refreshUsers } = props;
 
     const makeAdmin = () => {
-        refreshUsers();
+        adminUser({id:user.id}).then((response) => {
+            if(response.status < 300) {
+                refreshUsers();
+            }
+        }).catch((error) => {
+            console.error(error);
+        });
     };
 
-    const deleteUser = () => {
-        refreshUsers();
+    const delUser = () => {
+        deleteUser({id:user.id}).then((response) => {
+            if(response.status < 300) {
+                refreshUsers();
+            }
+        }).catch((error) => {
+            console.error(error);
+        });
     };
 
     return (
@@ -25,7 +38,7 @@ const UserReviewCard = (props) => {
                 </span>
                 <span
                     className="w-1/12 pt-0 pb-0 text-base text-center text-black bg-red-700 border-black bg-opacity-80 hover:bg-red-600 hover:bg-opacity-80 button"
-                    onClick={deleteUser}
+                    onClick={delUser}
                 >
                     X
                 </span>
