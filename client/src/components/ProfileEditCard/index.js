@@ -3,19 +3,8 @@ import { useGlobalContext } from '../../util/GlobalState';
 // import { logIn } from '../../util/API';
 import ProfileView from '../ProfileViewCard';
 
-const EditView = () => {
-    // eslint-disable-next-line no-unused-vars
-    const [globalState, dispatch] = useGlobalContext();
-    // const { currentUser } = globalState;
-
-    const initialState = {
-        bio: '',
-        favephil: '',
-        favebook: '',
-        favequote: '',
-    };
-
-    const [state, setState] = useState(initialState);
+const EditView = (props) => {
+    const { setState, state } = props;
 
     const handleOnChange = (event) => {
         setState({
@@ -29,8 +18,10 @@ const EditView = () => {
         event.preventDefault();
 
         alert('Your profile has been updated!');
-
-        <ProfileView />;
+        setState({
+            ...state,
+            view: 'ProfileView',
+        });
     };
 
     return (
