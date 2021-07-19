@@ -12,7 +12,7 @@ router.post('/signup', async (req, res) => {
             req.session.logged_in = true;
             //when username saved upon signup, saved as logged_name
             req.session.logged_name = userData.user_name;
-            res.status(200).json(userData.get({ plain: true }));
+            res.status(200).json({user:userData.get({ plain: true })});
         });
     } catch (err) {
         res.status(500).json(err);
