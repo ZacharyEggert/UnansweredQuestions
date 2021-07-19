@@ -47,9 +47,12 @@ const App = () => {
                 // console.log(quotes);
                 let quoteSet = quotes.data;
                 let pickedQuotes = [];
-                Helpers.randomPicks(quoteSet.length, 6).forEach(quote => {
+                try{
+                    Helpers.randomPicks(quoteSet.length, 6).forEach(quote => {
                     pickedQuotes.push(quoteSet[quote]);
-                })
+                })}catch(error){
+                    console.error(error)
+                }
                 return pickedQuotes;
             }).then(pickedQuotes => {
                 setTimeout(() => {
