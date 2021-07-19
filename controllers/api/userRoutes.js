@@ -68,7 +68,9 @@ router.get('/logout', (req, res) => {
 });
 
 router.get('/', (req, res) => {
-    User.findAll()
+    User.findAll({
+        attributes: ['id', 'user_name', 'email', 'admin'],
+    })
         .then(users => {
             res.json(users);
         })
