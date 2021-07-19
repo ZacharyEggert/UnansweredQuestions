@@ -1,17 +1,27 @@
 import React from 'react';
-import { adminUser, deleteUser } from '../../util/API';
+import { adminUser, deleteUser, removeAdminUser } from '../../util/API';
 
 const UserReviewCard = (props) => {
     const { user, refreshUsers } = props;
 
     const makeAdmin = () => {
-        adminUser({id:user.id}).then((response) => {
-            if(response.status < 300) {
-                refreshUsers();
-            }
-        }).catch((error) => {
-            console.error(error);
-        });
+        if(user.isAdmin) {
+            removeAdminUser({id:user.id}).then((response) => {
+                if(response.status < 300) {
+                    refreshUsers();
+                }
+            }).catch((error) => {
+                console.error(error);
+            });
+        }else{
+            adminUser({id:user.id}).then((response) => {
+                if(response.status < 300) {
+                    refreshUsers();
+                }
+            }).catch((error) => {
+                console.error(error);
+            });
+        }
     };
 
     const delUser = () => {
