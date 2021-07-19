@@ -36,6 +36,10 @@ ProfilePage.init(
             type: DataTypes.STRING,
             setdefault: '',
         },
+        favBook: {
+            type: DataTypes.STRING,
+            setdefault: '',
+        },
     },
     {
         sequelize,

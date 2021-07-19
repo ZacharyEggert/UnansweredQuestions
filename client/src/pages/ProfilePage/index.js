@@ -11,9 +11,9 @@ const ProfilePage = () => {
 
     const initialState = {
         bio: '',
-        favephil: '',
-        favebook: '',
-        favequote: '',
+        favPhilosopher: '',
+        favBook: '',
+        favQuote: '',
         view: 'ProfileView',
     };
 

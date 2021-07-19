@@ -1,7 +1,4 @@
 import React, { useState } from 'react';
-import { useGlobalContext } from '../../util/GlobalState';
-// import { logIn } from '../../util/API';
-import ProfileView from '../ProfileViewCard';
 
 const EditView = (props) => {
     const { setState, state } = props;
@@ -41,39 +38,42 @@ const EditView = (props) => {
                 className="max-w-full pl-1 my-3 text-black"
             />
             <br />
-            <label htmlFor="favephil" className="inline-block w-4/12 my-3">
+            <label
+                htmlFor="favPhilosopher"
+                className="inline-block w-4/12 my-3"
+            >
                 Favorite Philosopher
             </label>
             <input
                 name="username"
                 id="username"
-                value={state['favephil']}
+                value={state['favPhilosopher']}
                 onChange={handleOnChange}
                 type="text"
                 placeholder="Enter your favorite philosopher..."
                 className="max-w-full pl-1 my-3 text-black"
             />
             <br />
-            <label htmlFor="favequote" className="inline-block w-4/12 my-3">
-                favequote
+            <label htmlFor="favQuote" className="inline-block w-4/12 my-3">
+                Favorite Quote
             </label>
             <input
-                name="favequote"
-                value={state['favequote']}
-                id="favequote"
+                name="favQuote"
+                value={state['favQuote']}
+                id="favQuote"
                 type="text"
                 onChange={handleOnChange}
                 placeholder="Enter your favorite quote..."
                 className="max-w-full pl-1 my-3 text-black"
             />
             <br />
-            <label htmlFor="favebook" className="inline-block w-4/12 my-3">
-                favebook
+            <label htmlFor="favBook" className="inline-block w-4/12 my-3">
+                Favorite Book
             </label>
             <input
-                name="favebook"
-                value={state['favebook']}
-                id="favebook"
+                name="favBook"
+                value={state['favBook']}
+                id="favBook"
                 type="text"
                 onChange={handleOnChange}
                 placeholder="Enter your favorite book..."
