@@ -94,6 +94,7 @@ router.put('/:id', async (req, res) => {
         userData.update(req.body);
         userData.save();
         console.log('User updated');
+        console.log(userData);
         res.status(200).json(userData);
     } catch (err) {
         res.status(500).json(err);

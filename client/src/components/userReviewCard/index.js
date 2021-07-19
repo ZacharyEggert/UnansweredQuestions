@@ -5,10 +5,12 @@ const UserReviewCard = (props) => {
     const { user, refreshUsers } = props;
 
     const makeAdmin = () => {
-        if(user.isAdmin) {
+        if(user.admin === true) {
             removeAdminUser({id:user.id}).then((response) => {
                 if(response.status < 300) {
-                    refreshUsers();
+                    setTimeout(() => {
+                        refreshUsers();
+                    }, 500);
                 }
             }).catch((error) => {
                 console.error(error);
@@ -16,7 +18,9 @@ const UserReviewCard = (props) => {
         }else{
             adminUser({id:user.id}).then((response) => {
                 if(response.status < 300) {
-                    refreshUsers();
+                    setTimeout(() => {
+                        refreshUsers();
+                    }, 500);
                 }
             }).catch((error) => {
                 console.error(error);
