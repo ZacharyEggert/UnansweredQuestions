@@ -76,9 +76,8 @@ const SignupForm = () => {
 
     return (
         <form>
-            <label htmlFor="email" className="inline-block w-4/12 my-3">
+            <label htmlFor="email" className="flex flex-col justify-between w-full mx-auto my-3 text-lg md:items-center md:flex-row md:w-10/12">
                 Email
-            </label>
             <input
                 name="email"
                 id="signupemail"
@@ -87,10 +86,10 @@ const SignupForm = () => {
                 className="max-w-full pl-1 my-3 text-black"
                 onChange={handleOnChange}
             />
-            <br />
-            <label htmlFor="username" className="inline-block w-4/12 my-3">
-                Username
             </label>
+
+            <label htmlFor="username" className="flex flex-col justify-between w-full mx-auto my-3 text-lg md:items-center md:flex-row md:w-10/12">
+                Username
             <input
                 name="username"
                 id="signupusername"
@@ -99,10 +98,9 @@ const SignupForm = () => {
                 className="max-w-full pl-1 my-3 text-black"
                 onChange={handleOnChange}
             />
-            <br />
-            <label htmlFor="password" className="inline-block w-4/12 my-3">
-                Password
             </label>
+            <label htmlFor="password" className="flex flex-col justify-between w-full mx-auto my-3 text-lg md:items-center md:flex-row md:w-10/12">
+                Password
             <input
                 name="password"
                 id="signuppassword"
@@ -111,13 +109,13 @@ const SignupForm = () => {
                 className="max-w-full pl-1 my-3 text-black"
                 onChange={handleOnChange}
             />
-            <br />
-            <span className="inline-block w-8/12 text-right">
+            </label>
+            <span className="block w-full mx-auto text-right md:w-10/12">
                 <button
                     onClick={handleFormSubmit}
                     id="signup"
                     type="submit"
-                    className="text-white rounded-md px-3 border-white border-2 border-solid whitespace-nowrap w-auto md:w-3/12 min-w-min bg-[#4d83a3]"
+                    className="w-auto px-3 py-1 whitespace-nowrap md:w-3/12 min-w-min button"
                 >
                     Sign up
                 </button>
