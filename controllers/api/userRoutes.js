@@ -67,4 +67,16 @@ router.get('/logout', (req, res) => {
     }
 });
 
+router.get('/', (req, res) => {
+    User.findAll()
+        .then(users => {
+            res.json(users);
+        })
+        .catch(err => {
+            res.status(500).json(err);
+            console.error(err);
+        });
+});
+
+
 module.exports = router;

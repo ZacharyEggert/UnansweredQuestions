@@ -9,7 +9,7 @@ import Quiz from './pages/Quiz';
 import Qotd from './pages/Qotd';
 import Login from './pages/Login';
 import Polls from './pages/Polls';
-import News from './pages/News';
+// import News from './pages/News';
 import NavBar from './components/NavBar';
 import OnePhilosopher from './pages/OnePhilosopher';
 import AllPhilosophies from './pages/AllPhilosophies';
@@ -89,11 +89,11 @@ const App = () => {
                 <Route exact path="/polls" component={Polls} />
                 <Route exact path="/philosophy/:id" component={OnePhilosophy} />
                 <Route exact path="/dashboard">
-                    { !globalState.isLoggedIn ? 
-                    // ( globalState.currentUser.user.admin ? 
-                    <Dashboard /> : 
-                    // <Redirect to="/philosophers" />
-                    // ) :
+                    { globalState.isLoggedIn ? 
+                    ( globalState.currentUser?.user.admin ? 
+                    <Dashboard user={globalState.currentUser?.user}/> : 
+                    <Redirect to="/philosophers" />
+                    ) :
                     <Redirect to="/login" /> }
                 </Route>
                 <Route
