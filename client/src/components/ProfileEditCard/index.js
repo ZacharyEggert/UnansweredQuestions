@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { postProfileInfo } from '../../util/API';
 
 const EditView = (props, { user }) => {
@@ -56,8 +56,8 @@ const EditView = (props, { user }) => {
                 Favorite Philosopher
             </label>
             <input
-                name="username"
-                id="username"
+                name="favPhilosopher"
+                id="favPhilosopher"
                 value={state['favPhilosopher']}
                 onChange={handleOnChange}
                 type="text"

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 const ProfileView = (props) => {
     const { setState, state } = props;
@@ -36,7 +36,7 @@ const ProfileView = (props) => {
                         'this is a placeholder bio and ive sure have a lot to say in here... well actually that was all i have to say'}
                 </p>
             </div>
-            <button onClick={handleEditView}>Edit</button>;
+            <button onClick={handleEditView}>Edit</button>
         </div>
     );
 };

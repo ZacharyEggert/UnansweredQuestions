@@ -21,7 +21,7 @@ const ProfilePage = () => {
     const [state, setState] = useState(initialState);
 
     useEffect(() => {
-        getProfileInfo(currentUser.user.id)
+        getProfileInfo(currentUser?.user?.id)
             .then((response) => {
                 if (response.status < 300) {
                     console.log(response.data);
@@ -40,10 +40,10 @@ const ProfilePage = () => {
                 <div>
                     <h1>{currentUser?.user?.user_name} Profile</h1>
                     {state.view === 'ProfileView' ? (
-                        <ProfileView setState={setState} />
+                        <ProfileView setState={setState} state={state} />
                     ) : null}
                     {state.view === 'EditView' ? (
-                        <EditView setState={setState} />
+                        <EditView setState={setState} state={state} />
                     ) : null}
                 </div>
             </div>
