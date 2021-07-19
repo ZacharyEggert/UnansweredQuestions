@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import { postProfileInfo } from '../../util/API';
 
-const EditView = (props) => {
+const EditView = (props, { user }) => {
     const { setState, state } = props;
 
     const handleOnChange = (event) => {
@@ -13,6 +14,16 @@ const EditView = (props) => {
 
     const handleFormSubmit = (event) => {
         event.preventDefault();
+
+        postProfileInfo({
+            profile: {
+                bio: state.bio,
+                favPhilosopher: state.favPhilosopher,
+                favBook: state.favBook,
+                favQuote: state.favQuote,
+            },
+            user_id: user?.id,
+        });
 
         alert('Your profile has been updated!');
         setState({

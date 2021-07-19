@@ -15,25 +15,25 @@ const ProfileView = (props) => {
             <div>
                 <ul>
                     <li>
-                        <span>Favorite Quote:</span> {state['favQuote']}Your
-                        moon is too small to block out my sun.
+                        <span>Favorite Quote:</span>{' '}
+                        {state['favQuote'] ||
+                            'Your moon is too small to block out my sun.'}
                     </li>
                     <li>
                         <span>Favorite Philosopher:</span>{' '}
-                        {state['favPhilosopher']}Marcus Aurillius
+                        {state['favPhilosopher'] || 'Marcus Aurillius'}
                     </li>
                     <li>
-                        <span>Favorite Book:</span> {state['favBook']}Fear and
-                        Loathing in Las Vegas
+                        <span>Favorite Book:</span>{' '}
+                        {state['favBook'] || 'Fear and Loathing in Las Vegas'}
                     </li>
                 </ul>
             </div>
             <div>
                 <h2>Bio</h2>
                 <p>
-                    {state['bio']}
-                    this is a placeholder bio and ive sure have a lot to say in
-                    here... well actually that was all i have to say{' '}
+                    {state['bio'] ||
+                        'this is a placeholder bio and ive sure have a lot to say in here... well actually that was all i have to say'}
                 </p>
             </div>
             <button onClick={handleEditView}>Edit</button>;
