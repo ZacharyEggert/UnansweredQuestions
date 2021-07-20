@@ -30,6 +30,7 @@ router.post('/', (req, res) => {
 router.get('/:id', (req, res) => {
     Blogs.findByPk(req.params.id)
         .then((blog) => {
+            console.log(blog);
             res.json(blog);
         })
         .catch((err) => {

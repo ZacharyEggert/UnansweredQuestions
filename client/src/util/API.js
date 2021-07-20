@@ -129,6 +129,35 @@ const postComment = ({ comment, user_id, daily_id }) => {
         });
 };
 
+const postBlogComment = ({ comment, user_id, blog_id }) => {
+    return axios
+        .post('/api/blogComments', { comment, user_id, blog_id })
+        .then((response) => {
+            if (response.status < 300) {
+                // console.log(response);
+                return response;
+            }
+        })
+        .catch((error) => {
+            console.error(error);
+        });
+};
+
+const getBlogComment = (id) => {
+    return axios
+        .get('/api/blogcomments/' + id)
+        .then((response) => {
+            if (response.status < 300) {
+                return response;
+            }
+        })
+        .catch((error) => {
+            console.error(error);
+        });
+};
+
+
+
 const logIn = ({ user_name, password }) => {
     return axios
         .post('/api/user/login', { user_name, password })
@@ -216,10 +245,11 @@ const adminUser = ({ id }) => {
 
 const getAllBlogs = () => {
     return axios
-        .get('/api/blogs/')
+        .get('/api/blog/')
         .then((response) => {
+            console.log(response);
             if (response.status < 300) {
-                return response;
+                return response.data;
             }
         })
         .catch((error) => {
@@ -229,10 +259,11 @@ const getAllBlogs = () => {
 
 const getOneBlog = (id) => {
     return axios
-        .get('/api/blogs/' + id)
+        .get('/api/blog/' + id)
         .then((response) => {
             if (response.status < 300) {
-                return response;
+
+                return response.data;
             }
         })
         .catch((error) => {
@@ -265,6 +296,7 @@ const API = {
     removeAdminUser,
     getAllBlogs,
     getOneBlog,
+    getBlogComment,
 
 };
 
@@ -294,4 +326,5 @@ export {
     removeAdminUser,
     getAllBlogs,
     getOneBlog,
+    getBlogComment,
 };

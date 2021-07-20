@@ -17,6 +17,7 @@ import OnePhilosophy from './pages/OnePhilosophy';
 import ProfilePage from './pages/ProfilePage';
 import Dashboard from './pages/Dashboard';
 import AllBlogs from './pages/AllBlogs';
+import OneBlog from './pages/OneBlog';
 
 import { useGlobalContext } from './util/GlobalState';
 import { getPhilosophers, getPhilosophies, getPolls, getQuotes } from './util/API';
@@ -90,6 +91,7 @@ const App = () => {
                 <Route exact path="/chatroom" component={JoinChat} />
                 <Route exact path="/polls" component={Polls} />
                 <Route exact path="/philosophy/:id" component={OnePhilosophy} />
+                <Route exact path="/blog/:id" component={OneBlog} />
                 <Route exact path="/dashboard">
                     {globalState.isLoggedIn ?
                         (globalState.currentUser?.user?.admin ?
