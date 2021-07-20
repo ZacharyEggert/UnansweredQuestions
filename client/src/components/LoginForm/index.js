@@ -15,8 +15,17 @@ const LoginForm = () => {
     };
 
     const [state, setState] = useState(initialState);
-    const [remember, setRemember] = useState(false);
 
+    const rememberSetting = localStorage.getItem('remember');
+
+    // console.log(rememberSetting);
+
+    const [remember, setRemember] = useState(rememberSetting === 'true');
+
+    const toggleRemember = () => {
+        localStorage.setItem('remember', !remember);
+        setRemember(!remember);
+    };
 
     const handleOnChange = (event) => {
         setState({
@@ -121,7 +130,7 @@ const LoginForm = () => {
             <span className="block w-full mx-auto text-right md:w-10/12">
                 <span className="inline-flex items-center text-sm text-[#FFF6]">
                     Remember?
-                    <input type="checkbox" className="w-6 h-6 ml-2 mr-4" checked={remember} onChange={() => setRemember(!remember)}/>
+                    <input type="checkbox" className="w-6 h-6 ml-2 mr-4" checked={remember} onChange={toggleRemember}/>
                 </span>
                 <button
                     id="login"
