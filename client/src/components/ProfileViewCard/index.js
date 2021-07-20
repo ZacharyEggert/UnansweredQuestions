@@ -10,12 +10,20 @@ const ProfileView = (props) => {
         });
     };
 
+    const pics = [
+        'https://www.placecage.com/200/300',
+        'https://www.placecage.com/g/200/300',
+        'https://www.placecage.com/g/155/300',
+        'https://www.placecage.com/c/140/200',
+    ];
+    const randomPic = pics[Math.floor(Math.random() * pics.length)];
+
     return (
         <div className="flex flex-col">
             <div className="flex flex-wrap justify-center align-middle px-6">
                 <div className="flex-1 flex-shrink-0 ">
                     <img
-                        src="https://www.placecage.com/g/155/300"
+                        src={randomPic}
                         alt="PlaceCage"
                         className="rounded ml-8 pl-4"
                     ></img>
@@ -47,7 +55,10 @@ const ProfileView = (props) => {
                 </div>
             </div>
             <div className="flex justify-end mt-4">
-                <button onClick={handleEditView} className="ml-auto">
+                <button
+                    onClick={handleEditView}
+                    className="ml-auto items-center w-1/12 p-1 text-white bg-[#FFFFFF10] hover:bg-[#FFFFFF20] border-2 border-white border-solid whitespace-nowrap"
+                >
                     Edit
                 </button>
             </div>
