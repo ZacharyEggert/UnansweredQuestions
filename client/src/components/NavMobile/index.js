@@ -30,7 +30,6 @@ const NavMobile = () => {
         setNavState({ expanded: false, hasNotExpanded: true });
     };
 
-
     const handleMenuOpen = (event) => {
         setNavState({ expanded: event.target.checked });
     };
@@ -62,13 +61,19 @@ const NavMobile = () => {
                     className={`flex flex-col justify-center bg-white rounded-br-full z-[10]`}
                 >
                     <li className=" mobile-nav">
-                        <Link onClick={closeNav} to="/">Home</Link>
+                        <Link onClick={closeNav} to="/">
+                            Home
+                        </Link>
                     </li>
                     <li className=" mobile-nav">
-                        <Link onClick={closeNav} to="/philosophers">Famous Philosophers</Link>
+                        <Link onClick={closeNav} to="/philosophers">
+                            Famous Philosophers
+                        </Link>
                     </li>
                     <li className="mobile-nav">
-                        <Link onClick={closeNav} to="/quiz">Quiz</Link>
+                        <Link onClick={closeNav} to="/quiz">
+                            Quiz
+                        </Link>
                     </li>
                     <li className="mobile-nav">
                         <Link onClick={closeNav} to="/qotd">
@@ -78,7 +83,9 @@ const NavMobile = () => {
                         </Link>
                     </li>
                     <li className="mobile-nav">
-                        <Link onClick={closeNav} to="/polls">Polls</Link>
+                        <Link onClick={closeNav} to="/polls">
+                            Polls
+                        </Link>
                     </li>
                     <li className="mobile-nav">
                         <Link to="/news">News</Link>
@@ -91,7 +98,14 @@ const NavMobile = () => {
                     </li>
                     {isLoggedIn ? (
                         <li className="mobile-nav">
-                            <Link to="/" onClick={runLogOut}>Logout</Link>
+                            <Link to="/profile">Profile</Link>
+                        </li>
+                    ) : null}
+                    {isLoggedIn ? (
+                        <li className="mobile-nav">
+                            <Link to="/" onClick={runLogOut}>
+                                Logout
+                            </Link>
                         </li>
                     ) : (
                         <li className="mobile-nav">

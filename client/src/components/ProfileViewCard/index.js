@@ -23,7 +23,7 @@ const ProfileView = (props) => {
             <div className="flex flex-wrap justify-center align-middle px-6">
                 <div className="flex-1 flex-shrink-0 ">
                     <img
-                        src={randomPic}
+                        src={randomPic || 'https://www.placecage.com/g/155/300'}
                         alt="PlaceCage"
                         className="rounded ml-8 pl-4"
                     ></img>
