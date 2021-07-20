@@ -38,7 +38,7 @@ const ProfilePage = () => {
         <>
             <div className="flex flex-col items-center justify-center min-w-full min-h-full text-white bg-fixed bg-cover bg-whiteflowers-3 bg-fade">
                 <div className="m-4 bg-black md:m-14 p-7 bg-opacity-60">
-                    <h1 className="flex justify-center align-middle p-8 text-3xl border-b-white border-b-solid">
+                    <h1 className="flex justify-center align-middle p-8 text-4xl border-b-white border-b-3 mb-4">
                         {currentUser?.user?.user_name} Profile
                     </h1>
                     {state.view === 'ProfileView' ? (
