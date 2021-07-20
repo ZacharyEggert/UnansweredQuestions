@@ -129,9 +129,9 @@ const postComment = ({ comment, user_id, daily_id }) => {
         });
 };
 
-const logIn = ({ user_name, password }) => {
+const logIn = ({ user_name, password, remember }) => {
     return axios
-        .post('/api/user/login', { user_name, password })
+        .post('/api/user/login', { user_name, password, remember })
         .then((response) => {
             // console.log(response);
             return response;
@@ -216,6 +216,23 @@ const adminUser = ({ id }) => {
         });
 };
 
+const checkValidSession = () => {
+    return axios
+        .post('/api/user/validatesession/', {})
+        .then((response) => {
+            if (response.status < 300) {
+                return response;
+            }
+        })
+        .catch((error) => {
+            if (error.response.status === 401) {
+                console.log(error.response.data.message);
+            } else {
+                console.error(error);
+            }
+        });
+};
+
 const API = {
     getPhilosophers,
     getPhilosopher,
@@ -238,6 +255,7 @@ const API = {
     deleteUser,
     adminUser,
     removeAdminUser,
+    checkValidSession,
 };
 
 export default API;
@@ -264,4 +282,5 @@ export {
     deleteUser,
     adminUser,
     removeAdminUser,
+    checkValidSession,
 };
