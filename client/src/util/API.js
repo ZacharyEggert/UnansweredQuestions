@@ -277,6 +277,7 @@ const API = {
     removeAdminUser,
     postProfileInfo,
     getProfileInfo,
+    checkValidSession,
 };
 
 export default API;
@@ -305,4 +306,5 @@ export {
     removeAdminUser,
     postProfileInfo,
     getProfileInfo,
+    checkValidSession,
 };
