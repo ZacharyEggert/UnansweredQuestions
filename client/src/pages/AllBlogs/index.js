@@ -14,16 +14,22 @@ const AllBlogs = () => {
     }, []);
 
     return (
-        <div>
-            <h1>All Blogs</h1>
+        <div className="flex flex-col items-center justify-center min-w-full min-h-full text-white bg-fixed bg-cover bg-greenleaf bg-fade">
+            <div className="py-14"></div>
+            <h1 className="py-2 mx-auto my-8 text-5xl text-center sm:w-10/12 ">User Blogs</h1>
+            <div className="flex-initial py-10 px-10 mb-10 w-11/12 bg-[rgba(0,0,0,0.5)]">
 
-            {blogs.map((blog) => {
-                return (
-                    <BlogCard blog={blog} />
-                );
-            })}
+                <div>
+                    {blogs.map((blog) => {
+                        return (
+                            <BlogCard blog={blog} />
+                        );
+                    })}
+                </div>
+
+
+            </div>
             <SuggestionCard />
-
         </div>
     )
 }
