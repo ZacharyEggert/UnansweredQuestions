@@ -14,6 +14,14 @@ const ProfileView = (props) => {
         'https://www.placecage.com/200/300',
         'https://www.placecage.com/g/200/300',
         'https://www.placecage.com/g/155/300',
+        'https://resizing.flixster.com/gFjkV0hWWFFhN2qrf_P_j-1-KSQ=/506x652/v2/https://flxt.tmsimg.com/v9/AllPhotos/258/258_v9_bb.jpg',
+        'https://external-preview.redd.it/clDj4CIvEY4fuqJAFlNCoTbBWnSRAtCxsQRf9BFU-Dk.jpg?auto=webp&s=f937e50a4e4737d6b78841aea4ce8572109be8a6',
+        'https://1.bp.blogspot.com/-Mq641fjnRTM/X_aMsHoBazI/AAAAAAAD9JA/Ycb-173ugcsoTEkl5h5kQz_rYVxoEiewQCLcBGAsYHQ/s0/young-nicolas-cage-9.jpg',
+        'https://1.bp.blogspot.com/-jPKUi2-EcDo/X_aMovASIKI/AAAAAAAD9H8/UmZXX2FYFzUbJirlX3Lsb3mCAxXzQ9csgCLcBGAsYHQ/s0/young-nicolas-cage-1.jpg',
+        'https://m.media-amazon.com/images/I/713h514NqbL._AC_SX466_.jpg',
+        'https://i2-prod.mirror.co.uk/incoming/article20087531.ece/ALTERNATES/s615b/1_SHOWBIZ-Matchstick-2.jpg',
+        'https://m.media-amazon.com/images/I/41SsBOumMfL._AC_.jpg',
+        'https://myvideogamelist.com/images/userpics/9155854e5d91M3o.jpg',
     ];
     const randomPic = pics[Math.floor(Math.random() * pics.length)];
 
@@ -24,7 +32,7 @@ const ProfileView = (props) => {
                     <img
                         src={randomPic}
                         alt="PlaceCage"
-                        className="rounded"
+                        className="rounded max-w-[200px] h-[300px]"
                     ></img>
                 </div>
                 <div className="=min-w-max align-middle md:pl-12 md:w-8/12">

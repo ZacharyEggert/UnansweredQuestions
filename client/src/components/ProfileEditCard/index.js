@@ -96,7 +96,7 @@ const EditView = (props, { user }) => {
                         className="max-w-full md:w-5/12 pl-1 my-3 text-black text-xs md:text-lg"
                     />
                 </label>
-                <span className="inline-block w-11/12 text-right">
+                <span className="inline-block w-[89%] md:w-11/12 text-right">
                     <button id="save" type="submit" className="button">
                         Save Changes
                     </button>
