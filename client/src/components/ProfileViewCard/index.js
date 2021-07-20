@@ -14,14 +14,21 @@ const ProfileView = (props) => {
         <div className="flex flex-col">
             <div className="flex flex-wrap justify-center align-middle px-6">
                 <div className="flex-1 flex-shrink-0 ">
-                    <h2 className="p-4 text-2xl text-white underline">Bio</h2>
-                    <p className="px-4 sm:w-10/12">
-                        {state['bio'] ||
-                            'This is a placeholder bio and ive sure have a lot to say in here... well actually that was all i have to say'}
-                    </p>
+                    <img
+                        src="https://www.placecage.com/g/155/300"
+                        alt="PlaceCage"
+                        className="rounded ml-8 pl-4"
+                    ></img>
                 </div>
                 <div className="flex-1 flex-shrink-0 sm:pl-20 pt-4 min-w-max align-middle">
+                    <h2 className="pb-4 sm:pt-6 text-2xl text-white underline">
+                        Bio
+                    </h2>
                     <ul className="sm:w-10/12">
+                        <li className="pb-4">
+                            {state['bio'] ||
+                                'This is a placeholder bio and ive sure have a lot to say in here... well actually that was all i have to say'}
+                        </li>
                         <li className="pb-4">
                             <span>Favorite Quote:</span>{' '}
                             {state['favQuote'] ||
