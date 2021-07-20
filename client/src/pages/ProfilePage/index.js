@@ -8,7 +8,7 @@ import { getProfileInfo } from '../../util/API';
 const ProfilePage = () => {
     // eslint-disable-next-line no-unused-vars
     const [globalState, dispatch] = useGlobalContext();
-    const { currentUser } = globalState;
+    const { currentUser, isLoggedIn } = globalState;
 
     const initialState = {
         bio: '',
@@ -37,8 +37,10 @@ const ProfilePage = () => {
     return (
         <>
             <div className="flex flex-col items-center justify-center min-w-full min-h-full text-white bg-fixed bg-cover bg-whiteflowers-3 bg-fade">
-                <div>
-                    <h1>{currentUser?.user?.user_name} Profile</h1>
+                <div className="m-4 bg-black md:m-14 p-7 bg-opacity-60">
+                    <h1 className="flex justify-center align-middle p-8 text-3xl border-b-white border-b-solid">
+                        {currentUser?.user?.user_name} Profile
+                    </h1>
                     {state.view === 'ProfileView' ? (
                         <ProfileView setState={setState} state={state} />
                     ) : null}
