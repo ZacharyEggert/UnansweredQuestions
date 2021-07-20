@@ -72,6 +72,26 @@ const getQotd = () => {
         });
 };
 
+const getProfileInfo = (user_id) => {
+    return axios.get('/api/profile/' + user_id).then((response) => {
+        if (response.status < 300) {
+            return response;
+        } else {
+            console.error(response);
+        }
+    });
+};
+
+const postProfileInfo = ({ profile, user_id }) => {
+    return axios.post('/api/profile', { profile, user_id }).then((response) => {
+        if (response.status < 300) {
+            return response;
+        } else {
+            console.error(response);
+        }
+    });
+};
+
 const getSuggestions = () => {
     return axios.get('/api/suggestions').then((response) => {
         if (response.status < 300) {
@@ -255,7 +275,8 @@ const API = {
     deleteUser,
     adminUser,
     removeAdminUser,
-    checkValidSession,
+    postProfileInfo,
+    getProfileInfo,
 };
 
 export default API;
@@ -282,5 +303,6 @@ export {
     deleteUser,
     adminUser,
     removeAdminUser,
-    checkValidSession,
+    postProfileInfo,
+    getProfileInfo,
 };
