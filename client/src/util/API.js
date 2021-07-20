@@ -72,6 +72,26 @@ const getQotd = () => {
         });
 };
 
+const getProfileInfo = (user_id) => {
+    return axios.get('/api/profile/' + user_id).then((response) => {
+        if (response.status < 300) {
+            return response;
+        } else {
+            console.error(response);
+        }
+    });
+};
+
+const postProfileInfo = ({ profile, user_id }) => {
+    return axios.post('/api/profile', { profile, user_id }).then((response) => {
+        if (response.status < 300) {
+            return response;
+        } else {
+            console.error(response);
+        }
+    });
+};
+
 const getSuggestions = () => {
     return axios.get('/api/suggestions').then((response) => {
         if (response.status < 300) {
@@ -158,9 +178,10 @@ const getBlogComment = (id) => {
 
 
 
-const logIn = ({ user_name, password }) => {
+// const logIn = ({ user_name, password }) => {
+const logIn = ({ user_name, password, remember }) => {
     return axios
-        .post('/api/user/login', { user_name, password })
+        .post('/api/user/login', { user_name, password, remember })
         .then((response) => {
             // console.log(response);
             return response;
@@ -222,6 +243,7 @@ const removeAdminUser = ({ id }) => {
         .put('/api/user/' + id, { admin: false })
         .then((response) => {
             if (response.status < 300) {
+                // console.log(response);
                 return response;
             }
         })
@@ -235,6 +257,7 @@ const adminUser = ({ id }) => {
         .put('/api/user/' + id, { admin: true })
         .then((response) => {
             if (response.status < 300) {
+                // console.log(response);
                 return response;
             }
         })
@@ -272,6 +295,23 @@ const getOneBlog = (id) => {
 };
 
 
+const checkValidSession = () => {
+    return axios
+        .post('/api/user/validatesession/', {})
+        .then((response) => {
+            if (response.status < 300) {
+                return response;
+            }
+        })
+        .catch((error) => {
+            if (error.response.status === 401) {
+                // console.log(error.response.data.message);
+            } else {
+                console.error(error);
+            }
+        });
+};
+
 const API = {
     getPhilosophers,
     getPhilosopher,
@@ -298,6 +338,9 @@ const API = {
     getOneBlog,
     getBlogComment,
 
+    postProfileInfo,
+    getProfileInfo,
+    checkValidSession,
 };
 
 export default API;
@@ -327,4 +370,7 @@ export {
     getAllBlogs,
     getOneBlog,
     getBlogComment,
+    postProfileInfo,
+    getProfileInfo,
+    checkValidSession,
 };

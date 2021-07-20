@@ -16,6 +16,17 @@ const LoginForm = () => {
 
     const [state, setState] = useState(initialState);
 
+    const rememberSetting = localStorage.getItem('remember');
+
+    // console.log(rememberSetting);
+
+    const [remember, setRemember] = useState(rememberSetting === 'true');
+
+    const toggleRemember = () => {
+        localStorage.setItem('remember', !remember);
+        setRemember(!remember);
+    };
+
     const handleOnChange = (event) => {
         setState({
             ...state,
@@ -25,42 +36,39 @@ const LoginForm = () => {
     };
 
     const setCurrentUser = () => {
-        logIn({user_name:state.username, password:state.password})
-        .then((response) => {
-            if (response.status < 300) {
-                dispatch({ type: 'LOG_IN', data: response.data });
-                console.debug(response);
-                return;
-            }
-            
-        })
-        .catch((error) => {
-            if(error.message.match(/404/g) || error.message.match(/403/g)) {
+        logIn({ user_name: state.username, password: state.password, remember, })
+            .then((response) => {
+                if (response.status < 300) {
+                    dispatch({ type: 'LOG_IN', data: response.data });
+                    console.debug(response);
+                    return;
+                }
+            })
+            .catch((error) => {
+                if (
+                    error.message.match(/404/g) ||
+                    error.message.match(/403/g)
+                ) {
+                    setState({
+                        ...state,
+                        error: 'Invalid username or password',
+                    });
+                    return;
+                }
+                console.error(error);
                 setState({
                     ...state,
-                    error: 'Invalid username or password',
+                    error: 'An error occurred',
                 });
-                return
-            }
-            console.error(error);
-            setState({
-                ...state,
-                error: 'An error occurred',
             });
-        });
- };
+    };
 
     const handleFormSubmit = (event) => {
         event.preventDefault();
-        if (
-            state['username'].trim() === ''
-        ) {
+        if (state['username'].trim() === '') {
             alert('Please enter a valid username');
             return;
-        } 
-        else if (
-            state['password'].trim() === ''
-        ) {
+        } else if (state['password'].trim() === '') {
             alert('Please enter a valid password');
             return;
         }
@@ -75,49 +83,59 @@ const LoginForm = () => {
         <form onSubmit={handleFormSubmit}>
             <label
                 htmlFor="email"
-                className="inline-block w-2/12 my-3"
+                className="flex flex-row my-3 w-full/12"
                 hidden
-            ></label>
-            <input
-                name="email"
-                value={state['email']}
-                id=""
-                type="text"
-                onChange={handleOnChange}
-                className="max-w-full pl-1 my-3 text-black"
-                hidden
-                disabled
-            />
-            <br />
-            <label htmlFor="username" className="inline-block w-4/12 my-3">
+            >
+                &nbsp;
+                <input
+                    name="email"
+                    value={state['email']}
+                    id=""
+                    type="text"
+                    onChange={handleOnChange}
+                    className="max-w-full pl-1 my-3 text-black"
+                    hidden
+                    disabled
+                />
+            </label>
+            <label
+                htmlFor="username"
+                className="flex flex-col justify-between w-full mx-auto my-3 text-lg md:items-center md:flex-row md:w-10/12"
+            >
                 Username
+                <input
+                    name="username"
+                    id="username"
+                    value={state['username']}
+                    onChange={handleOnChange}
+                    type="text"
+                    className="max-w-full pl-1 my-3 text-black"
+                />
             </label>
-            <input
-                name="username"
-                id="username"
-                value={state['username']}
-                onChange={handleOnChange}
-                type="text"
-                className="max-w-full pl-1 my-3 text-black"
-            />
-            <br />
-            <label htmlFor="password" className="inline-block w-4/12 my-3">
+            <label
+                htmlFor="password"
+                className="flex flex-col justify-between w-full mx-auto my-3 text-lg md:items-center md:flex-row md:w-10/12"
+            >
                 Password
+                <input
+                    name="password"
+                    value={state['password']}
+                    id="password"
+                    type="text"
+                    onChange={handleOnChange}
+                    className="max-w-full pl-1 my-3 text-black"
+                />
             </label>
-            <input
-                name="password"
-                value={state['password']}
-                id="password"
-                type="text"
-                onChange={handleOnChange}
-                className="max-w-full pl-1 my-3 text-black"
-            />
             <br />
-            <span className="inline-block w-8/12 text-right">
+            <span className="block w-full mx-auto text-right md:w-10/12">
+                <span className="inline-flex items-center text-sm text-[#FFF6]">
+                    Remember?
+                    <input type="checkbox" className="w-6 h-6 ml-2 mr-4" checked={remember} onChange={toggleRemember}/>
+                </span>
                 <button
                     id="login"
                     type="submit"
-                    className="text-white rounded-md px-3 border-white border-2 border-solid whitespace-nowrap w-auto md:w-3/12 min-w-min bg-[#4d83a3]"
+                    className="w-auto px-3 py-1 whitespace-nowrap md:w-3/12 min-w-min button"
                 >
                     Log in
                 </button>

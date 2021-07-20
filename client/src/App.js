@@ -20,7 +20,7 @@ import AllBlogs from './pages/AllBlogs';
 import OneBlog from './pages/OneBlog';
 
 import { useGlobalContext } from './util/GlobalState';
-import { getPhilosophers, getPhilosophies, getPolls, getQuotes } from './util/API';
+import { checkValidSession, getPhilosophers, getPhilosophies, getPolls, getQuotes } from './util/API';
 import Helpers from './util/Helpers';
 
 
@@ -30,19 +30,40 @@ const App = () => {
     const [globalState, dispatch] = useGlobalContext();
 
     useEffect(() => {
+        checkValidSession()
+        .then((response) => {
+            if(response.status < 300){
+                // console.log('session is valid');
+                // console.log(response);
+                dispatch({
+                    type: 'LOG_IN',
+                    data: {user:response.data}
+                })
+            }
+        }).catch((error) => {
+            console.error(error);
+        });
+
+
         // Set the global state
         getPhilosophers()
             .then(philosophers => {
                 dispatch({ type: 'addPhilosophersBulk', data: philosophers.data });
+            }).catch(err => {
+                console.error(err);
             });
 
         getPhilosophies()
             .then(philosophies => {
                 dispatch({ type: 'addPhilosophiesBulk', data: philosophies.data });
+            }).catch(err => {
+                console.error(err);
             });
         getPolls()
             .then(polls => {
                 dispatch({ type: 'setPolls', data: polls.data });
+            }).catch(err => {
+                console.error(err);
             });
 
         getQuotes()
@@ -58,6 +79,8 @@ const App = () => {
                 setTimeout(() => {
                     dispatch({ type: 'setQuotes', data: pickedQuotes });
                 }, 20);
+            }).catch(err => {
+                console.error(err);
             });
 
         // console.log(globalState);
