@@ -37,9 +37,10 @@ const ProfilePage = () => {
     return (
         <>
             <div className="flex flex-col items-center justify-center min-w-full min-h-full text-white bg-fixed bg-cover bg-whiteflowers-3 bg-fade">
-                <div className="m-4 bg-black md:m-14 p-7 bg-opacity-60">
+                <div className="py-6"></div>
+                <div className="m-4 bg-black md:m-14 p-7 bg-opacity-60 w-9/12">
                     <h1 className="flex justify-center align-middle p-8 text-4xl mb-6 border-b-white border-b-2">
-                        {currentUser?.user?.user_name} Profile
+                        {currentUser?.user?.user_name}'s Profile
                     </h1>
                     {state.view === 'ProfileView' ? (
                         <ProfileView setState={setState} state={state} />
@@ -48,8 +49,8 @@ const ProfilePage = () => {
                         <EditView setState={setState} state={state} />
                     ) : null}
                 </div>
+                <SuggestionCard />
             </div>
-            <SuggestionCard />
         </>
     );
 };
