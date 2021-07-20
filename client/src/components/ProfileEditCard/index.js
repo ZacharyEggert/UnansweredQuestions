@@ -40,64 +40,63 @@ const EditView = (props, { user }) => {
                     className="flex flex-col justify-between w-full mx-auto my-3 text-lg md:items-center md:flex-row md:w-10/12"
                     hidden
                 >
-                    Bio
+                    Bio:
+                    <textarea
+                        name="bio"
+                        value={state['bio']}
+                        id=""
+                        type="text"
+                        onChange={handleOnChange}
+                        placeholder="Enter your bio here..."
+                        className="max-w-full md:w-5/12 pl-1 my-3 text-black text-xs md:text-lg"
+                    />
                 </label>
-                <input
-                    name="bio"
-                    value={state['bio']}
-                    id=""
-                    type="text"
-                    onChange={handleOnChange}
-                    placeholder="Enter your bio here..."
-                    className="max-w-full pl-1 my-3 text-black"
-                />
-                <br />
                 <label
                     htmlFor="favPhilosopher"
                     className="flex flex-col justify-between w-full mx-auto my-3 text-lg md:items-center md:flex-row md:w-10/12"
                 >
-                    Favorite Philosopher
+                    Favorite Philosopher:
+                    <input
+                        name="favPhilosopher"
+                        id="favPhilosopher"
+                        value={state['favPhilosopher']}
+                        onChange={handleOnChange}
+                        type="text"
+                        placeholder="Enter your favorite philosopher..."
+                        className="max-w-full md:w-5/12 pl-1 my-3 text-black text-xs md:text-lg"
+                    />
                 </label>
-                <input
-                    name="favPhilosopher"
-                    id="favPhilosopher"
-                    value={state['favPhilosopher']}
-                    onChange={handleOnChange}
-                    type="text"
-                    placeholder="Enter your favorite philosopher..."
-                    className="flex flex-col justify-between w-full mx-auto my-3 text-lg md:items-center md:flex-row md:w-10/12"
-                />
-                <br />
                 <label
                     htmlFor="favQuote"
                     className="flex flex-col justify-between w-full mx-auto my-3 text-lg md:items-center md:flex-row md:w-10/12"
                 >
-                    Favorite Quote
+                    Favorite Quote:
+                    <input
+                        name="favQuote"
+                        value={state['favQuote']}
+                        id="favQuote"
+                        type="text"
+                        onChange={handleOnChange}
+                        placeholder="Enter your favorite quote..."
+                        className="max-w-full md:w-5/12 pl-1 my-3 text-black text-xs md:text-lg"
+                    />
                 </label>
-                <input
-                    name="favQuote"
-                    value={state['favQuote']}
-                    id="favQuote"
-                    type="text"
-                    onChange={handleOnChange}
-                    placeholder="Enter your favorite quote..."
-                    className="max-w-full pl-1 my-3 text-black"
-                />
-                <br />
-                <label htmlFor="favBook" className="inline-block w-4/12 my-3">
-                    Favorite Book
+                <label
+                    htmlFor="favBook"
+                    className="flex flex-col justify-between w-full mx-auto my-3 text-lg md:items-center md:flex-row md:w-10/12"
+                >
+                    Favorite Book:
+                    <input
+                        name="favBook"
+                        value={state['favBook']}
+                        id="favBook"
+                        type="text"
+                        onChange={handleOnChange}
+                        placeholder="Enter your favorite book..."
+                        className="max-w-full md:w-5/12 pl-1 my-3 text-black text-xs md:text-lg"
+                    />
                 </label>
-                <input
-                    name="favBook"
-                    value={state['favBook']}
-                    id="favBook"
-                    type="text"
-                    onChange={handleOnChange}
-                    placeholder="Enter your favorite book..."
-                    className="max-w-full pl-1 my-3 text-black"
-                />
-                <br />
-                <span className="inline-block w-8/12 text-right">
+                <span className="inline-block w-11/12 text-right">
                     <button id="save" type="submit" className="button">
                         Save Changes
                     </button>
