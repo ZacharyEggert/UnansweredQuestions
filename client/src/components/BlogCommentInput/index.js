@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useGlobalContext } from '../../util/GlobalState';
-import { postBlogComment } from '../../util/API';
-
+import { getBlogComment, postBlogComment } from '../../util/API';
 
 const BlogCommentInput = ({ blog, setComments }) => {
     // eslint-disable-next-line no-unused-vars
@@ -31,12 +30,15 @@ const BlogCommentInput = ({ blog, setComments }) => {
                 .then((response) => {
                     console.debug(response);
                     setCommentState({ comment: '' });
-
+                    getBlogComment({
+                        blog_id: blog.id,
+                    }).then((response) => {
+                        setComments(response.data);
+                    });
                 })
                 .catch((error) => {
                     console.error(error);
                 });
-
 
             setCommentState({ ...commentState, comment: '' });
         }

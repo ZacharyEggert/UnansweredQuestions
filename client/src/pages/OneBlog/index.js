@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useGlobalContext } from '../../util/GlobalState';
 import CommentCard from '../../components/CommentCard';
-import CommentInput from '../../components/CommentInput';
 import CommentLogin from '../../components/CommentLogin';
 import BlogCommentInput from '../../components/BlogCommentInput';
 import SuggestionCard from '../../components/SuggestionCard';
-import { getOneBlog, getBlogComment, } from '../../util/API'
+import { getOneBlog, getBlogComment } from '../../util/API';
 import { useParams } from 'react-router-dom';
-
 
 const OneBlog = (props) => {
     // eslint-disable-next-line no-unused-vars
@@ -20,31 +18,20 @@ const OneBlog = (props) => {
 
     console.log(id);
 
-
     useEffect(() => {
-        getOneBlog(id).then(response => {
+        getOneBlog(id).then((response) => {
             console.log(response);
             setBlog(response);
         });
-
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
     useEffect(() => {
-        getBlogComment(id).then(response => {
+        getBlogComment(id).then((response) => {
             console.log(response);
             setComments(response?.data);
         });
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
-
-
-
-
-
-
-
-
-
-
-
 
     return (
         <div className="min-h-full text-white bg-fixed bg-cover bg-branches-3 bg-fade">
@@ -55,22 +42,36 @@ const OneBlog = (props) => {
                             {blog?.title}
                         </h1>
                         <h2 className="mx-4 text-xl italic text-center sm:text-2xl">
-                            {"By: " + blog?.userName}
+                            {'By: ' + blog?.userName}
                         </h2>
                     </div>
 
-                    <p className="self-center text-xl w-11/12 px-10 py-10 mb-5 bg-[rgba(0,0,0,0.5)]  md:text-2xl md:w-10/12">{blog?.content}</p>
+                    <p className="self-center text-xl w-11/12 px-10 py-10 mb-5 bg-[rgba(0,0,0,0.5)]  md:text-2xl md:w-10/12">
+                        {blog?.content}
+                    </p>
 
-                    <h2 className="flex-1 my-10 text-2xl text-center">Comments</h2>
+                    <h2 className="flex-1 my-10 text-2xl text-center">
+                        Comments
+                    </h2>
 
-                    {comments?.length > 0 && comments?.map((comment) => {
-                        return (
-                            <CommentCard
-                                comment={comment} key={comment.id} />
-                        );
-                    })}
+                    {comments?.length > 0 &&
+                        comments?.map((comment) => {
+                            return (
+                                <CommentCard
+                                    comment={comment}
+                                    key={comment.id}
+                                />
+                            );
+                        })}
 
-                    {isLoggedIn ? <BlogCommentInput blog={blog} setComments={setComments} /> : <CommentLogin />}
+                    {isLoggedIn ? (
+                        <BlogCommentInput
+                            blog={blog}
+                            setComments={setComments}
+                        />
+                    ) : (
+                        <CommentLogin />
+                    )}
                 </div>
 
                 <SuggestionCard />
