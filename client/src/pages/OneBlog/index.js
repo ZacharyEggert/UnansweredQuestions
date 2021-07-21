@@ -33,10 +33,10 @@ const OneBlog = (props) => {
 
     return (
         <div className="min-h-full text-white bg-fixed bg-cover bg-branches-3 bg-fade">
-            <main className="flex flex-col justify-center w-screen min-h-screen pt-20 p-7 bg-opacity-80">
-                <div className="flex flex-col self-center my-12 bg-black p-7 bg-opacity-60 sm:w-9/12">
-                    <div className="flex flex-col self-center w-10/12 pb-8 mb-8 bg-black bg-opacity-50 sm:w-8/12">
-                        <h1 className="my-4 text-3xl text-center lg:my-6 sm:text-5xl lg:text-6xl">
+            <main className="flex flex-col justify-center w-screen min-h-screen pt-20 bg-opacity-80">
+                <div className="flex flex-col self-center w-11/12 p-0 my-12 bg-black bg-opacity-60 md:w-9/12">
+                    <div className="flex flex-col self-center w-10/12 pb-8 mt-4 mb-8 bg-black bg-opacity-50 md:w-8/12">
+                        <h1 className="my-4 text-3xl text-center capitalize lg:my-6 sm:text-5xl lg:text-6xl">
                             {blog?.title}
                         </h1>
                         <h2 className="mx-4 text-xl italic text-center sm:text-2xl">
@@ -44,11 +44,11 @@ const OneBlog = (props) => {
                         </h2>
                     </div>
 
-                    <p className="self-center text-xl w-11/12 px-10 py-10 mb-5 bg-[rgba(0,0,0,0.5)]  md:text-2xl md:w-10/12">
+                    <p className="self-center text-xl w-11/12 px-8 py-8 mb-4 bg-[rgba(0,0,0,0.5)]  md:text-2xl md:w-10/12">
                         {blog?.content}
                     </p>
 
-                    <h2 className="flex-1 my-10 text-2xl text-center">
+                    <h2 className="flex-1 mt-12 mb-2 text-2xl text-center">
                         Comments
                     </h2>
 

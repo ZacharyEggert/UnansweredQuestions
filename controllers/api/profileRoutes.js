@@ -3,11 +3,11 @@ const { ProfilePage } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 router.get('/:id', withAuth, async (req, res) => {
-    console.log({DELETEME: req.params.id});
+    // console.log({DELETEME: req.params.id});
     try {
         ProfilePage.findOne({where: {userId: req.params.id}}).then((page) => {
             res.json(page);
-            console.log(page);
+            // console.log(page);
         });
     } catch (err) {
         res.status(500).json(err);

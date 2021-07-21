@@ -26,7 +26,7 @@ const ProfilePage = () => {
         getProfileInfo({ user_id: currentUser?.user?.id })
             .then((response) => {
                 if (response.status < 300) {
-                    console.log(response.data);
+                    // console.log(response.data);
                     setState({ ...state, ...response.data });
                 }
             })

@@ -46,7 +46,7 @@ const CreateBlog = ({ setBlogs }) => {
     };
 
     return (
-        <div className="flex flex-col items-center justify-center flex-1 w-11/12 mx-auto my-5 bg-black bg-opacity-50 rounded sm:w-10/12 ">
+        <div className="flex flex-col items-center justify-center flex-1 w-11/12 mx-auto my-5 bg-black bg-opacity-50 sm:w-10/12 ">
             <h4 className="my-4 text-2xl italic text-[#CCC]">
                 Create a new blog
             </h4>
