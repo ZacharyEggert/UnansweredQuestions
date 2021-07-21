@@ -10,7 +10,7 @@ const AllPhilosophies = () => {
     const [globalState, dispatch] = useGlobalContext();
 
     return (
-        <div className="flex flex-col items-center justify-center min-w-full min-h-full text-white bg-fixed bg-cover bg-driedflowers bg-fade">
+        <div className="flex flex-col items-center justify-center min-w-full min-h-full text-white bg-fixed bg-cover bg-sakura bg-fade">
             <div className="py-14"></div>
             <div className="flex-initial pb-10 mb-10 w-9/12 bg-[rgba(0,0,0,0.6)]">
                 <h1 className="py-2 mx-auto my-8 text-5xl text-center sm:w-9/12 ">
