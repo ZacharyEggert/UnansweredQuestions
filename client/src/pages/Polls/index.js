@@ -8,7 +8,7 @@ const Polls = () => {
     const [globalState, dispatch] = useGlobalContext();
 
     return (
-        <main className="min-h-full pb-4 text-white bg-fixed bg-cover bg-blue-petals bg-opacity-80">
+        <main className="min-h-full pb-4 text-white bg-fixed bg-cover bg-purpleflower bg-opacity-80">
             <div className="py-14"></div>
             <div className="flex flex-row flex-wrap px-6">
                 {globalState.polls.map((poll) => {
