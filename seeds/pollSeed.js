@@ -7,7 +7,7 @@ const pollData = [
             'There is a runaway trolley barreling down the railway tracks. Ahead, on the tracks, there are five people tied up and unable to move. The trolley is headed straight for them. You are standing some distance off in the train yard, next to a lever. If you pull this lever, the trolley will switch to a different set of tracks. However, you notice that there is one person on the side track. Do you pull the lever, diverting the trolley onto the side track where it will kill one person?',
     },
     {
-        pollName: 'The Teleportation Dillema',
+        pollName: 'The Teleportation Dilemma',
         pollText:
             'A person steps into a teleportation machine.  The first part of the teleportation machine scans the persons body and then vaporizes it, destroying it completely.  The second part of the transportation machine then prints out an identical version of the person, using some bio-inks they had on hand.  The copy has all the same mental and physical attributes of the original along with all the memories of their original.  Is the individual at the other end of the teleporter the same person that went in?',
     },
@@ -36,7 +36,7 @@ const pollData = [
             'If a tree falls in the woods with nothing to hear it hit the ground does it make a sound?',
     },
     {
-        pollName: 'The Nuerologists dillema ',
+        pollName: 'The Nuerologists dilemma ',
         pollText:
             'If someone is in a completely vegitative state with no brain activity are they still alive in a philisophical sense?',
     },

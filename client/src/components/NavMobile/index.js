@@ -92,9 +92,9 @@ const NavMobile = () => {
                             Polls
                         </Link>
                     </li>
-                    <li className="mobile-nav">
+                    {/* <li className="mobile-nav">
                         <Link to="/news">News</Link>
-                    </li>
+                    </li> */}
                     <li className="mobile-nav">
                         <Link to="/chatroom">
                             LiveChat
