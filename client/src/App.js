@@ -14,7 +14,6 @@ import Quiz from './pages/Quiz';
 import Qotd from './pages/Qotd';
 import Login from './pages/Login';
 import Polls from './pages/Polls';
-// import News from './pages/News';
 import NavBar from './components/NavBar';
 import OnePhilosopher from './pages/OnePhilosopher';
 import AllPhilosophies from './pages/AllPhilosophies';
@@ -89,9 +88,12 @@ const App = () => {
                 // console.log(quotes);
                 let quoteSet = quotes.data;
                 let pickedQuotes = [];
-                Helpers.randomPicks(quoteSet.length, 6).forEach((quote) => {
+                try{
+                    Helpers.randomPicks(quoteSet.length, 6).forEach(quote => {
                     pickedQuotes.push(quoteSet[quote]);
-                });
+                })}catch(error){
+                    console.error(error)
+                }
                 return pickedQuotes;
             })
             .then((pickedQuotes) => {

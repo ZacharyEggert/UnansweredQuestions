@@ -32,7 +32,7 @@ const OnePhilosopher = () => {
                     <h1 className="pt-8 mb-8 text-5xl font-bold text-center capitalize sm:text-6xl">
                         {philosopher?.name}
                     </h1>
-                    <div className="w-full">
+                    <div className="w-full md: p-8">
                         <iframe
                             title="Youtube Video"
                             width="560"
@@ -56,7 +56,7 @@ const OnePhilosopher = () => {
                             alt={`${philosopher?.name} - broken link`}
                         />
                         <div className="px-4 mx-auto mt-4 max-w-prose">
-                            <p>
+                            <p className="md: p-4 m-2">
                                 {philosopher?.about ? (
                                     <span>{philosopher?.about}</span>
                                 ) : (
