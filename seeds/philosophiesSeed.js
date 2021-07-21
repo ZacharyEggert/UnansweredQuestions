@@ -48,10 +48,6 @@ const philosophyData = [
         name: 'Philosophy of Education',
         img: 'Philosophy-of-Education.jpg',
     },
-    {
-        name: 'Philosophy of Language',
-        img: 'Philosophy-of-language.jpg',
-    },
 ];
 
 const seedPhilosophies = () => Philosophies.bulkCreate(philosophyData);
