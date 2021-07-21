@@ -241,7 +241,7 @@ const getAllBlogs = () => {
     return axios
         .get('/api/blog/')
         .then((response) => {
-            console.log(response);
+            // console.log(response);
             if (response.status < 300) {
                 return response.data;
             }

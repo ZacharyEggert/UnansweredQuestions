@@ -66,9 +66,9 @@ const reducer = (state, action) => {
             return {
                 ...state,
                 dailyQuestion: {
-                    id: action.data.id,
-                    content: action.data.question,
-                    comments: action.data.comments,
+                    id: action.data?.id,
+                    content: action.data?.question,
+                    comments: action.data?.comments,
                 },
             };
         case 'setPolls':
@@ -122,11 +122,11 @@ const reducer = (state, action) => {
                     : action.data.poll.vote_no,
             })
                 .then((response) => {
-                    console.log({ response });
-                    console.debug('VOTE SUCCESS');
+                    // console.log({ response });
+                    // console.debug('VOTE SUCCESS');
                 })
                 .catch(() => {
-                    console.debug('VOTE FAILED');
+                    // console.debug('VOTE FAILED');
                 });
             return {
                 ...state,
@@ -145,6 +145,16 @@ const reducer = (state, action) => {
                     return poll;
                 }),
             };
+        
+            case 'DAILY_COMMENTS':
+                return {
+                    ...state,
+                    dailyQuestion: {
+                        ...state.dailyQuestion,
+                        comments: action.data,
+                    },
+                };
+
 
         default:
             return state;

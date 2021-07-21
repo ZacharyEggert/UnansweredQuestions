@@ -24,13 +24,8 @@ const AllBlogs = () => {
                 {blogs?.length &&
                     blogs.map((blog) => {
                         return (
-                            <Link
-                                to={{
-                                    pathname: '/blog/' + blog.id,
-                                    state: { blog: blog },
-                                }}
-                            >
-                                <BlogCard blog={blog} key={blog.id} />
+                            <Link to={'/blog/' + blog.id} key={blog.id}>
+                                <BlogCard blog={blog}  />
                             </Link>
                         );
                     })}

@@ -82,7 +82,7 @@ router.get('/', (req, res) => {
 });
 
 router.post('/validatesession', (req, res) => {
-    console.log({ req });
+    // console.log({ req });
     if (req.session.logged_in && req.session.remember) {
         User.findByPk(req.session.user_id)
             .then((user) => {

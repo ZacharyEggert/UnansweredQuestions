@@ -22,15 +22,16 @@ const CommentInput = ({ dailyQuestion }) => {
         const { currentUser } = globalStore;
 
         if (comment.length > 0) {
+            // console.log(globalStore.currentUser);
             postComment({
                 comment,
-                daily_id: dailyQuestion.id,
-                user_id: currentUser?.user.id,
+                daily_id: dailyQuestion?.id,
+                user_id: currentUser?.user?.id,
             })
                 .then((response) => {
-                    console.debug(response);
+                    // console.debug(response);
                     setCommentState({ comment: '' });
-                    dispatch({ type: 'COMMENT_SUCCESS', data: response.data });
+                    dispatch({ type: 'DAILY_COMMENTS', data: response.data });
                 })
                 .catch((error) => {
                     console.error(error);

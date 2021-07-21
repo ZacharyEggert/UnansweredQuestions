@@ -40,7 +40,7 @@ const App = () => {
     useEffect(() => {
         checkValidSession()
             .then((response) => {
-                if (response.status < 300) {
+                if (response?.status < 300) {
                     // console.log('session is valid');
                     // console.log(response);
                     dispatch({

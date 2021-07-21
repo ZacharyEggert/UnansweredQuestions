@@ -29,7 +29,7 @@ const BlogCommentInput = ({ blog, setComments }) => {
                 user_name: currentUser?.user.user_name,
             })
                 .then((response) => {
-                    console.debug(response.data);
+                    // console.debug(response.data);
                     setCommentState({ comment: '' });
                     setComments(response.data);
                 })

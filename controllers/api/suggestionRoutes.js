@@ -39,6 +39,10 @@ router.put('/:id', async (req, res) => {
             if (admin.admin) {
                 const suggestion = await Suggestions.findByPk(id);
                 console.log(suggestion);
+                suggestion.destroy();
+                res.status(200).json(suggestion);
+                /** ! NOT FINAL FUNCTIONALITY */
+                //TODO !!! IMPLEMENT !!!
             } else {
                 res.status(401).json({ message: 'Not authorized' });
                 console.log('Not authorized');

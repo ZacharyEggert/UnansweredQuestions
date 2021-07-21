@@ -33,11 +33,11 @@ const ChatForm = (props) => {
                 type="text"
                 placeholder="Enter Message"
                 required
-                autocomplete="off"
+                autoComplete="off"
                 onChange={handleOnChange}
             />
             <button
-                className="btn button mt-0 ml-4 text-sm w-3/12 tracking-wider leading-3"
+                className="w-3/12 mt-0 ml-4 text-sm leading-3 tracking-wider btn button"
                 onClick={handleSubmit}
             >
                 <i className="fas fa-paper-plane"></i> Send

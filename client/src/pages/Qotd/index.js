@@ -14,7 +14,7 @@ const Qotd = () => {
 
     useEffect(() => {
         getQotd().then((response) => {
-            console.log(response);
+            // console.log(response);
             dispatch({
                 type: 'setDailyQuestion',
                 data: response?.data || response,
@@ -32,7 +32,7 @@ const Qotd = () => {
                             Daily Question
                         </h1>
                         <h2 className="mx-4 text-xl italic text-center sm:text-2xl">
-                            {globalState.dailyQuestion.content}
+                            {globalState.dailyQuestion?.content}
                         </h2>
                     </div>
 
