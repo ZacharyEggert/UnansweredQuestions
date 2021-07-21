@@ -27,7 +27,7 @@ const OneBlog = (props) => {
     }, []);
     useEffect(() => {
         getBlogComment(id).then((response) => {
-            console.log(response);
+            console.log(response?.data);
             setComments(response?.data);
         });
         // eslint-disable-next-line react-hooks/exhaustive-deps

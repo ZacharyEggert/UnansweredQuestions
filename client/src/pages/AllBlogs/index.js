@@ -26,7 +26,7 @@ const AllBlogs = () => {
             <div className=" flex flex-col  space-between py-10 px-10 mb-10 bg-[rgba(0,0,0,0.5)] md:flex-row">
 
 
-                {blogs.map((blog) => {
+                {blogs?.length && blogs.map((blog) => {
                     return (
                         <Link to={{ pathname: "/blog/" + blog.id, state: { blog: blog } }}>
                             <BlogCard blog={blog} key={blog.id} />

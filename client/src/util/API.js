@@ -267,9 +267,9 @@ const getOneBlog = (id) => {
             console.log(error);
         });
 };
-const postBlogComment = ({ comment, user_id, blog_id }) => {
+const postBlogComment = ({ comment, user_id, blog_id, user_name }) => {
     return axios
-        .post('/api/blogComments', { comment, user_id, blog_id })
+        .post('/api/blogComments', { comment, user_id, blog_id, user_name })
         .then((response) => {
             if (response.status < 300) {
                 // console.log(response);

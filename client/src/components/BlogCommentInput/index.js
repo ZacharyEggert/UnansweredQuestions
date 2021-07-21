@@ -26,15 +26,12 @@ const BlogCommentInput = ({ blog, setComments }) => {
                 comment,
                 blog_id: blog.id,
                 user_id: currentUser?.user.id,
+                user_name: currentUser?.user.user_name,
             })
                 .then((response) => {
-                    console.debug(response);
+                    console.debug(response.data);
                     setCommentState({ comment: '' });
-                    getBlogComment({
-                        blog_id: blog.id,
-                    }).then((response) => {
-                        setComments(response.data);
-                    });
+                    setComments(response.data);
                 })
                 .catch((error) => {
                     console.error(error);
