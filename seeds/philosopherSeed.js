@@ -42,7 +42,7 @@ const philosopherData = [
         period: 'medieval',
     },
     {
-        name: 'rené descartes',
+        name: 'rene descartes',
         img: 'Descartes.jpg',
         period: 'modern',
     },
