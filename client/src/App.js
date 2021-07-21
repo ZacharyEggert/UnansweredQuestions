@@ -38,6 +38,9 @@ const App = () => {
     const [globalState, dispatch] = useGlobalContext();
 
     useEffect(() => {
+
+        document.title = 'Unanswered Questions'
+
         checkValidSession()
             .then((response) => {
                 if (response?.status < 300) {
