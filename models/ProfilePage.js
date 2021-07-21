@@ -16,10 +16,6 @@ ProfilePage.init(
             type: DataTypes.INTEGER,
             allowNull: false,
         },
-        userName: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
         bio: {
             type: DataTypes.TEXT,
             allowNull: true,

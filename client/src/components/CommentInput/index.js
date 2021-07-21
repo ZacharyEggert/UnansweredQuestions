@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useGlobalContext } from '../../util/GlobalState';
 import { postComment } from '../../util/API';
 
-
 const CommentInput = ({ dailyQuestion }) => {
     // eslint-disable-next-line no-unused-vars
     const [globalStore, dispatch] = useGlobalContext();
@@ -23,20 +22,20 @@ const CommentInput = ({ dailyQuestion }) => {
         const { currentUser } = globalStore;
 
         if (comment.length > 0) {
+            // console.log(globalStore.currentUser);
             postComment({
                 comment,
-                daily_id: dailyQuestion.id,
-                user_id: currentUser?.user.id,
+                daily_id: dailyQuestion?.id,
+                user_id: currentUser?.user?.id,
             })
                 .then((response) => {
-                    console.debug(response);
+                    // console.debug(response);
                     setCommentState({ comment: '' });
-                    dispatch({ type: 'COMMENT_SUCCESS', data: response.data });
+                    dispatch({ type: 'DAILY_COMMENTS', data: response.data });
                 })
                 .catch((error) => {
                     console.error(error);
                 });
-
 
             setCommentState({ ...commentState, comment: '' });
         }

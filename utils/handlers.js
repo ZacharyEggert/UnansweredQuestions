@@ -91,15 +91,19 @@ const fillPhilosopherData = async (id, philosopherData) => {
     newPhilosopherData.about = wiki.content;
     newPhilosopherData.wikiLink = wiki.readMoreURL;
 
-    const { name, img, period, about, videoUrl, wikiLink, quotes } = newPhilosopherData;
+    const { name, img, period, about, videoUrl, wikiLink, quotes } =
+        newPhilosopherData;
 
-    await Philosopher.update({ name, img, period, about, videoUrl, wikiLink, quotes }, { where: { id: id } }).then(
-        (result) => {
+    await Philosopher.update(
+        { name, img, period, about, videoUrl, wikiLink, quotes },
+        { where: { id: id } }
+    )
+        .then((result) => {
             console.log({ result, newPhilosopherData });
-        }
-    ).catch((err) => {
-        console.log({ err });
-    });
+        })
+        .catch((err) => {
+            console.log({ err });
+        });
     return newPhilosopherData;
 };
 
@@ -116,10 +120,12 @@ const fillPhilosophyData = async (ID, philosophyData) => {
 
     const { name, img, about, videoUrl, wikiLink, quotes } = newPhilosophyData;
 
-    await Philosophies.update({ name, img, about, videoUrl, wikiLink, quotes }, { where: { id: ID } }).then(
-        (result) => {
-            console.log({ result, newPhilosophyData });
-        })
+    await Philosophies.update(
+        { name, img, about, videoUrl, wikiLink, quotes },
+        { where: { id: ID } }
+    ).then((result) => {
+        console.log({ result, newPhilosophyData });
+    });
     return newPhilosophyData;
 };
 

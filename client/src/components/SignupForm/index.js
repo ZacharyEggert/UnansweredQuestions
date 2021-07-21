@@ -17,16 +17,16 @@ const SignupForm = () => {
 
     const sendSignUpRequest = () => {
         signUp({
-            email:state.email, 
-            password:state.password, 
-            user_name:state.username})
+            email: state.email,
+            password: state.password,
+            user_name: state.username,
+        })
             .then((response) => {
                 if (response.status < 300) {
                     dispatch({ type: 'LOG_IN', data: response.data });
                     console.debug(response);
                     return;
                 }
-                
             })
             .catch((error) => {
                 console.error(error);
@@ -36,8 +36,6 @@ const SignupForm = () => {
                 });
             });
     };
-
-
 
     const handleOnChange = (event) => {
         setState({
@@ -49,21 +47,13 @@ const SignupForm = () => {
 
     const handleFormSubmit = (event) => {
         event.preventDefault();
-        if (
-            state['email'].trim() === ''
-        ) {
+        if (state['email'].trim() === '') {
             alert('Please enter a valid email');
             return;
-        } 
-        else if (
-            state['username'].trim() === ''
-        ) {
+        } else if (state['username'].trim() === '') {
             alert('Please enter a valid username');
             return;
-        } 
-        else if (
-            state['password'].trim() === ''
-        ) {
+        } else if (state['password'].trim() === '') {
             alert('Please enter a valid password');
             return;
         }
@@ -71,44 +61,52 @@ const SignupForm = () => {
         sendSignUpRequest();
 
         // console.log({message: 'this should sign you up'});
-
     };
 
     return (
         <form>
-            <label htmlFor="email" className="flex flex-col justify-between w-full mx-auto my-3 text-lg md:items-center md:flex-row md:w-10/12">
+            <label
+                htmlFor="email"
+                className="flex flex-col justify-between w-full mx-auto my-3 text-lg md:items-center md:flex-row md:w-10/12"
+            >
                 Email
-            <input
-                name="email"
-                id="signupemail"
-                type="text"
-                value={state['email']}
-                className="max-w-full pl-1 my-3 text-black"
-                onChange={handleOnChange}
-            />
+                <input
+                    name="email"
+                    id="signupemail"
+                    type="text"
+                    value={state['email']}
+                    className="max-w-full pl-1 my-3 text-black"
+                    onChange={handleOnChange}
+                />
             </label>
 
-            <label htmlFor="username" className="flex flex-col justify-between w-full mx-auto my-3 text-lg md:items-center md:flex-row md:w-10/12">
+            <label
+                htmlFor="username"
+                className="flex flex-col justify-between w-full mx-auto my-3 text-lg md:items-center md:flex-row md:w-10/12"
+            >
                 Username
-            <input
-                name="username"
-                id="signupusername"
-                type="text"
-                value={state['username']}
-                className="max-w-full pl-1 my-3 text-black"
-                onChange={handleOnChange}
-            />
+                <input
+                    name="username"
+                    id="signupusername"
+                    type="text"
+                    value={state['username']}
+                    className="max-w-full pl-1 my-3 text-black"
+                    onChange={handleOnChange}
+                />
             </label>
-            <label htmlFor="password" className="flex flex-col justify-between w-full mx-auto my-3 text-lg md:items-center md:flex-row md:w-10/12">
+            <label
+                htmlFor="password"
+                className="flex flex-col justify-between w-full mx-auto my-3 text-lg md:items-center md:flex-row md:w-10/12"
+            >
                 Password
-            <input
-                name="password"
-                id="signuppassword"
-                type="text"
-                value={state['password']}
-                className="max-w-full pl-1 my-3 text-black"
-                onChange={handleOnChange}
-            />
+                <input
+                    name="password"
+                    id="signuppassword"
+                    type="text"
+                    value={state['password']}
+                    className="max-w-full pl-1 my-3 text-black"
+                    onChange={handleOnChange}
+                />
             </label>
             <span className="block w-full mx-auto text-right md:w-10/12">
                 <button

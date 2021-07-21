@@ -10,6 +10,7 @@ const chatRoutes = require('./chatRoutes');
 const suggestionRoutes = require('./suggestionRoutes');
 const philosophyRoutes = require('./philosophyRoutes');
 const blogRoutes = require('./blogRoutes');
+const profileRoutes = require('./profileRoutes');
 const blogCommentRoutes = require('./blogCommentRoutes');
 
 router.use('/philosophers', philosopherRoutes);
@@ -24,5 +25,6 @@ router.use('/chat', chatRoutes);
 router.use('/suggestions', suggestionRoutes);
 router.use('/philosophies', philosophyRoutes);
 router.use('/blogcomments', blogCommentRoutes);
+router.use('/profile', profileRoutes);
 
 module.exports = router;

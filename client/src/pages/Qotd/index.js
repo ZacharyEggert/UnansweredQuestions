@@ -6,7 +6,6 @@ import CommentLogin from '../../components/CommentLogin';
 import SuggestionCard from '../../components/SuggestionCard';
 import { getQotd } from '../../util/API';
 
-
 const Qotd = () => {
     // eslint-disable-next-line no-unused-vars
     const [globalState, dispatch] = useGlobalContext();
@@ -14,9 +13,12 @@ const Qotd = () => {
     const { isLoggedIn } = globalState;
 
     useEffect(() => {
-        getQotd().then(response => {
-            console.log(response);
-            dispatch({ type: 'setDailyQuestion', data: response?.data || response });
+        getQotd().then((response) => {
+            // console.log(response);
+            dispatch({
+                type: 'setDailyQuestion',
+                data: response?.data || response,
+            });
         });
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
@@ -30,11 +32,13 @@ const Qotd = () => {
                             Daily Question
                         </h1>
                         <h2 className="mx-4 text-xl italic text-center sm:text-2xl">
-                            {globalState.dailyQuestion.content}
+                            {globalState.dailyQuestion?.content}
                         </h2>
                     </div>
 
-                    <h2 className="flex-1 mb-10 text-2xl text-center">Comments</h2>
+                    <h2 className="flex-1 mb-10 text-2xl text-center">
+                        Comments
+                    </h2>
 
                     {globalState.dailyQuestion?.comments?.map((comment) => {
                         return (
@@ -42,7 +46,13 @@ const Qotd = () => {
                         );
                     })}
 
-                    {isLoggedIn ? <CommentInput dailyQuestion={globalState.dailyQuestion} /> : <CommentLogin />}
+                    {isLoggedIn ? (
+                        <CommentInput
+                            dailyQuestion={globalState.dailyQuestion}
+                        />
+                    ) : (
+                        <CommentLogin />
+                    )}
                 </div>
 
                 <SuggestionCard />

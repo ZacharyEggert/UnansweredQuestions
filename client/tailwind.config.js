@@ -4,7 +4,7 @@ module.exports = {
     darkMode: false, // or 'media' or 'class'
     theme: {
         fontFamily: {
-            cursive: ['Courgette', 'Sans']
+            cursive: ['Courgette', 'Sans'],
         },
         extend: {
             backgroundImage: (theme) => ({

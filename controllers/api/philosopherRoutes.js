@@ -27,13 +27,9 @@ router.get('/:id', async (req, res) => {
         }
 
         if (!philData.about || !philData.youtube) {
-
             // console.log({ about: philData.about, youtube: philData.youtube });
 
-            philData = await fillPhilosopherData(
-                req.params.id,
-                philData
-            );
+            philData = await fillPhilosopherData(req.params.id, philData);
         }
 
         // console.log(philData);

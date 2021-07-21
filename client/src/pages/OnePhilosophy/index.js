@@ -1,29 +1,25 @@
 import React from 'react';
 import { useGlobalContext } from '../../util/GlobalState';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { getPhilosophy } from '../../util/API';
 import { useEffect } from 'react';
-
 
 const OnePhilosophy = () => {
     // eslint-disable-next-line no-unused-vars
     const [globalState, dispatch] = useGlobalContext();
 
-
     const { id } = useParams();
 
     useEffect(() => {
-
-        getPhilosophy(id)
-            .then(({ data }) => {
-                console.log({ data });
-                dispatch({
-                    type: 'ONE_PHILOSOPHY_RECEIVE',
-                    data,
-                });
+        getPhilosophy(id).then(({ data }) => {
+            console.log({ data });
+            dispatch({
+                type: 'ONE_PHILOSOPHY_RECEIVE',
+                data,
             });
+        });
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [id]);
-
 
     const { philosophies } = globalState;
     const philosophy = philosophies[id];
@@ -55,8 +51,9 @@ const OnePhilosophy = () => {
                     <div>
                         <img
                             className="w-48 mx-auto mt-4 sm:w-72"
-                            src={`/philosophy-pics/${philosophy?.img || 'plato.jpg'
-                                }`}
+                            src={`/philosophy-pics/${
+                                philosophy?.img || 'plato.jpg'
+                            }`}
                             alt={`${philosophy?.name} - broken link`}
                         />
                         <div className="px-4 mx-auto mt-4 max-w-prose">
@@ -81,8 +78,8 @@ const OnePhilosophy = () => {
                                 )}
                             </p>
                             <div className="flex flex-row-reverse pb-4">
-                                <Link
-                                    to={
+                                <a
+                                    href={
                                         philosophy?.wikiLink ||
                                         'https://wikipedia.com/'
                                     }
@@ -91,7 +88,7 @@ const OnePhilosophy = () => {
                                         {' '}
                                         Learn More
                                     </button>
-                                </Link>
+                                </a>
                             </div>
                         </div>
                     </div>

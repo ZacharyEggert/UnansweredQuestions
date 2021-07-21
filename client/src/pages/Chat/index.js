@@ -35,7 +35,7 @@ const Chat = () => {
 
     useEffect(() => {
         socket.emit('joinRoom', { username, room });
-        // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const outputRoomName = (roomData) => {
@@ -101,7 +101,7 @@ const Chat = () => {
                                 {globalState.chatRoom?.users
                                     ? Object.values(
                                           globalState.chatRoom.users
-                                      ).map((user) => <li>{user.username}</li>)
+                                      ).map((user) => <li key={user.username}>{user.username}</li>)
                                     : null}
                             </ul>
                         </div>
@@ -112,7 +112,7 @@ const Chat = () => {
                             ref={divRef}
                         >
                             {state['chat-messages'].map((message) => (
-                                <div className="message">
+                                <div className="message" key={message.time}>
                                     <p className="meta">
                                         {message.username}{' '}
                                         <span>{message.time} </span>

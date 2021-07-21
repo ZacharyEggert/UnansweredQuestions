@@ -81,30 +81,30 @@ const Quiz = ({ philosophers }) => {
     const getRandomPhilosophers = (count = 2) => {
         let randomPhilosophers = [];
         while (randomPhilosophers.length < count) {
-            const randomNumber = Math.floor(Math.random() * Object.keys(philosophers).length);
+            const randomNumber = Math.floor(
+                Math.random() * Object.keys(philosophers).length
+            );
             const randomPhilosopher = Object.values(philosophers)[randomNumber];
             randomPhilosophers.push(randomPhilosopher.name);
         }
         return randomPhilosophers;
     };
 
-
     const StartQuiz = () => {
-        getQuotes()
-        .then(response => {
+        getQuotes().then((response) => {
             const randomNumber = Math.random();
-            const quote = response.data[Math.floor(randomNumber * response.data.length)];
+            const quote =
+                response.data[Math.floor(randomNumber * response.data.length)];
             const falseAnswers = getRandomPhilosophers(2);
             // console.log({quote:quote.quote, falseAnswers});
             setQuizState({
                 ...quizState,
                 quizStage: QUIZSTAGES.STARTED,
-                question:quote.quote,
-                answer:quote.author,
+                question: quote.quote,
+                answer: quote.author,
                 falseAnswers,
             });
         });
-
     };
 
     const setQuizStageAnswered = (answerChosen) => {
@@ -128,7 +128,7 @@ const Quiz = ({ philosophers }) => {
 
     return (
         <div className="min-h-full text-white bg-fixed bg-cover bg-orangeleaves bg-fade">
-            <div className='w-full h-14'></div>
+            <div className="w-full h-14"></div>
             <section className="flex flex-col items-center justify-around w-full min-h-screen quiz-main">
                 {quizState.quizStage === QUIZSTAGES.NOT_STARTED ? (
                     <div className="flex flex-col items-center w-11/12 px-6 py-4 bg-black bg-opacity-60 sm:mt-24 sm:w-9/12">

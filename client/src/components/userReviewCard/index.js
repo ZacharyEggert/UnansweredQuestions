@@ -5,37 +5,43 @@ const UserReviewCard = (props) => {
     const { user, refreshUsers } = props;
 
     const makeAdmin = () => {
-        if(user.admin === true) {
-            removeAdminUser({id:user.id}).then((response) => {
-                if(response.status < 300) {
-                    setTimeout(() => {
-                        refreshUsers();
-                    }, 500);
-                }
-            }).catch((error) => {
-                console.error(error);
-            });
-        }else{
-            adminUser({id:user.id}).then((response) => {
-                if(response.status < 300) {
-                    setTimeout(() => {
-                        refreshUsers();
-                    }, 500);
-                }
-            }).catch((error) => {
-                console.error(error);
-            });
+        if (user.admin === true) {
+            removeAdminUser({ id: user.id })
+                .then((response) => {
+                    if (response.status < 300) {
+                        setTimeout(() => {
+                            refreshUsers();
+                        }, 500);
+                    }
+                })
+                .catch((error) => {
+                    console.error(error);
+                });
+        } else {
+            adminUser({ id: user.id })
+                .then((response) => {
+                    if (response.status < 300) {
+                        setTimeout(() => {
+                            refreshUsers();
+                        }, 500);
+                    }
+                })
+                .catch((error) => {
+                    console.error(error);
+                });
         }
     };
 
     const delUser = () => {
-        deleteUser({id:user.id}).then((response) => {
-            if(response.status < 300) {
-                refreshUsers();
-            }
-        }).catch((error) => {
-            console.error(error);
-        });
+        deleteUser({ id: user.id })
+            .then((response) => {
+                if (response.status < 300) {
+                    refreshUsers();
+                }
+            })
+            .catch((error) => {
+                console.error(error);
+            });
     };
 
     return (

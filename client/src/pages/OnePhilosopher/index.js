@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useGlobalContext } from '../../util/GlobalState';
-import { Link, useParams } from 'react-router-dom';
-import {getPhilosopher} from '../../util/API';
+import { useParams } from 'react-router-dom';
+import { getPhilosopher } from '../../util/API';
 
 const OnePhilosopher = () => {
     // eslint-disable-next-line no-unused-vars
@@ -10,18 +10,15 @@ const OnePhilosopher = () => {
     const { id } = useParams();
 
     useEffect(() => {
-
-        getPhilosopher(id)
-        .then(({ data }) => {
-
-            console.log({data});
+        getPhilosopher(id).then(({ data }) => {
+            console.log({ data });
 
             dispatch({
                 type: 'ONE_PHILOSOPHER_RECEIVE',
                 data,
             });
         });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [id]);
 
     const { philosophers } = globalState;
@@ -80,8 +77,8 @@ const OnePhilosopher = () => {
                                 )}
                             </p>
                             <div className="flex flex-row-reverse pb-4">
-                                <Link
-                                    to={
+                                <a
+                                    href={
                                         philosopher?.wikiLink ||
                                         'https://wikipedia.com/'
                                     }
@@ -90,7 +87,7 @@ const OnePhilosopher = () => {
                                         {' '}
                                         Learn More
                                     </button>
-                                </Link>
+                                </a>
                             </div>
                         </div>
                     </div>

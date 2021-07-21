@@ -37,17 +37,19 @@ const Dashboard = ({ user }) => {
     };
 
     const refreshUsers = () => {
-        setDashboardState({...dashboardState, isLoading: true });
-        getAllUsers().then(response => {
-            return response.data;
-        }).then(users => {
-            setUsers(users);
-            setDashboardState({...dashboardState, isLoading: false });
-        }).catch(error => {
-            console.error(error);
-        });
+        setDashboardState({ ...dashboardState, isLoading: true });
+        getAllUsers()
+            .then((response) => {
+                return response.data;
+            })
+            .then((users) => {
+                setUsers(users);
+                setDashboardState({ ...dashboardState, isLoading: false });
+            })
+            .catch((error) => {
+                console.error(error);
+            });
     };
-
 
     useEffect(() => {
         if (dashboardState.submitError) {

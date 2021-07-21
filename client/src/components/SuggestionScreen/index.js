@@ -3,7 +3,8 @@ import SuggestionReviewCard from '../SuggestionReviewCard';
 
 const SuggestionScreen = ({ state }) => {
     // eslint-disable-next-line no-unused-vars
-    const { dashboardState, setDashboardState, suggestions, setSuggestions } = state;
+    const { dashboardState, setDashboardState, suggestions, setSuggestions } =
+        state;
 
     const handleCheckBox = (e) => {
         setDashboardState({
@@ -22,7 +23,6 @@ const SuggestionScreen = ({ state }) => {
         });
     };
 
-
     return (
         <div>
             <div className="flex flex-1 flex-row justify-around py-2 md:my-2 md:mx-2 bg-[rgba(0,0,0,0.4)] text-sm md:text-lg">
@@ -31,7 +31,7 @@ const SuggestionScreen = ({ state }) => {
                     <input
                         type="checkbox"
                         name="philosopher"
-                        className='ml-2'
+                        className="ml-2"
                         checked={dashboardState.philosopherChecked}
                         onChange={handleCheckBox}
                     />
@@ -41,7 +41,7 @@ const SuggestionScreen = ({ state }) => {
                     <input
                         type="checkbox"
                         name="question"
-                        className='ml-2'
+                        className="ml-2"
                         checked={dashboardState.questionChecked}
                         onChange={handleCheckBox}
                     />
@@ -51,7 +51,7 @@ const SuggestionScreen = ({ state }) => {
                     <input
                         type="checkbox"
                         name="quote"
-                        className='ml-2'
+                        className="ml-2"
                         checked={dashboardState.quoteChecked}
                         onChange={handleCheckBox}
                     />
@@ -63,11 +63,12 @@ const SuggestionScreen = ({ state }) => {
                     <SuggestionReviewCard
                         key={i}
                         suggestion={suggestion}
-                        isChecked={dashboardState[suggestion.sugg_type + 'Checked']}
+                        isChecked={
+                            dashboardState[suggestion.sugg_type + 'Checked']
+                        }
                         triggerReview={triggerReview}
                     />
                 ))}
-                    
             </div>
         </div>
     );

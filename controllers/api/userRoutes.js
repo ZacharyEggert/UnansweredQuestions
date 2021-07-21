@@ -12,7 +12,7 @@ router.post('/signup', async (req, res) => {
             req.session.logged_in = true;
             //when username saved upon signup, saved as logged_name
             req.session.logged_name = userData.user_name;
-            res.status(200).json({user:userData.get({ plain: true })});
+            res.status(200).json({ user: userData.get({ plain: true }) });
         });
     } catch (err) {
         res.status(500).json(err);
@@ -72,23 +72,23 @@ router.get('/', (req, res) => {
     User.findAll({
         attributes: ['id', 'user_name', 'email', 'admin'],
     })
-        .then(users => {
+        .then((users) => {
             res.json(users);
         })
-        .catch(err => {
+        .catch((err) => {
             res.status(500).json(err);
             console.error(err);
         });
 });
 
 router.post('/validatesession', (req, res) => {
-    console.log({req});
+    // console.log({ req });
     if (req.session.logged_in && req.session.remember) {
         User.findByPk(req.session.user_id)
-            .then(user => {
+            .then((user) => {
                 res.json(user);
             })
-            .catch(err => {
+            .catch((err) => {
                 res.status(500).json(err);
                 console.error(err);
             });
@@ -98,7 +98,6 @@ router.post('/validatesession', (req, res) => {
         });
     }
 });
-
 
 router.put('/:id', async (req, res) => {
     try {
@@ -141,7 +140,5 @@ router.delete('/:id', async (req, res) => {
         console.error(err);
     }
 });
-
-
 
 module.exports = router;

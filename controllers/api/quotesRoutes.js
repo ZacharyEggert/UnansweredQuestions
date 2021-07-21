@@ -4,8 +4,7 @@ const { Quote, Philosopher } = require('../../models');
 router.get('/', async (req, res) => {
     // find all quotes
     try {
-        const quoteData = await Quote.findAll({
-        });
+        const quoteData = await Quote.findAll({});
         res.status(200).json(quoteData);
     } catch (err) {
         res.status(500).json(err);
