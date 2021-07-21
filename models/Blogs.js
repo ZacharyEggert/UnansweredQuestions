@@ -27,12 +27,15 @@ Blogs.init(
             type: DataTypes.TEXT,
             allowNull: false,
             validate: {
-                length: {
-                    min: 10,
-                    max: 2000
-                }
+                len: [10, 1000]
             }
         },
+        isAdmin: {
+            type: DataTypes.BOOLEAN,
+            allowNull: false,
+            defaultValue: false
+        },
+
         createdAt: {
             type: DataTypes.DATE,
             defaultValue: DataTypes.NOW,

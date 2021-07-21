@@ -1,44 +1,50 @@
 import React, { useState } from 'react';
 import { useGlobalContext } from '../../util/GlobalState';
-import { postComment } from '../../util/API';
+import { getAllBlogs, postBlog } from '../../util/API';
 
 
-const CommentInput = ({ dailyQuestion }) => {
+const CreateBlog = ({ setBlogs }) => {
     // eslint-disable-next-line no-unused-vars
     const [globalStore, dispatch] = useGlobalContext();
 
-    const [commentState, setCommentState] = useState({ comment: '' });
+    const [blogState, setBlogState] = useState({ title: '', content: '' });
 
     const handleFormChange = (event) => {
-        setCommentState({
-            ...commentState,
+        setBlogState({
+            ...blogState,
             [event.target.name]: event.target.value,
         });
     };
 
     const handleFormSubmit = (event) => {
-        //handle submit of comment
+        //handle submit of new blog
         event.preventDefault();
-        const { comment } = commentState;
+        const { title, content } = blogState;
+
         const { currentUser } = globalStore;
 
-        if (comment.length > 0) {
-            postComment({
-                comment,
-                daily_id: dailyQuestion.id,
-                user_id: currentUser?.user.id,
+        if (title.length && content.length > 0) {
+            postBlog({
+                title: title,
+                content: content,
+                userName: currentUser?.user.user_name,
+                user_id: currentUser?.id,
+
             })
                 .then((response) => {
                     console.debug(response);
-                    setCommentState({ comment: '' });
-                    dispatch({ type: 'COMMENT_SUCCESS', data: response.data });
+                    setBlogState({ title: '', content: '' });
+                    getAllBlogs().then((response) => {
+                        setBlogs(response);
+                    });
+
                 })
                 .catch((error) => {
                     console.error(error);
                 });
 
 
-            setCommentState({ ...commentState, comment: '' });
+            setBlogState({ ...blogState, title: '', content: '' });
         }
         // eslint-disable-next-line no-unused-vars
     };
@@ -46,12 +52,20 @@ const CommentInput = ({ dailyQuestion }) => {
     return (
         <div className="flex flex-col items-center justify-center flex-1 w-11/12 mx-auto my-5 bg-black bg-opacity-50 rounded sm:w-10/12 ">
             <h4 className="my-4 text-2xl italic text-[#CCC]">
-                Join the discussion
+                Create a new blog
             </h4>
-
+            <h1>Title</h1>
             <textarea
-                value={commentState.comment}
-                name="comment"
+                value={blogState.title}
+                name="title"
+                className="w-11/12 p-1 px-2 text-black resize-y sm:w-8/12 "
+                type="text"
+                onChange={handleFormChange}
+            ></textarea>
+            <h1>Post</h1>
+            <textarea
+                value={blogState.content}
+                name="content"
                 className="w-11/12 p-1 px-2 text-black resize-y sm:w-8/12 "
                 type="text"
                 onChange={handleFormChange}
@@ -65,4 +79,4 @@ const CommentInput = ({ dailyQuestion }) => {
     );
 };
 
-export default CommentInput;
+export default CreateBlog;

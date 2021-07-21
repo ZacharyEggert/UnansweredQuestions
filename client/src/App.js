@@ -16,9 +16,11 @@ import AllPhilosophies from './pages/AllPhilosophies';
 import OnePhilosophy from './pages/OnePhilosophy';
 import ProfilePage from './pages/ProfilePage';
 import Dashboard from './pages/Dashboard';
+import AllBlogs from './pages/AllBlogs';
+import OneBlog from './pages/OneBlog';
 
 import { useGlobalContext } from './util/GlobalState';
-import { getPhilosophers, getPhilosophies, getPolls, getQuotes } from './util/API';
+import { checkValidSession, getPhilosophers, getPhilosophies, getPolls, getQuotes } from './util/API';
 import Helpers from './util/Helpers';
 
 
@@ -28,19 +30,40 @@ const App = () => {
     const [globalState, dispatch] = useGlobalContext();
 
     useEffect(() => {
+        checkValidSession()
+        .then((response) => {
+            if(response.status < 300){
+                // console.log('session is valid');
+                // console.log(response);
+                dispatch({
+                    type: 'LOG_IN',
+                    data: {user:response.data}
+                })
+            }
+        }).catch((error) => {
+            console.error(error);
+        });
+
+
         // Set the global state
         getPhilosophers()
             .then(philosophers => {
                 dispatch({ type: 'addPhilosophersBulk', data: philosophers.data });
+            }).catch(err => {
+                console.error(err);
             });
 
         getPhilosophies()
             .then(philosophies => {
                 dispatch({ type: 'addPhilosophiesBulk', data: philosophies.data });
+            }).catch(err => {
+                console.error(err);
             });
         getPolls()
             .then(polls => {
                 dispatch({ type: 'setPolls', data: polls.data });
+            }).catch(err => {
+                console.error(err);
             });
 
         getQuotes()
@@ -59,6 +82,8 @@ const App = () => {
                 setTimeout(() => {
                     dispatch({ type: 'setQuotes', data: pickedQuotes });
                 }, 20);
+            }).catch(err => {
+                console.error(err);
             });
 
         // console.log(globalState);
@@ -84,6 +109,7 @@ const App = () => {
                     component={OnePhilosopher}
                 />
                 <Route exact path="/philosophies" component={AllPhilosophies} />
+                <Route exact path="/blog" component={AllBlogs} />
                 <Route exact path="/profile" component={ProfilePage} />
                 <Route exact path="/qotd/:id" component={Qotd} />
                 <Route exact path="/qotd" component={Qotd} />
@@ -91,14 +117,14 @@ const App = () => {
                 <Route exact path="/chatroom" component={JoinChat} />
                 <Route exact path="/polls" component={Polls} />
                 <Route exact path="/philosophy/:id" component={OnePhilosophy} />
-                <Route exact path="/news" component={NewsContext} />
+                <Route exact path="/blog/:id" component={OneBlog} />
                 <Route exact path="/dashboard">
-                    { globalState.isLoggedIn ? 
-                    ( globalState.currentUser?.user?.admin ? 
-                    <Dashboard user={globalState.currentUser?.user}/> : 
-                    <Redirect to="/philosophers" />
-                    ) :
-                    <Redirect to="/login" /> }
+                    {globalState.isLoggedIn ?
+                        (globalState.currentUser?.user?.admin ?
+                            <Dashboard user={globalState.currentUser?.user} /> :
+                            <Redirect to="/philosophers" />
+                        ) :
+                        <Redirect to="/login" />}
                 </Route>
                 <Route
                     exact
@@ -113,7 +139,7 @@ const App = () => {
                     <Login />
                 </Route>
                 <Route exact path="/suggestions" >
-                <Suggestions user={globalState.currentUser?.user}/>
+                    <Suggestions user={globalState.currentUser?.user} />
                 </Route>
                 <Route exact path="/quiz">
                     <Quiz philosophers={globalState.philosophers} />

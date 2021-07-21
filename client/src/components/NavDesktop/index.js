@@ -20,12 +20,13 @@ const NavDesktop = () => {
             .catch((error) => {
                 console.error(error);
             });
-
     };
 
     return (
         <nav className="hidden md:flex justify-between pb-0 h-[70px] items-center text-white">
-            <p className="ml-8 text-lg"><Link to='/'>UnansweredQuestions</Link></p>
+            <p className="ml-8 text-lg">
+                <Link to="/">UnansweredQuestions</Link>
+            </p>
             <ul
                 className="flex flex-row items-center justify-end mr-8 text-white menu"
                 id="myLinks"
@@ -54,32 +55,35 @@ const NavDesktop = () => {
                     </Link>
                 </li>
                 <li className="desktop-nav">
+                    <Link to="/blog">Blogs</Link>
+                </li>
+                <li className="desktop-nav">
                     <Link to="/polls">Polls</Link>
                 </li>
-                 <li className="desktop-nav">
+                <li className="desktop-nav">
                     <Link to="/news">News</Link>
                 </li>
                 <li className="desktop-nav">
                     <Link to="/chatroom">LiveChat</Link>
                 </li>
-                <li className="desktop-nav">
-                    <Link to="/profile">Profile</Link>
-                </li>
+                {isLoggedIn ? (
+                    <li className="desktop-nav">
+                        <Link to="/profile">Profile</Link>
+                    </li>
+                ) : null}
 
-                {isLoggedIn && globalState.currentUser?.user?.admin ?
+                {isLoggedIn && globalState.currentUser?.user?.admin ? (
                     <li className="desktop-nav">
                         <Link to="/dashboard">Admin</Link>
                     </li>
-                    : null
-                }
-
+                ) : null}
 
                 {isLoggedIn ? (
                     <>
-
-
                         <li className="desktop-nav">
-                            <Link to="/" onClick={runLogOut}>Logout</Link>
+                            <Link to="/" onClick={runLogOut}>
+                                Logout
+                            </Link>
                         </li>
                     </>
                 ) : (

@@ -25,7 +25,8 @@ const hbs = exphbs.create({ helpers, extname: '.hbs' });
 
 const sess = {
     secret: process.env.SECRET || 'secret_string',
-    cookie: {},
+    cookie: { maxAge: 15 * 60 * 1000, sameSite: 'lax' },
+    rolling: true,
     resave: false,
     saveUninitialized: true,
     store: new SequelizeStore({
@@ -95,6 +96,6 @@ io.on('connection', (socket) => {
     });
 });
 
-sequelize.sync({ force: false }).then(() => {
+sequelize.sync({ force: false, alter:true }).then(() => {
     server.listen(PORT, () => console.log('Now listening on port ' + PORT));
 });

@@ -45,6 +45,7 @@ router.post('/login', async (req, res) => {
         req.session.save(() => {
             req.session.user_id = userData.id;
             req.session.logged_in = true;
+            req.session.remember = req.body.remember;
             // with login, logged_name saved to session that we can use with handlebars
             req.session.logged_name = userData.user_name;
             res.json({ user: userData, message: 'You are now logged in' });
@@ -79,6 +80,25 @@ router.get('/', (req, res) => {
             console.error(err);
         });
 });
+
+router.post('/validatesession', (req, res) => {
+    console.log({req});
+    if (req.session.logged_in && req.session.remember) {
+        User.findByPk(req.session.user_id)
+            .then(user => {
+                res.json(user);
+            })
+            .catch(err => {
+                res.status(500).json(err);
+                console.error(err);
+            });
+    } else {
+        res.status(401).json({
+            message: 'Session not remembered',
+        });
+    }
+});
+
 
 router.put('/:id', async (req, res) => {
     try {

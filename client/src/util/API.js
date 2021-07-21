@@ -149,9 +149,13 @@ const postComment = ({ comment, user_id, daily_id }) => {
         });
 };
 
-const logIn = ({ user_name, password }) => {
+
+
+
+// const logIn = ({ user_name, password }) => {
+const logIn = ({ user_name, password, remember }) => {
     return axios
-        .post('/api/user/login', { user_name, password })
+        .post('/api/user/login', { user_name, password, remember })
         .then((response) => {
             // console.log(response);
             return response;
@@ -236,6 +240,92 @@ const adminUser = ({ id }) => {
         });
 };
 
+const getAllBlogs = () => {
+    return axios
+        .get('/api/blog/')
+        .then((response) => {
+            console.log(response);
+            if (response.status < 300) {
+                return response.data;
+            }
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+};
+
+const getOneBlog = (id) => {
+    return axios
+        .get('/api/blog/' + id)
+        .then((response) => {
+            if (response.status < 300) {
+
+                return response.data;
+            }
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+};
+const postBlogComment = ({ comment, user_id, blog_id, user_name }) => {
+    return axios
+        .post('/api/blogComments', { comment, user_id, blog_id, user_name })
+        .then((response) => {
+            if (response.status < 300) {
+                // console.log(response);
+                return response;
+            }
+        })
+        .catch((error) => {
+            console.error(error);
+        });
+};
+
+const getBlogComment = (id) => {
+    return axios
+        .get('/api/blogcomments/' + id)
+        .then((response) => {
+            if (response.status < 300) {
+                return response;
+            }
+        })
+        .catch((error) => {
+            console.error(error);
+        });
+};
+
+const postBlog = ({ title, content, user_id, userName }) => {
+    return axios
+        .post('/api/blog', { title, content, user_id, userName })
+        .then((response) => {
+            if (response.status < 300) {
+                return response;
+            }
+        })
+        .catch((error) => {
+            console.error(error);
+        });
+};
+
+
+
+const checkValidSession = () => {
+    return axios
+        .post('/api/user/validatesession/', {})
+        .then((response) => {
+            if (response.status < 300) {
+                return response;
+            }
+        })
+        .catch((error) => {
+            if (error.response.status === 401) {
+                // console.log(error.response.data.message);
+            } else {
+                console.error(error);
+            }
+        });
+};
+
 const API = {
     getPhilosophers,
     getPhilosopher,
@@ -258,8 +348,14 @@ const API = {
     deleteUser,
     adminUser,
     removeAdminUser,
+    getAllBlogs,
+    getOneBlog,
+    getBlogComment,
+    postBlog,
     postProfileInfo,
     getProfileInfo,
+    checkValidSession,
+    postBlogComment
 };
 
 export default API;
@@ -286,6 +382,13 @@ export {
     deleteUser,
     adminUser,
     removeAdminUser,
+    getAllBlogs,
+    getOneBlog,
+    getBlogComment,
     postProfileInfo,
     getProfileInfo,
+    checkValidSession,
+    postBlog,
+    postBlogComment
+
 };

@@ -13,10 +13,25 @@ router.get('/', (req, res) => {
         });
 });
 
+//Create a blog
+router.post('/', (req, res) => {
+    const blog = req.body;
+    console.log(req.body);
+    Blogs.create(blog)
+        .then((blog) => {
+            res.json(blog);
+        })
+        .catch((err) => {
+            res.status(500).json(err);
+            console.error(err);
+        });
+});
+
 //get a specific blog
 router.get('/:id', (req, res) => {
     Blogs.findByPk(req.params.id)
         .then((blog) => {
+            console.log(blog);
             res.json(blog);
         })
         .catch((err) => {
