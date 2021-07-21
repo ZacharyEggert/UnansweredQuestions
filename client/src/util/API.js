@@ -171,7 +171,7 @@ const signUp = ({ email, password, user_name }) => {
         });
 };
 
-const getNews = () => {
+const getNewsContext = () => {
     return axios.get('./api/news/').then((response) => {
         if (response.status < 300) {
             return response;
@@ -334,7 +334,7 @@ const API = {
     getPolls,
     getQuotes,
     getQotd,
-    getNews,
+    getNewsContext,
     getSuggestions,
     postSuggestion,
     approveSuggestion,
@@ -368,7 +368,7 @@ export {
     getPolls,
     getQuotes,
     getQotd,
-    getNews,
+    getNewsContext,
     getSuggestions,
     postSuggestion,
     approveSuggestion,
