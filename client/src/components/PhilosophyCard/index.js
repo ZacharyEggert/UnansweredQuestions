@@ -13,7 +13,7 @@ const PhilosophyCard = (props) => {
                         <img
                             className="absolute top-0 left-0 object-cover w-full h-full"
                             src={`/philosophy-pics/${philosophy.img || 'plato.jpg'}`}
-                            alt={`Image related to${philosophy.name}`}
+                            alt={`Hottest look of ${philosophy.name}`}
                         />
                     </div>
                     <div className="absolute left-[10px] right-[10px] bottom-[10px] text-center text-black">

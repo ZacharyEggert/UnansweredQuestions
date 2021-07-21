@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useGlobalContext } from '../../util/GlobalState';
-import { getBlogComment, postBlogComment } from '../../util/API';
+import { postBlogComment } from '../../util/API';
 
 const BlogCommentInput = ({ blog, setComments }) => {
     // eslint-disable-next-line no-unused-vars
