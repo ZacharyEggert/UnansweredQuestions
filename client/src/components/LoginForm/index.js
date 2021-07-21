@@ -36,7 +36,7 @@ const LoginForm = () => {
     };
 
     const setCurrentUser = () => {
-        logIn({ user_name: state.username, password: state.password, remember, })
+        logIn({ user_name: state.username, password: state.password, remember })
             .then((response) => {
                 if (response.status < 300) {
                     dispatch({ type: 'LOG_IN', data: response.data });
@@ -130,7 +130,12 @@ const LoginForm = () => {
             <span className="block w-full mx-auto text-right md:w-10/12">
                 <span className="inline-flex items-center text-sm text-[#FFF6]">
                     Remember?
-                    <input type="checkbox" className="w-6 h-6 ml-2 mr-4" checked={remember} onChange={toggleRemember}/>
+                    <input
+                        type="checkbox"
+                        className="w-6 h-6 ml-2 mr-4"
+                        checked={remember}
+                        onChange={toggleRemember}
+                    />
                 </span>
                 <button
                     id="login"

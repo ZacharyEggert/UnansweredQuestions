@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { useGlobalContext } from "../../util/GlobalState"
+import { useGlobalContext } from '../../util/GlobalState';
 
 const PollCard = (props) => {
-    const { poll, } = props;
-    
+    const { poll } = props;
+
     // eslint-disable-next-line no-unused-vars
     const [globalState, dispatch] = useGlobalContext();
 
@@ -12,40 +12,33 @@ const PollCard = (props) => {
         return res ? res : 0;
     };
 
-    const [state, setState] = useState(
-        { 
-            clicked: false, 
-            yesPercent: percent(poll.vote_yes, poll.vote_no), 
-            noPercent: percent(poll.vote_no, poll.vote_yes), 
-        });
+    const [state, setState] = useState({
+        clicked: false,
+        yesPercent: percent(poll.vote_yes, poll.vote_no),
+        noPercent: percent(poll.vote_no, poll.vote_yes),
+    });
 
     const clickHandler = (yes) => {
         // console.log(yes);
-        if(yes) {
+        if (yes) {
             // console.debug('yes');
-            dispatch({ type: 'POLL_VOTE', data: { poll, yes:true } }) ;
+            dispatch({ type: 'POLL_VOTE', data: { poll, yes: true } });
         } else {
             // console.debug('no');
-            dispatch({ type: 'POLL_VOTE', data: { poll, yes:false } });
+            dispatch({ type: 'POLL_VOTE', data: { poll, yes: false } });
         }
-
-        
 
         setState({ ...state, clicked: true });
     };
 
     useEffect(() => {
-        setState({ 
-            ...state, 
-            yesPercent: percent(poll.vote_yes, poll.vote_no), 
-            noPercent: percent(poll.vote_no, poll.vote_yes) 
+        setState({
+            ...state,
+            yesPercent: percent(poll.vote_yes, poll.vote_no),
+            noPercent: percent(poll.vote_no, poll.vote_yes),
         });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [globalState.polls]);
-
-
-
-    
 
     return (
         <>
@@ -89,8 +82,7 @@ const PollCard = (props) => {
                             <div
                                 className="overflow-hidden bg-blue-600 whitespace-nowrap"
                                 style={{
-                                    width:
-                                        state.yesPercent + '%',
+                                    width: state.yesPercent + '%',
                                 }}
                             >
                                 {state.yesPercent + `%`} YES
@@ -100,9 +92,7 @@ const PollCard = (props) => {
                             <div
                                 className="overflow-hidden bg-red-600 whitespace-nowrap"
                                 style={{
-                                    width:
-                                        state.noPercent +
-                                        `%`,
+                                    width: state.noPercent + `%`,
                                 }}
                             >
                                 {state.noPercent + `%`} NO

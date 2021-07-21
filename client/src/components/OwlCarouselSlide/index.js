@@ -1,10 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../../pages/FrontPage/owl.carousel.css'
+import '../../pages/FrontPage/owl.carousel.css';
 
 const OwlCarouselSlide = (props) => {
     const { quote, index } = props;
-
 
     return (
         <div
@@ -18,21 +17,22 @@ const OwlCarouselSlide = (props) => {
                     <div className="flex flex-col mr-auto sm:w-9/12">
                         <div className="overflow-ellipsis overflow-hidden bg-[#222] bg-opacity-90 text-white w-9/12 mb-8 mx-auto p-8 capitalize">
                             <h2 className="text-lg text-white sm:text-xl md:text-2xl font-cursive">
-                                “{quote.quote.length>350?quote.quote.substring(0,346) + '...' : quote.quote}”
+                                “
+                                {quote.quote.length > 350
+                                    ? quote.quote.substring(0, 346) + '...'
+                                    : quote.quote}
+                                ”
                             </h2>
-                            <div className="mt-4">
-                                &mdash; {quote.author}
-                            </div>
+                            <div className="mt-4">&mdash; {quote.author}</div>
                         </div>
-                        <div className='flex flex-row-reverse w-9/12 mx-auto'>
+                        <div className="flex flex-row-reverse w-9/12 mx-auto">
                             <Link
                                 className=" button bg-[#222] bg-opacity-90 hover:bg-[#111] hover:text-white hover:bg-opacity-90"
                                 to="/quiz"
                             >
                                 Test Your Knowledge
                             </Link>
-                            <div className='dots owl-dots'></div>
-
+                            <div className="dots owl-dots"></div>
                         </div>
                     </div>
                 </div>

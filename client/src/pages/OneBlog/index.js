@@ -16,18 +16,16 @@ const OneBlog = (props) => {
     const [comments, setComments] = useState([]);
     const { id } = useParams();
 
-    console.log(id);
+    // console.log(id);
 
     useEffect(() => {
         getOneBlog(id).then((response) => {
-            console.log(response);
+            // console.log(response);
             setBlog(response);
         });
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
-    useEffect(() => {
+
         getBlogComment(id).then((response) => {
-            console.log(response?.data);
+            // console.log(response?.data);
             setComments(response?.data);
         });
         // eslint-disable-next-line react-hooks/exhaustive-deps

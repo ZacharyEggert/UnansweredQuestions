@@ -7,8 +7,6 @@ const quoteData = require('./seedQuotesv2.json');
 const philosophiesSeed = require('./philosophiesSeed');
 const blogSeed = require('./blogSeed');
 
-
-
 const seedDatabase = async () => {
     await sequelize.query('SET FOREIGN_KEY_CHECKS = 0');
     await sequelize.sync({ force: true });

@@ -72,7 +72,7 @@ const getQotd = () => {
         });
 };
 
-const getProfileInfo = (user_id) => {
+const getProfileInfo = ({user_id}) => {
     return axios.get('/api/profile/' + user_id).then((response) => {
         if (response.status < 300) {
             return response;
@@ -148,9 +148,6 @@ const postComment = ({ comment, user_id, daily_id }) => {
             console.error(error);
         });
 };
-
-
-
 
 // const logIn = ({ user_name, password }) => {
 const logIn = ({ user_name, password, remember }) => {
@@ -244,7 +241,7 @@ const getAllBlogs = () => {
     return axios
         .get('/api/blog/')
         .then((response) => {
-            console.log(response);
+            // console.log(response);
             if (response.status < 300) {
                 return response.data;
             }
@@ -259,7 +256,6 @@ const getOneBlog = (id) => {
         .get('/api/blog/' + id)
         .then((response) => {
             if (response.status < 300) {
-
                 return response.data;
             }
         })
@@ -307,8 +303,6 @@ const postBlog = ({ title, content, user_id, userName }) => {
         });
 };
 
-
-
 const checkValidSession = () => {
     return axios
         .post('/api/user/validatesession/', {})
@@ -355,7 +349,7 @@ const API = {
     postProfileInfo,
     getProfileInfo,
     checkValidSession,
-    postBlogComment
+    postBlogComment,
 };
 
 export default API;
@@ -389,6 +383,5 @@ export {
     getProfileInfo,
     checkValidSession,
     postBlog,
-    postBlogComment
-
+    postBlogComment,
 };

@@ -2,7 +2,7 @@ const { Model, DataTypes } = require('sequelize');
 
 const sequelize = require('../config/connection');
 
-class News extends Model { }
+class News extends Model {}
 
 News.init(
     {
@@ -10,30 +10,28 @@ News.init(
             type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true,
-            autoIncrement: true
+            autoIncrement: true,
         },
         title: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: false,
         },
         content: {
             type: DataTypes.TEXT,
-            allowNull: false
+            allowNull: false,
         },
         author: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: false,
         },
         date: {
             type: DataTypes.DATE,
-            allowNull: false
+            allowNull: false,
         },
         image: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: false,
         },
-
-
     },
     {
         sequelize,
@@ -42,8 +40,6 @@ News.init(
         underscored: true,
         modelName: 'news',
     }
-
 );
 
 module.exports = News;
-
