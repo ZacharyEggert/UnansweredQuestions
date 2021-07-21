@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useGlobalContext } from '../../util/GlobalState';
-import { postComment } from '../../util/API';
+import { postBlogComment } from '../../util/API';
 
 
-const BlogCommentInput = ({ dailyQuestion }) => {
+const BlogCommentInput = ({ blog, setComments }) => {
     // eslint-disable-next-line no-unused-vars
     const [globalStore, dispatch] = useGlobalContext();
 
@@ -26,12 +26,12 @@ const BlogCommentInput = ({ dailyQuestion }) => {
             postBlogComment({
                 comment,
                 blog_id: blog.id,
-                user_id: currentUser.id,
+                user_id: currentUser?.user.id,
             })
                 .then((response) => {
                     console.debug(response);
                     setCommentState({ comment: '' });
-                    dispatch({ type: 'COMMENT_SUCCESS', data: response.data });
+
                 })
                 .catch((error) => {
                     console.error(error);
@@ -65,4 +65,4 @@ const BlogCommentInput = ({ dailyQuestion }) => {
     );
 };
 
-export default CommentInput;
+export default BlogCommentInput;

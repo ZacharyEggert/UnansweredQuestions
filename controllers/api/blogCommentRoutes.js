@@ -8,10 +8,16 @@ router.post('/', withAuth, async (req, res) => {
             user_id: req.session.user_id,
             blog_id: req.body.blog_id,
             comment: req.body.comment,
-        });
-        // it will return to the commented post
 
-        res.status(200).json(newComment);
+        });
+
+        // it will return to the commented post
+        const comments = await BlogComments.findAll({
+            where: {
+                blog_id: req.body.blog_id,
+            },
+        });
+        res.status(200).json(comments);
     } catch (err) {
         res.status(500).json(err);
         console.error(err);
@@ -21,7 +27,7 @@ router.post('/', withAuth, async (req, res) => {
 router.get('/:id', async (req, res) => {
     try {
         console.log(req.params.id)
-        const comment = await BlogComments.findByPk(req.params.id, {
+        const comment = await BlogComments.findAll({
             where: {
                 blog_id: req.params.id,
             },

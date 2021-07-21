@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import SuggestionCard from '../../components/SuggestionCard';
 import BlogCard from '../../components/BlogCard';
+import CreateBlog from '../../components/CreateBlog';
 import { getAllBlogs } from '../../util/API'
 import { Link } from 'react-router-dom'
 
@@ -35,6 +36,7 @@ const AllBlogs = () => {
 
 
             </div>
+            <CreateBlog setBlogs={setBlogs} />
             <SuggestionCard />
         </div>
     )

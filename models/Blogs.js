@@ -27,10 +27,7 @@ Blogs.init(
             type: DataTypes.TEXT,
             allowNull: false,
             validate: {
-                length: {
-                    min: 10,
-                    max: 2000
-                }
+                len: [10, 1000]
             }
         },
         isAdmin: {

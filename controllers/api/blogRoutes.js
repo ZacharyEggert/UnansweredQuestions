@@ -16,6 +16,7 @@ router.get('/', (req, res) => {
 //Create a blog
 router.post('/', (req, res) => {
     const blog = req.body;
+    console.log(req.body);
     Blogs.create(blog)
         .then((blog) => {
             res.json(blog);

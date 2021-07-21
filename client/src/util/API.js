@@ -149,32 +149,6 @@ const postComment = ({ comment, user_id, daily_id }) => {
         });
 };
 
-const postBlogComment = ({ comment, user_id, blog_id }) => {
-    return axios
-        .post('/api/blogComments', { comment, user_id, blog_id })
-        .then((response) => {
-            if (response.status < 300) {
-                // console.log(response);
-                return response;
-            }
-        })
-        .catch((error) => {
-            console.error(error);
-        });
-};
-
-const getBlogComment = (id) => {
-    return axios
-        .get('/api/blogcomments/' + id)
-        .then((response) => {
-            if (response.status < 300) {
-                return response;
-            }
-        })
-        .catch((error) => {
-            console.error(error);
-        });
-};
 
 
 
@@ -293,6 +267,46 @@ const getOneBlog = (id) => {
             console.log(error);
         });
 };
+const postBlogComment = ({ comment, user_id, blog_id }) => {
+    return axios
+        .post('/api/blogComments', { comment, user_id, blog_id })
+        .then((response) => {
+            if (response.status < 300) {
+                // console.log(response);
+                return response;
+            }
+        })
+        .catch((error) => {
+            console.error(error);
+        });
+};
+
+const getBlogComment = (id) => {
+    return axios
+        .get('/api/blogcomments/' + id)
+        .then((response) => {
+            if (response.status < 300) {
+                return response;
+            }
+        })
+        .catch((error) => {
+            console.error(error);
+        });
+};
+
+const postBlog = ({ title, content, user_id, userName }) => {
+    return axios
+        .post('/api/blog', { title, content, user_id, userName })
+        .then((response) => {
+            if (response.status < 300) {
+                return response;
+            }
+        })
+        .catch((error) => {
+            console.error(error);
+        });
+};
+
 
 
 const checkValidSession = () => {
@@ -337,10 +351,11 @@ const API = {
     getAllBlogs,
     getOneBlog,
     getBlogComment,
-
+    postBlog,
     postProfileInfo,
     getProfileInfo,
     checkValidSession,
+    postBlogComment
 };
 
 export default API;
@@ -373,4 +388,7 @@ export {
     postProfileInfo,
     getProfileInfo,
     checkValidSession,
+    postBlog,
+    postBlogComment
+
 };
