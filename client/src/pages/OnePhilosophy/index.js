@@ -26,7 +26,7 @@ const OnePhilosophy = () => {
     console.log(philosophies);
 
     return (
-        <div className="min-h-full text-white bg-fixed bg-no-repeat bg-cover bg-redflowers bg-fade">
+        <div className="min-h-full text-white bg-fixed bg-no-repeat bg-cover bg-whiteflower-2 bg-fade">
             <div className="py-14"></div>
             <section className="h-full max-w-[100vw] overflow-x-hidden">
                 <div className="box-border mx-auto mb-12 bg-black sm:w-9/12 bg-opacity-60">
