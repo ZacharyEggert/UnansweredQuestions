@@ -8,7 +8,7 @@ router.use('/api', apiRoutes);
 
 router.get('/*', (req, res) => {
     try {
-        res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
+        res.sendFile(path.join(__dirname,'..', 'client', 'build', 'index.html'));
     } catch (err) {
         console.error(err);
         res.status(500).json(err);
