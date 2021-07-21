@@ -2,7 +2,7 @@ const { Model, DataTypes } = require('sequelize');
 
 const sequelize = require('../config/connection');
 
-class BlogComments extends Model { }
+class BlogComments extends Model {}
 
 BlogComments.init(
     {
@@ -26,11 +26,11 @@ BlogComments.init(
         },
         likes: {
             type: DataTypes.INTEGER,
-            defaultValue: 0
+            defaultValue: 0,
         },
         dislikes: {
             type: DataTypes.INTEGER,
-            defaultValue: 0
+            defaultValue: 0,
         },
     },
     {

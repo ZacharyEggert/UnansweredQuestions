@@ -71,7 +71,9 @@ const NavMobile = () => {
                         </Link>
                     </li>
                     <li className=" mobile-nav">
-                        <Link onClick={closeNav} to="/blog">Blogs</Link>
+                        <Link onClick={closeNav} to="/blog">
+                            Blogs
+                        </Link>
                     </li>
                     <li className="mobile-nav">
                         <Link onClick={closeNav} to="/quiz">

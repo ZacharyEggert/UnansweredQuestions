@@ -2,9 +2,7 @@ const { Model, DataTypes } = require('sequelize');
 
 const sequelize = require('../config/connection');
 
-class Blogs extends Model { }
-
-
+class Blogs extends Model {}
 
 Blogs.init(
     {
@@ -27,23 +25,20 @@ Blogs.init(
             type: DataTypes.TEXT,
             allowNull: false,
             validate: {
-                len: [10, 1000]
-            }
+                len: [10, 1000],
+            },
         },
         isAdmin: {
             type: DataTypes.BOOLEAN,
             allowNull: false,
-            defaultValue: false
+            defaultValue: false,
         },
 
         createdAt: {
             type: DataTypes.DATE,
             defaultValue: DataTypes.NOW,
-            allowNull: false
+            allowNull: false,
         },
-
-
-
     },
     {
         sequelize,

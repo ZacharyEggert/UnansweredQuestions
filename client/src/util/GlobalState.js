@@ -1,9 +1,8 @@
 import React, { createContext, useReducer, useContext } from 'react';
-import { updateVoteCount } from './API'
+import { updateVoteCount } from './API';
 
 const GlobalContext = createContext();
 const { Provider } = GlobalContext;
-
 
 const initialState = {
     philosophers: {
@@ -17,8 +16,8 @@ const initialState = {
         room: '',
         username: 'test',
     },
-    dailyQuestion: { /** API LOADED */
-        name: 'QOTD',
+    dailyQuestion: {
+        /** API LOADED */ name: 'QOTD',
         content:
             'This is a question of the day. Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat?',
         comments: [
@@ -37,13 +36,13 @@ const reducer = (state, action) => {
     switch (action.type) {
         case 'addPhilosophersBulk':
             let newState = { ...state };
-            action.data.forEach(philosopher => {
+            action.data.forEach((philosopher) => {
                 newState.philosophers[philosopher.id] = philosopher;
             });
             return newState;
         case 'addPhilosophiesBulk':
             let newPhilState = { ...state };
-            action.data.forEach(philosophy => {
+            action.data.forEach((philosophy) => {
                 newPhilState.philosophies[philosophy.id] = philosophy;
             });
             return newPhilState;
@@ -66,7 +65,11 @@ const reducer = (state, action) => {
         case 'setDailyQuestion':
             return {
                 ...state,
-                dailyQuestion: { id: action.data.id, content: action.data.question, comments: action.data.comments },
+                dailyQuestion: {
+                    id: action.data.id,
+                    content: action.data.question,
+                    comments: action.data.comments,
+                },
             };
         case 'setPolls':
             return {
@@ -84,7 +87,7 @@ const reducer = (state, action) => {
                 philosophers: {
                     ...state.philosophers,
                     [action.data.id]: action.data,
-                }
+                },
             };
         case 'ONE_PHILOSOPHY_RECEIVE':
             return {
@@ -92,7 +95,7 @@ const reducer = (state, action) => {
                 philosophies: {
                     ...state.philosophies,
                     [action.data.id]: action.data,
-                }
+                },
             };
 
         case 'LOG_IN':
@@ -110,34 +113,38 @@ const reducer = (state, action) => {
             };
         case 'POLL_VOTE':
             // console.debug(action.data);
-            updateVoteCount(action.data.poll.id,
-                {
-                    vote_yes: (action.data.yes ? action.data.poll.vote_yes + 1 : action.data.poll.vote_yes),
-                    vote_no: (!action.data.yes ? action.data.poll.vote_no + 1 : action.data.poll.vote_no)
-                }
-            )
+            updateVoteCount(action.data.poll.id, {
+                vote_yes: action.data.yes
+                    ? action.data.poll.vote_yes + 1
+                    : action.data.poll.vote_yes,
+                vote_no: !action.data.yes
+                    ? action.data.poll.vote_no + 1
+                    : action.data.poll.vote_no,
+            })
                 .then((response) => {
                     console.log({ response });
-                    console.debug('VOTE SUCCESS')
+                    console.debug('VOTE SUCCESS');
                 })
                 .catch(() => {
-                    console.debug('VOTE FAILED')
+                    console.debug('VOTE FAILED');
                 });
             return {
                 ...state,
-                polls: state.polls.map(poll => {
+                polls: state.polls.map((poll) => {
                     if (poll.id === action.data.poll.id) {
                         return {
                             ...poll,
-                            vote_yes: action.data.yes ? poll.vote_yes + 1 : poll.vote_yes,
-                            vote_no: !action.data.yes ? poll.vote_no + 1 : poll.vote_no,
+                            vote_yes: action.data.yes
+                                ? poll.vote_yes + 1
+                                : poll.vote_yes,
+                            vote_no: !action.data.yes
+                                ? poll.vote_no + 1
+                                : poll.vote_no,
                         };
                     }
                     return poll;
                 }),
             };
-
-
 
         default:
             return state;

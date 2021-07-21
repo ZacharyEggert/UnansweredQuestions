@@ -1,8 +1,6 @@
 import React from 'react';
 
-
-const DashboardScreen = ({state}) => {
-
+const DashboardScreen = ({ state }) => {
     // eslint-disable-next-line no-unused-vars
     const { dashboardState, setDashboardState } = state;
 
@@ -11,7 +9,6 @@ const DashboardScreen = ({state}) => {
             <h1>Dashboard</h1>
         </div>
     );
-}
-
+};
 
 export default DashboardScreen;

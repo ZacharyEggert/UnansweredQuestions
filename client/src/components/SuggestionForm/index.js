@@ -71,7 +71,7 @@ const SuggestionForm = ({ user }) => {
                     alert('Something went wrong. Please try again later.');
                 });
 
-            console.log(state);
+            // console.log(state);
         }
     };
 
@@ -79,7 +79,7 @@ const SuggestionForm = ({ user }) => {
         <form>
             <div className="mb-4 form-group sm:flex sm:justify-between">
                 <label
-                    for="suggestion-type"
+                    htmlFor="suggestion-type"
                     className="inline-block w-full sm:w-5/12"
                     id="listbox-label"
                 >
@@ -97,7 +97,7 @@ const SuggestionForm = ({ user }) => {
                         className="pl-1 text-black"
                         value=""
                         disabled
-                        selected
+                        
                     >
                         Choose subject...
                     </option>
@@ -121,7 +121,7 @@ const SuggestionForm = ({ user }) => {
                     id="otherFieldDiv"
                 >
                     <label
-                        for="phil-name"
+                        htmlFor="phil-name"
                         className="inline-block mb-2 sm:w-5/12"
                     >
                         Philosopher Name:
@@ -142,7 +142,7 @@ const SuggestionForm = ({ user }) => {
                 <div className="mb-4 quote box2" id="otherFieldGroupDiv">
                     <div className="mb-4 col-6 sm:flex sm:justify-between">
                         <label
-                            for="q-phil-name"
+                            htmlFor="q-phil-name"
                             className="inline-block mb-2 sm:w-5/12"
                         >
                             Philosopher Name:
@@ -160,7 +160,7 @@ const SuggestionForm = ({ user }) => {
                     </div>
                     <div className="col-6 sm:flex sm:justify-between">
                         <label
-                            for="quote"
+                            htmlFor="quote"
                             className="inline-block mb-2 sm:w-5/12"
                         >
                             Quote:
@@ -183,7 +183,7 @@ const SuggestionForm = ({ user }) => {
                     className="mb-4 question box2 sm:flex sm:justify-between"
                     id="otherFieldDiv3"
                 >
-                    <label for="quest" className="inline-block mb-2 sm:w-5/12">
+                    <label htmlFor="quest" className="inline-block mb-2 sm:w-5/12">
                         Question:
                     </label>
                     <input

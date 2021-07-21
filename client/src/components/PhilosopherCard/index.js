@@ -11,12 +11,16 @@ const PhilosopherCard = (props) => {
                     <div className="absolute top-[10px] left-[10px] bottom-[60px] right-[10px] bg-[#222]">
                         <img
                             className="absolute top-0 left-0 object-cover w-full h-full"
-                            src={`/philosopher-profile-images/${philosopher.img || 'plato.jpg'}`}
+                            src={`/philosopher-profile-images/${
+                                philosopher.img || 'plato.jpg'
+                            }`}
                             alt={`${philosopher.name}'s best look`}
                         />
                     </div>
                     <div className="absolute left-[10px] right-[10px] bottom-[10px] text-center text-black">
-                        <h2 className="capitalize m-0 p-0 font-semibold text-base text-[#777]">{philosopher.name}</h2>
+                        <h2 className="capitalize m-0 p-0 font-semibold text-base text-[#777]">
+                            {philosopher.name}
+                        </h2>
                     </div>
                 </div>
             </Link>

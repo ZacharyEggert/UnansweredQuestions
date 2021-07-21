@@ -1,8 +1,8 @@
 import React from 'react';
 import { postProfileInfo } from '../../util/API';
 
-const EditView = (props, { user }) => {
-    const { setState, state } = props;
+const EditView = (props) => {
+    const { setState, state, user } = props;
 
     const handleOnChange = (event) => {
         setState({
@@ -14,7 +14,7 @@ const EditView = (props, { user }) => {
 
     const handleFormSubmit = (event) => {
         event.preventDefault();
-
+        console.log({user})
         postProfileInfo({
             profile: {
                 bio: state.bio,
@@ -48,7 +48,7 @@ const EditView = (props, { user }) => {
                         type="text"
                         onChange={handleOnChange}
                         placeholder="Enter your bio here..."
-                        className="max-w-full md:w-5/12 pl-1 my-3 text-black text-xs md:text-lg"
+                        className="max-w-full pl-1 my-3 text-xs text-black md:w-5/12 md:text-lg"
                     />
                 </label>
                 <label
@@ -63,7 +63,7 @@ const EditView = (props, { user }) => {
                         onChange={handleOnChange}
                         type="text"
                         placeholder="Enter your favorite philosopher..."
-                        className="max-w-full md:w-5/12 pl-1 my-3 text-black text-xs md:text-lg"
+                        className="max-w-full pl-1 my-3 text-xs text-black md:w-5/12 md:text-lg"
                     />
                 </label>
                 <label
@@ -78,7 +78,7 @@ const EditView = (props, { user }) => {
                         type="text"
                         onChange={handleOnChange}
                         placeholder="Enter your favorite quote..."
-                        className="max-w-full md:w-5/12 pl-1 my-3 text-black text-xs md:text-lg"
+                        className="max-w-full pl-1 my-3 text-xs text-black md:w-5/12 md:text-lg"
                     />
                 </label>
                 <label
@@ -93,7 +93,7 @@ const EditView = (props, { user }) => {
                         type="text"
                         onChange={handleOnChange}
                         placeholder="Enter your favorite book..."
-                        className="max-w-full md:w-5/12 pl-1 my-3 text-black text-xs md:text-lg"
+                        className="max-w-full pl-1 my-3 text-xs text-black md:w-5/12 md:text-lg"
                     />
                 </label>
                 <span className="inline-block w-[89%] md:w-11/12 text-right">

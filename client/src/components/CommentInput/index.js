@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useGlobalContext } from '../../util/GlobalState';
 import { postComment } from '../../util/API';
 
-
 const CommentInput = ({ dailyQuestion }) => {
     // eslint-disable-next-line no-unused-vars
     const [globalStore, dispatch] = useGlobalContext();
@@ -36,7 +35,6 @@ const CommentInput = ({ dailyQuestion }) => {
                 .catch((error) => {
                     console.error(error);
                 });
-
 
             setCommentState({ ...commentState, comment: '' });
         }

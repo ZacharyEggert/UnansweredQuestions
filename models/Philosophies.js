@@ -2,7 +2,7 @@ const { Model, DataTypes } = require('sequelize');
 
 const sequelize = require('../config/connection');
 
-class Philosophies extends Model { }
+class Philosophies extends Model {}
 
 Philosophies.init(
     {

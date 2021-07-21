@@ -34,8 +34,6 @@ User.hasMany(BlogComments, {
     foreignKey: 'user_id',
 });
 
-
-
 User.hasMany(Comments, {
     foreignKey: 'user_id',
 });

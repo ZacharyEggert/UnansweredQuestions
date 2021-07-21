@@ -50,10 +50,10 @@ router.put('/:id', async (req, res) => {
             res.status(404).json({ message: 'No poll found with this id!' });
             return;
         }
-        console.log({pollData});
+        console.log({ pollData });
         res.status(200).json(pollData);
     } catch (err) {
-        console.error({err});
+        console.error({ err });
         res.status(500).json(err);
     }
 });

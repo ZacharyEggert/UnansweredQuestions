@@ -9,7 +9,7 @@ const ProfilePage = () => {
     // eslint-disable-next-line no-unused-vars
     const [globalState, dispatch] = useGlobalContext();
     // eslint-disable-next-line no-unused-vars
-    const { currentUser, isLoggedIn } = globalState;
+    const { currentUser } = globalState;
 
     const initialState = {
         bio: '',
@@ -21,8 +21,9 @@ const ProfilePage = () => {
 
     const [state, setState] = useState(initialState);
 
-    useEffect(() => {
-        getProfileInfo(currentUser?.user?.id)
+    const loadProfile = (currentUser) => {
+        // console.log(currentUser);
+        getProfileInfo({ user_id: currentUser?.user?.id })
             .then((response) => {
                 if (response.status < 300) {
                     console.log(response.data);
@@ -32,6 +33,10 @@ const ProfilePage = () => {
             .catch((err) => {
                 console.error(err);
             });
+    };
+
+    useEffect(() => {
+        loadProfile(currentUser);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
@@ -47,7 +52,7 @@ const ProfilePage = () => {
                         <ProfileView setState={setState} state={state} />
                     ) : null}
                     {state.view === 'EditView' ? (
-                        <EditView setState={setState} state={state} />
+                        <EditView setState={setState} state={state} user={currentUser?.user} />
                     ) : null}
                 </div>
                 <SuggestionCard />

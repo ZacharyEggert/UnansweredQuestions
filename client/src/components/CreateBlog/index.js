@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useGlobalContext } from '../../util/GlobalState';
 import { getAllBlogs, postBlog } from '../../util/API';
 
-
 const CreateBlog = ({ setBlogs }) => {
     // eslint-disable-next-line no-unused-vars
     const [globalStore, dispatch] = useGlobalContext();
@@ -29,7 +28,6 @@ const CreateBlog = ({ setBlogs }) => {
                 content: content,
                 userName: currentUser?.user.user_name,
                 user_id: currentUser?.id,
-
             })
                 .then((response) => {
                     console.debug(response);
@@ -37,12 +35,10 @@ const CreateBlog = ({ setBlogs }) => {
                     getAllBlogs().then((response) => {
                         setBlogs(response);
                     });
-
                 })
                 .catch((error) => {
                     console.error(error);
                 });
-
 
             setBlogState({ ...blogState, title: '', content: '' });
         }

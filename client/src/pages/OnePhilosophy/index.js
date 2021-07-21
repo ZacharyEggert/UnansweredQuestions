@@ -1,6 +1,6 @@
 import React from 'react';
 import { useGlobalContext } from '../../util/GlobalState';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { getPhilosophy } from '../../util/API';
 import { useEffect } from 'react';
 
@@ -78,8 +78,8 @@ const OnePhilosophy = () => {
                                 )}
                             </p>
                             <div className="flex flex-row-reverse pb-4">
-                                <Link
-                                    to={
+                                <a
+                                    href={
                                         philosophy?.wikiLink ||
                                         'https://wikipedia.com/'
                                     }
@@ -88,7 +88,7 @@ const OnePhilosophy = () => {
                                         {' '}
                                         Learn More
                                     </button>
-                                </Link>
+                                </a>
                             </div>
                         </div>
                     </div>

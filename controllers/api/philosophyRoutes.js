@@ -4,9 +4,7 @@ const { fillPhilosophyData } = require('../../utils/handlers');
 
 router.get('/', async (req, res) => {
     try {
-        const philData = await Philosophies.findAll({
-
-        });
+        const philData = await Philosophies.findAll({});
         res.status(200).json(philData);
     } catch (err) {
         res.status(500).json(err);
@@ -15,9 +13,7 @@ router.get('/', async (req, res) => {
 
 router.get('/:id', async (req, res) => {
     try {
-        let philData = await Philosophies.findByPk(req.params.id, {
-
-        });
+        let philData = await Philosophies.findByPk(req.params.id, {});
 
         if (!philData) {
             res.status(404).json({
@@ -27,13 +23,9 @@ router.get('/:id', async (req, res) => {
         }
 
         if (!philData.about || !philData.youtube) {
-
             // console.log({ about: philData.about, youtube: philData.youtube });
 
-            philData = await fillPhilosophyData(
-                req.params.id,
-                philData
-            );
+            philData = await fillPhilosophyData(req.params.id, philData);
         }
 
         // console.log(philData);

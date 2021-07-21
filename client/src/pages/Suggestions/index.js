@@ -1,7 +1,7 @@
 import React from 'react';
 import SuggestionForm from '../../components/SuggestionForm';
 
-const Suggestions = ({user}) => {
+const Suggestions = ({ user }) => {
     return (
         <div className="min-h-full bg-fixed bg-cover bg-whiteflower bg-fade">
             <main
