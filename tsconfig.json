@@ -9,6 +9,7 @@
             "@components/*": ["src/components/*"],
             "@pages/*": ["src/pages/*"],
             "@lib/*": ["src/lib/*"],
+            "@styles/*": ["src/styles/*"],
             "@util/*": ["server/util/*"],
             "@util": ["server/util/index"],
             "@controllers/*": ["server/controllers/*"],
@@ -33,7 +34,8 @@
         "sourceMap": true,
         "forceConsistentCasingInFileNames": true,
         "resolveJsonModule": true,
-        "incremental": true
+        "incremental": true,
+        "plugins": [{ "name": "typescript-plugin-css-modules" }]
     },
     "exclude": ["dist", ".next", "out", "next.config.js", "node_modules"],
     "include": [

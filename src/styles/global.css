@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 @layer base {
+    #__next,
     body {
         @apply min-h-screen w-full max-w-full overflow-x-hidden;
     }
@@ -12,4 +13,11 @@
 }
 
 @layer utilities {
+    .bg-radial-glow {
+        background: radial-gradient(
+            ellipse at bottom,
+            rgb(68 64 60) 0%,
+            rgb(28, 25, 23) 100%
+        );
+    }
 }

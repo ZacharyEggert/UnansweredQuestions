@@ -1,9 +1,9 @@
 import './paths'
-import { } from '@util/constants'
+import { PORT } from '@util/constants'
 import express from 'express'
 import next from 'next'
 
-const port = parseInt(process.env.PORT || '', 10) || 3000
+const port = PORT
 const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev })
 const handle = app.getRequestHandler()
@@ -11,11 +11,15 @@ const handle = app.getRequestHandler()
 app.prepare().then(() => {
   const server = express()
 
+  server.use(express.json())
+  server.use(express.urlencoded({ extended: true }))
+  server.use(express.static('../public'))
+
   server.all('*', (req, res) => {
     return handle(req, res)
   })
 
   server.listen(port, () => {
-    console.log(`> Ready on http://localhost:${port} as ${dev ? 'development' : 'production'}`)
+    console.log(`> Ready on http://localhost:${port} as ${dev ? 'development' : 'production'} mode`)
   })
 })
