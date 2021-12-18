@@ -9,6 +9,8 @@
             "@components/*": ["src/components/*"],
             "@pages/*": ["src/pages/*"],
             "@lib/*": ["src/lib/*"],
+            "@util/*": ["server/util/*"],
+            "@util": ["server/util/index"],
             "@controllers/*": ["server/controllers/*"],
             "@controllers": ["server/controllers/index"],
             "@models/*": ["server/models/*"],
