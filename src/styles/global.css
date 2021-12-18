@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    body {
+        @apply min-h-screen w-full max-w-full overflow-x-hidden;
+    }
+}
+
+@layer components {
+}
+
+@layer utilities {
+}
