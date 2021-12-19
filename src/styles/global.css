@@ -20,4 +20,25 @@
             rgb(28, 25, 23) 100%
         );
     }
+
+    .bg-fade::before {
+        z-index: 2;
+        content: '';
+        position: absolute;
+        height: 100%;
+        top: 0;
+        left: 0;
+        width: 100%;
+        pointer-events: none;
+        background: rgba(255, 255, 255, 0.2);
+    }
+
+    .bg-fade {
+        position: relative;
+    }
+
+    .bg-fade * {
+        z-index: 3;
+        position: relative;
+    }
 }
