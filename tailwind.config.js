@@ -1,9 +1,23 @@
+function withOpacity(rgb) {
+    return ({ opacityValue }) => {
+        if (opacityValue !== undefined) {
+            return `rgba(${rgb}, ${opacityValue})`;
+        }
+        return `rgb(${rgb})`;
+    };
+}
+
 /* eslint-disable quotes */
 module.exports = {
     content: ['src/**/*.{tsx,ts,css,scss,sass,md,mdx}'],
     darkMode: 'class',
     theme: {
         extend: {
+            colors: {
+                stone: {
+                    950: withOpacity('14, 12, 11'),
+                },
+            },
             fontFamily: {
                 cursive: ['Courgette', 'Sans'],
             },

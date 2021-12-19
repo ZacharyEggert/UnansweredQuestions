@@ -1,0 +1,12 @@
+.binding {
+    display: flex;
+    flex-direction: row;
+}
+
+.binding::before,
+.binding::after {
+    content: '';
+    flex: 1 1;
+    border-bottom: 2px solid white;
+    margin: auto 1rem;
+}

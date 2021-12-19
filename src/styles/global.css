@@ -41,4 +41,18 @@
         z-index: 3;
         position: relative;
     }
+
+    .menu-button span {
+        @apply absolute block md:hidden w-8 h-1 mb-[5px] bg-stone-300 rounded-full z-10;
+    }
+
+    .menu-button span:nth-child(1) {
+        @apply left-0.5 top-0;
+    }
+    .menu-button span:nth-child(2) {
+        @apply left-0.5 top-6;
+    }
+    .menu-button span:nth-child(3) {
+        @apply left-0.5 top-3;
+    }
 }

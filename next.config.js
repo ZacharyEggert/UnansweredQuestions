@@ -17,4 +17,8 @@ module.exports = {
     env: {
         ...parsed,
     },
+
+    images: {
+        domains: ['images.unsplash.com', 'upload.wikimedia.org'],
+    },
 };
